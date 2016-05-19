@@ -14,8 +14,8 @@ CREATE TABLE [LOPEZ_Y_CIA].[Calificacion](
 
 GO
 CREATE TABLE [LOPEZ_Y_CIA].[Cliente](
-	[dni] [numeric](18, 0) NOT NULL UNIQUE,
-	[tipoDocumento] [int] NOT NULL UNIQUE,
+	[dni] [numeric](18, 0) NOT NULL,
+	[tipoDocumento] [int] NOT NULL,
 	[nombre] [nvarchar](255) NULL,
 	[apellido] [nvarchar](255) NULL,
 	[fechaNacimiento] [date] NULL,
@@ -24,7 +24,8 @@ CREATE TABLE [LOPEZ_Y_CIA].[Cliente](
 	[fechaCreacion] [date] NULL,
 	[comprasEfectuadas] [int] NULL,
 	[comprasCalificadas] [int] NULL,
-	CONSTRAINT [PK_Cliente_1] PRIMARY KEY CLUSTERED([idUsuario] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_Cliente_1] PRIMARY KEY CLUSTERED([idUsuario] ASC) ON [PRIMARY],
+	CONSTRAINT [UK_Documento] UNIQUE ([dni],[tipoDocumento])
 ) ON [PRIMARY]
 
 GO
