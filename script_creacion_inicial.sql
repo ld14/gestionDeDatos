@@ -597,3 +597,79 @@ from (
 	group by Publ_Empresa_Cuit, Publ_Empresa_Razon_Social, Publ_Empresa_Fecha_Creacion
 ) T1
 order by 1 asc
+
+insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre)
+select Publicacion_Estado
+from gd_esquema.Maestra
+group by Publicacion_Estado
+
+set identity_insert GD1C2016.LOPEZ_Y_CIA.Visibilidad on
+insert into LOPEZ_Y_CIA.Visibilidad(idVisibilidad, costo, nombreVisibilidad)
+select Publicacion_Visibilidad_Cod, Publicacion_Visibilidad_Precio, Publicacion_Visibilidad_Desc
+from gd_esquema.Maestra
+group by Publicacion_Visibilidad_Cod, Publicacion_Visibilidad_Precio, Publicacion_Visibilidad_Desc
+order by 1 asc
+
+insert into LOPEZ_Y_CIA.Publicacion(idEstadoPublicacion, idVisibilidad, codigoPublicacion, descripcion, fechaCreacion, fechaVencimiento, stock, idUsuario)
+select
+	1 as idEstadoPublicacion,
+	T1.Publicacion_Visibilidad_Cod,
+	T1.Publicacion_Cod,
+	T1.Publicacion_Descripcion,
+	T1.Publicacion_Fecha,
+	T1.Publicacion_Fecha_Venc,
+	T1.Publicacion_Stock,
+	T2.idUsuario
+from 
+	(select
+		Publ_Empresa_Cuit,
+		Publicacion_Cod,
+		Publicacion_Visibilidad_Cod,
+		Publicacion_Descripcion,
+		Publicacion_Fecha,
+		Publicacion_Fecha_Venc,
+		Publicacion_Stock
+	from gd_esquema.Maestra
+	where Publicacion_Cod is not null
+	group by
+		Publicacion_Cod,
+		Publicacion_Visibilidad_Cod,
+		Publicacion_Descripcion,
+		Publicacion_Fecha,
+		Publicacion_Fecha_Venc,
+		Publicacion_Stock,
+		Publ_Empresa_Cuit) T1
+inner join LOPEZ_Y_CIA.Empresa as T2 on T1.Publ_Empresa_Cuit = T2.cuit
+order by 3 asc
+
+insert into LOPEZ_Y_CIA.Publicacion(idEstadoPublicacion, idVisibilidad, codigoPublicacion, descripcion, fechaCreacion, fechaVencimiento, stock, idUsuario)
+select
+	1 as idEstadoPublicacion,
+	T1.Publicacion_Visibilidad_Cod,
+	T1.Publicacion_Cod,
+	T1.Publicacion_Descripcion,
+	T1.Publicacion_Fecha,
+	T1.Publicacion_Fecha_Venc,
+	T1.Publicacion_Stock,
+	T2.idUsuario
+from 
+	(select
+		Publ_Cli_Dni,
+		Publicacion_Cod,
+		Publicacion_Visibilidad_Cod,
+		Publicacion_Descripcion,
+		Publicacion_Fecha,
+		Publicacion_Fecha_Venc,
+		Publicacion_Stock
+	from gd_esquema.Maestra
+	where Publicacion_Cod is not null
+	group by
+		Publicacion_Cod,
+		Publicacion_Visibilidad_Cod,
+		Publicacion_Descripcion,
+		Publicacion_Fecha,
+		Publicacion_Fecha_Venc,
+		Publicacion_Stock,
+		Publ_Cli_Dni) T1
+inner join LOPEZ_Y_CIA.Cliente as T2 on T1.Publ_Cli_Dni = T2.dni
+order by 3 asc
