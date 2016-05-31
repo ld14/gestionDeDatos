@@ -21,24 +21,24 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          /*
-           * try
-            {
-                myConfiguration = new Configuration();
-                myConfiguration.Configure();
-                mySessionFactory = myConfiguration.BuildSessionFactory();
-                mySession = mySessionFactory.OpenSession();
-            }
-            catch (Exception conect)            {
+            /*
+             * try
+              {
+                  myConfiguration = new Configuration();
+                  myConfiguration.Configure();
+                  mySessionFactory = myConfiguration.BuildSessionFactory();
+                  mySession = mySessionFactory.OpenSession();
+              }
+              catch (Exception conect)            {
                 
-                throw;
-            }
-            */
+                  throw;
+              }
+              */
 
-          PublicacionSubastaDaoImpl repositorio = new PublicacionSubastaDaoImpl();
-          PublicacionSubasta u = repositorio.GetByUsuario("Regi2222222222");
-          Console.Write("Usuario Nombre: "+u.Usuario.userName);
-          
+            PublicacionSubastaDaoImpl repositorio = new PublicacionSubastaDaoImpl();
+            PublicacionSubasta u = repositorio.GetByUsuario("Regi2222222222");
+            Console.Write("Usuario Nombre: " + u.Usuario.userName);
+
 
             /*  
               // Add Record
@@ -129,11 +129,11 @@ namespace WindowsFormsApplication1
 
             //using (mySession.BeginTransaction())
             //{
-              //  ICriteria criteria = mySession.CreateCriteria<Contact>();
-               // IList<Contact> list = criteria.List<Contact>();
+            //  ICriteria criteria = mySession.CreateCriteria<Contact>();
+            // IList<Contact> list = criteria.List<Contact>();
 
-//                mySession.Transaction.Commit();
-  //          }
+            //                mySession.Transaction.Commit();
+            //          }
 
         }
     }

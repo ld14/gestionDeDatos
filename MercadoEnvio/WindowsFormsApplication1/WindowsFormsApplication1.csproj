@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCDCB6AE-6B35-43C4-91A2-0ABE724B87DD}</ProjectGuid>
+    <ProjectGuid>{BE5A3FBC-FBAE-4E25-B63C-6166EAAEC461}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WindowsFormsApplication1</RootNamespace>
@@ -68,27 +68,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABM Rol\Form1.cs" />
+    <Compile Include="ABM Rol\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ABM Rol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Rubro\Form1.cs" />
+    <Compile Include="ABM Rubro\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ABM Rubro\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Usuario\Form1.cs" />
+    <Compile Include="ABM Usuario\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ABM Usuario\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Visibilidad\Form1.cs" />
+    <Compile Include="ABM Visibilidad\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ABM Visibilidad\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calificar\Form1.cs" />
+    <Compile Include="Calificar\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Calificar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComprarOfertar\Form1.cs" />
+    <Compile Include="ComprarOfertar\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ComprarOfertar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
@@ -121,7 +133,9 @@
     <Compile Include="Entity\DAO\PublicacionSubastaDaoImpl.cs" />
     <Compile Include="Entity\DAO\UsuarioDao.cs" />
     <Compile Include="Entity\Utils\DateUtils.cs" />
-    <Compile Include="Facturas\Form1.cs" />
+    <Compile Include="Facturas\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Facturas\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
@@ -131,15 +145,21 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Publicación\Form1.cs" />
+    <Compile Include="Generar Publicación\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Generar Publicación\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Historial Cliente\Form1.cs" />
+    <Compile Include="Historial Cliente\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Historial Cliente\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listado Estadistico\Form1.cs" />
+    <Compile Include="Listado Estadistico\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Listado Estadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
@@ -194,22 +214,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Maps\Calificacion.hbm.xml" />
-    <Content Include="Maps\ComisionesParametrizables.hbm.xml" />
-    <Content Include="Maps\CompraUsuario.hbm.xml" />
-    <Content Include="Maps\Contact.hbm.xml" />
-    <Content Include="Maps\DatosBasicos.hbm.xml" />
-    <Content Include="Maps\EstadoPublicacion.hbm.xml" />
-    <Content Include="Maps\Factura.hbm.xml" />
-    <Content Include="Maps\Funciones.hbm.xml" />
-    <Content Include="Maps\ItemFactura.hbm.xml" />
-    <Content Include="Maps\Preguntas.hbm.xml" />
-    <Content Include="Maps\Publicacion.hbm.xml" />
-    <Content Include="Maps\Rol.hbm.xml" />
-    <Content Include="Maps\Rubro.hbm.xml" />
-    <Content Include="Maps\Usuario.hbm.xml" />
-    <Content Include="Maps\Visibilidad.hbm.xml" />
-    <Content Include="Maps\WorkflowEstados.hbm.xml" />
+    <EmbeddedResource Include="Maps\Calificacion.hbm.xml" />
+    <EmbeddedResource Include="Maps\ComisionesParametrizables.hbm.xml" />
+    <EmbeddedResource Include="Maps\CompraUsuario.hbm.xml" />
+    <EmbeddedResource Include="Maps\Contact.hbm.xml" />
+    <EmbeddedResource Include="Maps\DatosBasicos.hbm.xml" />
+    <EmbeddedResource Include="Maps\EstadoPublicacion.hbm.xml" />
+    <EmbeddedResource Include="Maps\Factura.hbm.xml" />
+    <EmbeddedResource Include="Maps\Funciones.hbm.xml" />
+    <EmbeddedResource Include="Maps\ItemFactura.hbm.xml" />
+    <EmbeddedResource Include="Maps\Preguntas.hbm.xml" />
+    <EmbeddedResource Include="Maps\Publicacion.hbm.xml" />
+    <EmbeddedResource Include="Maps\Rol.hbm.xml" />
+    <EmbeddedResource Include="Maps\Rubro.hbm.xml" />
+    <EmbeddedResource Include="Maps\Usuario.hbm.xml" />
+    <EmbeddedResource Include="Maps\Visibilidad.hbm.xml" />
+    <EmbeddedResource Include="Maps\WorkflowEstados.hbm.xml" />
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

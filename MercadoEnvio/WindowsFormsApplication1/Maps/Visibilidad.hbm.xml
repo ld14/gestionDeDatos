@@ -5,15 +5,19 @@
     <id name="idVisibilidad" column="idVisibilidad">
       <generator class="identity" />
     </id>
-    
-    <property name="costo">
-      <column name="costo" sql-type="numeric" not-null="false" />
+
+    <property name="codigoVisibilidad">
+      <column name="codigoVisibilidad" sql-type="numeric" not-null="true" />
     </property>
-    
     <property name="nombreVisibilidad">
       <column name="nombreVisibilidad" sql-type="nvarchar" not-null="false" />
     </property>
-
+    <property name="costo">
+      <column name="costo" sql-type="numeric" not-null="true" />
+    </property>
+    <property name="porcentaje">
+      <column name="porcentaje" sql-type="numeric" not-null="true" />
+    </property>
     <!--
     <bag name="Publicacion">
       <key column="idVisibilidad" />

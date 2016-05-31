@@ -12,13 +12,13 @@
       <column name="domCalle" sql-type="nvarchar" not-null="false" />
     </property>
     <property name="nroCalle">
-      <column name="nroCalle" sql-type="nvarchar" not-null="false" />
+      <column name="nroCalle" sql-type="numeric" not-null="false" />
     </property>
     <property name="piso">
       <column name="piso" sql-type="numeric" not-null="false" />
     </property>
     <property name="depto">
-      <column name="depto" sql-type="numeric" not-null="false" />
+      <column name="depto" sql-type="nvarchar" not-null="false" />
     </property>
     <property name="codPostal">
       <column name="codPostal" sql-type="nvarchar" not-null="false" />
