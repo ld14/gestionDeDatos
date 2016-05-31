@@ -166,7 +166,7 @@ CREATE TABLE [LOPEZ_Y_CIA].[RolUsuario](
 
 CREATE TABLE [LOPEZ_Y_CIA].[Rubro](
 	[idRubro] [int] IDENTITY(1,1) NOT NULL,
-	[codigo] [nchar](5) NULL UNIQUE, /**/
+	[codigo] [nchar](5) NULL, /**/
 	[nombreCorto] [nvarchar](8) NULL, /**/
 	[descripcion] [nvarchar](255) NULL,
 	CONSTRAINT [PK_Rubro] PRIMARY KEY CLUSTERED([idRubro] ASC) ON [PRIMARY]
@@ -546,10 +546,10 @@ from (
 ) T1
 order by 1 asc
 
-insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre)
-select Publicacion_Estado
-from gd_esquema.Maestra
-group by Publicacion_Estado
+insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre) values('Borrador')
+insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre) values('Activa')
+insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre) values('Pausada')
+insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre) values('Finalizada')
 
 insert into LOPEZ_Y_CIA.Visibilidad(codigoVisibilidad, nombreVisibilidad, costo, porcentaje)
 select Publicacion_Visibilidad_Cod, Publicacion_Visibilidad_Desc, Publicacion_Visibilidad_Precio, Publicacion_Visibilidad_Porcentaje
@@ -622,6 +622,23 @@ from
 inner join LOPEZ_Y_CIA.Cliente as T2 on T1.Publ_Cli_Dni = T2.dni
 inner join LOPEZ_Y_CIA.Visibilidad as T3 on T3.codigoVisibilidad = T1.Publicacion_Visibilidad_Cod
 order by 3 asc
+
+insert into LOPEZ_Y_CIA.Rubro(descripcion)
+select Publicacion_Rubro_Descripcion 
+from gd_esquema.Maestra
+where Publicacion_Rubro_Descripcion is not null
+group by Publicacion_Rubro_Descripcion
+order by 1 asc
+
+insert into LOPEZ_Y_CIA.Calificacion(codigo, cantEstrellas)
+select Calificacion_Codigo, Calificacion_Cant_Estrellas 
+from gd_esquema.Maestra
+where Calificacion_Codigo is not null
+order by 1 asc
+
+insert into LOPEZ_Y_CIA.Rol(nombre, activo) values ('Cliente', 1)
+insert into LOPEZ_Y_CIA.Rol(nombre, activo) values ('Empresa', 1)
+insert into LOPEZ_Y_CIA.Rol(nombre, activo) values ('Admin', 1)
 
 GO
 /** FIN DEL SCRIPT **/
