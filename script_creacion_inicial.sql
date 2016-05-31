@@ -640,5 +640,36 @@ insert into LOPEZ_Y_CIA.Rol(nombre, activo) values ('Cliente', 1)
 insert into LOPEZ_Y_CIA.Rol(nombre, activo) values ('Empresa', 1)
 insert into LOPEZ_Y_CIA.Rol(nombre, activo) values ('Admin', 1)
 
+insert into LOPEZ_Y_CIA.PublicacionNormal(idPublicacion, precioPorUnidad)
+select B.idPublicacion, A.Publicacion_Precio
+from gd_esquema.Maestra as A
+inner join LOPEZ_Y_CIA.Publicacion as B on A.Publicacion_Cod = B.codigoPublicacion
+where A.Publicacion_Tipo like 'C%'
+group by B.idPublicacion, A.Publicacion_Precio
+order by 1
+
+insert into LOPEZ_Y_CIA.PublicacionSubasta(valorInicialVenta, idPublicacion, valorActual)
+select A.Publicacion_Precio, B.idPublicacion, A.Publicacion_Precio+max(A.Oferta_Monto) [actual]
+from gd_esquema.Maestra as A
+inner join LOPEZ_Y_CIA.Publicacion as B on A.Publicacion_Cod = B.codigoPublicacion
+where A.Publicacion_Tipo like 'S%'
+group by B.idPublicacion, A.Publicacion_Precio
+order by 2
+
+insert into LOPEZ_Y_CIA.OfertaSubasta(idPublicacion, idUsuario, monto, fecha, adjudicada)
+select B.idPublicacion, C.idUsuario, A.Oferta_Monto, A.Oferta_Fecha,
+	CASE 
+		WHEN A.Oferta_Monto+A.Publicacion_Precio = D.valorActual 
+		THEN 1
+		ELSE 0
+    END as adjudicada
+from gd_esquema.Maestra as A
+inner join LOPEZ_Y_CIA.Publicacion as B on A.Publicacion_Cod = B.codigoPublicacion
+inner join LOPEZ_Y_CIA.Cliente as C on A.Cli_Dni = C.dni
+inner join LOPEZ_Y_CIA.PublicacionSubasta as D on B.idPublicacion = D.idPublicacion
+where Publicacion_Tipo like 'S%' and Oferta_Fecha is not null
+group by B.idPublicacion, C.idUsuario, A.Oferta_Monto, A.Oferta_Fecha, A.Publicacion_Precio, D.valorActual
+order by B.idPublicacion asc, A.Oferta_Monto asc
+
 GO
 /** FIN DEL SCRIPT **/
