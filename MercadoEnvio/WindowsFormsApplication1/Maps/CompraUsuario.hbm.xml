@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CompraUsuario" table="CompraUsuario" lazy="true" >
+    <id name="idCompraUsuario" column="idCompraUsuario">
+      <generator class="identity" />
+    </id>
+
+    <many-to-one name="Factura" column="idFactura"  cascade="all"/>
+    <many-to-one name="Usuario" column="idUsuario"  cascade="all"/>
+    <many-to-one name="Calificacion" column="idCalificacion"  cascade="all"/>
+
+  </class>
+</hibernate-mapping>

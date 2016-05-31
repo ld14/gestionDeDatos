@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="WindowsFormsApplication1"
+                   namespace="WindowsFormsApplication1">
+  
+  <class name="ComisionesParametrizables" table="ComisionesParametrizables" lazy="true" >
+    <id name="idComisionesParametrizables" column="idComisionesParametrizables">
+      <generator class="identity" />
+    </id>
+    <property name="nombreCorto">
+      <column name="nombreCorto" sql-type="nchar" not-null="true" />
+    </property>
+    <property name="nombre">
+      <column name="nombre" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="porcentaje">
+      <column name="porcentaje" sql-type="numeric" not-null="true" />
+    </property>
+  </class>
+  
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Rol" table="Rol" lazy="true" >
+    <id name="idRol" column="idRol">
+      <generator class="identity" />
+    </id>
+    <property name="nombre">
+      <column name="nombre" sql-type="char" not-null="true" />
+    </property>
+    <property name="activo">
+      <column name="activo" sql-type="bit" not-null="true" />
+    </property>
+
+    
+    <set name="UsuarioLst" table="RolUsuario" outer-join="auto"  cascade="all">
+      <key>
+        <column name="idRol" />
+      </key>
+      <many-to-many class="Usuario">
+        <column name="idUsuario" />
+      </many-to-many>
+    </set>
+
+    <set name="FuncionesLst" table="RolFunciones" outer-join="auto"  cascade="all">
+      <key>
+        <column name="idRol" />
+      </key>
+      <many-to-many class="Funciones">
+        <column name="idFunciones" />
+      </many-to-many>
+    </set>
+
+  </class>
+</hibernate-mapping>

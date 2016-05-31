@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Preguntas" table="Preguntas" lazy="true" >
+    <id name="idPreguntas" column="idPreguntas">
+      <generator class="identity" />
+    </id>
+
+    <many-to-one name="Usuario" column="idUsuario"  cascade="all"/>
+    <many-to-one name="Publicacion" column="idPublicacion"  cascade="all"/>
+    
+    <property name="descripcion">
+      <column name="descripcion" sql-type="text" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

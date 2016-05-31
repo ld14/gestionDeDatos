@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Publicacion" table="Publicacion" lazy="true" >
+    <id name="idPublicacion" column="idPublicacion">
+      <generator class="identity" />
+    </id>
+
+    <property name="codigoPublicacion">
+      <column name="codigoPublicacion" sql-type="numeric" not-null="false" />
+    </property>
+    <property name="descripcion">
+      <column name="descripcion" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="fechaCreacion">
+      <column name="fechaCreacion" sql-type="date" not-null="false" />
+    </property>
+    <property name="fechaVencimiento">
+      <column name="fechaVencimiento" sql-type="date" not-null="false" />
+    </property>
+    <property name="stock">
+      <column name="stock" sql-type="numeric" not-null="false" />
+    </property>
+    <property name="preguntasSN">
+      <column name="preguntasSN" sql-type="bit" not-null="false" />
+    </property>
+    <property name="envioSN">
+      <column name="envioSN" sql-type="bit" not-null="false" />
+    </property>
+
+    <many-to-one name="Usuario" column="idUsuario"  cascade="all"/>
+    
+    <many-to-one name="Visibilidad" column="idVisibilidad"  cascade="all"/>
+
+    <many-to-one name="EstadoPublicacion" column="idEstadoPublicacion"  cascade="all"/>
+
+    <set name="RubroLst" table="RubroPublicacion" lazy="true" outer-join="auto" cascade="all">
+      <key>
+        <column name="idPublicacion" not-null="true"/>
+      </key>
+      <many-to-many class="Rubro">
+        <column name="idRubro" not-null="true"/>
+      </many-to-many>
+    </set>
+
+    <set name="Preguntas" inverse="true" cascade="save-update">
+      <key column="idPublicacion"  not-null="true"/>
+      <one-to-many class="Preguntas" />
+    </set>
+    
+    <!--Datos correspondientes a la herencia del objeto Publicacion-->
+    <joined-subclass name="PublicacionSubasta" table="PublicacionSubasta" extends="Publicacion">
+      <key column="idPublicacion" />
+      
+      <property name="valorInicialVenta">
+        <column name="valorInicialVenta" sql-type="numeric" not-null="true" />
+      </property>
+      
+      <property name="valorActual">
+        <column name="valorActual" sql-type="numeric" not-null="false" />
+      </property>
+      
+    </joined-subclass>
+
+
+    <joined-subclass name="PublicacionNormal" table="PublicacionNormal" extends="Publicacion">
+      <key column="idPublicacion" />
+
+      <property name="precioPorUnidad">
+        <column name="precioPorUnidad" sql-type="numeric" not-null="true" />
+      </property>
+
+    </joined-subclass>
+
+    
+  </class>
+</hibernate-mapping>

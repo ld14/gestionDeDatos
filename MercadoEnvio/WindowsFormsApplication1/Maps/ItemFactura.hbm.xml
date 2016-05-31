@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ItemFactura" table="ItemFactura" lazy="true" >
+    <id name="idItemFactura" column="idItemaFactura">
+      <generator class="identity" />
+    </id>
+    
+    <property name="cantidad">
+      <column name="cantidad" sql-type="numeric" not-null="false" />
+    </property>
+    <property name="monto">
+      <column name="monto" sql-type="numeric" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

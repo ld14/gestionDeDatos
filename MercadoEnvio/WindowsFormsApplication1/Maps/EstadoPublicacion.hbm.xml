@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Estadopublicacion" table="EstadoPublicacion" lazy="true" >
+  
+    <id name="idEstadoPublicacion" column="idEstadoPublicacion">
+      <generator class="identity" />
+    </id>
+    
+    <property name="nombre">
+      <column name="nombre" sql-type="nvarchar" not-null="false" />
+    </property>
+    
+    <property name="nombreCorto">
+      <column name="nombreCorto" sql-type="nchar" not-null="false" />
+    </property>
+  
+  </class>
+</hibernate-mapping>

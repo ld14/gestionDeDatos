@@ -9,8 +9,23 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WindowsFormsApplication1</RootNamespace>
     <AssemblyName>WindowsFormsApplication1</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publicar\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,7 +47,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,14 +68,84 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABM Rol\Form1.cs" />
+    <Compile Include="ABM Rol\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Rubro\Form1.cs" />
+    <Compile Include="ABM Rubro\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Usuario\Form1.cs" />
+    <Compile Include="ABM Usuario\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Visibilidad\Form1.cs" />
+    <Compile Include="ABM Visibilidad\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calificar\Form1.cs" />
+    <Compile Include="Calificar\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComprarOfertar\Form1.cs" />
+    <Compile Include="ComprarOfertar\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Calificacion.cs" />
+    <Compile Include="Domain\Cliente.cs" />
+    <Compile Include="Domain\ComisionesParametrizables.cs" />
+    <Compile Include="Domain\CompraUsuario.cs" />
+    <Compile Include="Domain\Contact.cs" />
+    <Compile Include="Domain\DatosBasicos.cs" />
+    <Compile Include="Domain\Empresa.cs" />
+    <Compile Include="Domain\Estadopublicacion.cs" />
+    <Compile Include="Domain\Factura.cs" />
+    <Compile Include="Domain\Funciones.cs" />
+    <Compile Include="Domain\ItemFactura.cs" />
+    <Compile Include="Domain\Preguntas.cs" />
+    <Compile Include="Domain\Program.cs" />
+    <Compile Include="Domain\Publicacion.cs" />
+    <Compile Include="Domain\PublicacionNormal.cs" />
+    <Compile Include="Domain\PublicacionSubasta.cs" />
+    <Compile Include="Domain\Rol.cs" />
+    <Compile Include="Domain\Rubro.cs" />
+    <Compile Include="Domain\Usuario.cs" />
+    <Compile Include="Domain\Visibilidad.cs" />
+    <Compile Include="Domain\WorkflowEstados.cs" />
+    <Compile Include="Entity\DAO\DAOConexion.cs" />
+    <Compile Include="Entity\DAO\EmpresaDao.cs" />
+    <Compile Include="Entity\DAO\EmpresaDaoImpl.cs" />
+    <Compile Include="Entity\DAO\NHibernateManager.cs" />
+    <Compile Include="Entity\DAO\PublicacionSubastaDao.cs" />
+    <Compile Include="Entity\DAO\PublicacionSubastaDaoImpl.cs" />
+    <Compile Include="Entity\Utils\DateUtils.cs" />
+    <Compile Include="Facturas\Form1.cs" />
+    <Compile Include="Facturas\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Generar Publicación\Form1.cs" />
+    <Compile Include="Generar Publicación\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Historial Cliente\Form1.cs" />
+    <Compile Include="Historial Cliente\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listado Estadistico\Form1.cs" />
+    <Compile Include="Listado Estadistico\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -60,7 +154,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -72,7 +171,45 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Maps\Calificacion.hbm.xml" />
+    <Content Include="Maps\ComisionesParametrizables.hbm.xml" />
+    <Content Include="Maps\CompraUsuario.hbm.xml" />
+    <Content Include="Maps\Contact.hbm.xml" />
+    <Content Include="Maps\DatosBasicos.hbm.xml" />
+    <Content Include="Maps\EstadoPublicacion.hbm.xml" />
+    <Content Include="Maps\Factura.hbm.xml" />
+    <Content Include="Maps\Funciones.hbm.xml" />
+    <Content Include="Maps\ItemFactura.hbm.xml" />
+    <Content Include="Maps\Preguntas.hbm.xml" />
+    <Content Include="Maps\Publicacion.hbm.xml" />
+    <Content Include="Maps\Rol.hbm.xml" />
+    <Content Include="Maps\Rubro.hbm.xml" />
+    <Content Include="Maps\Usuario.hbm.xml" />
+    <Content Include="Maps\Visibilidad.hbm.xml" />
+    <Content Include="Maps\WorkflowEstados.hbm.xml" />
+    <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

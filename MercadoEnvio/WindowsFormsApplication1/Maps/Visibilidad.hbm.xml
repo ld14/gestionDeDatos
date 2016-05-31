@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Visibilidad" table="Visibilidad" lazy="true" >
+    
+    <id name="idVisibilidad" column="idVisibilidad">
+      <generator class="identity" />
+    </id>
+    
+    <property name="costo">
+      <column name="costo" sql-type="numeric" not-null="false" />
+    </property>
+    
+    <property name="nombreVisibilidad">
+      <column name="nombreVisibilidad" sql-type="nvarchar" not-null="false" />
+    </property>
+
+    <!--
+    <bag name="Publicacion">
+      <key column="idVisibilidad" />
+      <one-to-many class="Publicacion" />
+    </bag> -->
+    
+  </class>
+</hibernate-mapping>

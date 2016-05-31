@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="WorkflowEstados" table="WorkflowEstados" lazy="true" >
+    
+    <id name="idWorkflowEstados" column="idWorkflowEstados">
+      <generator class="identity" />
+    </id>
+
+    <many-to-one name="EstadoPublicacionInicial" column="idEstadoInicial"  cascade="all"/>
+    <many-to-one name="EstadoPublicacionFinal" column="idEstadoFinal"  cascade="all"/>
+    
+    <property name="activo">
+      <column name="activo" sql-type="bit" not-null="true" />
+    </property>
+  
+  </class>
+</hibernate-mapping>

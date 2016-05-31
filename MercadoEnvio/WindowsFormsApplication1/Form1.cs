@@ -1,20 +1,140 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NHibernate;
+using NHibernate.Cfg;
+using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Globalization;
+
 
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        private Configuration myConfiguration;
+        private ISessionFactory mySessionFactory;
+        private ISession mySession;
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+          /*
+           * try
+            {
+                myConfiguration = new Configuration();
+                myConfiguration.Configure();
+                mySessionFactory = myConfiguration.BuildSessionFactory();
+                mySession = mySessionFactory.OpenSession();
+            }
+            catch (Exception conect)            {
+                
+                throw;
+            }
+            */
+
+          PublicacionSubastaDaoImpl repositorio = new PublicacionSubastaDaoImpl();
+          PublicacionSubasta u = repositorio.GetByUsuario("Regi2222222222");
+          Console.Write("Usuario Nombre: "+u.Usuario.userName);
+          
+
+            /*  
+              // Add Record
+              using (mySession.BeginTransaction())
+              {
+
+                  string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
+                  DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
+                
+                  //Session["fechaSistema"] = fehaSistema;
+
+                  ComisionesParametrizables comisionesParametrizables = new ComisionesParametrizables { nombre = "luis", nombreCorto = "l" , porcentaje=20};
+
+                  //Usuario user = new Usuario();
+                  //user.setUsuario("juan", "1234");
+
+                  DatosBasicos dtBasicos = new DatosBasicos();
+                  dtBasicos.setDatosBasicos("pedro2@hotmail.com","A","B",1,2,"CCC","mata","cap");
+
+                  //  Cliente cliente = new Cliente("morrey", "123", 28801965, 1, "Pedro Angel 2", "Poi", DateTime.Now, dtBasicos);
+                 //   Empresa empresa = new Empresa("hrmindo", "bonanza", dtBasicos, "Tonton SRL", "20-10", DateTime.Now, "Pipo");
+
+                  //Rol rol = new Rol();
+                  //rol.nombre = "Vino";
+                  //rol.activo = true;
+
+                  //List <Funciones> lst = new List<Funciones>();
+                  //for (int i = 1; i <= 2; i++) 
+                  //    Funciones fuc = new Funciones();
+                  //    fuc.nombre = i.ToString();
+                  //    fuc.descripcion = i.ToString() + "descripcion";
+                  //    lst.Add(fuc);
+                  //}
+
+                  //rol.FuncionesLst = lst;
+                  Estadopublicacion estadoPublicacion = new Estadopublicacion();
+                  estadoPublicacion.nombre = "Public";
+                  estadoPublicacion.nombreCorto = "pub";
+
+                  Visibilidad visbilidad = new Visibilidad();
+                  visbilidad.nombreVisibilidad = "plata";
+                  visbilidad.costo = 20;
+
+                  Cliente cliente = new Cliente("Regi2222222222", "123", 28801965, 1, "Pedro Angel 2", "Poi", DateTime.Now, dtBasicos);
+                
+
+                  //Publicacion publicacion = new Publicacion();
+                  //publicacion.setPubicacion(estadoPublicacion, visbilidad, cliente, 12, "Soy un poducto", DateTime.Now, DateTime.Now, 12, true, true);
+
+                  //Publicacion nuevaPublicacion = new Publicacion();
+                  //nuevaPublicacion.setPublicacion(estadoPublicacion, visbilidad, cliente, 123, "Es lo que hay", DateTime.Now, DateTime.Now, 12, true, true);
+
+                  PublicacionSubasta nuevaSubasta = new PublicacionSubasta();
+                  nuevaSubasta.setPublicacionSubasta(estadoPublicacion, visbilidad, cliente, 123, "Es lo que hay", DateTime.Now, DateTime.Now, 12, true, true,15,20);
+
+                  HashSet<ItemFactura> lst = new HashSet<ItemFactura>();
+                  for (int i = 1; i <= 2; i++)
+                  {
+                      ItemFactura itmf = new ItemFactura();
+                      itmf.monto = 20 * i;
+                      itmf.cantidad = 2 * i;
+                      lst.Add(itmf);
+                  }
+
+                  Factura nuevaFactura = new Factura();
+                  nuevaFactura.setFacturaNueva(123, DateTime.Now, 22, "cash", nuevaSubasta, lst);
+
+
+				
+				
+
+                  try
+                  {
+                      mySession.Save(nuevaSubasta);
+                      mySession.Transaction.Commit();
+                  }
+                  catch (Exception es)
+                  {
+                    
+                      throw;
+                  }
+                
+            
+                
+              }*/
+
+            // List Contact
+
+            //using (mySession.BeginTransaction())
+            //{
+              //  ICriteria criteria = mySession.CreateCriteria<Contact>();
+               // IList<Contact> list = criteria.List<Contact>();
+
+//                mySession.Transaction.Commit();
+  //          }
+
         }
     }
 }

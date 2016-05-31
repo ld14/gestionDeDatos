@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Usuario" table="Usuario" lazy="true" >
+    <id name="idUsuario" column="idUsuario">
+      <generator class="identity" />
+    </id>
+    <property name="userName">
+      <column name="userName" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="password">
+      <column name="password" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="activoUsuario">
+      <column name="activoUsuario" sql-type="bit" not-null="true" />
+    </property>
+    <property name="intentosFallidos">
+      <column name="intentosFallidos" sql-type="numeric" not-null="true" />
+    </property>
+    <property name="publicacionGratis">
+      <column name="publicacionGratis" sql-type="bit" not-null="false" />
+    </property>
+    <property name="cantidadEstrellas">
+      <column name="cantidadEstrellas" sql-type="int" not-null="false" />
+    </property>
+    <property name="cantidadVentas">
+      <column name="cantidadVentas" sql-type="int" not-null="false" />
+    </property>
+
+    <many-to-one name="DatosBasicos" column="idDatosBasicos"  cascade="all"/>
+
+    
+    <set name="RolesLst" table="RolUsuario" lazy="true" outer-join="auto" cascade="all">
+      <key>
+        <column name="idUsuario" not-null="true"/>
+      </key>
+      <many-to-many class="Rol" where="activo = 1">
+        <column name="idRol" not-null="true"/>
+      </many-to-many>
+    </set>
+    
+    <!--Datos correspondientes a la herencia del objeto Cliente-->
+    <joined-subclass name="Cliente" table="Cliente" extends="Usuario">
+        <key column="idUsuario" />
+        <property name="dni">
+          <column name="dni" sql-type="numeric" not-null="true" />
+        </property>
+        <property name="tipoDocumento">
+          <column name="tipoDocumento" sql-type="int" not-null="true" />
+        </property>
+        <property name="nombre">
+          <column name="nombre" sql-type="nvarchar" not-null="false" />
+        </property>
+        <property name="apellido">
+          <column name="apellido" sql-type="nvarchar" not-null="false" />
+        </property>
+        <property name="fechaNacimiento">
+          <column name="fechaNacimiento" sql-type="date" not-null="false" />
+        </property>
+        <property name="perfilActivo">
+          <column name="perfilActivo" sql-type="bit" not-null="true" />
+        </property>
+        <property name="fechaCreacion">
+          <column name="fechaCreacion" sql-type="date" not-null="false" />
+        </property>
+        <property name="comprasEfectuadas">
+          <column name="comprasEfectuadas" sql-type="int" not-null="false" />
+        </property>
+        <property name="comprasCalificadas">
+          <column name="comprasCalificadas" sql-type="int" not-null="false" />
+        </property>
+    </joined-subclass>
+    
+    <joined-subclass name="Empresa" table="Empresa" extends="Usuario">
+        <key column="idUsuario" />
+        <property name="razonSocial">
+          <column name="razonSocial" sql-type="nvarchar" not-null="true" />
+        </property>
+        <property name="cuit">
+          <column name="cuit" sql-type="nvarchar" not-null="true" />
+        </property>
+        <property name="fechaCreacion">
+          <column name="fechaCreacion" sql-type="date" not-null="false" />
+        </property>
+        <property name="perfilActivo">
+          <column name="perfilActivo" sql-type="int" not-null="true" />
+        </property>
+        <property name="nombreContacto">
+          <column name="nombreContacto" sql-type="nvarchar" not-null="false" />
+        </property>
+    </joined-subclass>
+
+  </class>
+</hibernate-mapping>

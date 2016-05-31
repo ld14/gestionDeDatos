@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Calificacion" table="Calificacion" lazy="true" >
+    <id name="idCalificacion" column="idCalificacion">
+      <generator class="identity" />
+    </id>
+    
+    <property name="codigo">
+      <column name="codigo" sql-type="numeric" not-null="false" />
+    </property>
+    
+    <property name="cantEstrellas">
+      <column name="cantEstrellas" sql-type="numeric" not-null="false" />
+    </property>
+    
+    <property name="descripcion">
+      <column name="descripcion" sql-type="nvarchar" not-null="false" />
+    </property>
+
+  </class>
+</hibernate-mapping>

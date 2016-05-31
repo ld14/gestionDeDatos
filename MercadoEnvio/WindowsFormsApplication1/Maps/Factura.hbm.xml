@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Factura" table="Factura" lazy="true" >
+    <id name="idFactura" column="idFactura">
+      <generator class="identity" />
+    </id>
+
+    <many-to-one name="Publicacion" column="idPublicacion"  not-null="true" cascade="all"/>
+    
+    <property name="nroFactura">
+      <column name="nroFactura" sql-type="numeric" not-null="false" />
+    </property>
+    <property name="fecha">
+      <column name="fecha" sql-type="datetime" not-null="false" />
+    </property>
+    <property name="montoTotal">
+      <column name="montoTotal" sql-type="numeric" not-null="false" />
+    </property>
+    <property name="formaPagoDesc">
+      <column name="formaPagoDesc" sql-type="nvarchar" not-null="false" />
+    </property>
+    <!-- 
+    <bag name="CompraUsuario">
+      <key column="idFactura" />
+      <one-to-many class="CompraUsuario" />
+    </bag>
+    <bag name="ItemaFactura">
+      <key column="idFactura" />
+      <one-to-many class="ItemaFactura" />
+    </bag> -->
+
+
+      <set name="ItemFacturas" inverse="true" cascade="save-update">
+        <key column="idFactura"  not-null="true"/>
+        <one-to-many class="ItemFactura" />
+      </set>
+    
+  </class>
+</hibernate-mapping>
