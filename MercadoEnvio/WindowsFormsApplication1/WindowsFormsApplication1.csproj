@@ -119,6 +119,7 @@
     <Compile Include="Entity\DAO\NHibernateManager.cs" />
     <Compile Include="Entity\DAO\PublicacionSubastaDao.cs" />
     <Compile Include="Entity\DAO\PublicacionSubastaDaoImpl.cs" />
+    <Compile Include="Entity\DAO\UsuarioDao.cs" />
     <Compile Include="Entity\Utils\DateUtils.cs" />
     <Compile Include="Facturas\Form1.cs" />
     <Compile Include="Facturas\Form1.Designer.cs">

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WindowsFormsApplication1.Entity.DAO
+namespace WindowsFormsApplication1
 {
-    class EmpresaDao    {
+    interface EmpresaDao
+    {
         void Add(Empresa empresa);
         void Update(Empresa empresa);
         void Remove(Empresa empresa);
