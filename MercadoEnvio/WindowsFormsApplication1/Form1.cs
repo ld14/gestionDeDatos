@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
         {
             pageLogin nuevaPagina = new pageLogin();
             nuevaPagina.MdiParent = this;
-            
+            ///Hola
             nuevaPagina.Show();
 
 
