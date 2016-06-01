@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using WindowsFormsApplication1.Login_page;
 using WindowsFormsApplication1.ABM_Usuario;
+using WindowsFormsApplication1.ABM_Rol;
 
 
 
@@ -167,6 +168,13 @@ namespace WindowsFormsApplication1
             AltaUsuarioPage paginaAltaUsuario = new AltaUsuarioPage();
             paginaAltaUsuario.MdiParent = this;
             paginaAltaUsuario.Show();
+        }
+
+        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RolUsuarioPage rolUsuarioPage = new RolUsuarioPage();
+            rolUsuarioPage.MdiParent = this;
+            rolUsuarioPage.Show();
         }
     }
 }

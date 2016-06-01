@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABM Rol\RolUsuarioPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Rol\RolUsuarioPage.Designer.cs">
+      <DependentUpon>RolUsuarioPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM Rubro\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ABM Rol\RolUsuarioPage.resx">
+      <DependentUpon>RolUsuarioPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\AltaUsuarioPage.resx">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,9 +252,7 @@
     <EmbeddedResource Include="Maps\WorkflowEstados.hbm.xml" />
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ABM Rol\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
