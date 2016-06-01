@@ -4,23 +4,33 @@ using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Globalization;
+using WindowsFormsApplication1.Login_page;
+using WindowsFormsApplication1.ABM_Usuario;
+
 
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         private Configuration myConfiguration;
         private ISessionFactory mySessionFactory;
         private ISession mySession;
 
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            pageLogin nuevaPagina = new pageLogin();
+            nuevaPagina.MdiParent = this;
+            
+            nuevaPagina.Show();
+
+
+
             /*
              * try
               {
@@ -33,12 +43,12 @@ namespace WindowsFormsApplication1
                 
                   throw;
               }
-              */
+            
 
             PublicacionSubastaDaoImpl repositorio = new PublicacionSubastaDaoImpl();
             PublicacionSubasta u = repositorio.GetByUsuario("Regi2222222222");
             Console.Write("Usuario Nombre: " + u.Usuario.userName);
-
+              */
 
             /*  
               // Add Record
@@ -135,6 +145,28 @@ namespace WindowsFormsApplication1
             //                mySession.Transaction.Commit();
             //          }
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rectangleShape1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void altaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaUsuarioPage paginaAltaUsuario = new AltaUsuarioPage();
+            paginaAltaUsuario.MdiParent = this;
+            paginaAltaUsuario.Show();
         }
     }
 }

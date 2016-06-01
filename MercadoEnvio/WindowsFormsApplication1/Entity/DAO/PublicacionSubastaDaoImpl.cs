@@ -48,7 +48,7 @@ namespace WindowsFormsApplication1
 
                 ICriteria crit = manager.Session.CreateCriteria<PublicacionSubasta>();
                 crit.CreateAlias("Usuario", "usr");
-                crit.Add(Expression.Eq("usr.userName",usuario));
+                crit.Add(Expression.Eq("usr.userName",usuario));                
                 return crit.UniqueResult<PublicacionSubasta>();
 
         }

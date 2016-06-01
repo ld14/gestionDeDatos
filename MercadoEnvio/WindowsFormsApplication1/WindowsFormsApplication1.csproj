@@ -51,6 +51,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
@@ -68,23 +70,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABM Rol\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM Rol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="ABM Rubro\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ABM Rubro\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Usuario\Form1.cs">
+    <Compile Include="ABM Usuario\AltaUsuarioPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Usuario\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ABM Usuario\AltaUsuarioPage.Designer.cs">
+      <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM Visibilidad\Form1.cs">
       <SubType>Form</SubType>
@@ -103,6 +99,12 @@
     </Compile>
     <Compile Include="ComprarOfertar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login_page\pageLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login_page\pageLogin.Designer.cs">
+      <DependentUpon>pageLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Domain\Calificacion.cs" />
     <Compile Include="Domain\Cliente.cs" />
@@ -164,6 +166,15 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ABM Usuario\AltaUsuarioPage.resx">
+      <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login_page\pageLogin.resx">
+      <DependentUpon>pageLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.es-AR.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +242,9 @@
     <EmbeddedResource Include="Maps\Visibilidad.hbm.xml" />
     <EmbeddedResource Include="Maps\WorkflowEstados.hbm.xml" />
     <Content Include="Schema\Contact.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ABM Rol\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1.ABM_Usuario
+namespace WindowsFormsApplication1.Login_page
 {
-    public partial class Form1 : Form
+    public partial class pageLogin : Form
     {
-        public Form1()
+        public pageLogin()
         {
             InitializeComponent();
+        }
+
+        private void pageLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
