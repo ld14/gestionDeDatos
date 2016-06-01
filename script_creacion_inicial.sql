@@ -671,5 +671,19 @@ where Publicacion_Tipo like 'S%' and Oferta_Fecha is not null
 group by B.idPublicacion, C.idUsuario, A.Oferta_Monto, A.Oferta_Fecha, A.Publicacion_Precio, D.valorActual
 order by B.idPublicacion asc, A.Oferta_Monto asc
 
+insert into LOPEZ_Y_CIA.Factura(idPublicacion, nroFactura, fecha, montoTotal, formaPagoDesc)
+select B.idPublicacion, A.Factura_Nro, A.Factura_Fecha, A.Factura_Total, A.Forma_Pago_Desc
+from gd_esquema.Maestra as A
+inner join LOPEZ_Y_CIA.Publicacion as B on A.Publicacion_Cod = B.codigoPublicacion
+where A.Factura_Nro is not null
+group by B.idPublicacion, A.Factura_Nro, A.Factura_Fecha, A.Factura_Total, A.Forma_Pago_Desc
+order by 2
+
+insert into LOPEZ_Y_CIA.ItemFactura(idFactura, cantidad, monto)
+select B.idFactura, A.Item_Factura_Cantidad, A.Item_Factura_Monto
+from gd_esquema.Maestra as A
+inner join LOPEZ_Y_CIA.Factura as B on A.Factura_Nro = B.nroFactura
+order by 1
+
 GO
 /** FIN DEL SCRIPT **/
