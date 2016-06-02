@@ -121,6 +121,12 @@
     <value>18, 11</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="altaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="altaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
   <data name="usuarioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
   </data>
@@ -138,6 +144,18 @@
   </data>
   <data name="rolToolStripMenuItem.Text" xml:space="preserve">
     <value>Rol</value>
+  </data>
+  <data name="nuevoToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="nuevoToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="rubroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="rubroToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rubro</value>
   </data>
   <data name="aBMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 20</value>
@@ -169,12 +187,6 @@
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="altaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="altaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Alta</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3603,6 +3615,18 @@
     <value>nuevoToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;nuevoToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rubroToolStripMenuItem.Name" xml:space="preserve">
+    <value>rubroToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;rubroToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nuevoToolStripMenuItem1.Name" xml:space="preserve">
+    <value>nuevoToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;nuevoToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

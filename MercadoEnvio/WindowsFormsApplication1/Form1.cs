@@ -7,6 +7,7 @@ using System.Globalization;
 using WindowsFormsApplication1.Login_page;
 using WindowsFormsApplication1.ABM_Usuario;
 using WindowsFormsApplication1.ABM_Rol;
+using WindowsFormsApplication1.ABM_Rubro;
 
 
 
@@ -175,6 +176,13 @@ namespace WindowsFormsApplication1
             RolUsuarioPage rolUsuarioPage = new RolUsuarioPage();
             rolUsuarioPage.MdiParent = this;
             rolUsuarioPage.Show();
+        }
+
+        private void nuevoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RubroPage rubroPage = new RubroPage();
+            rubroPage.MdiParent = this;
+            rubroPage.Show();
         }
     }
 }
