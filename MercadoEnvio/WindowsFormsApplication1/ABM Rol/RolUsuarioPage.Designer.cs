@@ -30,17 +30,17 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.FuncionalidadesChkLst = new System.Windows.Forms.CheckedListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.RolActivoChk = new System.Windows.Forms.CheckBox();
             this.RolNombreTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.RolActivoChk = new System.Windows.Forms.CheckBox();
-            this.FuncionalidadesChkLst = new System.Windows.Forms.CheckedListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -64,15 +64,27 @@
             this.groupBox1.Text = "Rol";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // groupBox2
+            // groupBox4
             // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 524);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(984, 94);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Opciones";
+            this.groupBox4.Controls.Add(this.FuncionalidadesChkLst);
+            this.groupBox4.Location = new System.Drawing.Point(397, 21);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(579, 453);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Funcionalidades";
+            // 
+            // FuncionalidadesChkLst
+            // 
+            this.FuncionalidadesChkLst.FormattingEnabled = true;
+            this.FuncionalidadesChkLst.Items.AddRange(new object[] {
+            "Prueba 1",
+            "Prueba 2"});
+            this.FuncionalidadesChkLst.Location = new System.Drawing.Point(13, 21);
+            this.FuncionalidadesChkLst.Name = "FuncionalidadesChkLst";
+            this.FuncionalidadesChkLst.Size = new System.Drawing.Size(560, 424);
+            this.FuncionalidadesChkLst.TabIndex = 0;
+            this.FuncionalidadesChkLst.SelectedIndexChanged += new System.EventHandler(this.FuncionalidadesChkLst_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -86,15 +98,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Rol";
             // 
-            // groupBox4
+            // RolActivoChk
             // 
-            this.groupBox4.Controls.Add(this.FuncionalidadesChkLst);
-            this.groupBox4.Location = new System.Drawing.Point(397, 21);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(579, 453);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Funcionalidades";
+            this.RolActivoChk.AutoSize = true;
+            this.RolActivoChk.Location = new System.Drawing.Point(268, 45);
+            this.RolActivoChk.Name = "RolActivoChk";
+            this.RolActivoChk.Size = new System.Drawing.Size(56, 17);
+            this.RolActivoChk.TabIndex = 6;
+            this.RolActivoChk.Text = "Activo";
+            this.RolActivoChk.UseVisualStyleBackColor = true;
             // 
             // RolNombreTxt
             // 
@@ -112,37 +124,26 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Nombre";
             // 
-            // RolActivoChk
+            // groupBox2
             // 
-            this.RolActivoChk.AutoSize = true;
-            this.RolActivoChk.Location = new System.Drawing.Point(268, 45);
-            this.RolActivoChk.Name = "RolActivoChk";
-            this.RolActivoChk.Size = new System.Drawing.Size(56, 17);
-            this.RolActivoChk.TabIndex = 6;
-            this.RolActivoChk.Text = "Activo";
-            this.RolActivoChk.UseVisualStyleBackColor = true;
-            // 
-            // FuncionalidadesChkLst
-            // 
-            this.FuncionalidadesChkLst.FormattingEnabled = true;
-            this.FuncionalidadesChkLst.Items.AddRange(new object[] {
-            "Prueba 1",
-            "Prueba 2"});
-            this.FuncionalidadesChkLst.Location = new System.Drawing.Point(13, 21);
-            this.FuncionalidadesChkLst.Name = "FuncionalidadesChkLst";
-            this.FuncionalidadesChkLst.Size = new System.Drawing.Size(560, 424);
-            this.FuncionalidadesChkLst.TabIndex = 0;
-            this.FuncionalidadesChkLst.SelectedIndexChanged += new System.EventHandler(this.FuncionalidadesChkLst_SelectedIndexChanged);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Location = new System.Drawing.Point(12, 524);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(984, 94);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Opciones";
             // 
             // RolUsuarioPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1020, 630);
+            this.ClientSize = new System.Drawing.Size(1020, 660);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -150,11 +151,12 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "RolUsuarioPage";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
