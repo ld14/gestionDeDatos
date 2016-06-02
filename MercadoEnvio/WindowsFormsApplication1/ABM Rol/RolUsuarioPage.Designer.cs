@@ -150,7 +150,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "RolUsuarioPage";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
