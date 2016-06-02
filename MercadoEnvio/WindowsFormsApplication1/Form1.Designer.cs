@@ -39,13 +39,17 @@
             this.nuevoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.visibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarPublicacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aBMToolStripMenuItem});
+            this.aBMToolStripMenuItem,
+            this.generarPublicacionToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
@@ -112,6 +116,25 @@
             resources.ApplyResources(this.nuevaToolStripMenuItem, "nuevaToolStripMenuItem");
             this.nuevaToolStripMenuItem.Click += new System.EventHandler(this.nuevaToolStripMenuItem_Click);
             // 
+            // generarPublicacionToolStripMenuItem
+            // 
+            this.generarPublicacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevaToolStripMenuItem1,
+            this.modificacionToolStripMenuItem});
+            this.generarPublicacionToolStripMenuItem.Name = "generarPublicacionToolStripMenuItem";
+            resources.ApplyResources(this.generarPublicacionToolStripMenuItem, "generarPublicacionToolStripMenuItem");
+            // 
+            // nuevaToolStripMenuItem1
+            // 
+            this.nuevaToolStripMenuItem1.Name = "nuevaToolStripMenuItem1";
+            resources.ApplyResources(this.nuevaToolStripMenuItem1, "nuevaToolStripMenuItem1");
+            this.nuevaToolStripMenuItem1.Click += new System.EventHandler(this.nuevaToolStripMenuItem1_Click);
+            // 
+            // modificacionToolStripMenuItem
+            // 
+            this.modificacionToolStripMenuItem.Name = "modificacionToolStripMenuItem";
+            resources.ApplyResources(this.modificacionToolStripMenuItem, "modificacionToolStripMenuItem");
+            // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
@@ -141,6 +164,9 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem visibToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generarPublicacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem;
 
 
     }

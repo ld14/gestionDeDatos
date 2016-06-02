@@ -9,6 +9,7 @@ using WindowsFormsApplication1.ABM_Usuario;
 using WindowsFormsApplication1.ABM_Rol;
 using WindowsFormsApplication1.ABM_Rubro;
 using WindowsFormsApplication1.ABM_Visibilidad;
+using WindowsFormsApplication1.Generar_Publicación;
 
 
 
@@ -196,6 +197,13 @@ namespace WindowsFormsApplication1
             VisibilidadPage visibilidadPage = new VisibilidadPage();
             visibilidadPage.MdiParent = this;
             visibilidadPage.Show();
+        }
+
+        private void nuevaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            GenerarPublicacionPage generarPublicacionPage = new GenerarPublicacionPage();
+            generarPublicacionPage.MdiParent = this;
+            generarPublicacionPage.Show();
         }
     }
 }

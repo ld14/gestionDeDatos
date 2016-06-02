@@ -174,7 +174,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(352, 174);
+            this.checkBox3.Location = new System.Drawing.Point(325, 172);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(74, 17);
             this.checkBox3.TabIndex = 16;
@@ -184,7 +184,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(241, 176);
+            this.checkBox4.Location = new System.Drawing.Point(214, 176);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(56, 17);
             this.checkBox4.TabIndex = 15;
@@ -195,7 +195,7 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(75, 171);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(157, 20);
+            this.textBox5.Size = new System.Drawing.Size(114, 20);
             this.textBox5.TabIndex = 14;
             // 
             // label10
@@ -252,7 +252,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(75, 205);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(157, 20);
+            this.textBox1.Size = new System.Drawing.Size(114, 20);
             this.textBox1.TabIndex = 27;
             // 
             // label2
@@ -266,15 +266,15 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(352, 205);
+            this.textBox3.Location = new System.Drawing.Point(325, 205);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(128, 20);
+            this.textBox3.Size = new System.Drawing.Size(155, 20);
             this.textBox3.TabIndex = 31;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(238, 208);
+            this.label5.Location = new System.Drawing.Point(211, 208);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 13);
             this.label5.TabIndex = 30;
@@ -368,7 +368,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 622);
+            this.ClientSize = new System.Drawing.Size(1020, 660);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -379,6 +379,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "GenerarPublicacionPage";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
