@@ -8,6 +8,7 @@ using WindowsFormsApplication1.Login_page;
 using WindowsFormsApplication1.ABM_Usuario;
 using WindowsFormsApplication1.ABM_Rol;
 using WindowsFormsApplication1.ABM_Rubro;
+using WindowsFormsApplication1.ABM_Visibilidad;
 
 
 
@@ -183,6 +184,18 @@ namespace WindowsFormsApplication1
             RubroPage rubroPage = new RubroPage();
             rubroPage.MdiParent = this;
             rubroPage.Show();
+        }
+
+        private void visibToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nuevaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VisibilidadPage visibilidadPage = new VisibilidadPage();
+            visibilidadPage.MdiParent = this;
+            visibilidadPage.Show();
         }
     }
 }

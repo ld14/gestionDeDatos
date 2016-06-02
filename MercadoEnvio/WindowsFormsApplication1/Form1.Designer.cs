@@ -37,6 +37,8 @@
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rubroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.visibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +54,8 @@
             this.aBMToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuarioToolStripMenuItem,
             this.rolToolStripMenuItem,
-            this.rubroToolStripMenuItem});
+            this.rubroToolStripMenuItem,
+            this.visibToolStripMenuItem});
             this.aBMToolStripMenuItem.Name = "aBMToolStripMenuItem";
             resources.ApplyResources(this.aBMToolStripMenuItem, "aBMToolStripMenuItem");
             // 
@@ -95,6 +98,20 @@
             resources.ApplyResources(this.nuevoToolStripMenuItem1, "nuevoToolStripMenuItem1");
             this.nuevoToolStripMenuItem1.Click += new System.EventHandler(this.nuevoToolStripMenuItem1_Click);
             // 
+            // visibToolStripMenuItem
+            // 
+            this.visibToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevaToolStripMenuItem});
+            this.visibToolStripMenuItem.Name = "visibToolStripMenuItem";
+            resources.ApplyResources(this.visibToolStripMenuItem, "visibToolStripMenuItem");
+            this.visibToolStripMenuItem.Click += new System.EventHandler(this.visibToolStripMenuItem_Click);
+            // 
+            // nuevaToolStripMenuItem
+            // 
+            this.nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
+            resources.ApplyResources(this.nuevaToolStripMenuItem, "nuevaToolStripMenuItem");
+            this.nuevaToolStripMenuItem.Click += new System.EventHandler(this.nuevaToolStripMenuItem_Click);
+            // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
@@ -122,6 +139,8 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rubroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem visibToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem;
 
 
     }

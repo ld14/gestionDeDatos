@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApplication1.ABM_Visibilidad
+﻿namespace WindowsFormsApplication1.Generar_Publicación
 {
-    partial class Form1
+    partial class Generar_Publicacion
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Generar_Publicacion
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1004, 622);
+            this.ControlBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Generar_Publicacion";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "Generar_Publicacion";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
     }
 }

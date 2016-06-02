@@ -88,11 +88,11 @@
     <Compile Include="ABM Usuario\AltaUsuarioPage.Designer.cs">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Visibilidad\Form1.cs">
+    <Compile Include="ABM Visibilidad\VisibilidadPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Visibilidad\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ABM Visibilidad\VisibilidadPage.Designer.cs">
+      <DependentUpon>VisibilidadPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Calificar\Form1.cs">
       <SubType>Form</SubType>
@@ -105,6 +105,18 @@
     </Compile>
     <Compile Include="ComprarOfertar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Publicación\GenerarPublicacionPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicación\GenerarPublicacionPage.Designer.cs">
+      <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Publicación\Generar_Publicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicación\Generar_Publicacion.Designer.cs">
+      <DependentUpon>Generar_Publicacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Login_page\pageLogin.cs">
       <SubType>Form</SubType>
@@ -153,12 +165,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Publicación\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Generar Publicación\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Historial Cliente\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\AltaUsuarioPage.resx">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Visibilidad\VisibilidadPage.resx">
+      <DependentUpon>VisibilidadPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicación\GenerarPublicacionPage.resx">
+      <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicación\Generar_Publicacion.resx">
+      <DependentUpon>Generar_Publicacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login_page\pageLogin.resx">
       <DependentUpon>pageLogin.cs</DependentUpon>

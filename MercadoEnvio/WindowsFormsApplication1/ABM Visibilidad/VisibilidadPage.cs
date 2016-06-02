@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1.Generar_Publicación
+namespace WindowsFormsApplication1.ABM_Visibilidad
 {
-    public partial class Form1 : Form
+    public partial class VisibilidadPage : Form
     {
-        public Form1()
+        public VisibilidadPage()
         {
             InitializeComponent();
         }
