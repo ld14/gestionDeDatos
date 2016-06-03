@@ -106,6 +106,12 @@
     <Compile Include="ComprarOfertar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\DAO\VisibilidadDaoImpl.cs" />
+    <Compile Include="Entity\DAO\VisibilidadDao.cs" />
+    <Compile Include="Entity\DAO\RolDaoImpl.cs" />
+    <Compile Include="Entity\DAO\EstadoPublicacionDaoImpl.cs" />
+    <Compile Include="Entity\DAO\EstadoPublicacionDao.cs" />
+    <Compile Include="Entity\DAO\RolDao.cs" />
     <Compile Include="Generar Publicación\GenerarPublicacionPage.cs">
       <SubType>Form</SubType>
     </Compile>

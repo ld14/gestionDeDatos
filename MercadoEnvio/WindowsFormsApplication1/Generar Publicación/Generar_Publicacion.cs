@@ -15,5 +15,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
         {
             InitializeComponent();
         }
+
+        private void Generar_Publicacion_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

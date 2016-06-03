@@ -44,6 +44,7 @@
             this.ShowInTaskbar = false;
             this.Text = "Generar_Publicacion";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Generar_Publicacion_Load);
             this.ResumeLayout(false);
 
         }
