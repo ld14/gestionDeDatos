@@ -31,7 +31,7 @@ ComisionesParametrizables:
  - No entiendo
 
 WorkflowEstados:
- - No entiendo como se implementa
+ - Definir todos los posibles cambios de estados
 
 
   
