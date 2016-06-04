@@ -5,10 +5,12 @@ using System.Text;
 
 namespace WindowsFormsApplication1.Entity.DAO
 {
-    interface UsuarioDao
-    {
-        void Add(PublicacionSubasta publicacionSubasta);
-        void Update(PublicacionSubasta publicacionSubasta);
-        void Remove(PublicacionSubasta publicacionSubasta);
+    interface UsuarioDao    {
+        void Add(Usuario usuario);
+        void Update(Usuario usuario);
+        void Remove(Usuario usuario);
+        Usuario GetUsuarioById(int id);
     }
 }
+
+

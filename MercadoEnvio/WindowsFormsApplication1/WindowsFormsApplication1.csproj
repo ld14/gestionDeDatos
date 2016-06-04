@@ -106,6 +106,12 @@
     <Compile Include="ComprarOfertar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\DAO\RubroDaoImpl.cs" />
+    <Compile Include="Entity\DAO\RubroDao.cs" />
+    <Compile Include="Entity\DAO\UsuarioDao.cs" />
+    <Compile Include="Entity\DAO\UsuarioDaoImpl.cs" />
+    <Compile Include="Entity\DAO\WorkflowEstadosDaoImpl.cs" />
+    <Compile Include="Entity\DAO\WorkflowEstadosDao.cs" />
     <Compile Include="Entity\DAO\VisibilidadDaoImpl.cs" />
     <Compile Include="Entity\DAO\VisibilidadDao.cs" />
     <Compile Include="Entity\DAO\RolDaoImpl.cs" />
@@ -118,11 +124,11 @@
     <Compile Include="Generar Publicación\GenerarPublicacionPage.Designer.cs">
       <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Publicación\Generar_Publicacion.cs">
+    <Compile Include="Generar Publicación\ModificarPublicacionPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Generar Publicación\Generar_Publicacion.Designer.cs">
-      <DependentUpon>Generar_Publicacion.cs</DependentUpon>
+    <Compile Include="Generar Publicación\ModificarPublicacionPage.Designer.cs">
+      <DependentUpon>ModificarPublicacionPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Login_page\pageLogin.cs">
       <SubType>Form</SubType>
@@ -157,7 +163,6 @@
     <Compile Include="Entity\DAO\NHibernateManager.cs" />
     <Compile Include="Entity\DAO\PublicacionSubastaDao.cs" />
     <Compile Include="Entity\DAO\PublicacionSubastaDaoImpl.cs" />
-    <Compile Include="Entity\DAO\UsuarioDao.cs" />
     <Compile Include="Entity\Utils\DateUtils.cs" />
     <Compile Include="Facturas\Form1.cs">
       <SubType>Form</SubType>
@@ -199,8 +204,8 @@
     <EmbeddedResource Include="Generar Publicación\GenerarPublicacionPage.resx">
       <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generar Publicación\Generar_Publicacion.resx">
-      <DependentUpon>Generar_Publicacion.cs</DependentUpon>
+    <EmbeddedResource Include="Generar Publicación\ModificarPublicacionPage.resx">
+      <DependentUpon>ModificarPublicacionPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login_page\pageLogin.resx">
       <DependentUpon>pageLogin.cs</DependentUpon>

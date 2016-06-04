@@ -128,7 +128,7 @@
     <value>Nuevo</value>
   </data>
   <data name="usuarioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="usuarioToolStripMenuItem.Text" xml:space="preserve">
     <value>Usuario</value>
@@ -140,7 +140,7 @@
     <value>Nuevo</value>
   </data>
   <data name="rolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="rolToolStripMenuItem.Text" xml:space="preserve">
     <value>Rol</value>
@@ -152,7 +152,7 @@
     <value>Nuevo</value>
   </data>
   <data name="rubroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="rubroToolStripMenuItem.Text" xml:space="preserve">
     <value>Rubro</value>
@@ -164,7 +164,7 @@
     <value>Nueva</value>
   </data>
   <data name="visibToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="visibToolStripMenuItem.Text" xml:space="preserve">
     <value>Visibilidad</value>

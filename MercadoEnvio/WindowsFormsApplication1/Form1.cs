@@ -28,6 +28,24 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Estadopublicacion estadoPublicacion = new Estadopublicacion();
+            estadoPublicacion.nombre = "Public";
+            estadoPublicacion.nombreCorto = "pub";
+
+            Visibilidad visbilidad = new Visibilidad();
+            visbilidad.nombreVisibilidad = "plata";
+            visbilidad.costo = 20;
+
+            DatosBasicos dtBasicos = new DatosBasicos();
+            dtBasicos.setDatosBasicos("queSeYo@hotmail.com", "A", 1, 1, "2", "152", "mata", "cap");
+
+            Cliente cliente = new Cliente("SonUser", "1123", 201965, 1, "Pedro Angel 22", "Poi2", DateTime.Now, dtBasicos);
+            PublicacionSubasta nuevaSubasta = new PublicacionSubasta();
+            nuevaSubasta.setPublicacionSubasta(estadoPublicacion, visbilidad, cliente, 123, "Es lo que hay", DateTime.Now, DateTime.Now, 12, true, true, 15, 20);
+
+            PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+            publicacionSubastaDaoImpl.Add(nuevaSubasta);
+
             pageLogin nuevaPagina = new pageLogin();
             nuevaPagina.MdiParent = this;
             ///Hola...2222
@@ -202,8 +220,16 @@ namespace WindowsFormsApplication1
         private void nuevaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             GenerarPublicacionPage generarPublicacionPage = new GenerarPublicacionPage();
+            generarPublicacionPage.Text = "init";
             generarPublicacionPage.MdiParent = this;
             generarPublicacionPage.Show();
+        }
+
+        private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarPublicacionPage modificarPublicacionPage = new ModificarPublicacionPage();
+            modificarPublicacionPage.MdiParent = this;
+            modificarPublicacionPage.Show();
         }
     }
 }

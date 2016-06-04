@@ -134,6 +134,7 @@
             // 
             this.modificacionToolStripMenuItem.Name = "modificacionToolStripMenuItem";
             resources.ApplyResources(this.modificacionToolStripMenuItem, "modificacionToolStripMenuItem");
+            this.modificacionToolStripMenuItem.Click += new System.EventHandler(this.modificacionToolStripMenuItem_Click);
             // 
             // Login
             // 

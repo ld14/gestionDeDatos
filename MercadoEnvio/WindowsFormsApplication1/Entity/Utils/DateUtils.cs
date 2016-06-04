@@ -11,9 +11,10 @@ namespace WindowsFormsApplication1
         private static IFormatProvider Culture = new System.Globalization.CultureInfo("es-AR", true);
 
         public static  DateTime convertirStringEnFecha(String fecha)  {
-            Convert.ToDateTime(fecha);
             DateTime fehaSistema = DateTime.ParseExact(fecha, "dd/MM/yyyy", Culture);
             return fehaSistema;
         }
+
+        
     }
 }

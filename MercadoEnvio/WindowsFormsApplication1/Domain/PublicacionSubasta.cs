@@ -27,6 +27,9 @@ namespace WindowsFormsApplication1 {
             this.preguntasSN = preguntasSN;
             this.envioSN = envioSN;
 
+            this.valorInicialVenta = valorInicialVenta;
+            this.valorActual = valorActual;
+
         }
 
     }

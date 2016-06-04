@@ -15,5 +15,10 @@ namespace WindowsFormsApplication1.ABM_Rubro
         {
             InitializeComponent();
         }
+
+        private void RubroPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
