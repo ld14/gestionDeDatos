@@ -31,11 +31,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.DescripcionTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NombreCortoTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.RolNombreTxt = new System.Windows.Forms.TextBox();
+            this.CodigoTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -51,6 +51,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Grabar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -64,11 +65,11 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.DescripcionTxt);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.NombreCortoTxt);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.RolNombreTxt);
+            this.groupBox3.Controls.Add(this.CodigoTxt);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(9, 21);
             this.groupBox3.Name = "groupBox3";
@@ -77,14 +78,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Nuevo Rubo";
             // 
-            // textBox2
+            // DescripcionTxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(199, 206);
-            this.textBox2.MaxLength = 255;
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(512, 73);
-            this.textBox2.TabIndex = 9;
+            this.DescripcionTxt.Location = new System.Drawing.Point(199, 206);
+            this.DescripcionTxt.MaxLength = 255;
+            this.DescripcionTxt.Multiline = true;
+            this.DescripcionTxt.Name = "DescripcionTxt";
+            this.DescripcionTxt.Size = new System.Drawing.Size(512, 73);
+            this.DescripcionTxt.TabIndex = 9;
             // 
             // label3
             // 
@@ -95,13 +96,13 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Descripcion";
             // 
-            // textBox1
+            // NombreCortoTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(538, 139);
-            this.textBox1.MaxLength = 8;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 20);
-            this.textBox1.TabIndex = 7;
+            this.NombreCortoTxt.Location = new System.Drawing.Point(538, 139);
+            this.NombreCortoTxt.MaxLength = 8;
+            this.NombreCortoTxt.Name = "NombreCortoTxt";
+            this.NombreCortoTxt.Size = new System.Drawing.Size(173, 20);
+            this.NombreCortoTxt.TabIndex = 7;
             // 
             // label2
             // 
@@ -112,13 +113,13 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Nombre Corto";
             // 
-            // RolNombreTxt
+            // CodigoTxt
             // 
-            this.RolNombreTxt.Location = new System.Drawing.Point(254, 136);
-            this.RolNombreTxt.MaxLength = 5;
-            this.RolNombreTxt.Name = "RolNombreTxt";
-            this.RolNombreTxt.Size = new System.Drawing.Size(173, 20);
-            this.RolNombreTxt.TabIndex = 5;
+            this.CodigoTxt.Location = new System.Drawing.Point(254, 136);
+            this.CodigoTxt.MaxLength = 5;
+            this.CodigoTxt.Name = "CodigoTxt";
+            this.CodigoTxt.Size = new System.Drawing.Size(173, 20);
+            this.CodigoTxt.TabIndex = 5;
             // 
             // label1
             // 
@@ -170,11 +171,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox DescripcionTxt;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox NombreCortoTxt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox RolNombreTxt;
+        private System.Windows.Forms.TextBox CodigoTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
     }

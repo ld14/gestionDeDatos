@@ -106,6 +106,8 @@
     <Compile Include="ComprarOfertar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\DAO\ClienteDao.cs" />
+    <Compile Include="Entity\DAO\ClienteDaoImpl.cs" />
     <Compile Include="Entity\DAO\RubroDaoImpl.cs" />
     <Compile Include="Entity\DAO\RubroDao.cs" />
     <Compile Include="Entity\DAO\UsuarioDao.cs" />
@@ -276,7 +278,9 @@
     <EmbeddedResource Include="Maps\Publicacion.hbm.xml" />
     <EmbeddedResource Include="Maps\Rol.hbm.xml" />
     <EmbeddedResource Include="Maps\Rubro.hbm.xml" />
-    <EmbeddedResource Include="Maps\Usuario.hbm.xml" />
+    <EmbeddedResource Include="Maps\Usuario.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Maps\Visibilidad.hbm.xml" />
     <EmbeddedResource Include="Maps\WorkflowEstados.hbm.xml" />
     <Content Include="Schema\Contact.sql" />

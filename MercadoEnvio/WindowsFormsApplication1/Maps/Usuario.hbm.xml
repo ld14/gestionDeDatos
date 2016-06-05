@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="Usuario" table="Usuario" lazy="true" >
+  <class name="Usuario" table="Usuario" >
     <id name="idUsuario" column="idUsuario">
       <generator class="identity" />
     </id>

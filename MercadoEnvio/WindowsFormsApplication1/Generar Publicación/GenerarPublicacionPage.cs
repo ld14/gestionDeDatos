@@ -27,30 +27,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
         private void button1_Click(object sender, EventArgs e)
         {
 
-        //            public virtual int idPublicacion { get; set; }
-        //public virtual Estadopublicacion EstadoPublicacion { get; set; }
-        //public virtual Visibilidad Visibilidad { get; set; }
-        //private ICollection<Rubro> rubroLst;
-        //public virtual Usuario Usuario { get; set; }
-        //public virtual double? codigoPublicacion { get; set; }
-        //public virtual string descripcion { get; set; }
-        //public virtual DateTime? fechaCreacion { get; set; }
-        //public virtual DateTime? fechaVencimiento { get; set; }
-        //public virtual double? stock { get; set; }
-        //public virtual bool? preguntasSN { get; set; }
-        //public virtual bool? envioSN { get; set; }
-        //public virtual ISet<Preguntas> Preguntas { get; set; }
-            //DescripcionPublicacionTxt
-            //StockTxt
-            //EnvioCheckBox
-            //PreguntasCheckBox
-            //PrecioTx
-            //FechaIncioDateTime
-            //FechaVencimientoDateTime  
-            //EstadoComboBox
-            //RubroComboBox
-            //visibilidadComboBox
-
             String descripcion = DescripcionPublicacionTxt.Text;
             Double stock = Convert.ToDouble(StockTxt.Text);
             bool envioSN = EnvioCheckBox.Checked;
@@ -71,12 +47,15 @@ namespace WindowsFormsApplication1.Generar_Publicación
             double codigoPublicacion = 1111;
 
             //Esto hay que cambiarlo por el usuario logueado
-            UsuarioDaoImpl usrImpl = new UsuarioDaoImpl();
-            Usuario usr = usrImpl.GetUsuarioById(1);
+            ClienteDaoImpl usrImpl = new ClienteDaoImpl();
+            Cliente usr = usrImpl.GetUsuarioById(1);
 
 
 
-            Estadopublicacion selectedEstado = EstadoComboBox.SelectedItem as Estadopublicacion;
+            Estadopublicacion selectedEstadoBox = EstadoComboBox.SelectedItem as Estadopublicacion;
+            EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(selectedEstadoBox.idEstadoPublicacion);
+
             Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
             Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
 
@@ -87,17 +66,26 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 nuevaPublicacion.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
                                                        codigoPublicacion, descripcion, fechaIncioDateTime, 
                                                        fechaVencimientoDateTime,stock,preguntasSN,envioSN,precio,valorActual);
-                
-                
-                DatosBasicos dtBasicos = new DatosBasicos();
-                dtBasicos.setDatosBasicos("soyYO@hotmail.com", "A", 1, 1, "2", "152", "mata", "cap");
 
-                Cliente cliente = new Cliente("JuanMoreira", "12323", 18801865, 1, "1Pedro Ange222l 2", "Poi", DateTime.Now, dtBasicos);
+                Estadopublicacion estadoPublicacion = new Estadopublicacion();
+                estadoPublicacion.nombre = "Public";
+                estadoPublicacion.nombreCorto = "pub";
+
+                Visibilidad c = new Visibilidad();
+                c.nombreVisibilidad = "plata";
+                c.costo = 20;
+
+                DatosBasicos dtBasicos = new DatosBasicos();
+                dtBasicos.setDatosBasicos("so112211yM1222aYO4@hotmail.com", "2A1221", 1, 1, "2", "152", "mata", "cap");
+
+                Cliente cliente = new Cliente("JuanMor21121e11222112ira4", "1221213111411122323", 41112222111865, 1, "1Pedro Ange222l 2", "Poi", DateTime.Now, dtBasicos);
                 PublicacionSubasta nuevaSubasta = new PublicacionSubasta();
-                nuevaSubasta.setPublicacionSubasta(selectedEstado, selectedVisibilidad, cliente, 123, "Es lo que hay", DateTime.Now, DateTime.Now, 12, true, true, 15, 20);
+                nuevaSubasta.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr, codigoPublicacion, descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, valorActual);
 
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
-                publicacionSubastaDaoImpl.Add(nuevaSubasta);
+                publicacionSubastaDaoImpl.Update(nuevaSubasta);
+
+                
 
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
                 modificarPublicacionPage.Tag = nuevaPublicacion;

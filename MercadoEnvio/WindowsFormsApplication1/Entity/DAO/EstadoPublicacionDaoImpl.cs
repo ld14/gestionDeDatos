@@ -52,8 +52,17 @@ namespace WindowsFormsApplication1
                 return crit.List<Estadopublicacion>(); 
                 
 
+           }
+       }
+
+        public Estadopublicacion darEstadoByID(int id){
+            using (NHibernateManager manager = new NHibernateManager())           {
+                ICriteria crit = manager.Session.CreateCriteria<Estadopublicacion>();
+                //crit.CreateAlias("Usuario", "usr");
+                crit.Add(Expression.Eq("idEstadoPublicacion", id));
+                return crit.UniqueResult<Estadopublicacion>();
+            }
         }
-    }
 
     }
 }

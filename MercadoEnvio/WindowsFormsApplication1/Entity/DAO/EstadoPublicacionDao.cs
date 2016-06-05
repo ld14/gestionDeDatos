@@ -11,6 +11,7 @@ namespace WindowsFormsApplication1.Entity.DAO
         void Update(Estadopublicacion publicacionSubasta);
         void Remove(Estadopublicacion publicacionSubasta);
         IList<Estadopublicacion> darEstados();
+        Estadopublicacion darEstadoByID(int id);
     }
 }
 

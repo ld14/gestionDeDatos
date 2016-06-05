@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            /*
             Estadopublicacion estadoPublicacion = new Estadopublicacion();
             estadoPublicacion.nombre = "Public";
             estadoPublicacion.nombreCorto = "pub";
@@ -45,6 +46,7 @@ namespace WindowsFormsApplication1
 
             PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
             publicacionSubastaDaoImpl.Add(nuevaSubasta);
+            */
 
             pageLogin nuevaPagina = new pageLogin();
             nuevaPagina.MdiParent = this;

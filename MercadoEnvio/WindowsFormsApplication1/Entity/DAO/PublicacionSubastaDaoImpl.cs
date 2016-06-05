@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
         public void Update(PublicacionSubasta publicacionSubasta)  {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Update(publicacionSubasta);
+                    manager.Session.SaveOrUpdate(publicacionSubasta);
                     transaction.Commit();
                 }
             }
