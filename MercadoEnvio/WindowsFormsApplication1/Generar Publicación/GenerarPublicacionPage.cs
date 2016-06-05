@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
 
             //Esto debe ser autoIncrementable
-            double codigoPublicacion = 11211;
+            double codigoPublicacion = 121211;
 
             //Esto hay que cambiarlo por el usuario logueado
 
