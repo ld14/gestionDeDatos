@@ -16,7 +16,8 @@ namespace WindowsFormsApplication1
         {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Save(visibilidad);
+                    Visibilidad newEntityRef = manager.Session.Merge(visibilidad);
+                    manager.Session.Save(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -26,7 +27,8 @@ namespace WindowsFormsApplication1
         {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Update(visibilidad);
+                    Visibilidad newEntityRef = manager.Session.Merge(visibilidad);
+                    manager.Session.Update(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -36,7 +38,8 @@ namespace WindowsFormsApplication1
         {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Delete(visibilidad);
+                    Visibilidad newEntityRef = manager.Session.Merge(visibilidad);
+                    manager.Session.Delete(newEntityRef);
                     transaction.Commit();
                 }
             }

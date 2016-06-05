@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="Usuario" table="Usuario" >
-    <id name="idUsuario" column="idUsuario">
+  <class name="Usuario" table="Usuario" dynamic-insert="true" dynamic-update="true" >
+  <id name="idUsuario" column="idUsuario">
       <generator class="identity" />
     </id>
     <property name="userName">
@@ -26,7 +26,7 @@
       <column name="cantidadVentas" sql-type="int" not-null="false" />
     </property>
 
-    <many-to-one name="DatosBasicos" column="idDatosBasicos"  cascade="all"/>
+    <many-to-one name="DatosBasicos" column="idDatosBasicos" cascade="all"/>
 
     
     <set name="RolesLst" table="RolUsuario" lazy="true" outer-join="auto" cascade="all">

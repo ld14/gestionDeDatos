@@ -32,22 +32,22 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.UsuarioNombreTxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PrecioTxt = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.fechaVencimientoDateTimeTxt = new System.Windows.Forms.DateTimePicker();
+            this.fechaIncioDateTimeTxt = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.CodigoPublicacionTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.PreguntasCheckBox = new System.Windows.Forms.CheckBox();
+            this.EnvioCheckBox = new System.Windows.Forms.CheckBox();
+            this.stockTxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.DescripcionTxt = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.EstadoComboBox = new System.Windows.Forms.ComboBox();
@@ -97,21 +97,20 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Enabled = false;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Publicación Compra Inmediata",
-            "Publicación Subasta"});
             this.comboBox1.Location = new System.Drawing.Point(18, 49);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(501, 21);
             this.comboBox1.TabIndex = 12;
             // 
-            // textBox3
+            // UsuarioNombreTxt
             // 
-            this.textBox3.Location = new System.Drawing.Point(325, 205);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(155, 20);
-            this.textBox3.TabIndex = 31;
+            this.UsuarioNombreTxt.Enabled = false;
+            this.UsuarioNombreTxt.Location = new System.Drawing.Point(325, 205);
+            this.UsuarioNombreTxt.Name = "UsuarioNombreTxt";
+            this.UsuarioNombreTxt.Size = new System.Drawing.Size(155, 20);
+            this.UsuarioNombreTxt.TabIndex = 31;
             // 
             // label5
             // 
@@ -122,30 +121,30 @@
             this.label5.TabIndex = 30;
             this.label5.Text = "Usuario Responsable";
             // 
-            // textBox1
+            // PrecioTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(75, 205);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(114, 20);
-            this.textBox1.TabIndex = 27;
+            this.PrecioTxt.Location = new System.Drawing.Point(75, 205);
+            this.PrecioTxt.Name = "PrecioTxt";
+            this.PrecioTxt.Size = new System.Drawing.Size(114, 20);
+            this.PrecioTxt.TabIndex = 27;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox3);
+            this.groupBox4.Controls.Add(this.UsuarioNombreTxt);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.PrecioTxt);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.dateTimePicker2);
-            this.groupBox4.Controls.Add(this.dateTimePicker1);
+            this.groupBox4.Controls.Add(this.fechaVencimientoDateTimeTxt);
+            this.groupBox4.Controls.Add(this.fechaIncioDateTimeTxt);
             this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.textBox4);
+            this.groupBox4.Controls.Add(this.CodigoPublicacionTxt);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.checkBox3);
-            this.groupBox4.Controls.Add(this.checkBox4);
-            this.groupBox4.Controls.Add(this.textBox5);
+            this.groupBox4.Controls.Add(this.PreguntasCheckBox);
+            this.groupBox4.Controls.Add(this.EnvioCheckBox);
+            this.groupBox4.Controls.Add(this.stockTxt);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.textBox6);
+            this.groupBox4.Controls.Add(this.DescripcionTxt);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Location = new System.Drawing.Point(18, 86);
             this.groupBox4.Name = "groupBox4";
@@ -172,19 +171,21 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Fecha Vencimiento";
             // 
-            // dateTimePicker2
+            // fechaVencimientoDateTimeTxt
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(115, 299);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(377, 20);
-            this.dateTimePicker2.TabIndex = 24;
+            this.fechaVencimientoDateTimeTxt.Location = new System.Drawing.Point(115, 299);
+            this.fechaVencimientoDateTimeTxt.Name = "fechaVencimientoDateTimeTxt";
+            this.fechaVencimientoDateTimeTxt.Size = new System.Drawing.Size(377, 20);
+            this.fechaVencimientoDateTimeTxt.TabIndex = 24;
+            this.fechaVencimientoDateTimeTxt.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
-            // dateTimePicker1
+            // fechaIncioDateTimeTxt
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(115, 252);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(377, 20);
-            this.dateTimePicker1.TabIndex = 22;
+            this.fechaIncioDateTimeTxt.Location = new System.Drawing.Point(115, 252);
+            this.fechaIncioDateTimeTxt.Name = "fechaIncioDateTimeTxt";
+            this.fechaIncioDateTimeTxt.Size = new System.Drawing.Size(377, 20);
+            this.fechaIncioDateTimeTxt.TabIndex = 22;
+            this.fechaIncioDateTimeTxt.ValueChanged += new System.EventHandler(this.fechaIncioDateTime_ValueChanged);
             // 
             // label7
             // 
@@ -195,12 +196,13 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Fecha Inicio";
             // 
-            // textBox4
+            // CodigoPublicacionTxt
             // 
-            this.textBox4.Location = new System.Drawing.Point(392, 23);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 20;
+            this.CodigoPublicacionTxt.Enabled = false;
+            this.CodigoPublicacionTxt.Location = new System.Drawing.Point(392, 23);
+            this.CodigoPublicacionTxt.Name = "CodigoPublicacionTxt";
+            this.CodigoPublicacionTxt.Size = new System.Drawing.Size(100, 20);
+            this.CodigoPublicacionTxt.TabIndex = 20;
             // 
             // label8
             // 
@@ -211,32 +213,32 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Codigo Publicacion";
             // 
-            // checkBox3
+            // PreguntasCheckBox
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(325, 172);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(74, 17);
-            this.checkBox3.TabIndex = 16;
-            this.checkBox3.Text = "Preguntas";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.PreguntasCheckBox.AutoSize = true;
+            this.PreguntasCheckBox.Location = new System.Drawing.Point(325, 172);
+            this.PreguntasCheckBox.Name = "PreguntasCheckBox";
+            this.PreguntasCheckBox.Size = new System.Drawing.Size(74, 17);
+            this.PreguntasCheckBox.TabIndex = 16;
+            this.PreguntasCheckBox.Text = "Preguntas";
+            this.PreguntasCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // EnvioCheckBox
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(214, 176);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(56, 17);
-            this.checkBox4.TabIndex = 15;
-            this.checkBox4.Text = "Envio ";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.EnvioCheckBox.AutoSize = true;
+            this.EnvioCheckBox.Location = new System.Drawing.Point(214, 176);
+            this.EnvioCheckBox.Name = "EnvioCheckBox";
+            this.EnvioCheckBox.Size = new System.Drawing.Size(56, 17);
+            this.EnvioCheckBox.TabIndex = 15;
+            this.EnvioCheckBox.Text = "Envio ";
+            this.EnvioCheckBox.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // stockTxt
             // 
-            this.textBox5.Location = new System.Drawing.Point(75, 171);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(114, 20);
-            this.textBox5.TabIndex = 14;
+            this.stockTxt.Location = new System.Drawing.Point(75, 171);
+            this.stockTxt.Name = "stockTxt";
+            this.stockTxt.Size = new System.Drawing.Size(114, 20);
+            this.stockTxt.TabIndex = 14;
             // 
             // label10
             // 
@@ -247,14 +249,14 @@
             this.label10.TabIndex = 13;
             this.label10.Text = "Stock";
             // 
-            // textBox6
+            // DescripcionTxt
             // 
-            this.textBox6.Location = new System.Drawing.Point(8, 58);
-            this.textBox6.MaxLength = 255;
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(484, 102);
-            this.textBox6.TabIndex = 12;
+            this.DescripcionTxt.Location = new System.Drawing.Point(8, 58);
+            this.DescripcionTxt.MaxLength = 255;
+            this.DescripcionTxt.Multiline = true;
+            this.DescripcionTxt.Name = "DescripcionTxt";
+            this.DescripcionTxt.Size = new System.Drawing.Size(484, 102);
+            this.DescripcionTxt.TabIndex = 12;
             // 
             // label11
             // 
@@ -399,22 +401,22 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox UsuarioNombreTxt;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PrecioTxt;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker fechaVencimientoDateTimeTxt;
+        private System.Windows.Forms.DateTimePicker fechaIncioDateTimeTxt;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox CodigoPublicacionTxt;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.CheckBox PreguntasCheckBox;
+        private System.Windows.Forms.CheckBox EnvioCheckBox;
+        private System.Windows.Forms.TextBox stockTxt;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox DescripcionTxt;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox EstadoComboBox;

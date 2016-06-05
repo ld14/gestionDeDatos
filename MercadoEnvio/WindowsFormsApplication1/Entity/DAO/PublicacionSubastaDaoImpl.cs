@@ -13,7 +13,9 @@ namespace WindowsFormsApplication1
         public void Add(PublicacionSubasta publicacionSubasta) {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Save(publicacionSubasta);
+
+                    PublicacionSubasta newEntityRef = manager.Session.Merge(publicacionSubasta); //getSession().merge(entity);  
+                    manager.Session.Save(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -22,7 +24,8 @@ namespace WindowsFormsApplication1
         public void Update(PublicacionSubasta publicacionSubasta)  {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.SaveOrUpdate(publicacionSubasta);
+                    PublicacionSubasta newEntityRef = manager.Session.Merge(publicacionSubasta); //getSession().merge(entity);  
+                    manager.Session.SaveOrUpdate(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -31,7 +34,8 @@ namespace WindowsFormsApplication1
         public void Remove(PublicacionSubasta publicacionSubasta) {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Delete(publicacionSubasta);
+                    PublicacionSubasta newEntityRef = manager.Session.Merge(publicacionSubasta); //getSession().merge(entity);  
+                    manager.Session.Delete(newEntityRef);
                     transaction.Commit();
                 }
             }

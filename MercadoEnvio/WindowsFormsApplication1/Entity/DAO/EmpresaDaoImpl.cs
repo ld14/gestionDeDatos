@@ -14,7 +14,8 @@ namespace WindowsFormsApplication1
         public void Add(Empresa empresa)         {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Save(empresa);
+                    Empresa newEntityRef = manager.Session.Merge(empresa);
+                    manager.Session.Save(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -23,7 +24,8 @@ namespace WindowsFormsApplication1
         public void Update(Empresa empresa)        {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Update(empresa);
+                    Empresa newEntityRef = manager.Session.Merge(empresa);
+                    manager.Session.Update(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -32,7 +34,8 @@ namespace WindowsFormsApplication1
         public void Remove(Empresa empresa) {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Delete(empresa);
+                    Empresa newEntityRef = manager.Session.Merge(empresa);
+                    manager.Session.Delete(newEntityRef);
                     transaction.Commit();
                 }
             }

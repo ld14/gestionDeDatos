@@ -19,7 +19,8 @@ namespace WindowsFormsApplication1
             {
                 using (ITransaction transaction = manager.Session.BeginTransaction())
                 {
-                    manager.Session.Save(user);
+                    Usuario newEntityRef = manager.Session.Merge(user);
+                    manager.Session.Save(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -31,7 +32,8 @@ namespace WindowsFormsApplication1
             {
                 using (ITransaction transaction = manager.Session.BeginTransaction())
                 {
-                    manager.Session.Update(user);
+                    Usuario newEntityRef = manager.Session.Merge(user);
+                    manager.Session.Update(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -43,7 +45,8 @@ namespace WindowsFormsApplication1
             {
                 using (ITransaction transaction = manager.Session.BeginTransaction())
                 {
-                    manager.Session.Delete(user);
+                    Usuario newEntityRef = manager.Session.Merge(user);
+                    manager.Session.Delete(newEntityRef);
                     transaction.Commit();
                 }
             }

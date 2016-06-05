@@ -34,6 +34,8 @@ namespace WindowsFormsApplication1
             return _sessionFactory.OpenSession();
         }
 
+        
+
         public static void CloseSession()
         {
             _sessionFactory.Dispose();

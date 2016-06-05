@@ -15,7 +15,8 @@ namespace WindowsFormsApplication1
         {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Save(estadopublicacion);
+                    Estadopublicacion newEntityRef = manager.Session.Merge(estadopublicacion);
+                    manager.Session.Save(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -25,7 +26,8 @@ namespace WindowsFormsApplication1
         {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Update(estadopublicacion);
+                    Estadopublicacion newEntityRef = manager.Session.Merge(estadopublicacion);
+                    manager.Session.Update(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -35,7 +37,8 @@ namespace WindowsFormsApplication1
         {
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
-                    manager.Session.Delete(estadopublicacion);
+                    Estadopublicacion newEntityRef = manager.Session.Merge(estadopublicacion);
+                    manager.Session.Delete(newEntityRef);
                     transaction.Commit();
                 }
             }

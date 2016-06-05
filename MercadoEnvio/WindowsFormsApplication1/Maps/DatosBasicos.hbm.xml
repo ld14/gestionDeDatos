@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="DatosBasicos" table="DatosBasicos" lazy="true" >
+  <class name="DatosBasicos" table="DatosBasicos" dynamic-insert="true" dynamic-update="true"  >
 
     <id name="idDatosBasicos" column="idDatosBasicos">
       <generator class="identity" />

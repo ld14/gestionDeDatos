@@ -44,11 +44,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
 
             //Esto debe ser autoIncrementable
-            double codigoPublicacion = 1111;
+            double codigoPublicacion = 11211;
 
             //Esto hay que cambiarlo por el usuario logueado
-            ClienteDaoImpl usrImpl = new ClienteDaoImpl();
-            Cliente usr = usrImpl.GetUsuarioById(1);
 
 
 
@@ -59,6 +57,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
             Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
             Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
 
+            ClienteDaoImpl usrImpl = new ClienteDaoImpl();
+            Cliente usr = usrImpl.GetUsuarioById(1);
+
             ModificarPublicacionPage modificarPublicacionPage = new ModificarPublicacionPage();
 
             if(TipoPubliSelect.Text.Equals("Publicación Subasta")){
@@ -67,23 +68,24 @@ namespace WindowsFormsApplication1.Generar_Publicación
                                                        codigoPublicacion, descripcion, fechaIncioDateTime, 
                                                        fechaVencimientoDateTime,stock,preguntasSN,envioSN,precio,valorActual);
 
-                Estadopublicacion estadoPublicacion = new Estadopublicacion();
-                estadoPublicacion.nombre = "Public";
-                estadoPublicacion.nombreCorto = "pub";
+                /*estadopublicacion estadopublicacion = new estadopublicacion();
+                estadopublicacion.nombre = "public";
+                estadopublicacion.nombrecorto = "pub";
 
-                Visibilidad c = new Visibilidad();
-                c.nombreVisibilidad = "plata";
+                visibilidad c = new visibilidad();
+                c.nombrevisibilidad = "plata";
                 c.costo = 20;
 
-                DatosBasicos dtBasicos = new DatosBasicos();
-                dtBasicos.setDatosBasicos("so112211yM1222aYO4@hotmail.com", "2A1221", 1, 1, "2", "152", "mata", "cap");
+                datosbasicos dtbasicos = new datosbasicos();
+                dtbasicos.setdatosbasicos("so112211ym1222ayo4@hotmail.com", "2a1221", 1, 1, "2", "152", "mata", "cap");
 
-                Cliente cliente = new Cliente("JuanMor21121e11222112ira4", "1221213111411122323", 41112222111865, 1, "1Pedro Ange222l 2", "Poi", DateTime.Now, dtBasicos);
-                PublicacionSubasta nuevaSubasta = new PublicacionSubasta();
-                nuevaSubasta.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr, codigoPublicacion, descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, valorActual);
+                cliente cliente = new cliente("juanmor21121e11222112ira4", "1221213111411122323", 41112222111865, 1, "1pedro ange222l 2", "poi", datetime.now, dtbasicos);
+                publicacionsubasta nuevasubasta = new publicacionsubasta();
+                nuevasubasta.setpublicacionsubasta(estadopublicacion, selectedvisibilidad, usr, codigopublicacion, descripcion, fechainciodatetime, fechavencimientodatetime, stock, preguntassn, enviosn, precio, valoractual);
+                */
 
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
-                publicacionSubastaDaoImpl.Update(nuevaSubasta);
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
 
                 
 
