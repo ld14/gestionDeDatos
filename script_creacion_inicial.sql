@@ -431,11 +431,12 @@ PRINT 'TABLA: Empresa'
 
 --
 
-INSERT INTO [LOPEZ_Y_CIA].[EstadoPublicacion] (nombre) VALUES
-	('Borrador'),
-	('Activa'),
-	('Pausada'),
-	('Finalizada')
+INSERT INTO [LOPEZ_Y_CIA].[EstadoPublicacion] (nombre, nombreCorto) VALUES
+	('Borrador', NULL),
+	('Activa', NULL),
+	('Pausada', NULL),
+	('Finalizada', NULL),
+	('Inicial', 'init')
 
 PRINT 'TABLA: EstadoPublicacion'
 
