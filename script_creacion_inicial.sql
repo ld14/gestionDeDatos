@@ -442,6 +442,21 @@ PRINT 'TABLA: EstadoPublicacion'
 
 --
 
+INSERT INTO [LOPEZ_Y_CIA].[workflowEstados] (idEstadoInicial, idEstadoFinal, activo) VALUES
+	(5,1,1),
+	(5,2,1),
+	(1,1,1),
+	(1,2,1),
+	(2,2,1),
+	(2,3,1),
+	(2,4,1),
+	(3,3,1),
+	(3,2,1)
+
+PRINT 'TABLA: workflowEstados'
+
+--
+
 INSERT INTO [LOPEZ_Y_CIA].[Visibilidad] (nombreVisibilidad, costo, porcentaje)
 SELECT
 	Publicacion_Visibilidad_Desc,
