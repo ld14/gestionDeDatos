@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
 
             //Esto debe ser autoIncrementable
-            double codigoPublicacion = 121211;
+            double codigoPublicacion = 122222211;
 
             //Esto hay que cambiarlo por el usuario logueado
 
@@ -123,14 +123,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
         private void GenerarPublicacionPage_Load(object sender, EventArgs e)
         {
 
+            //----------------------Campos seccion Estados-------------------------------------------//
             WorkflowEstadosDaoImpl workflowEstadosDaoImpl = new WorkflowEstadosDaoImpl();
             IList<Estadopublicacion> estadosPublicacionLts = workflowEstadosDaoImpl.darWorkflowEstadosActivoByEstadoActual(1);
 
-            //----------------------Campos seccion Estados-------------------------------------------//
-            // NOTA: ESTO HAY QUE REFACTORIZARLO POR EL WF DE ESTADOS.
-            //EstadoPublicacionDaoDaoImpl estadosDao = new EstadoPublicacionDaoDaoImpl();
-            
-            //IList<Estadopublicacion> estadosPublicacionLts = estadosDao.darEstados();
 
             //Setup data binding
             EstadoComboBox.DataSource = estadosPublicacionLts;

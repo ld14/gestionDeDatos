@@ -54,8 +54,18 @@ namespace WindowsFormsApplication1
                 return crit.List<Rubro>(); 
                 
 
+            }
         }
-    }
 
+        public IList<Rubro> darRubroDistintosA(IList<Rubro> rubrosLts){
+            using (NHibernateManager manager = new NHibernateManager()) {
+
+                ICriteria crit = manager.Session.CreateCriteria<Rubro>();
+                //crit.Add(Expression.Not(Expression.Eq());
+                return crit.List<Rubro>(); 
+                
+
+            }
+        }
     }
 }

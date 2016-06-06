@@ -77,9 +77,6 @@
             // FuncionalidadesChkLst
             // 
             this.FuncionalidadesChkLst.FormattingEnabled = true;
-            this.FuncionalidadesChkLst.Items.AddRange(new object[] {
-            "Prueba 1",
-            "Prueba 2"});
             this.FuncionalidadesChkLst.Location = new System.Drawing.Point(13, 21);
             this.FuncionalidadesChkLst.Name = "FuncionalidadesChkLst";
             this.FuncionalidadesChkLst.Size = new System.Drawing.Size(560, 424);
@@ -152,6 +149,7 @@
             this.ShowInTaskbar = false;
             this.Text = "RolUsuarioPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.RolUsuarioPage_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

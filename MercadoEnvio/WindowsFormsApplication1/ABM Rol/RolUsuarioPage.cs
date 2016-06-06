@@ -25,5 +25,16 @@ namespace WindowsFormsApplication1.ABM_Rol
         {
 
         }
+
+        private void RolUsuarioPage_Load(object sender, EventArgs e)
+        {
+            //FuncionalidadesChkLst
+            RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
+            IList<Rubro> rubroLts = rubroDaoImpli.darRubroActivo();
+
+            FuncionalidadesChkLst.DataSource = rubroLts;
+            FuncionalidadesChkLst.DisplayMember = "descripcion";
+            FuncionalidadesChkLst.ValueMember = "idRubro";            
+        }
     }
 }

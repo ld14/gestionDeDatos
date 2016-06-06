@@ -233,5 +233,15 @@ namespace WindowsFormsApplication1
             modificarPublicacionPage.MdiParent = this;
             modificarPublicacionPage.Show();
         }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
