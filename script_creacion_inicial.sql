@@ -4,36 +4,38 @@ GO
 /** CREACION DEL ESQUEMA Y LAS TABLAS PRINCIPALES **/ 
 
 CREATE SCHEMA [LOPEZ_Y_CIA] AUTHORIZATION [gd]
+GO
 
+CREATE SEQUENCE [LOPEZ_Y_CIA].[secuenciaCalif] START WITH 15185
 CREATE TABLE [LOPEZ_Y_CIA].[Calificacion](
 	[idCalificacion] [int] IDENTITY(1,1) NOT NULL,
-	[codigo] [numeric](18, 0) NULL, /**/
-	[cantEstrellas] [numeric](18, 0) NOT NULL,
-	[descripcion] [nvarchar](255) NULL,
-	CONSTRAINT [PK_Calificacion] PRIMARY KEY CLUSTERED([idCalificacion] ASC) ON [PRIMARY]
+	[codigo] INT DEFAULT NEXT VALUE FOR [LOPEZ_Y_CIA].[secuenciaCalif] NOT NULL,
+	[cantEstrellas] [int] NOT NULL,
+	[descripcion] [varchar](255) NULL,
+	CONSTRAINT [PK_Calificacion] PRIMARY KEY CLUSTERED([idCalificacion] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[Cliente](
-	[dni] [numeric](18, 0) NOT NULL,
+	[dni] [int] NOT NULL,
 	[tipoDocumento] [int] NOT NULL,
-	[nombre] [nvarchar](255) NULL,
-	[apellido] [nvarchar](255) NULL,
+	[nombre] [varchar](255) NULL,
+	[apellido] [varchar](255) NULL,
 	[fechaNacimiento] [date] NULL,
 	[perfilActivo] [bit] NOT NULL,
 	[idUsuario] [int] NOT NULL,
 	[fechaCreacion] [date] NULL,
 	[comprasEfectuadas] [int] NULL,
 	[comprasCalificadas] [int] NULL,
-	CONSTRAINT [PK_Cliente_1] PRIMARY KEY CLUSTERED([idUsuario] ASC) ON [PRIMARY],
+	CONSTRAINT [PK_Cliente_1] PRIMARY KEY CLUSTERED([idUsuario] ASC),
 	CONSTRAINT [UK_Documento] UNIQUE ([dni],[tipoDocumento])
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[ComisionesParametrizables](
 	[idComisionesParametrizables] [int] IDENTITY(1,1) NOT NULL,
-	[nombreCorto] [nchar](10) NOT NULL,
-	[nombre] [nvarchar](250) NOT NULL,
-	[porcentaje] [numeric](18, 2) NOT NULL,
-	CONSTRAINT [pk_idComisionesParametrizables] PRIMARY KEY CLUSTERED([idComisionesParametrizables] ASC) ON [PRIMARY]
+	[nombreCorto] [varchar](10) NOT NULL,
+	[nombre] [varchar](250) NOT NULL,
+	[porcentaje] [numeric](18, 4) NOT NULL,
+	CONSTRAINT [pk_idComisionesParametrizables] PRIMARY KEY CLUSTERED([idComisionesParametrizables] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[CompraUsuario](
@@ -41,63 +43,63 @@ CREATE TABLE [LOPEZ_Y_CIA].[CompraUsuario](
 	[idFactura] [int] NOT NULL UNIQUE,
 	[idUsuario] [int] NOT NULL,
 	[idCalificacion] [int] NULL,
-	CONSTRAINT [PK_CompraUsuario] PRIMARY KEY CLUSTERED([idCompraUsuario] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_CompraUsuario] PRIMARY KEY CLUSTERED([idCompraUsuario] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[DatosBasicos](
 	[idDatosBasicos] [int] IDENTITY(1,1) NOT NULL,
-	[email] [nvarchar](255) NOT NULL,
-	[domCalle] [nvarchar](255) NULL,
-	[nroCalle] [numeric](18, 0) NULL,
-	[piso] [numeric](18, 0) NULL,
-	[depto] [nvarchar](50) NULL,
-	[codPostal] [nvarchar](50) NULL,
-	[localidad] [nvarchar](50) NULL,
-	[ciudad] [nvarchar](50) NULL,
-	CONSTRAINT [PK_DatosBasicos] PRIMARY KEY CLUSTERED([idDatosBasicos] ASC) ON [PRIMARY]
+	[email] [varchar](255) NOT NULL,
+	[domCalle] [varchar](255) NULL,
+	[nroCalle] [int] NULL,
+	[piso] [int] NULL,
+	[depto] [varchar](50) NULL,
+	[codPostal] [varchar](50) NULL,
+	[localidad] [varchar](50) NULL,
+	[ciudad] [varchar](50) NULL,
+	CONSTRAINT [PK_DatosBasicos] PRIMARY KEY CLUSTERED([idDatosBasicos] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[Empresa](
-	[razonSocial] [nvarchar](50) NOT NULL UNIQUE,
-	[cuit] [nvarchar](50) NOT NULL UNIQUE,
+	[razonSocial] [varchar](50) NOT NULL UNIQUE,
+	[cuit] [varchar](50) NOT NULL UNIQUE,
 	[fechaCreacion] [date] NULL,
 	[perfilActivo] [int] NOT NULL,
 	[idUsuario] [int] NOT NULL,
-	[nombreContacto] [nvarchar](50) NULL,
-	CONSTRAINT [PK_Empresa_1] PRIMARY KEY CLUSTERED([idUsuario] ASC) ON [PRIMARY]
+	[nombreContacto] [varchar](50) NULL,
+	CONSTRAINT [PK_Empresa_1] PRIMARY KEY CLUSTERED([idUsuario] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[EstadoPublicacion](
 	[idEstadoPublicacion] [int] IDENTITY(1,1) NOT NULL,
-	[nombre] [nvarchar](255) NOT NULL,
-	[nombreCorto] [nchar](10) NULL, /**/
-	CONSTRAINT [PK_EstadoPublicacion] PRIMARY KEY CLUSTERED([idEstadoPublicacion] ASC) ON [PRIMARY]
+	[nombre] [varchar](255) NOT NULL,
+	[nombreCorto] [varchar](10) NULL, /*NO LO PEDIA EN NINGUN LADO ESTO*/
+	CONSTRAINT [PK_EstadoPublicacion] PRIMARY KEY CLUSTERED([idEstadoPublicacion] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[Factura](
 	[idFactura] [int] IDENTITY(1,1) NOT NULL,
 	[idPublicacion] [int] NOT NULL,
-	[nroFactura] [numeric](18, 0) NOT NULL UNIQUE,
+	[nroFactura] [int] NOT NULL UNIQUE,
 	[fecha] [datetime] NULL,
 	[montoTotal] [numeric](18, 2) NOT NULL,
-	[formaPagoDesc] [nvarchar](255) NULL,
-	CONSTRAINT [PK_Factura] PRIMARY KEY CLUSTERED([idFactura] ASC) ON [PRIMARY]
+	[formaPagoDesc] [varchar](255) NULL,
+	CONSTRAINT [PK_Factura] PRIMARY KEY CLUSTERED([idFactura] ASC)
 ) ON [PRIMARY]
 
-CREATE TABLE [LOPEZ_Y_CIA].[Funciones]( /**/
+CREATE TABLE [LOPEZ_Y_CIA].[Funciones](
 	[idFunciones] [int] IDENTITY(1,1) NOT NULL,
-	[nombre] [char](10) NOT NULL,
-	[descripcion] [char](100) NULL,
+	[nombre] [varchar](50) NOT NULL,
+	[descripcion] [varchar](255) NULL,
 	[activo] [bit] NOT NULL,
-	CONSTRAINT [PK_Funciones] PRIMARY KEY CLUSTERED([idFunciones] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_Funciones] PRIMARY KEY CLUSTERED([idFunciones] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[ItemFactura](
 	[idItemFactura] [int] IDENTITY(1,1) NOT NULL,
 	[idFactura] [int] NOT NULL,
-	[cantidad] [numeric](18, 0) NOT NULL,
+	[cantidad] [int] NOT NULL,
 	[monto] [numeric](18, 2) NOT NULL,
-	CONSTRAINT [PK_ItemFactura] PRIMARY KEY CLUSTERED([idItemFactura] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_ItemFactura] PRIMARY KEY CLUSTERED([idItemFactura] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[OfertaSubasta](
@@ -107,7 +109,7 @@ CREATE TABLE [LOPEZ_Y_CIA].[OfertaSubasta](
 	[monto] [numeric](18, 2) NOT NULL,
 	[fecha] [datetime] NOT NULL,
 	[adjudicada] [bit] NOT NULL,
-	CONSTRAINT [PK_OfertaSubasta] PRIMARY KEY CLUSTERED([idOfertaSubasta] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_OfertaSubasta] PRIMARY KEY CLUSTERED([idOfertaSubasta] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[Preguntas](
@@ -115,42 +117,43 @@ CREATE TABLE [LOPEZ_Y_CIA].[Preguntas](
 	[idUsuario] [int] NOT NULL,
 	[descripcion] [text] NULL,
 	[idPublicacion] [int] NOT NULL,
-	CONSTRAINT [PK_Preguntas] PRIMARY KEY CLUSTERED([idPreguntas] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_Preguntas] PRIMARY KEY CLUSTERED([idPreguntas] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[Publicacion](
 	[idPublicacion] [int] IDENTITY(1,1) NOT NULL,
 	[idEstadoPublicacion] [int] NOT NULL,
 	[idVisibilidad] [int] NOT NULL,
-	[codigoPublicacion] [numeric](18, 0) NULL, /**/
-	[descripcion] [nvarchar](255) NULL,
+	[codigoPublicacion] [int] NULL,
+	[descripcion] [varchar](255) NULL,
 	[fechaCreacion] [date] NOT NULL,
 	[fechaVencimiento] [date] NULL,
-	[stock] [numeric](18, 0) NULL,
+	[stock] [int] NULL,
 	[preguntasSN] [bit] NULL,
 	[envioSN] [bit] NULL,
 	[idUsuario] [int] NOT NULL,
-	CONSTRAINT [PK_Publicacion] PRIMARY KEY CLUSTERED([idPublicacion] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_Publicacion] PRIMARY KEY CLUSTERED([idPublicacion] ASC),
+	CONSTRAINT [Rango_fechaVencimiento] CHECK ([fechaVencimiento] >= [fechaCreacion])
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[PublicacionNormal](
 	[idPublicacion] [int] NOT NULL,
 	[precioPorUnidad] [numeric](18, 2) NOT NULL,
-	CONSTRAINT [PK_PublicacionNormal_1] PRIMARY KEY CLUSTERED([idPublicacion] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_PublicacionNormal_1] PRIMARY KEY CLUSTERED([idPublicacion] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[PublicacionSubasta](
 	[valorInicialVenta] [numeric](18, 2) NOT NULL,
 	[idPublicacion] [int] NOT NULL,
 	[valorActual] [numeric](18, 2) NOT NULL,
-	CONSTRAINT [PK_PublicacionSubasta_1] PRIMARY KEY CLUSTERED([idPublicacion] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_PublicacionSubasta_1] PRIMARY KEY CLUSTERED([idPublicacion] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[Rol](
 	[idRol] [int] IDENTITY(1,1) NOT NULL,
-	[nombre] [char](10) NOT NULL,
+	[nombre] [varchar](20) NOT NULL,
 	[activo] [bit] NOT NULL,
-	CONSTRAINT [PK_Rol] PRIMARY KEY CLUSTERED([idRol] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_Rol] PRIMARY KEY CLUSTERED([idRol] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[RolFunciones](
@@ -166,10 +169,10 @@ CREATE TABLE [LOPEZ_Y_CIA].[RolUsuario](
 
 CREATE TABLE [LOPEZ_Y_CIA].[Rubro](
 	[idRubro] [int] IDENTITY(1,1) NOT NULL,
-	[codigo] [nchar](5) NULL, /**/
-	[nombreCorto] [nvarchar](8) NULL, /**/
-	[descripcion] [nvarchar](255) NULL,
-	CONSTRAINT [PK_Rubro] PRIMARY KEY CLUSTERED([idRubro] ASC) ON [PRIMARY]
+	[codigo] [nchar](5) NULL,
+	[nombreCorto] [varchar](10) NULL,
+	[descripcion] [varchar](255) NULL,
+	CONSTRAINT [PK_Rubro] PRIMARY KEY CLUSTERED([idRubro] ASC)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[RubroPublicacion](
@@ -179,24 +182,26 @@ CREATE TABLE [LOPEZ_Y_CIA].[RubroPublicacion](
 
 CREATE TABLE [LOPEZ_Y_CIA].[Usuario](
 	[idUsuario] [int] IDENTITY(1,1) NOT NULL,
-	[userName] [nvarchar](50) NOT NULL UNIQUE,
-	[password] [nvarchar](257) NOT NULL,
+	[userName] [varchar](50) NOT NULL UNIQUE,
+	[password] [varchar](255) NOT NULL,
 	[activoUsuario] [bit] NOT NULL,
-	[intentosFallidos] [numeric](3, 0) NOT NULL,
+	[intentosFallidos] [int] NOT NULL,
 	[publicacionGratis] [bit] NULL,
 	[cantidadEstrellas] [int] NULL,
 	[cantidadVentas] [int] NULL,
 	[idDatosBasicos] [int] NOT NULL,
-	CONSTRAINT [PK_Usuario_1] PRIMARY KEY CLUSTERED([idUsuario] ASC) ON [PRIMARY]
+	CONSTRAINT [PK_Usuario_1] PRIMARY KEY CLUSTERED([idUsuario] ASC)
 ) ON [PRIMARY]
 
+CREATE SEQUENCE [LOPEZ_Y_CIA].[secuenciaVisib] START WITH 10002
 CREATE TABLE [LOPEZ_Y_CIA].[Visibilidad](
 	[idVisibilidad] [int] IDENTITY(1,1) NOT NULL,
-	[codigoVisibilidad] [numeric](18,0) NOT NULL, /**/
-	[nombreVisibilidad] [nvarchar](50) NULL,
+	[codigoVisibilidad] INT DEFAULT NEXT VALUE FOR [LOPEZ_Y_CIA].[secuenciaVisib] NOT NULL,
+	[nombreVisibilidad] [varchar](50) NULL,
 	[costo] [numeric](18, 2) NOT NULL,
-	[porcentaje] [numeric](18, 2) NOT NULL,
-	CONSTRAINT [PK_Visibilidad] PRIMARY KEY CLUSTERED([idVisibilidad] ASC) ON [PRIMARY]
+	[porcentaje] [numeric](5, 4) NOT NULL,
+	CONSTRAINT [PK_Visibilidad] PRIMARY KEY CLUSTERED([idVisibilidad] ASC),
+	CONSTRAINT [Rango_Porcentaje] CHECK ([porcentaje] <= 1 AND [porcentaje] >= 0)
 ) ON [PRIMARY]
 
 CREATE TABLE [LOPEZ_Y_CIA].[workflowEstados](
@@ -314,261 +319,157 @@ ALTER TABLE [LOPEZ_Y_CIA].[workflowEstados] CHECK CONSTRAINT [FK_workflowEstados
 GO
 /** MIGRACION **/
 
-insert into LOPEZ_Y_CIA.DatosBasicos(email, domCalle, nroCalle, piso, depto, codPostal)
-select Cli_Mail, Cli_Dom_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Depto, Cli_Cod_Postal
-from gd_esquema.Maestra
-where Cli_Dni is not null
-group by Cli_Dni, Cli_Mail, Cli_Dom_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Depto, Cli_Cod_Postal
+INSERT INTO [LOPEZ_Y_CIA].[DatosBasicos] (email, domCalle, nroCalle, piso, depto, codPostal)
+SELECT
+	Cli_Mail,
+	Cli_Dom_Calle,
+	Cli_Nro_Calle,
+	Cli_Piso,
+	Cli_Depto,
+	Cli_Cod_Postal
+FROM [gd_esquema].[Maestra]
+WHERE Cli_Dni IS NOT NULL
+GROUP BY
+	Cli_Dni,
+	Cli_Mail,
+	Cli_Dom_Calle,
+	Cli_Nro_Calle,
+	Cli_Piso,
+	Cli_Depto,
+	Cli_Cod_Postal
+UNION
+SELECT
+	Publ_Empresa_Mail,
+	Publ_Empresa_Dom_Calle,
+	Publ_Empresa_Nro_Calle,
+	Publ_Empresa_Piso,
+	Publ_Empresa_Depto,
+	Publ_Empresa_Cod_Postal
+FROM [gd_esquema].[Maestra]
+WHERE Publ_Empresa_Cuit IS NOT NULL
+GROUP BY
+	Publ_Empresa_Cuit,
+	Publ_Empresa_Mail,
+	Publ_Empresa_Dom_Calle,
+	Publ_Empresa_Nro_Calle,
+	Publ_Empresa_Piso,
+	Publ_Empresa_Depto,
+	Publ_Empresa_Cod_Postal
 
-insert into LOPEZ_Y_CIA.DatosBasicos(email, domCalle, nroCalle, piso, depto, codPostal)
-select Publ_Empresa_Mail, Publ_Empresa_Dom_Calle, Publ_Empresa_Nro_Calle, Publ_Empresa_Piso, Publ_Empresa_Depto, Publ_Empresa_Cod_Postal
-from gd_esquema.Maestra
-where Publ_Empresa_Cuit is not null
-group by Publ_Empresa_Cuit, Publ_Empresa_Mail, Publ_Empresa_Dom_Calle, Publ_Empresa_Nro_Calle, Publ_Empresa_Piso, Publ_Empresa_Depto, Publ_Empresa_Cod_Postal
+PRINT 'TABLA: DatosBasicos'
 
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u1', 'asd', 1, 0, 0, 1)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u2', 'asd', 1, 0, 0, 2)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u3', 'asd', 1, 0, 0, 3)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u4', 'asd', 1, 0, 0, 4)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u5', 'asd', 1, 0, 0, 5)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u6', 'asd', 1, 0, 0, 6)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u7', 'asd', 1, 0, 0, 7)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u8', 'asd', 1, 0, 0, 8)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u9', 'asd', 1, 0, 0, 9)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u10', 'asd', 1, 0, 0, 10)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u11', 'asd', 1, 0, 0, 11)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u12', 'asd', 1, 0, 0, 12)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u13', 'asd', 1, 0, 0, 13)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u14', 'asd', 1, 0, 0, 14)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u15', 'asd', 1, 0, 0, 15)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u16', 'asd', 1, 0, 0, 16)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u17', 'asd', 1, 0, 0, 17)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u18', 'asd', 1, 0, 0, 18)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u19', 'asd', 1, 0, 0, 19)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u20', 'asd', 1, 0, 0, 20)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u21', 'asd', 1, 0, 0, 21)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u22', 'asd', 1, 0, 0, 22)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u23', 'asd', 1, 0, 0, 23)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u24', 'asd', 1, 0, 0, 24)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u25', 'asd', 1, 0, 0, 25)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u26', 'asd', 1, 0, 0, 26)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u27', 'asd', 1, 0, 0, 27)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u28', 'asd', 1, 0, 0, 28)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u29', 'asd', 1, 0, 0, 29)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u30', 'asd', 1, 0, 0, 30)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u31', 'asd', 1, 0, 0, 31)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u32', 'asd', 1, 0, 0, 32)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u33', 'asd', 1, 0, 0, 33)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u34', 'asd', 1, 0, 0, 34)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u35', 'asd', 1, 0, 0, 35)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u36', 'asd', 1, 0, 0, 36)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u37', 'asd', 1, 0, 0, 37)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u38', 'asd', 1, 0, 0, 38)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u39', 'asd', 1, 0, 0, 39)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u40', 'asd', 1, 0, 0, 40)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u41', 'asd', 1, 0, 0, 41)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u42', 'asd', 1, 0, 0, 42)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u43', 'asd', 1, 0, 0, 43)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u44', 'asd', 1, 0, 0, 44)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u45', 'asd', 1, 0, 0, 45)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u46', 'asd', 1, 0, 0, 46)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u47', 'asd', 1, 0, 0, 47)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u48', 'asd', 1, 0, 0, 48)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u49', 'asd', 1, 0, 0, 49)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u50', 'asd', 1, 0, 0, 50)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u51', 'asd', 1, 0, 0, 51)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u52', 'asd', 1, 0, 0, 52)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u53', 'asd', 1, 0, 0, 53)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u54', 'asd', 1, 0, 0, 54)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u55', 'asd', 1, 0, 0, 55)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u56', 'asd', 1, 0, 0, 56)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u57', 'asd', 1, 0, 0, 57)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u58', 'asd', 1, 0, 0, 58)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u59', 'asd', 1, 0, 0, 59)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u60', 'asd', 1, 0, 0, 60)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u61', 'asd', 1, 0, 0, 61)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u62', 'asd', 1, 0, 0, 62)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u63', 'asd', 1, 0, 0, 63)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u64', 'asd', 1, 0, 0, 64)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u65', 'asd', 1, 0, 0, 65)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u66', 'asd', 1, 0, 0, 66)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u67', 'asd', 1, 0, 0, 67)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u68', 'asd', 1, 0, 0, 68)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u69', 'asd', 1, 0, 0, 69)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u70', 'asd', 1, 0, 0, 70)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u71', 'asd', 1, 0, 0, 71)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u72', 'asd', 1, 0, 0, 72)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u73', 'asd', 1, 0, 0, 73)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u74', 'asd', 1, 0, 0, 74)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u75', 'asd', 1, 0, 0, 75)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u76', 'asd', 1, 0, 0, 76)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u77', 'asd', 1, 0, 0, 77)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u78', 'asd', 1, 0, 0, 78)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u79', 'asd', 1, 0, 0, 79)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u80', 'asd', 1, 0, 0, 80)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u81', 'asd', 1, 0, 0, 81)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u82', 'asd', 1, 0, 0, 82)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u83', 'asd', 1, 0, 0, 83)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u84', 'asd', 1, 0, 0, 84)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u85', 'asd', 1, 0, 0, 85)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u86', 'asd', 1, 0, 0, 86)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u87', 'asd', 1, 0, 0, 87)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u88', 'asd', 1, 0, 0, 88)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u89', 'asd', 1, 0, 0, 89)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u90', 'asd', 1, 0, 0, 90)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u91', 'asd', 1, 0, 0, 91)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u92', 'asd', 1, 0, 0, 92)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u93', 'asd', 1, 0, 0, 93)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u94', 'asd', 1, 0, 0, 94)
-insert into LOPEZ_Y_CIA.Usuario(userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos)
-values ('u95', 'asd', 1, 0, 0, 95)
+--
 
-insert into LOPEZ_Y_CIA.Cliente(idUsuario, dni, nombre, apellido, fechaNacimiento, tipoDocumento, perfilActivo)
-select *, 1 as tipoDocumento, 1 as perfilActivo
-from (
+DECLARE @aux int = 1
+DECLARE @psw nvarchar(255) = N'asd'
+DECLARE @sqlcmd nvarchar(4000) = N'INSERT INTO [LOPEZ_Y_CIA].[Usuario] (userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos) VALUES' + CHAR(13)
+
+SET @sqlcmd += N'(''u' + CAST(@aux as nvarchar(3)) + N''', ''' + @psw + N''', 1, 0, 0, ' + CAST(@aux as nvarchar(3)) + N')'
+
+WHILE (@aux < 95)
+BEGIN
+	SET @aux += 1
+	SET @sqlcmd += N',' + CHAR(13) + N'(''u' + CAST(@aux as nvarchar(3)) + N''', ''' + @psw + N''', 1, 0, 0, ' + CAST(@aux as nvarchar(3)) + N')'
+END
+
+EXEC sp_executesql @sqlcmd
+PRINT 'TABLA: Usuario'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[Cliente] (idUsuario, dni, nombre, apellido, fechaNacimiento, tipoDocumento, perfilActivo)
+SELECT
+	idUsuario,
+	Cli_Dni,
+	Cli_Nombre,
+	Cli_Apeliido,
+	Cli_Fecha_Nac,
+	1 AS tipoDocumento,
+	1 AS perfilActivo
+FROM (
     SELECT
 		ROW_NUMBER() OVER (ORDER BY Cli_Dni) AS idUsuario,
-		Cli_Dni as dni,
+		Cli_Dni,
 		Cli_Nombre,
 		Cli_Apeliido,
 		Cli_Fecha_Nac
-	FROM gd_esquema.Maestra
-	where Cli_Dni is not null
-	group by Cli_Dni, Cli_Nombre, Cli_Apeliido, Cli_Fecha_Nac
+	FROM [gd_esquema].[Maestra]
+	WHERE Cli_Dni IS NOT NULL
+	GROUP BY
+		Cli_Dni,
+		Cli_Nombre,
+		Cli_Apeliido,
+		Cli_Fecha_Nac
 ) T1
-order by 1 asc
 
-insert into LOPEZ_Y_CIA.Empresa(idUsuario, cuit, razonSocial, fechaCreacion, perfilActivo)
-select *, 1 as perfilActivo
-from (
+PRINT 'TABLA: Cliente'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[Empresa] (idUsuario, cuit, razonSocial, fechaCreacion, perfilActivo)
+SELECT
+	idUsuario,
+	Publ_Empresa_Cuit,
+	Publ_Empresa_Razon_Social,
+	Publ_Empresa_Fecha_Creacion,
+	1 AS perfilActivo
+FROM (
     SELECT
 		(ROW_NUMBER() OVER (ORDER BY Publ_Empresa_Cuit)) + 28 AS idUsuario,
 		Publ_Empresa_Cuit,
 		Publ_Empresa_Razon_Social,
 		Publ_Empresa_Fecha_Creacion
-	FROM gd_esquema.Maestra
-	where Publ_Empresa_Cuit is not null
-	group by Publ_Empresa_Cuit, Publ_Empresa_Razon_Social, Publ_Empresa_Fecha_Creacion
+	FROM [gd_esquema].[Maestra]
+	WHERE Publ_Empresa_Cuit IS NOT NULL
+	GROUP BY
+		Publ_Empresa_Cuit,
+		Publ_Empresa_Razon_Social,
+		Publ_Empresa_Fecha_Creacion
 ) T1
-order by 1 asc
 
-insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre) values('Borrador')
-insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre) values('Activa')
-insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre) values('Pausada')
-insert into LOPEZ_Y_CIA.EstadoPublicacion(nombre) values('Finalizada')
+PRINT 'TABLA: Empresa'
 
-insert into LOPEZ_Y_CIA.Visibilidad(codigoVisibilidad, nombreVisibilidad, costo, porcentaje)
-select Publicacion_Visibilidad_Cod, Publicacion_Visibilidad_Desc, Publicacion_Visibilidad_Precio, Publicacion_Visibilidad_Porcentaje
-from gd_esquema.Maestra
-group by Publicacion_Visibilidad_Cod, Publicacion_Visibilidad_Desc, Publicacion_Visibilidad_Precio, Publicacion_Visibilidad_Porcentaje
-order by 1 asc
+--
 
-insert into LOPEZ_Y_CIA.Publicacion(idEstadoPublicacion, idVisibilidad, codigoPublicacion, descripcion, fechaCreacion, fechaVencimiento, stock, idUsuario)
-select
-	1 as idEstadoPublicacion,
-	T3.idVisibilidad,
+INSERT INTO [LOPEZ_Y_CIA].[EstadoPublicacion] (nombre) VALUES
+	('Borrador'),
+	('Activa'),
+	('Pausada'),
+	('Finalizada')
+
+PRINT 'TABLA: EstadoPublicacion'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[Visibilidad] (nombreVisibilidad, costo, porcentaje)
+SELECT
+	Publicacion_Visibilidad_Desc,
+	Publicacion_Visibilidad_Precio,
+	Publicacion_Visibilidad_Porcentaje
+FROM [gd_esquema].[Maestra]
+GROUP BY
+	Publicacion_Visibilidad_Cod,
+	Publicacion_Visibilidad_Desc,
+	Publicacion_Visibilidad_Precio,
+	Publicacion_Visibilidad_Porcentaje
+ORDER BY Publicacion_Visibilidad_Cod ASC
+
+PRINT 'TABLA: Visibilidad'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[Publicacion] (codigoPublicacion, idEstadoPublicacion, idVisibilidad, descripcion, fechaCreacion, fechaVencimiento, stock, idUsuario)
+SELECT
 	T1.Publicacion_Cod,
+	1 AS idEstadoPublicacion,
+	T3.idVisibilidad,
 	T1.Publicacion_Descripcion,
 	T1.Publicacion_Fecha,
 	T1.Publicacion_Fecha_Venc,
 	T1.Publicacion_Stock,
 	T2.idUsuario
-from 
-	(select
+FROM 
+	(SELECT
 		Publ_Empresa_Cuit,
 		Publicacion_Cod,
 		Publicacion_Visibilidad_Cod,
@@ -576,9 +477,9 @@ from
 		Publicacion_Fecha,
 		Publicacion_Fecha_Venc,
 		Publicacion_Stock
-	from gd_esquema.Maestra
-	where Publicacion_Cod is not null
-	group by
+	FROM [gd_esquema].[Maestra]
+	WHERE Publicacion_Cod IS NOT NULL
+	GROUP BY
 		Publicacion_Cod,
 		Publicacion_Visibilidad_Cod,
 		Publicacion_Descripcion,
@@ -586,22 +487,20 @@ from
 		Publicacion_Fecha_Venc,
 		Publicacion_Stock,
 		Publ_Empresa_Cuit) T1
-inner join LOPEZ_Y_CIA.Empresa as T2 on T1.Publ_Empresa_Cuit = T2.cuit
-inner join LOPEZ_Y_CIA.Visibilidad as T3 on T3.codigoVisibilidad = T1.Publicacion_Visibilidad_Cod
-order by 3 asc
-
-insert into LOPEZ_Y_CIA.Publicacion(idEstadoPublicacion, idVisibilidad, codigoPublicacion, descripcion, fechaCreacion, fechaVencimiento, stock, idUsuario)
-select
-	1 as idEstadoPublicacion,
-	T3.idVisibilidad,
+INNER JOIN [LOPEZ_Y_CIA].[Empresa] AS T2 ON T1.Publ_Empresa_Cuit = T2.cuit
+INNER JOIN [LOPEZ_Y_CIA].[Visibilidad] AS T3 ON T3.codigoVisibilidad = T1.Publicacion_Visibilidad_Cod
+UNION
+SELECT
 	T1.Publicacion_Cod,
+	1 AS idEstadoPublicacion,
+	T3.idVisibilidad,
 	T1.Publicacion_Descripcion,
 	T1.Publicacion_Fecha,
 	T1.Publicacion_Fecha_Venc,
 	T1.Publicacion_Stock,
 	T2.idUsuario
-from 
-	(select
+FROM 
+	(SELECT
 		Publ_Cli_Dni,
 		Publicacion_Cod,
 		Publicacion_Visibilidad_Cod,
@@ -609,9 +508,9 @@ from
 		Publicacion_Fecha,
 		Publicacion_Fecha_Venc,
 		Publicacion_Stock
-	from gd_esquema.Maestra
-	where Publicacion_Cod is not null
-	group by
+	FROM [gd_esquema].[Maestra]
+	WHERE Publicacion_Cod IS NOT NULL
+	GROUP BY
 		Publicacion_Cod,
 		Publicacion_Visibilidad_Cod,
 		Publicacion_Descripcion,
@@ -619,89 +518,171 @@ from
 		Publicacion_Fecha_Venc,
 		Publicacion_Stock,
 		Publ_Cli_Dni) T1
-inner join LOPEZ_Y_CIA.Cliente as T2 on T1.Publ_Cli_Dni = T2.dni
-inner join LOPEZ_Y_CIA.Visibilidad as T3 on T3.codigoVisibilidad = T1.Publicacion_Visibilidad_Cod
-order by 3 asc
+INNER JOIN [LOPEZ_Y_CIA].[Cliente] AS T2 ON T1.Publ_Cli_Dni = T2.dni
+INNER JOIN [LOPEZ_Y_CIA].[Visibilidad] AS T3 ON T3.codigoVisibilidad = T1.Publicacion_Visibilidad_Cod
+ORDER BY 1 ASC
 
-insert into LOPEZ_Y_CIA.Rubro(descripcion)
-select Publicacion_Rubro_Descripcion 
-from gd_esquema.Maestra
-where Publicacion_Rubro_Descripcion is not null
-group by Publicacion_Rubro_Descripcion
-order by 1 asc
+PRINT 'TABLA: Publicacion'
 
-insert into LOPEZ_Y_CIA.Calificacion(codigo, cantEstrellas)
-select Calificacion_Codigo, Calificacion_Cant_Estrellas 
-from gd_esquema.Maestra
-where Calificacion_Codigo is not null
-order by 1 asc
+--
 
-insert into LOPEZ_Y_CIA.Rol(nombre, activo) values ('Cliente', 1)
-insert into LOPEZ_Y_CIA.Rol(nombre, activo) values ('Empresa', 1)
-insert into LOPEZ_Y_CIA.Rol(nombre, activo) values ('Admin', 1)
+INSERT INTO [LOPEZ_Y_CIA].[Rubro] (descripcion)
+SELECT Publicacion_Rubro_Descripcion 
+FROM [gd_esquema].[Maestra]
+WHERE Publicacion_Rubro_Descripcion IS NOT NULL
+GROUP BY Publicacion_Rubro_Descripcion
+ORDER BY 1 ASC
 
-insert into LOPEZ_Y_CIA.PublicacionNormal(idPublicacion, precioPorUnidad)
-select B.idPublicacion, A.Publicacion_Precio
-from gd_esquema.Maestra as A
-inner join LOPEZ_Y_CIA.Publicacion as B on A.Publicacion_Cod = B.codigoPublicacion
-where A.Publicacion_Tipo like 'C%'
-group by B.idPublicacion, A.Publicacion_Precio
-order by 1
+PRINT 'TABLA: Rubro'
 
-insert into LOPEZ_Y_CIA.PublicacionSubasta(valorInicialVenta, idPublicacion, valorActual)
-select A.Publicacion_Precio, B.idPublicacion, A.Publicacion_Precio+max(A.Oferta_Monto) [actual]
-from gd_esquema.Maestra as A
-inner join LOPEZ_Y_CIA.Publicacion as B on A.Publicacion_Cod = B.codigoPublicacion
-where A.Publicacion_Tipo like 'S%'
-group by B.idPublicacion, A.Publicacion_Precio
-order by 2
+--
 
-insert into LOPEZ_Y_CIA.OfertaSubasta(idPublicacion, idUsuario, monto, fecha, adjudicada)
-select B.idPublicacion, C.idUsuario, A.Oferta_Monto, A.Oferta_Fecha,
+INSERT INTO [LOPEZ_Y_CIA].[Calificacion] (cantEstrellas)
+SELECT Calificacion_Cant_Estrellas 
+FROM [gd_esquema].[Maestra]
+WHERE Calificacion_Codigo IS NOT NULL
+ORDER BY Calificacion_Codigo ASC
+
+PRINT 'TABLA: Calificacion'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[Rol] (nombre, activo) VALUES
+	('Cliente', 1),
+	('Empresa', 1),
+	('Admin', 1)
+
+PRINT 'TABLA: Rol'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[PublicacionNormal] (idPublicacion, precioPorUnidad)
+SELECT
+	B.idPublicacion,
+	A.Publicacion_Precio
+FROM [gd_esquema].[Maestra] AS A
+INNER JOIN [LOPEZ_Y_CIA].[Publicacion] AS B ON A.Publicacion_Cod = B.idPublicacion
+WHERE A.Publicacion_Tipo LIKE 'C%'
+GROUP BY
+	B.idPublicacion,
+	A.Publicacion_Precio
+ORDER BY 1
+
+PRINT 'TABLA: PublicacionNormal'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[PublicacionSubasta] (valorInicialVenta, idPublicacion, valorActual)
+SELECT
+	A.Publicacion_Precio,
+	B.idPublicacion,
+	A.Publicacion_Precio + MAX(A.Oferta_Monto) [actual]
+FROM [gd_esquema].[Maestra] AS A
+INNER JOIN [LOPEZ_Y_CIA].Publicacion AS B ON A.Publicacion_Cod = B.codigoPublicacion
+WHERE A.Publicacion_Tipo LIKE 'S%'
+GROUP BY B.idPublicacion, A.Publicacion_Precio
+ORDER BY 2
+
+PRINT 'TABLA: PublicacionSubasta'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[OfertaSubasta] (idPublicacion, idUsuario, monto, fecha, adjudicada)
+SELECT
+	B.idPublicacion,
+	C.idUsuario,
+	A.Oferta_Monto,
+	A.Oferta_Fecha,
 	CASE 
-		WHEN A.Oferta_Monto+A.Publicacion_Precio = D.valorActual 
+		WHEN A.Oferta_Monto + A.Publicacion_Precio = D.valorActual 
 		THEN 1
 		ELSE 0
-    END as adjudicada
-from gd_esquema.Maestra as A
-inner join LOPEZ_Y_CIA.Publicacion as B on A.Publicacion_Cod = B.codigoPublicacion
-inner join LOPEZ_Y_CIA.Cliente as C on A.Cli_Dni = C.dni
-inner join LOPEZ_Y_CIA.PublicacionSubasta as D on B.idPublicacion = D.idPublicacion
-where Publicacion_Tipo like 'S%' and Oferta_Fecha is not null
-group by B.idPublicacion, C.idUsuario, A.Oferta_Monto, A.Oferta_Fecha, A.Publicacion_Precio, D.valorActual
-order by B.idPublicacion asc, A.Oferta_Monto asc
+    END AS adjudicada
+FROM [gd_esquema].[Maestra] AS A
+INNER JOIN [LOPEZ_Y_CIA].[Publicacion] AS B ON A.Publicacion_Cod = B.codigoPublicacion
+INNER JOIN [LOPEZ_Y_CIA].[Cliente] AS C ON A.Cli_Dni = C.dni
+INNER JOIN [LOPEZ_Y_CIA].[PublicacionSubasta] AS D ON B.idPublicacion = D.idPublicacion
+WHERE Publicacion_Tipo LIKE 'S%' AND Oferta_Fecha IS NOT NULL
+GROUP BY
+	B.idPublicacion,
+	C.idUsuario,
+	A.Oferta_Monto,
+	A.Oferta_Fecha,
+	A.Publicacion_Precio,
+	D.valorActual
+ORDER BY B.idPublicacion ASC, A.Oferta_Monto ASC
 
-insert into LOPEZ_Y_CIA.Factura(idPublicacion, nroFactura, fecha, montoTotal, formaPagoDesc)
-select B.idPublicacion, A.Factura_Nro, A.Factura_Fecha, A.Factura_Total, A.Forma_Pago_Desc
-from gd_esquema.Maestra as A
-inner join LOPEZ_Y_CIA.Publicacion as B on A.Publicacion_Cod = B.codigoPublicacion
-where A.Factura_Nro is not null
-group by B.idPublicacion, A.Factura_Nro, A.Factura_Fecha, A.Factura_Total, A.Forma_Pago_Desc
-order by 2
+PRINT 'TABLA: OfertaSubasta'
 
-insert into LOPEZ_Y_CIA.ItemFactura(idFactura, cantidad, monto)
-select B.idFactura, A.Item_Factura_Cantidad, A.Item_Factura_Monto
-from gd_esquema.Maestra as A
-inner join LOPEZ_Y_CIA.Factura as B on A.Factura_Nro = B.nroFactura
-order by 1
+--
 
-insert into LOPEZ_Y_CIA.RolUsuario(idRol, idUsuario, activo)
-select 1 [rol], A.idUsuario, 1 [activo]
-from LOPEZ_Y_CIA.Usuario as A
-inner join LOPEZ_Y_CIA.Cliente as B on A.idUsuario = B.idUsuario
+INSERT INTO [LOPEZ_Y_CIA].[Factura] (idPublicacion, nroFactura, fecha, montoTotal, formaPagoDesc)
+SELECT
+	B.idPublicacion,
+	A.Factura_Nro,
+	A.Factura_Fecha,
+	A.Factura_Total,
+	A.Forma_Pago_Desc
+FROM [gd_esquema].[Maestra] AS A
+INNER JOIN [LOPEZ_Y_CIA].[Publicacion] AS B ON A.Publicacion_Cod = B.codigoPublicacion
+WHERE A.Factura_Nro IS NOT NULL
+GROUP BY
+	B.idPublicacion,
+	A.Factura_Nro,
+	A.Factura_Fecha,
+	A.Factura_Total,
+	A.Forma_Pago_Desc
+ORDER BY 2
 
-insert into LOPEZ_Y_CIA.RolUsuario(idRol, idUsuario, activo)
-select 2 [rol], A.idUsuario, 1 [activo]
-from LOPEZ_Y_CIA.Usuario as A
-inner join LOPEZ_Y_CIA.Empresa as B on A.idUsuario = B.idUsuario
+PRINT 'TABLA: Factura'
 
-insert into LOPEZ_Y_CIA.RubroPublicacion(idPublicacion, idRubro)
-select B.idPublicacion, C.idRubro
-from gd_esquema.Maestra as A
-inner join LOPEZ_Y_CIA.Publicacion as B on B.codigoPublicacion = A.Publicacion_Cod
-inner join LOPEZ_Y_CIA.Rubro as C on C.descripcion = A.Publicacion_Rubro_Descripcion
-group by B.idPublicacion, C.idRubro
-order by 1
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[ItemFactura] (idFactura, cantidad, monto)
+SELECT
+	B.idFactura,
+	A.Item_Factura_Cantidad,
+	A.Item_Factura_Monto
+FROM [gd_esquema].[Maestra] AS A
+INNER JOIN [LOPEZ_Y_CIA].[Factura] AS B ON A.Factura_Nro = B.nroFactura
+ORDER BY 1
+
+PRINT 'TABLA: ItemFactura'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[RolUsuario] (idRol, idUsuario, activo)
+SELECT
+	1 [rol],
+	A.idUsuario,
+	1 [activo]
+FROM [LOPEZ_Y_CIA].[Usuario] AS A
+INNER JOIN [LOPEZ_Y_CIA].[Cliente] AS B ON A.idUsuario = B.idUsuario
+UNION
+SELECT
+	2 [rol],
+	A.idUsuario,
+	1 [activo]
+FROM [LOPEZ_Y_CIA].[Usuario] AS A
+INNER JOIN [LOPEZ_Y_CIA].[Empresa] AS B ON A.idUsuario = B.idUsuario
+
+PRINT 'TABLA: RolUsuario'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[RubroPublicacion] (idPublicacion, idRubro)
+SELECT
+	B.idPublicacion,
+	C.idRubro
+FROM [gd_esquema].[Maestra] AS A
+INNER JOIN [LOPEZ_Y_CIA].[Publicacion] AS B ON B.codigoPublicacion = A.Publicacion_Cod
+INNER JOIN [LOPEZ_Y_CIA].[Rubro] AS C ON C.descripcion = A.Publicacion_Rubro_Descripcion
+GROUP BY
+	B.idPublicacion,
+	C.idRubro
+ORDER BY 1
+
+PRINT 'TABLA: RubroPublicacion'
 
 GO
 /** FIN DEL SCRIPT **/
