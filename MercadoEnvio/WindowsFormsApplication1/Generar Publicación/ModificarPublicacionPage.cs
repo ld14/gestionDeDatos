@@ -21,8 +21,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void ModificarPublicacionPage_Load(object sender, EventArgs e)
         {
-            PublicacionSubastaDaoImpl sub = new PublicacionSubastaDaoImpl();
-            this.Tag = sub.GetById(352375);
+            //PublicacionSubastaDaoImpl sub = new PublicacionSubastaDaoImpl();
+            //this.Tag = sub.GetById(352375);
 
             if (this.Tag != null)
             {
@@ -88,26 +88,38 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 fechaIncioDateTimeTxt.Value = fechaIncioDateTime.Value;
                 fechaVencimientoDateTimeTxt.Value = fechaVencimientoDateTime.Value;
 
+
+                //Seteo del WF del estado Actual a los estados posibles.
                 WorkflowEstadosDaoImpl workflowEstadosDaoImpl = new WorkflowEstadosDaoImpl();
                 IList<Estadopublicacion> estadosPublicacionLts = workflowEstadosDaoImpl.darWorkflowEstadosActivoByEstadoActual(estadoPublicacion.idEstadoPublicacion);
 
-                //Setup data binding
                 EstadoComboBox.DataSource = estadosPublicacionLts;
                 EstadoComboBox.DisplayMember = "nombre";
                 EstadoComboBox.ValueMember = "idEstadoPublicacion";
 
-
+                //Coloco el Rubro persistido primero y luego los restantes valores disponibles para ser cambiados
                 RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
-                IList<Rubro> rubroLts = rubroDaoImpli.darRubroActivo();
-/*                foreach (rubro rubrolts in rubrolts)  {
-                
-                }*/
+                IList<Rubro> rubroLts = rubroDaoImpli.darRubroDistintosA(rubro);
+                foreach (Rubro rubros in rubroLts) {
+                    rubro.Add(rubros);
+                }
 
-                RubroComboBox.DataSource = rubroLts;
+                RubroComboBox.DataSource = rubro;
                 RubroComboBox.DisplayMember = "descripcion";
                 RubroComboBox.ValueMember = "idRubro";
 
+                //Coloco el Visibilidad persistido primero y luego los restantes valores disponibles para ser cambiados
+                VisibilidadDaoImpl visbDaoImpl = new VisibilidadDaoImpl();
 
+                IList<Visibilidad> visbilidadLts = new List<Visibilidad>();
+                visbilidadLts.Add(visbilidad);
+                foreach (Visibilidad visbi in visbDaoImpl.darVisibilidadDistintosA(visbilidad)){
+                    visbilidadLts.Add(visbi);
+                }
+
+                visibilidadComboBox.DataSource = visbilidadLts;
+                visibilidadComboBox.DisplayMember = "nombreVisibilidad";
+                visibilidadComboBox.ValueMember = "idVisibilidad";
             }
         }
 

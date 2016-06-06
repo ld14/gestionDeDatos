@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
 
             //Esto debe ser autoIncrementable
-            double codigoPublicacion = 122222211;
+            double codigoPublicacion = 145441;
 
             //Esto hay que cambiarlo por el usuario logueado
 
@@ -65,24 +65,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             if(TipoPubliSelect.Text.Equals("Publicación Subasta")){
                 PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
                 nuevaPublicacion.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
-                                                       codigoPublicacion, descripcion, fechaIncioDateTime, 
-                                                       fechaVencimientoDateTime,stock,preguntasSN,envioSN,precio,valorActual);
-
-                /*estadopublicacion estadopublicacion = new estadopublicacion();
-                estadopublicacion.nombre = "public";
-                estadopublicacion.nombrecorto = "pub";
-
-                visibilidad c = new visibilidad();
-                c.nombrevisibilidad = "plata";
-                c.costo = 20;
-
-                datosbasicos dtbasicos = new datosbasicos();
-                dtbasicos.setdatosbasicos("so112211ym1222ayo4@hotmail.com", "2a1221", 1, 1, "2", "152", "mata", "cap");
-
-                cliente cliente = new cliente("juanmor21121e11222112ira4", "1221213111411122323", 41112222111865, 1, "1pedro ange222l 2", "poi", datetime.now, dtbasicos);
-                publicacionsubasta nuevasubasta = new publicacionsubasta();
-                nuevasubasta.setpublicacionsubasta(estadopublicacion, selectedvisibilidad, usr, codigopublicacion, descripcion, fechainciodatetime, fechavencimientodatetime, stock, preguntassn, enviosn, precio, valoractual);
-                */
+                                                       codigoPublicacion, descripcion, fechaIncioDateTime,
+                                                       fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, valorActual, selectedRubro);
 
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
                 publicacionSubastaDaoImpl.Update(nuevaPublicacion);
@@ -96,7 +80,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 PublicacionNormal nuevaPublicacion = new PublicacionNormal();
                 nuevaPublicacion.setPublicacionNormal(selectedEstado, selectedVisibilidad, usr,
                                        codigoPublicacion, descripcion, fechaIncioDateTime,
-                                       fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio);
+                                       fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
 
                 
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
@@ -150,6 +134,11 @@ namespace WindowsFormsApplication1.Generar_Publicación
             visibilidadComboBox.DataSource = VisibilidadLts;
             visibilidadComboBox.DisplayMember = "nombreVisibilidad";
             visibilidadComboBox.ValueMember = "idVisibilidad";
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
         }
     }

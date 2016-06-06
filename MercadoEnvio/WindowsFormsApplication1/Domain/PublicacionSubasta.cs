@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1 {
 
         public virtual void setPublicacionSubasta(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
                            double codigoPublicacion, string descripcion, DateTime fechaCreacion,
-                           DateTime fechaVencimiento, double stock, bool preguntasSN, bool envioSN,double valorInicialVenta,double valorActual)
+                           DateTime fechaVencimiento, double stock, bool preguntasSN, bool envioSN,double valorInicialVenta,double valorActual,Rubro rubro)
         {
             this.EstadoPublicacion = estadoPublicacion;
             this.Visibilidad = visibilidad;
@@ -30,6 +30,9 @@ namespace WindowsFormsApplication1 {
             this.valorInicialVenta = valorInicialVenta;
             this.valorActual = valorActual;
 
+            ICollection<Rubro> rubroLts = new List<Rubro>();
+            rubroLts.Add(rubro);
+            this.RubroLst = rubroLts;
         }
 
     }

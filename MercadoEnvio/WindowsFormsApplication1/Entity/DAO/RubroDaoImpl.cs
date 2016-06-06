@@ -57,14 +57,15 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public IList<Rubro> darRubroDistintosA(IList<Rubro> rubrosLts){
+        public IList<Rubro> darRubroDistintosA(ICollection<Rubro> rubrosLts) {
             using (NHibernateManager manager = new NHibernateManager()) {
-
+                List<int> idRubroLts = new List<int>();
+                foreach(Rubro rb in rubrosLts){
+                    idRubroLts.Add(rb.idRubro);
+                }
                 ICriteria crit = manager.Session.CreateCriteria<Rubro>();
-                //crit.Add(Expression.Not(Expression.Eq());
+                crit.Add(Expression.Not(Expression.In("idRubro",idRubroLts)));
                 return crit.List<Rubro>(); 
-                
-
             }
         }
     }

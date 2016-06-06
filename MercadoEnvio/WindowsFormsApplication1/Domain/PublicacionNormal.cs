@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1 {
 
         public virtual void setPublicacionNormal(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
                    double codigoPublicacion, string descripcion, DateTime fechaCreacion,
-                   DateTime fechaVencimiento, double stock, bool preguntasSN, bool envioSN, double valorInicialVenta)
+                   DateTime fechaVencimiento, double stock, bool preguntasSN, bool envioSN, double valorInicialVenta,Rubro rubro)
         {
             this.EstadoPublicacion = estadoPublicacion;
             this.Visibilidad = visibilidad;
@@ -26,6 +26,9 @@ namespace WindowsFormsApplication1 {
             this.envioSN = envioSN;
             this.precioPorUnidad = valorInicialVenta;
 
+            ICollection<Rubro> rubroLts = new List<Rubro>();
+            rubroLts.Add(rubro);
+            this.RubroLst = rubroLts;
 
         }
     }

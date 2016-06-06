@@ -55,8 +55,19 @@ namespace WindowsFormsApplication1
                 return crit.List<Visibilidad>(); 
                 
 
+            }
         }
-    }
 
+
+        public IList<Visibilidad> darVisibilidadDistintosA(Visibilidad visibilidad)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+
+                ICriteria crit = manager.Session.CreateCriteria<Visibilidad>();
+                crit.Add(Expression.Not(Expression.Eq("idVisibilidad", visibilidad.idVisibilidad)));
+                return crit.List<Visibilidad>();
+            }
+        }
     }
 }
