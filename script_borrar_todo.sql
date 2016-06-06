@@ -16,7 +16,9 @@ WHERE  TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA = 'LOPEZ_Y_CIA';
 
 SET @sql += N'
 
+DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaCalif];
+DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaVisib];
 DROP SCHEMA [LOPEZ_Y_CIA];'
 
 PRINT @sql;
---EXEC sp_executesql @sql;
+EXEC sp_executesql @sql;
