@@ -21,4 +21,4 @@ DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaVisib];
 DROP SCHEMA [LOPEZ_Y_CIA];'
 
 PRINT @sql;
-EXEC sp_executesql @sql;
+--EXEC sp_executesql @sql;
