@@ -63,8 +63,9 @@ namespace WindowsFormsApplication1
             using (NHibernateManager manager = new NHibernateManager())
             {
                 ICriteria crit = manager.Session.CreateCriteria<PublicacionSubasta>();
-                //crit.CreateAlias("Usuario", "usr");
                 crit.Add(Expression.Eq("Usuario", usuario));
+                crit.CreateAlias("EstadoPublicacion", "estado");
+                crit.Add(Expression.Not(Expression.Eq("estado.nombre", "Finalizada")));
                 return crit.List<PublicacionSubasta>();
             }
         }

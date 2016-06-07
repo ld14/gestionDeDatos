@@ -65,6 +65,8 @@ namespace WindowsFormsApplication1
                 ICriteria crit = manager.Session.CreateCriteria<PublicacionNormal>();
                 //crit.CreateAlias("Usuario", "usr");
                 crit.Add(Expression.Eq("Usuario", usuario));
+                crit.CreateAlias("EstadoPublicacion", "estado");
+                crit.Add(Expression.Not(Expression.Eq("estado.nombre", "Finalizada")));
                 return crit.List<PublicacionNormal>();
             }
          }
