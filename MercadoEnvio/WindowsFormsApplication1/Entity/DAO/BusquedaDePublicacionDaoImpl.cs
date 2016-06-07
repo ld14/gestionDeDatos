@@ -58,5 +58,22 @@ namespace WindowsFormsApplication1
             }
         }
 
-    }
+        public IList<BusquedaDePublicacion> darListaFiltradaPorRubroDescripcion(List<string> selectedRubrosLst, String descripcionTxt)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                //desRubro descripcion
+                ICriteria crit = manager.Session.CreateCriteria<BusquedaDePublicacion>();
+                if (!descripcionTxt.Equals("")) {
+                    crit.Add(Expression.Eq("descripcion", descripcionTxt));  
+                }
+                if (selectedRubrosLst.Count > 0) {
+                    crit.Add(Expression.In("desRubro", selectedRubrosLst));
+                }
+                return crit.List<BusquedaDePublicacion>();
+
+
+            }
+        }
+     }
 }
