@@ -106,8 +106,11 @@
     <Compile Include="ComprarOfertar\BusquedaPublicacion.Designer.cs">
       <DependentUpon>BusquedaPublicacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Domain\BusquedaDePublicacion.cs" />
     <Compile Include="Entity\DAO\ClienteDao.cs" />
     <Compile Include="Entity\DAO\ClienteDaoImpl.cs" />
+    <Compile Include="Entity\DAO\BusquedaDePublicacionDao.cs" />
+    <Compile Include="Entity\DAO\BusquedaDePublicacionDaoImpl.cs" />
     <Compile Include="Entity\DAO\PublicacionNormalDaoImpl.cs" />
     <Compile Include="Entity\DAO\PublicacionNormalDao.cs" />
     <Compile Include="Entity\DAO\RubroDaoImpl.cs" />
@@ -316,6 +319,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Maps\Visibilidad.hbm.xml" />
     <EmbeddedResource Include="Maps\WorkflowEstados.hbm.xml" />
+    <EmbeddedResource Include="Maps\BusquedaDePublicacion.hbm.xml" />
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <ItemGroup />

@@ -29,7 +29,19 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+
             /*
+                         try
+            {
+                BusquedaDePublicacionDaoImpl busquedaDePublicacionDaoImpl = new BusquedaDePublicacionDaoImpl();
+                IList<BusquedaDePublicacion> busquedaDePublicacionLts = busquedaDePublicacionDaoImpl.darLista();
+            }
+            catch (Exception conect)
+            {
+
+                throw;
+            }
             Estadopublicacion estadoPublicacion = new Estadopublicacion();
             estadoPublicacion.nombre = "Public";
             estadoPublicacion.nombreCorto = "pub";
