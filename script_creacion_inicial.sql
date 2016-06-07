@@ -40,7 +40,7 @@ CREATE TABLE [LOPEZ_Y_CIA].[ComisionesParametrizables](
 
 CREATE TABLE [LOPEZ_Y_CIA].[CompraUsuario](
 	[idCompraUsuario] [int] IDENTITY(1,1) NOT NULL,
-	[idFactura] [int] NOT NULL UNIQUE,
+	[idFactura] [int] NOT NULL,
 	[idUsuario] [int] NOT NULL,
 	[idCalificacion] [int] NULL,
 	CONSTRAINT [PK_CompraUsuario] PRIMARY KEY CLUSTERED([idCompraUsuario] ASC)
@@ -577,7 +577,7 @@ SELECT
 	B.idPublicacion,
 	A.Publicacion_Precio
 FROM [gd_esquema].[Maestra] AS A
-INNER JOIN [LOPEZ_Y_CIA].[Publicacion] AS B ON A.Publicacion_Cod = B.idPublicacion
+INNER JOIN [LOPEZ_Y_CIA].[Publicacion] AS B ON A.Publicacion_Cod = B.codigoPublicacion
 WHERE A.Publicacion_Tipo LIKE 'C%'
 GROUP BY
 	B.idPublicacion,
@@ -699,6 +699,23 @@ GROUP BY
 ORDER BY 1
 
 PRINT 'TABLA: RubroPublicacion'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[CompraUsuario] (idFactura, idUsuario, idCalificacion)
+SELECT
+	C.idFactura,
+	D.idUsuario,
+	E.idCalificacion
+FROM [gd_esquema].[Maestra] AS A
+INNER JOIN [LOPEZ_Y_CIA].[Publicacion] AS B ON A.Publicacion_Cod = B.codigoPublicacion
+INNER JOIN [LOPEZ_Y_CIA].[Factura] AS C ON B.idPublicacion = C.idPublicacion
+INNER JOIN [LOPEZ_Y_CIA].[Cliente] AS D ON D.dni = A.Cli_Dni
+INNER JOIN [LOPEZ_Y_CIA].[Calificacion] AS E ON E.codigo = A.Calificacion_Codigo
+WHERE Compra_Cantidad IS NOT NULL
+ORDER BY 1
+
+PRINT 'TABLA: CompraUsuario'
 PRINT CHAR(13) + '--------------------------------'
 
 GO
@@ -734,4 +751,5 @@ COMMIT TRAN;
 
 PRINT 'UPDATE A TABLA: Usuario'
 
+GO
 /** FIN DEL SCRIPT **/
