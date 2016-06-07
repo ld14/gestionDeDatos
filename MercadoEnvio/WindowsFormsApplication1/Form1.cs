@@ -10,6 +10,7 @@ using WindowsFormsApplication1.ABM_Rol;
 using WindowsFormsApplication1.ABM_Rubro;
 using WindowsFormsApplication1.ABM_Visibilidad;
 using WindowsFormsApplication1.Generar_Publicación;
+using WindowsFormsApplication1.ComprarOfertar;
 
 
 
@@ -249,6 +250,13 @@ namespace WindowsFormsApplication1
             BuscadorPublicacion buscadorPublicaciones = new BuscadorPublicacion();
             buscadorPublicaciones.MdiParent = this;
             buscadorPublicaciones.Show();
+        }
+
+        private void buscarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BusquedaPublicacion busquedaPublicacion = new BusquedaPublicacion();
+            busquedaPublicacion.MdiParent = this;
+            busquedaPublicacion.Show();
         }
     }
 }

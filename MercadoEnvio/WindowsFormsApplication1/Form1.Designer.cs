@@ -43,6 +43,8 @@
             this.nuevaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comprarOfertarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +52,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aBMToolStripMenuItem,
-            this.generarPublicacionToolStripMenuItem});
+            this.generarPublicacionToolStripMenuItem,
+            this.comprarOfertarToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -146,6 +149,19 @@
             resources.ApplyResources(this.buscarToolStripMenuItem, "buscarToolStripMenuItem");
             this.buscarToolStripMenuItem.Click += new System.EventHandler(this.buscarToolStripMenuItem_Click);
             // 
+            // comprarOfertarToolStripMenuItem
+            // 
+            this.comprarOfertarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buscarToolStripMenuItem1});
+            this.comprarOfertarToolStripMenuItem.Name = "comprarOfertarToolStripMenuItem";
+            resources.ApplyResources(this.comprarOfertarToolStripMenuItem, "comprarOfertarToolStripMenuItem");
+            // 
+            // buscarToolStripMenuItem1
+            // 
+            this.buscarToolStripMenuItem1.Name = "buscarToolStripMenuItem1";
+            resources.ApplyResources(this.buscarToolStripMenuItem1, "buscarToolStripMenuItem1");
+            this.buscarToolStripMenuItem1.Click += new System.EventHandler(this.buscarToolStripMenuItem1_Click);
+            // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
@@ -179,6 +195,8 @@
         private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comprarOfertarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem1;
 
 
     }

@@ -127,29 +127,23 @@
   <data name="aBMToolStripMenuItem.Text" xml:space="preserve">
     <value>ABM</value>
   </data>
-  <data name="nuevaToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="nuevaToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Alta</value>
-  </data>
-  <data name="modificacionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="modificacionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Modificacion</value>
-  </data>
-  <data name="buscarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="buscarToolStripMenuItem.Text" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
   <data name="generarPublicacionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 20</value>
   </data>
   <data name="generarPublicacionToolStripMenuItem.Text" xml:space="preserve">
     <value>Publicacion</value>
+  </data>
+  <data name="buscarToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="buscarToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="comprarOfertarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 20</value>
+  </data>
+  <data name="comprarOfertarToolStripMenuItem.Text" xml:space="preserve">
+    <value>Comprar/Ofertar</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -223,6 +217,24 @@
   </data>
   <data name="nuevaToolStripMenuItem.Text" xml:space="preserve">
     <value>Nueva</value>
+  </data>
+  <data name="nuevaToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="nuevaToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Alta</value>
+  </data>
+  <data name="modificacionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="modificacionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Modificacion</value>
+  </data>
+  <data name="buscarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="buscarToolStripMenuItem.Text" xml:space="preserve">
+    <value>Buscar</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3699,6 +3711,18 @@
     <value>buscarToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;buscarToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comprarOfertarToolStripMenuItem.Name" xml:space="preserve">
+    <value>comprarOfertarToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;comprarOfertarToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buscarToolStripMenuItem1.Name" xml:space="preserve">
+    <value>buscarToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;buscarToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

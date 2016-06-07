@@ -100,11 +100,11 @@
     <Compile Include="Calificar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComprarOfertar\Form1.cs">
+    <Compile Include="ComprarOfertar\BusquedaPublicacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComprarOfertar\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ComprarOfertar\BusquedaPublicacion.Designer.cs">
+      <DependentUpon>BusquedaPublicacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Entity\DAO\ClienteDao.cs" />
     <Compile Include="Entity\DAO\ClienteDaoImpl.cs" />
@@ -122,17 +122,20 @@
     <Compile Include="Entity\DAO\EstadoPublicacionDaoImpl.cs" />
     <Compile Include="Entity\DAO\EstadoPublicacionDao.cs" />
     <Compile Include="Entity\DAO\RolDao.cs" />
+    <Compile Include="Entity\Utils\CustomControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Generar Publicación\BuscadorPublicacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Generar Publicación\BuscadorPublicacion.Designer.cs">
       <DependentUpon>BuscadorPublicacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Publicación\Form11.cs">
+    <Compile Include="Generar Publicación\Form12.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Generar Publicación\Form11.Designer.cs">
-      <DependentUpon>Form11.cs</DependentUpon>
+    <Compile Include="Generar Publicación\Form12.Designer.cs">
+      <DependentUpon>Form12.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Publicación\GenerarPublicacionPage.cs">
       <SubType>Form</SubType>
@@ -218,11 +221,14 @@
     <EmbeddedResource Include="ABM Visibilidad\VisibilidadPage.resx">
       <DependentUpon>VisibilidadPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOfertar\BusquedaPublicacion.resx">
+      <DependentUpon>BusquedaPublicacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicación\BuscadorPublicacion.resx">
       <DependentUpon>BuscadorPublicacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generar Publicación\Form11.resx">
-      <DependentUpon>Form11.cs</DependentUpon>
+    <EmbeddedResource Include="Generar Publicación\Form12.resx">
+      <DependentUpon>Form12.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicación\GenerarPublicacionPage.resx">
       <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
