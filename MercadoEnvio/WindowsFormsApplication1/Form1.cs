@@ -29,9 +29,21 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
             /*
+            try
+            {
+                myConfiguration = new Configuration();
+                myConfiguration.Configure();
+                mySessionFactory = myConfiguration.BuildSessionFactory();
+                mySession = mySessionFactory.OpenSession();
+            }
+            catch (Exception conect)
+            {
+
+                throw;
+            }
+
+            
                          try
             {
                 BusquedaDePublicacionDaoImpl busquedaDePublicacionDaoImpl = new BusquedaDePublicacionDaoImpl();

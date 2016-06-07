@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Ofertasubasta" table="OfertaSubasta" lazy="true" >
+    
+    <id name="idOfertaSubasta" column="idOfertaSubasta">
+      <generator class="identity" />
+    </id>
+
+    <many-to-one name="PublicacionSubasta" column="idPublicacion"  cascade="all"/>
+
+    <many-to-one name="Usuario" column="idUsuario"  cascade="all"/>
+    
+    <property name="monto">
+      <column name="monto" sql-type="numeric" not-null="true" />
+    </property>
+    
+    <property name="fecha">
+      <column name="fecha" sql-type="datetime" not-null="true" />
+    </property>
+    
+    <property name="adjudicada">
+      <column name="adjudicada" sql-type="bit" not-null="true" />
+    </property>
+    
+  </class>
+</hibernate-mapping>
+

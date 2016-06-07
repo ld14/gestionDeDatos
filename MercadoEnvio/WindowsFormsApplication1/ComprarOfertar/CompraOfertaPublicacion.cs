@@ -135,5 +135,77 @@ namespace WindowsFormsApplication1.ComprarOfertar
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
+            DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
+
+            if (comboBox1.Text.Equals("Publicación Subasta")) {
+                if (Convert.ToDouble(ValorOferta.Text) < Convert.ToDouble(PrecioActualTxt.Text))  {
+                    MessageBox.Show("No puede ofertar un valor menor al Actual");
+                    return;
+                }
+
+                //Esto hay que cambiarlo por el usuario Logueado
+                ClienteDaoImpl usrImpl = new ClienteDaoImpl();
+                Cliente usr = usrImpl.GetUsuarioById(1);
+
+                PublicacionSubasta nuevaOfertaPublicacion = (PublicacionSubasta)this.Tag;
+                nuevaOfertaPublicacion.valorActual = Convert.ToDouble(ValorOferta.Text);
+
+                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+                publicacionSubastaDaoImpl.Update(nuevaOfertaPublicacion);
+
+                Ofertasubasta nuevaOferta = new Ofertasubasta();
+                nuevaOferta.monto = Convert.ToDouble(ValorOferta.Text);
+                nuevaOferta.PublicacionSubasta = nuevaOfertaPublicacion;
+                nuevaOferta.Usuario = usr;
+
+                
+                nuevaOferta.fecha = fehaSistema;
+                nuevaOferta.adjudicada = false;
+
+                OfertaSubastaDaoImpl ofertaSuabastaImpl = new OfertaSubastaDaoImpl();
+                ofertaSuabastaImpl.Add(nuevaOferta);
+
+                MessageBox.Show("Su Oferta Fue Efectuada");
+
+            } else {
+                
+                PublicacionNormal nuevaCompraPublicacion = (PublicacionNormal)this.Tag;
+
+                if (nuevaCompraPublicacion.stock > Convert.ToDouble(ValorOferta.Text))
+                {
+                    //Al total del producto le resto el valor solicitado
+                    nuevaCompraPublicacion.stock = nuevaCompraPublicacion.stock - Convert.ToDouble(ValorOferta.Text);
+                }
+                else {
+                    //Se vendio el total del producto.
+                    nuevaCompraPublicacion.stock = 0;
+
+                    EstadoPublicacionDaoDaoImpl estadoDaoImpl = new EstadoPublicacionDaoDaoImpl();
+                    nuevaCompraPublicacion.EstadoPublicacion = estadoDaoImpl.darEstadoByID(4);
+
+                    Factura factura = new Factura();
+                    factura.nroFactura = 1223454;
+                    factura.fecha = fehaSistema;
+                    factura.Publicacion = nuevaCompraPublicacion;
+                    factura.formaPagoDesc = "Efectivo";
+
+                    /*        public virtual double? nroFactura { get; set; }
+        public virtual DateTime? fecha { get; set; }
+        public virtual double? montoTotal { get; set; }
+        public virtual string formaPagoDesc { get; set; }
+        public virtual Publicacion Publicacion { get; set; }
+        public virtual ISet<ItemFactura> ItemFacturas { get; set; }*/           
+                }
+                
+
+
+
+            }
+        }
+
     }
 }

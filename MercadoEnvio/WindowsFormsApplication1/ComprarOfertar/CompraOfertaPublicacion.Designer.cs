@@ -51,7 +51,7 @@
             this.PrecioActualTxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.ValorOferta = new System.Windows.Forms.TextBox();
             this.CompraDatos = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -65,8 +65,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.CompraDatos);
             this.groupBox1.Controls.Add(this.SubastaOpciones);
+            this.groupBox1.Controls.Add(this.CompraDatos);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.label3);
@@ -235,6 +235,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Efectuar Operacion";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
@@ -251,7 +252,7 @@
             this.SubastaOpciones.Controls.Add(this.PrecioActualTxt);
             this.SubastaOpciones.Controls.Add(this.label7);
             this.SubastaOpciones.Controls.Add(this.label12);
-            this.SubastaOpciones.Controls.Add(this.textBox3);
+            this.SubastaOpciones.Controls.Add(this.ValorOferta);
             this.SubastaOpciones.Location = new System.Drawing.Point(533, 143);
             this.SubastaOpciones.Name = "SubastaOpciones";
             this.SubastaOpciones.Size = new System.Drawing.Size(429, 197);
@@ -285,12 +286,12 @@
             this.label12.TabIndex = 5;
             this.label12.Text = "Subasta";
             // 
-            // textBox3
+            // ValorOferta
             // 
-            this.textBox3.Location = new System.Drawing.Point(144, 60);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(271, 20);
-            this.textBox3.TabIndex = 4;
+            this.ValorOferta.Location = new System.Drawing.Point(144, 60);
+            this.ValorOferta.Name = "ValorOferta";
+            this.ValorOferta.Size = new System.Drawing.Size(271, 20);
+            this.ValorOferta.TabIndex = 4;
             // 
             // CompraDatos
             // 
@@ -377,7 +378,7 @@
         private System.Windows.Forms.TextBox PrecioActualTxt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox ValorOferta;
         private System.Windows.Forms.GroupBox CompraDatos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox2;
