@@ -15,12 +15,6 @@ Cliente:
  - comprasEfectuadas
  - comprasCalificadas
 
-CompraUsuario:
- - Cargar toda la tabla Compras
-
-Empresa:
- - perfilActivo cambiar a [bit]
-
 Funciones:
  - Cargar todas las funciones
 
@@ -35,8 +29,6 @@ RubroPublicacion:
 
 Usuario:
  - Encriptar la contraseña con SHA-256
- - cantidadEstrellas
- - cantidadVentas
 
   
 Triggers y Tareas Programadas
