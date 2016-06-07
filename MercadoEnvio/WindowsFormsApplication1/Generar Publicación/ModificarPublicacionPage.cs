@@ -90,6 +90,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 fechaVencimientoDateTimeTxt.Value = fechaVencimientoDateTime.Value;
 
 
+
                 //Seteo del WF del estado Actual a los estados posibles.
                 WorkflowEstadosDaoImpl workflowEstadosDaoImpl = new WorkflowEstadosDaoImpl();
                 IList<Estadopublicacion> estadosPublicacionLts = workflowEstadosDaoImpl.darWorkflowEstadosActivoByEstadoActual(estadoPublicacion.idEstadoPublicacion);
@@ -122,6 +123,22 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 visibilidadComboBox.DataSource = visbilidadLts;
                 visibilidadComboBox.DisplayMember = "nombreVisibilidad";
                 visibilidadComboBox.ValueMember = "idVisibilidad";
+
+                desahabilitarCamposPorEstado(estadoPublicacion);
+            }
+        }
+
+        private void desahabilitarCamposPorEstado(Estadopublicacion estadoPublicacion) {
+            if (!estadoPublicacion.nombre.Equals("Borrador")) {
+                DescripcionTxt.ReadOnly = true;
+                stockTxt.ReadOnly = true;
+                EnvioCheckBox.Enabled = false;
+                PreguntasCheckBox.Enabled = false;
+                PrecioTxt.ReadOnly = true;
+                fechaIncioDateTimeTxt.Enabled = false;
+                fechaVencimientoDateTimeTxt.Enabled = false;
+                visibilidadComboBox.Enabled = false;
+                RubroComboBox.Enabled = false;
             }
         }
 
