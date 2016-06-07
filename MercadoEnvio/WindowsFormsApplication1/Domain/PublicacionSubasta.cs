@@ -35,5 +35,26 @@ namespace WindowsFormsApplication1 {
             this.RubroLst = rubroLts;
         }
 
+        public virtual void updatePublicacionSubasta(Estadopublicacion estadoPublicacion, Visibilidad visibilidad,
+                           string descripcion, DateTime fechaCreacion,
+                           DateTime fechaVencimiento, double stock, bool preguntasSN, bool envioSN, double valorInicialVenta, Rubro rubro)
+        {
+            this.EstadoPublicacion = estadoPublicacion;
+            this.Visibilidad = visibilidad;
+
+            this.descripcion = descripcion;
+            this.fechaCreacion = fechaCreacion;
+            this.fechaVencimiento = fechaVencimiento;
+            this.stock = stock;
+            this.preguntasSN = preguntasSN;
+            this.envioSN = envioSN;
+
+            this.valorInicialVenta = valorInicialVenta;
+            this.valorActual = valorActual;
+
+            ICollection<Rubro> rubroLts = new List<Rubro>();
+            rubroLts.Add(rubro);
+            this.RubroLst = rubroLts;
+        }
     }
 }

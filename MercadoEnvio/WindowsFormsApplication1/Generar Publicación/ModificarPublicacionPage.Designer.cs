@@ -83,8 +83,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(222, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Grabar";
+            this.button1.Text = "Modificar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -292,7 +293,7 @@
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Location = new System.Drawing.Point(10, -1);
+            this.groupBox1.Location = new System.Drawing.Point(10, 14);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(984, 493);
             this.groupBox1.TabIndex = 4;

@@ -42,6 +42,7 @@
             this.generarPublicacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,7 +123,8 @@
             // 
             this.generarPublicacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevaToolStripMenuItem1,
-            this.modificacionToolStripMenuItem});
+            this.modificacionToolStripMenuItem,
+            this.buscarToolStripMenuItem});
             this.generarPublicacionToolStripMenuItem.Name = "generarPublicacionToolStripMenuItem";
             resources.ApplyResources(this.generarPublicacionToolStripMenuItem, "generarPublicacionToolStripMenuItem");
             // 
@@ -137,6 +139,12 @@
             this.modificacionToolStripMenuItem.Name = "modificacionToolStripMenuItem";
             resources.ApplyResources(this.modificacionToolStripMenuItem, "modificacionToolStripMenuItem");
             this.modificacionToolStripMenuItem.Click += new System.EventHandler(this.modificacionToolStripMenuItem_Click);
+            // 
+            // buscarToolStripMenuItem
+            // 
+            this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
+            resources.ApplyResources(this.buscarToolStripMenuItem, "buscarToolStripMenuItem");
+            this.buscarToolStripMenuItem.Click += new System.EventHandler(this.buscarToolStripMenuItem_Click);
             // 
             // Login
             // 
@@ -170,6 +178,7 @@
         private System.Windows.Forms.ToolStripMenuItem generarPublicacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
 
 
     }

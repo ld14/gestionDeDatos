@@ -10,7 +10,7 @@
     <property name="password">
       <column name="password" sql-type="nvarchar" not-null="true" />
     </property>
-    <property name="activoUsuario">
+    <property name="activoUsuario"> 
       <column name="activoUsuario" sql-type="bit" not-null="true" />
     </property>
     <property name="intentosFallidos">

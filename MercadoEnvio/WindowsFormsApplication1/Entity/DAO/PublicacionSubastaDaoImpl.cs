@@ -55,8 +55,19 @@ namespace WindowsFormsApplication1
                 crit.Add(Expression.Eq("usr.userName",usuario));                
                 return crit.UniqueResult<PublicacionSubasta>();
 
+            }
         }
-    }
+
+        public IList<PublicacionSubasta> GetPublicacionByUsuario(Usuario usuario)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<PublicacionSubasta>();
+                //crit.CreateAlias("Usuario", "usr");
+                crit.Add(Expression.Eq("Usuario", usuario));
+                return crit.List<PublicacionSubasta>();
+            }
+        }
 
     }
 }

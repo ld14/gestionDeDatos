@@ -12,5 +12,6 @@ namespace WindowsFormsApplication1
         void Remove(PublicacionSubasta publicacionSubasta);
         PublicacionSubasta GetById(int id);
         PublicacionSubasta GetByUsuario(string usuario);
+        IList<PublicacionSubasta> GetPublicacionByUsuario(Usuario usuario);
     }
 }

@@ -82,6 +82,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
                                        codigoPublicacion, descripcion, fechaIncioDateTime,
                                        fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
 
+                PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
                 
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
                 modificarPublicacionPage.Tag = nuevaPublicacion;

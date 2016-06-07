@@ -243,5 +243,12 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BuscadorPublicacion buscadorPublicaciones = new BuscadorPublicacion();
+            buscadorPublicaciones.MdiParent = this;
+            buscadorPublicaciones.Show();
+        }
     }
 }

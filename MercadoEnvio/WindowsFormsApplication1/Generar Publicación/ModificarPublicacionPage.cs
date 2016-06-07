@@ -37,6 +37,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 DateTime? fechaVencimientoDateTime = null;
                 String nombreUsuario = null;
                 Estadopublicacion estadoPublicacion = new Estadopublicacion();
+                Rubro rubroPub = new Rubro();
                 ICollection<Rubro> rubro = new List<Rubro>();
                 Visibilidad visbilidad = new Visibilidad();
 
@@ -55,7 +56,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     nombreUsuario = publicacionSubasta.Usuario.userName;
                     //Combo values
                     estadoPublicacion = publicacionSubasta.EstadoPublicacion;
-                    rubro = publicacionSubasta.RubroLst;
+                    rubroPub = publicacionSubasta.RubroLst.First();
                     visbilidad = publicacionSubasta.Visibilidad;
 
                 } if (this.Tag is PublicacionNormal) {
@@ -73,7 +74,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     nombreUsuario = publicacionDirecta.Usuario.userName;
                     //Combo values
                     estadoPublicacion = publicacionDirecta.EstadoPublicacion;
-                    rubro = publicacionDirecta.RubroLst;
+                    rubroPub = publicacionDirecta.RubroLst.First();
                     visbilidad = publicacionDirecta.Visibilidad;
                 }
                 
@@ -99,6 +100,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
                 //Coloco el Rubro persistido primero y luego los restantes valores disponibles para ser cambiados
                 RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
+                rubro.Add(rubroPub);
                 IList<Rubro> rubroLts = rubroDaoImpli.darRubroDistintosA(rubro);
                 foreach (Rubro rubros in rubroLts) {
                     rubro.Add(rubros);
@@ -131,32 +133,65 @@ namespace WindowsFormsApplication1.Generar_Publicación
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String descripcion = DescripcionTxt.Text;
+            Double stock = Convert.ToDouble(stockTxt.Text);
+            bool envioSN = EnvioCheckBox.Checked;
+            bool preguntasSN = PreguntasCheckBox.Checked;
+            Double precio = Convert.ToDouble(PrecioTxt.Text);
+
+            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
+            DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
+
+            DateTime fechaIncioDateTime = DateUtils.convertirStringEnFecha(fechaIncioDateTimeTxt.Value.ToString("dd/MM/yyyy"));
+            DateTime fechaVencimientoDateTime = DateUtils.convertirStringEnFecha(fechaVencimientoDateTimeTxt.Value.ToString("dd/MM/yyyy"));
+            Estadopublicacion selectedEstadoBox = EstadoComboBox.SelectedItem as Estadopublicacion;
+            EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(selectedEstadoBox.idEstadoPublicacion);
+
+            Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
+            Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
+
+            ModificarPublicacionPage modificarPublicacionPage = new ModificarPublicacionPage();
+
+            if (comboBox1.Text.Equals("Publicación Subasta"))
+            {
+                PublicacionSubasta nuevaPublicacion = (PublicacionSubasta)this.Tag;
+                nuevaPublicacion.updatePublicacionSubasta(selectedEstado, selectedVisibilidad, 
+                                                       descripcion, fechaIncioDateTime,
+                                                       fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
+
+                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
 
 
 
+                modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
+                modificarPublicacionPage.Tag = nuevaPublicacion;
+
+            }
+            else
+            {
+                PublicacionNormal nuevaPublicacion = (PublicacionNormal)this.Tag;
+                nuevaPublicacion.updatePublicacionNormal(selectedEstado, selectedVisibilidad, 
+                                       descripcion, fechaIncioDateTime,
+                                       fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
+
+                PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+
+                modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
+                modificarPublicacionPage.Tag = nuevaPublicacion;
+            }
 
 
+            modificarPublicacionPage.MdiParent = this.ParentForm;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            modificarPublicacionPage.Show();
+            this.Close();
         }
     }
 }

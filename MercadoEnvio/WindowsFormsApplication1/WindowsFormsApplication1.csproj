@@ -108,6 +108,8 @@
     </Compile>
     <Compile Include="Entity\DAO\ClienteDao.cs" />
     <Compile Include="Entity\DAO\ClienteDaoImpl.cs" />
+    <Compile Include="Entity\DAO\PublicacionNormalDaoImpl.cs" />
+    <Compile Include="Entity\DAO\PublicacionNormalDao.cs" />
     <Compile Include="Entity\DAO\RubroDaoImpl.cs" />
     <Compile Include="Entity\DAO\RubroDao.cs" />
     <Compile Include="Entity\DAO\UsuarioDao.cs" />
@@ -120,12 +122,25 @@
     <Compile Include="Entity\DAO\EstadoPublicacionDaoImpl.cs" />
     <Compile Include="Entity\DAO\EstadoPublicacionDao.cs" />
     <Compile Include="Entity\DAO\RolDao.cs" />
+    <Compile Include="Generar Publicación\BuscadorPublicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicación\BuscadorPublicacion.Designer.cs">
+      <DependentUpon>BuscadorPublicacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Publicación\Form11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicación\Form11.Designer.cs">
+      <DependentUpon>Form11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generar Publicación\GenerarPublicacionPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Generar Publicación\GenerarPublicacionPage.Designer.cs">
       <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generar Publicación\GrillaPublicacion.cs" />
     <Compile Include="Generar Publicación\ModificarPublicacionPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +218,12 @@
     <EmbeddedResource Include="ABM Visibilidad\VisibilidadPage.resx">
       <DependentUpon>VisibilidadPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicación\BuscadorPublicacion.resx">
+      <DependentUpon>BuscadorPublicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicación\Form11.resx">
+      <DependentUpon>Form11.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicación\GenerarPublicacionPage.resx">
       <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +253,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.BuscadorPublicaciones.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.Form11+Employee.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.Form11.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.GenerarPublicacionPage.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.GrillaPublicacion.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.ModificarPublicacionPage.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
