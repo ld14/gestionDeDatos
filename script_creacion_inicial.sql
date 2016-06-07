@@ -63,7 +63,7 @@ CREATE TABLE [LOPEZ_Y_CIA].[Empresa](
 	[razonSocial] [varchar](50) NOT NULL UNIQUE,
 	[cuit] [varchar](50) NOT NULL UNIQUE,
 	[fechaCreacion] [date] NULL,
-	[perfilActivo] [int] NOT NULL,
+	[perfilActivo] [bit] NOT NULL,
 	[idUsuario] [int] NOT NULL,
 	[nombreContacto] [varchar](50) NULL,
 	CONSTRAINT [PK_Empresa_1] PRIMARY KEY CLUSTERED([idUsuario] ASC)
@@ -699,6 +699,39 @@ GROUP BY
 ORDER BY 1
 
 PRINT 'TABLA: RubroPublicacion'
+PRINT CHAR(13) + '--------------------------------'
 
 GO
+
+/** TRANSACCIONES **/
+
+BEGIN TRAN;
+MERGE [LOPEZ_Y_CIA].[Usuario] AS T1
+USING (
+	SELECT
+		B.idUsuario [id],
+		SUM(A.Calificacion_Cant_Estrellas) [estrellas],
+		COUNT(A.Compra_Cantidad) [ventas]
+	FROM [gd_esquema].[Maestra] as A
+	INNER JOIN [LOPEZ_Y_CIA].[Cliente] AS B ON A.Publ_Cli_Dni = B.dni
+	WHERE A.Calificacion_Cant_Estrellas IS NOT NULL AND A.Publ_Cli_Dni IS NOT NULL
+	GROUP BY B.idUsuario
+	UNION
+	SELECT
+		B.idUsuario [id],
+		SUM(A.Calificacion_Cant_Estrellas) [estrellas],
+		COUNT(A.Compra_Cantidad) [ventas]
+	FROM [gd_esquema].[Maestra] as A
+	INNER JOIN [LOPEZ_Y_CIA].[Empresa] AS B ON A.Publ_Empresa_Cuit = B.cuit
+	WHERE A.Calificacion_Cant_Estrellas IS NOT NULL AND A.Publ_Empresa_Cuit IS NOT NULL
+	GROUP BY B.idUsuario
+) T2
+ON (T1.idUsuario = T2.id) 
+WHEN MATCHED THEN UPDATE SET
+	T1.cantidadEstrellas = T2.estrellas,
+	T1.cantidadVentas = T2.ventas;
+COMMIT TRAN;
+
+PRINT 'UPDATE A TABLA: Usuario'
+
 /** FIN DEL SCRIPT **/
