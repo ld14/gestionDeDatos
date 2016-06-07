@@ -117,10 +117,41 @@ namespace WindowsFormsApplication1.ComprarOfertar
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            CompraOfertaPublicacion modificarPublicacionPage = new CompraOfertaPublicacion();
+            string tipoPublicacion = "";
+            string idPublicacion = "";
+
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                tipoPublicacion = row.Cells[2].Value.ToString();
+                idPublicacion = row.Cells[0].Value.ToString();
+            }
+
+            if (tipoPublicacion.Equals("Subasta"))
+            {
+                PublicacionSubastaDaoImpl pubDaoImpl = new PublicacionSubastaDaoImpl();
+                PublicacionSubasta publi = pubDaoImpl.GetById(Convert.ToInt32(idPublicacion));
+                modificarPublicacionPage.Text = Convert.ToString(publi.idPublicacion);
+                modificarPublicacionPage.Tag = publi;
+            }
+            else
+            {
+                PublicacionNormalDaoImpl pubDaoImpl = new PublicacionNormalDaoImpl();
+                PublicacionNormal publi = pubDaoImpl.GetById(Convert.ToInt32(idPublicacion));
+                modificarPublicacionPage.Text = Convert.ToString(publi.idPublicacion);
+                modificarPublicacionPage.Tag = publi;
+            }
+
+            modificarPublicacionPage.MdiParent = this.ParentForm;
+
+            modificarPublicacionPage.Show();
+            this.Close();
 
         }
+
 
     }
 }
