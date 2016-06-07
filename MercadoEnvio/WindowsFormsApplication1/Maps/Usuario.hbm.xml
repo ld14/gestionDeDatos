@@ -82,7 +82,7 @@
           <column name="fechaCreacion" sql-type="date" not-null="false" />
         </property>
         <property name="perfilActivo">
-          <column name="perfilActivo" sql-type="int" not-null="true" />
+          <column name="perfilActivo" sql-type="bit" not-null="true" />
         </property>
         <property name="nombreContacto">
           <column name="nombreContacto" sql-type="nvarchar" not-null="false" />

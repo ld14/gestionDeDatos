@@ -9,7 +9,7 @@ namespace WindowsFormsApplication1 {
         public virtual string razonSocial { get; set; }
         public virtual string cuit { get; set; }
         public virtual DateTime? fechaCreacion { get; set; }
-        public virtual int perfilActivo { get; set; }
+        public virtual bool perfilActivo { get; set; }
         public virtual string nombreContacto { get; set; }
 
         public Empresa() {}
