@@ -86,18 +86,20 @@ namespace WindowsFormsApplication1.ComprarOfertar
             dataGridView1.DataSource = records;
            
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
+            
             dataGridView1.Columns[6].Visible = false;
             dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].Visible = false;
 
-            dataGridView1.Columns[2].HeaderText = "Codigo";
+            dataGridView1.Columns[1].HeaderText = "Codigo";
+            dataGridView1.Columns[2].HeaderText = "Tipo De Venta";
             dataGridView1.Columns[3].HeaderText = "Descripcion Producto";
             dataGridView1.Columns[3].Width = 200;
             dataGridView1.Columns[4].HeaderText = "Rubro";
             dataGridView1.Columns[4].Width = 200;
             dataGridView1.Columns[5].HeaderText = "Precio";
             dataGridView1.Columns[7].HeaderText = "Fin de Venta"; 
+
 
         }
 

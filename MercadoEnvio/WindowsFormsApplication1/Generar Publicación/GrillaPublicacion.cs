@@ -7,9 +7,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
 {
     class GrillaPublicacion
     {
-        public String tipoPublicacion { get; set; }
+        
         public int idPublicacion { get; set; }
         public double? codigo { get; set; }
+        public String tipoPublicacion { get; set; }
         public string descProducto { get; set; }
         public string rubro { get; set; }
         public double precio { get; set; }
