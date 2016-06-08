@@ -174,66 +174,75 @@ namespace WindowsFormsApplication1.ComprarOfertar
             } else {
                 PublicacionNormalDaoImpl actualizarPublicImpl = new PublicacionNormalDaoImpl();
                 PublicacionNormal nuevaCompraPublicacion = (PublicacionNormal)this.Tag;
+                ComisionesParametrizablesDaoImpl cparImpl = new ComisionesParametrizablesDaoImpl();
+                double cantidadVendida = Convert.ToDouble(CantidadComprada.Text);
 
                 if (nuevaCompraPublicacion.stock > Convert.ToDouble(CantidadComprada.Text))
                 {
                     //Al total del producto le resto el valor solicitado
                     nuevaCompraPublicacion.stock = nuevaCompraPublicacion.stock - Convert.ToDouble(CantidadComprada.Text);
                 } else {
-                    double cantidadVendida = Convert.ToDouble(CantidadComprada.Text);
-                    ComisionesParametrizablesDaoImpl cparImpl = new ComisionesParametrizablesDaoImpl();
                     //Se vendio el total del producto.
                     nuevaCompraPublicacion.stock = 0;
-                    
                     // Paso la compra a estado finalizado, actualizo el Stock y sumo una venta al cliente que publico
                     EstadoPublicacionDaoDaoImpl estadoDaoImpl = new EstadoPublicacionDaoDaoImpl();
                     nuevaCompraPublicacion.EstadoPublicacion = estadoDaoImpl.darEstadoByID(4);
-                    nuevaCompraPublicacion.Usuario.cantidadVentas = nuevaCompraPublicacion.Usuario.cantidadVentas + 1;
-                    actualizarPublicImpl.Update(nuevaCompraPublicacion);
+                }    
+                    
+                    
+                nuevaCompraPublicacion.Usuario.cantidadVentas = nuevaCompraPublicacion.Usuario.cantidadVentas + 1;
+                actualizarPublicImpl.Update(nuevaCompraPublicacion);
 
-                    //Genero la compra Cliente y actualizo sus contadores
-                    ClienteDaoImpl usrImpl = new ClienteDaoImpl();
-                    Cliente usr = usrImpl.GetUsuarioById(1); //Esto se debe cambiar por el cliente loguado.
-                    usr.comprasEfectuadas = usr.comprasEfectuadas + 1;
-                    usrImpl.Update(usr);
 
-                    //Actualizo la factura y cargo los datos del nuevo item
-                    //TODO: ACA DEBERIA HABER HECHO UNA LISTA Y RECORRERLA CON LOS ITEMS SI QUEDA TIEMPO LO REFACTORIZO
-                    FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
-                    Factura fact = factDaoImpl.darFacturaByPublicacionID(nuevaCompraPublicacion.idPublicacion);
+                //Actualizo la factura y cargo los datos del nuevo item
+                //TODO: ACA DEBERIA HABER HECHO UNA LISTA Y RECORRERLA CON LOS ITEMS SI QUEDA TIEMPO LO REFACTORIZO
+                FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                Factura fact = factDaoImpl.darFacturaByPublicacionID(nuevaCompraPublicacion.idPublicacion);
 
-                    double? montoAgregado = (cantidadVendida * nuevaCompraPublicacion.Visibilidad.costo) * nuevaCompraPublicacion.Visibilidad.porcentaje;
+                double? montoAgregado = (cantidadVendida * nuevaCompraPublicacion.Visibilidad.costo) * nuevaCompraPublicacion.Visibilidad.porcentaje;
 
-                    ItemFactura nuevoItemFactura = new ItemFactura();
-                    nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
-                    nuevoItemFactura.Factura = fact;
-                    nuevoItemFactura.monto = montoAgregado;
-                    fact.ItemFacturasLts.Add(nuevoItemFactura);
-                    fact.montoTotal = fact.montoTotal + montoAgregado;
+                ItemFactura nuevoItemFactura = new ItemFactura();
+                nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
+                nuevoItemFactura.Factura = fact;
+                nuevoItemFactura.monto = montoAgregado;
+                fact.ItemFacturasLts.Add(nuevoItemFactura);
+                fact.montoTotal = fact.montoTotal + montoAgregado;
 
-                    //Costos parametrizable segun compra. env
-                    if (nuevaCompraPublicacion.envioSN==true) {
-                        ComisionesParametrizables comiP = cparImpl.darComisionesParametrizablesByNombreCorto("env");
-                        montoAgregado = (cantidadVendida * nuevaCompraPublicacion.precioPorUnidad) * comiP.porcentaje;
-                        nuevoItemFactura = new ItemFactura();
-                        nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
-                        nuevoItemFactura.Factura = fact;
-                        nuevoItemFactura.monto = montoAgregado;
-                        fact.ItemFacturasLts.Add(nuevoItemFactura);
-                        fact.montoTotal = fact.montoTotal + montoAgregado;
-                    }
-
-                    ComisionesParametrizables comiProv = cparImpl.darComisionesParametrizablesByNombreCorto("prov");
-                    montoAgregado = (cantidadVendida * nuevaCompraPublicacion.precioPorUnidad) * comiProv.porcentaje;
+                //Costos parametrizable segun compra. env
+                if (nuevaCompraPublicacion.envioSN==true) {
+                    ComisionesParametrizables comiP = cparImpl.darComisionesParametrizablesByNombreCorto("env");
+                    montoAgregado = (cantidadVendida * nuevaCompraPublicacion.precioPorUnidad) * comiP.porcentaje;
                     nuevoItemFactura = new ItemFactura();
                     nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
                     nuevoItemFactura.Factura = fact;
                     nuevoItemFactura.monto = montoAgregado;
                     fact.ItemFacturasLts.Add(nuevoItemFactura);
                     fact.montoTotal = fact.montoTotal + montoAgregado;
-
-                    factDaoImpl.Update(fact);
                 }
+
+                ComisionesParametrizables comiProv = cparImpl.darComisionesParametrizablesByNombreCorto("prov");
+                montoAgregado = (cantidadVendida * nuevaCompraPublicacion.precioPorUnidad) * comiProv.porcentaje;
+                nuevoItemFactura = new ItemFactura();
+                nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
+                nuevoItemFactura.Factura = fact;
+                nuevoItemFactura.monto = montoAgregado;
+                fact.ItemFacturasLts.Add(nuevoItemFactura);
+                fact.montoTotal = fact.montoTotal + montoAgregado;
+
+                factDaoImpl.Update(fact);
+
+                //Genero la compra Cliente y actualizo sus contadores
+                CompraUsuarioDaoImpl compUsrDaoImpl = new CompraUsuarioDaoImpl();
+
+                ClienteDaoImpl usrImpl = new ClienteDaoImpl();
+                Cliente usr = usrImpl.GetUsuarioById(1); //Esto se debe cambiar por el cliente loguado.
+                usr.comprasEfectuadas = usr.comprasEfectuadas + 1;
+                usrImpl.Update(usr);
+
+                CompraUsuario compUsuario = new CompraUsuario();
+                compUsuario.constructorCompraUsuario(nuevaCompraPublicacion, usr, Convert.ToInt32(cantidadVendida), compUsrDaoImpl.getProfileIdSequenceByCodigoCalificacion());
+                compUsrDaoImpl.Add(compUsuario);
+            
             }
         }
 

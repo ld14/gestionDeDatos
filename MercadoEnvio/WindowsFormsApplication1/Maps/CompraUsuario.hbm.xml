@@ -5,7 +5,7 @@
       <generator class="identity" />
     </id>
     <many-to-one name="Publicacion" column="idPublicacion"  cascade="all"/>
-    <many-to-one name="Factura" column="idFactura"  cascade="all"/>
+
     <many-to-one name="Usuario" column="idUsuario"  cascade="all"/>
     <many-to-one name="Calificacion" column="idCalificacion"  cascade="all" />
                  
