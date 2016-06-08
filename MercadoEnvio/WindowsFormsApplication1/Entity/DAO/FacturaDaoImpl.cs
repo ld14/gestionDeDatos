@@ -49,15 +49,28 @@ namespace WindowsFormsApplication1
 
         public Factura darFacturaByPublicacionID(int id)    {
             using (NHibernateManager manager = new NHibernateManager()) {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
+                    ICriteria crit = manager.Session.CreateCriteria<Factura>();
+                    crit.CreateAlias("Publicacion", "pub");
+                    crit.Add(Expression.Eq("pub.idPublicacion", id));
+                    return crit.UniqueResult<Factura>();
+                }
 
-                ICriteria crit = manager.Session.CreateCriteria<Factura>();
-                crit.CreateAlias("Publicacion", "pub");
-                crit.Add(Expression.Eq("pub.idPublicacion", id));
-                return crit.UniqueResult<Factura>();
-                
+            }
+        }
 
+        public int getProfileIdSequence()
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
+                    int sequence = (int)manager.Session.CreateSQLQuery("SELECT NEXT VALUE FOR [LOPEZ_Y_CIA].[secuenciaFactu] AS secuencia").AddScalar("secuencia", NHibernateUtil.Int32).UniqueResult();
+                    return sequence;
+                }
+            }
         }
     }
-
-    }
 }
+

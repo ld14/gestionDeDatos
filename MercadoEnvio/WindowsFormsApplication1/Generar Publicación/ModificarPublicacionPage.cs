@@ -192,7 +192,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     lst.Add(nuevoItemFactura);
 
 
-                    nuevaFactura.setFacturaNueva(366, fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                    nuevaFactura.setFacturaNueva(fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
 
                     FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                     factDaoImpl.Add(nuevaFactura);
@@ -226,7 +226,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                         lst.Add(nuevoItemFactura);
 
 
-                        nuevaFactura.setFacturaNueva(4000, fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                        nuevaFactura.setFacturaNueva(fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
                         FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                         factDaoImpl.Add(nuevaFactura);
 

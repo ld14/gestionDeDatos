@@ -35,7 +35,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
             bool preguntasSN = PreguntasCheckBox.Checked;
             Double precio = Convert.ToDouble(PrecioTxt.Text);
             Double valorActual = 0;
-
+            
+            Random random = new Random();
+            Double codigoPublicacion = Convert.ToDouble(random.Next(8000,300000));
 
 
 
@@ -43,9 +45,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             DateTime fechaVencimientoDateTime = DateUtils.convertirStringEnFecha(FechaVencimientoDateTime.Value.ToString("dd/MM/yyyy"));
 
 
-
-            //Esto debe ser autoIncrementable
-            double codigoPublicacion = 444446;
 
             //Esto hay que cambiarlo por el usuario logueado
 
@@ -71,7 +70,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
                 PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
                 nuevaPublicacion.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
-                                                       codigoPublicacion, descripcion, fechaIncioDateTime,
+                                                       codigoPublicacion,descripcion, fechaIncioDateTime,
                                                        fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, valorActual, selectedRubro);
 
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
@@ -86,7 +85,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     lst.Add(nuevoItemFactura);
 
 
-                    nuevaFactura.setFacturaNueva(36626, fehaSistema, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                    nuevaFactura.setFacturaNueva(fehaSistema, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
 
                     FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                     factDaoImpl.Add(nuevaFactura);
@@ -99,7 +98,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             }else{
                 PublicacionNormal nuevaPublicacion = new PublicacionNormal();
                 nuevaPublicacion.setPublicacionNormal(selectedEstado, selectedVisibilidad, usr,
-                                       codigoPublicacion, descripcion, fechaIncioDateTime,
+                                       codigoPublicacion,descripcion, fechaIncioDateTime,
                                        fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
 
                 PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
@@ -114,7 +113,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     lst.Add(nuevoItemFactura);
 
 
-                    nuevaFactura.setFacturaNueva(36661, fehaSistema, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                    nuevaFactura.setFacturaNueva(fehaSistema, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
 
                     FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                     factDaoImpl.Add(nuevaFactura);

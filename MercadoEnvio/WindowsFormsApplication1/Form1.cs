@@ -29,7 +29,12 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+
+
             /*
+             * FacturaDaoImpl factDaoImp = new FacturaDaoImpl();
+            double nroFactura = factDaoImp.getProfileIdSequence();
             try
             {
             string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];

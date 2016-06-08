@@ -15,10 +15,14 @@ namespace WindowsFormsApplication1 {
         public virtual Publicacion Publicacion { get; set; }
         public virtual IList<ItemFactura> ItemFacturasLts { get; set; }
 
-        public virtual void setFacturaNueva(double? nroFactura ,DateTime? fecha ,double? montoTotal ,string formaPagoDesc ,
+        public virtual void setFacturaNueva(DateTime? fecha ,double? montoTotal ,string formaPagoDesc ,
                                        Publicacion Publicacion, IList<ItemFactura> ItemFacturas)
         {
-                this.nroFactura = nroFactura;
+                //Random random = new Random();
+                //Double nroFactura = Convert.ToDouble(random.Next(190000, 400000));
+                //this.nroFactura = nroFactura;
+                FacturaDaoImpl factDaoImp = new FacturaDaoImpl();
+                this.nroFactura = factDaoImp.getProfileIdSequence();
                 this.fecha = fecha;
                 this.montoTotal = montoTotal;
                 this.formaPagoDesc = formaPagoDesc;
