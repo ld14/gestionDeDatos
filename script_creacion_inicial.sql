@@ -751,5 +751,24 @@ COMMIT TRAN;
 
 PRINT 'UPDATE A TABLA: Usuario'
 
+--
+
+BEGIN TRAN;
+MERGE [LOPEZ_Y_CIA].[Cliente] AS T1
+USING (
+	SELECT
+		idUsuario,
+		COUNT(idUsuario) [compras]
+	FROM [LOPEZ_Y_CIA].[CompraUsuario]
+	GROUP BY idUsuario
+) T2
+ON (T1.idUsuario = T2.idUsuario) 
+WHEN MATCHED THEN UPDATE SET
+	T1.comprasEfectuadas = T2.compras,
+	T1.comprasCalificadas = T2.compras;
+COMMIT TRAN;
+
+PRINT 'UPDATE A TABLA: Cliente'
+
 GO
 /** FIN DEL SCRIPT **/
