@@ -58,7 +58,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public IList<BusquedaDePublicacion> darListaFiltradaPorRubroDescripcion(List<string> selectedRubrosLst, String descripcionTxt)
+        public IList<BusquedaDePublicacion> darListaFiltradaPorRubroDescripcion(List<string> selectedRubrosLst, String descripcionTxt,int idUsuarioLogueado)
         {
             using (NHibernateManager manager = new NHibernateManager())
             {
@@ -70,6 +70,8 @@ namespace WindowsFormsApplication1
                 if (selectedRubrosLst.Count > 0) {
                     crit.Add(Expression.In("desRubro", selectedRubrosLst));
                 }
+
+                crit.Add(Expression.Not(Expression.Eq("idUsuario", idUsuarioLogueado)));
                 return crit.List<BusquedaDePublicacion>();
 
 

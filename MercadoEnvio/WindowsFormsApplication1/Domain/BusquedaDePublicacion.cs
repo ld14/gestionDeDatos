@@ -17,5 +17,6 @@ namespace WindowsFormsApplication1 {
         public virtual double costo { get; set; }
         public virtual DateTime fechaCreacion { get; set; }
         public virtual DateTime? fechaVencimiento { get; set; }
+        public virtual int idUsuario { get; set; }
     }
 }

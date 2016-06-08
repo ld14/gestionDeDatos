@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1.Entity.DAO
         void Update(BusquedaDePublicacion rol);
         void Remove(BusquedaDePublicacion rol);
         IList<BusquedaDePublicacion> darLista();
-        IList<BusquedaDePublicacion> darListaFiltradaPorRubroDescripcion(List<string> selectedRubrosLst, String descripcionTxt);
+        IList<BusquedaDePublicacion> darListaFiltradaPorRubroDescripcion(List<string> selectedRubrosLst, String descripcionTxt, int idUsuarioLogueado);
     }
 }
 

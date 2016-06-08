@@ -13,6 +13,11 @@
     <property name="codigoPublicacion">
       <column name="codigoPublicacion" sql-type="int" not-null="false" />
     </property>
+    
+    <property name="idUsuario">
+      <column name="idUsuario" sql-type="int" not-null="false" />
+    </property>
+    
     <property name="descripcion">
       <column name="descripcion" sql-type="varchar" not-null="false" />
     </property>
