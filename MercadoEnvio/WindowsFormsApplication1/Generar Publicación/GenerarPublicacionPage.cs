@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
 
             //Esto debe ser autoIncrementable
-            double codigoPublicacion = 14141414;
+            double codigoPublicacion = 232123;
 
             //Esto hay que cambiarlo por el usuario logueado
 
@@ -64,6 +64,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
             ModificarPublicacionPage modificarPublicacionPage = new ModificarPublicacionPage();
 
+            Factura nuevaFactura = new Factura();
+            IList<ItemFactura> lst = new List<ItemFactura>();
+
             if(TipoPubliSelect.Text.Equals("Publicación Subasta")){
                 PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
                 nuevaPublicacion.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
@@ -73,6 +76,20 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
                 publicacionSubastaDaoImpl.Add(nuevaPublicacion);
 
+                if (selectedEstado.nombre.Equals("Activa"))
+                {
+                    ItemFactura nuevoItemFactura = new ItemFactura();
+                    nuevoItemFactura.cantidad = 1;
+                    nuevoItemFactura.Factura = nuevaFactura;
+                    nuevoItemFactura.monto = nuevaPublicacion.Visibilidad.costo;
+                    lst.Add(nuevoItemFactura);
+
+
+                    nuevaFactura.setFacturaNueva(36626, fehaSistema, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+
+                    FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                    factDaoImpl.Add(nuevaFactura);
+                }
 
 
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
@@ -86,7 +103,22 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
                 PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
                 publicacionSubastaDaoImpl.Add(nuevaPublicacion);
-                
+
+                if (selectedEstado.nombre.Equals("Activa"))
+                {
+                    ItemFactura nuevoItemFactura = new ItemFactura();
+                    nuevoItemFactura.cantidad = 1;
+                    nuevoItemFactura.Factura = nuevaFactura;
+                    nuevoItemFactura.monto = nuevaPublicacion.Visibilidad.costo;
+                    lst.Add(nuevoItemFactura);
+
+
+                    nuevaFactura.setFacturaNueva(36626, fehaSistema, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+
+                    FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                    factDaoImpl.Add(nuevaFactura);
+                }
+
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
                 modificarPublicacionPage.Tag = nuevaPublicacion;
             }

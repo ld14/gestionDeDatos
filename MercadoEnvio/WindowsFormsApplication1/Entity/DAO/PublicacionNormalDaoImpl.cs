@@ -71,5 +71,15 @@ namespace WindowsFormsApplication1
             }
          }
 
+        public PublicacionNormal GetPublicacionByCodigo(double? codigoPublicacion)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<PublicacionNormal>();
+                crit.Add(Expression.Eq("codigoPublicacion", codigoPublicacion));
+                return crit.UniqueResult<PublicacionNormal>();
+            }
+        }
+
     }
 }

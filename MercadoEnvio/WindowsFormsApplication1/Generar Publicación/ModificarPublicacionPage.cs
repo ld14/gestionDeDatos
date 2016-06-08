@@ -179,26 +179,30 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
             if (comboBox1.Text.Equals("Publicación Subasta"))
             {
-                PublicacionSubasta nuevaPublicacion = (PublicacionSubasta)this.Tag;
+                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+                PublicacionSubasta nuevaPublicacionTemp = (PublicacionSubasta)this.Tag;
+                PublicacionSubasta nuevaPublicacion = publicacionSubastaDaoImpl.GetPublicacionByCodigo(nuevaPublicacionTemp.codigoPublicacion);
 
-                ItemFactura nuevoItemFactura = new ItemFactura();
-                nuevoItemFactura.cantidad = 1;
-                nuevoItemFactura.Factura = nuevaFactura;
-                nuevoItemFactura.monto = selectedVisibilidad.costo;
-                lst.Add(nuevoItemFactura);
+                if (selectedEstado.nombre.Equals("Activa"))
+                {
+                    ItemFactura nuevoItemFactura = new ItemFactura();
+                    nuevoItemFactura.cantidad = 1;
+                    nuevoItemFactura.Factura = nuevaFactura;
+                    nuevoItemFactura.monto = selectedVisibilidad.costo;
+                    lst.Add(nuevoItemFactura);
 
 
-                nuevaFactura.setFacturaNueva(36625, fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                    nuevaFactura.setFacturaNueva(366, fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
 
-                FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
-                factDaoImpl.Add(nuevaFactura);
-
+                    FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                    factDaoImpl.Add(nuevaFactura);
+                }
                 
                 nuevaPublicacion.updatePublicacionSubasta(selectedEstado, selectedVisibilidad, 
                                                        descripcion, fechaIncioDateTime,
                                                        fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
 
-                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+                
                 publicacionSubastaDaoImpl.Update(nuevaPublicacion);
 
 
@@ -209,26 +213,30 @@ namespace WindowsFormsApplication1.Generar_Publicación
             }
             else
             {
-                PublicacionNormal nuevaPublicacion = (PublicacionNormal)this.Tag;
-                
-                
-                    ItemFactura nuevoItemFactura = new ItemFactura();
-                    nuevoItemFactura.cantidad = 1;
-                    nuevoItemFactura.Factura = nuevaFactura;
-                    nuevoItemFactura.monto = selectedVisibilidad.costo;
-                    lst.Add(nuevoItemFactura);
+                    PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
+                    PublicacionNormal nuevaPublicacionTemp = (PublicacionNormal)this.Tag;
+                    PublicacionNormal nuevaPublicacion = publicacionSubastaDaoImpl.GetPublicacionByCodigo(nuevaPublicacionTemp.codigoPublicacion);
+
+                    if (selectedEstado.nombre.Equals("Activa"))
+                    {
+                        ItemFactura nuevoItemFactura = new ItemFactura();
+                        nuevoItemFactura.cantidad = 1;
+                        nuevoItemFactura.Factura = nuevaFactura;
+                        nuevoItemFactura.monto = selectedVisibilidad.costo;
+                        lst.Add(nuevoItemFactura);
 
 
-                    nuevaFactura.setFacturaNueva(36625, fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                        nuevaFactura.setFacturaNueva(36625, fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                        FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                        factDaoImpl.Add(nuevaFactura);
 
-                    FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
-                    factDaoImpl.Add(nuevaFactura);
+                    }
 
                     nuevaPublicacion.updatePublicacionNormal(selectedEstado, selectedVisibilidad, 
                                        descripcion, fechaIncioDateTime,
                                        fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
 
-                PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
+                
                 publicacionSubastaDaoImpl.Update(nuevaPublicacion);
 
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);

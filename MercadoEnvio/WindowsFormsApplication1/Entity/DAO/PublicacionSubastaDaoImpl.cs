@@ -70,5 +70,14 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public PublicacionSubasta GetPublicacionByCodigo(double? codigoPublicacion)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<PublicacionSubasta>();
+                crit.Add(Expression.Eq("codigoPublicacion", codigoPublicacion));
+                return crit.UniqueResult<PublicacionSubasta>();
+            }
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace WindowsFormsApplication1
         PublicacionNormal GetById(int id);
         PublicacionNormal GetByUsuario(string usuario);
         IList<PublicacionNormal> GetPublicacionByUsuario(Usuario usuario);
+        PublicacionNormal GetPublicacionByCodigo(double? codigoPublicacion);
     }
 }
