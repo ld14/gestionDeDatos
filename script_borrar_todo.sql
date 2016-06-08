@@ -18,6 +18,7 @@ SET @sql += N'
 
 DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaCalif];
 DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaVisib];
+DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaFactu];
 DROP SCHEMA [LOPEZ_Y_CIA];'
 
 PRINT @sql;

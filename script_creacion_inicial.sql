@@ -40,9 +40,11 @@ CREATE TABLE [LOPEZ_Y_CIA].[ComisionesParametrizables](
 
 CREATE TABLE [LOPEZ_Y_CIA].[CompraUsuario](
 	[idCompraUsuario] [int] IDENTITY(1,1) NOT NULL,
-	[idFactura] [int] NOT NULL,
+	[idPublicacion] [int] NOT NULL,
 	[idUsuario] [int] NOT NULL,
 	[idCalificacion] [int] NULL,
+	[fecha] [datetime] NULL,
+	[compraCantidad] [int] NOT NULL
 	CONSTRAINT [PK_CompraUsuario] PRIMARY KEY CLUSTERED([idCompraUsuario] ASC)
 ) ON [PRIMARY]
 
@@ -76,10 +78,11 @@ CREATE TABLE [LOPEZ_Y_CIA].[EstadoPublicacion](
 	CONSTRAINT [PK_EstadoPublicacion] PRIMARY KEY CLUSTERED([idEstadoPublicacion] ASC)
 ) ON [PRIMARY]
 
+CREATE SEQUENCE [LOPEZ_Y_CIA].[secuenciaFactu] START WITH 121315
 CREATE TABLE [LOPEZ_Y_CIA].[Factura](
 	[idFactura] [int] IDENTITY(1,1) NOT NULL,
 	[idPublicacion] [int] NOT NULL,
-	[nroFactura] [int] NOT NULL UNIQUE,
+	[nroFactura] INT DEFAULT NEXT VALUE FOR [LOPEZ_Y_CIA].[secuenciaFactu] NOT NULL,
 	[fecha] [datetime] NULL,
 	[montoTotal] [numeric](18, 2) NOT NULL,
 	[formaPagoDesc] [varchar](255) NULL,
@@ -224,8 +227,8 @@ ALTER TABLE [LOPEZ_Y_CIA].[CompraUsuario] WITH CHECK ADD
 ALTER TABLE [LOPEZ_Y_CIA].[CompraUsuario] CHECK CONSTRAINT [FK_CompraUsuario_Calificacion]
 
 ALTER TABLE [LOPEZ_Y_CIA].[CompraUsuario] WITH CHECK ADD
-	CONSTRAINT [FK_CompraUsuario_Factura] FOREIGN KEY([idFactura]) REFERENCES [LOPEZ_Y_CIA].[Factura] ([idFactura])
-ALTER TABLE [LOPEZ_Y_CIA].[CompraUsuario] CHECK CONSTRAINT [FK_CompraUsuario_Factura]
+	CONSTRAINT [FK_CompraUsuario_Publicacion] FOREIGN KEY([idPublicacion]) REFERENCES [LOPEZ_Y_CIA].[Publicacion] ([idPublicacion])
+ALTER TABLE [LOPEZ_Y_CIA].[CompraUsuario] CHECK CONSTRAINT [FK_CompraUsuario_Publicacion]
 
 ALTER TABLE [LOPEZ_Y_CIA].[CompraUsuario] WITH CHECK ADD
 	CONSTRAINT [FK_CompraUsuario_Usuario] FOREIGN KEY([idUsuario]) REFERENCES [LOPEZ_Y_CIA].[Usuario] ([idUsuario])
@@ -632,10 +635,9 @@ PRINT 'TABLA: OfertaSubasta'
 
 --
 
-INSERT INTO [LOPEZ_Y_CIA].[Factura] (idPublicacion, nroFactura, fecha, montoTotal, formaPagoDesc)
+INSERT INTO [LOPEZ_Y_CIA].[Factura] (idPublicacion, fecha, montoTotal, formaPagoDesc)
 SELECT
 	B.idPublicacion,
-	A.Factura_Nro,
 	A.Factura_Fecha,
 	A.Factura_Total,
 	A.Forma_Pago_Desc
@@ -648,7 +650,7 @@ GROUP BY
 	A.Factura_Fecha,
 	A.Factura_Total,
 	A.Forma_Pago_Desc
-ORDER BY 2
+ORDER BY A.Factura_Nro
 
 PRINT 'TABLA: Factura'
 
@@ -702,14 +704,15 @@ PRINT 'TABLA: RubroPublicacion'
 
 --
 
-INSERT INTO [LOPEZ_Y_CIA].[CompraUsuario] (idFactura, idUsuario, idCalificacion)
+INSERT INTO [LOPEZ_Y_CIA].[CompraUsuario] (idPublicacion, idUsuario, idCalificacion, fecha, compraCantidad)
 SELECT
-	C.idFactura,
+	B.idPublicacion,
 	D.idUsuario,
-	E.idCalificacion
+	E.idCalificacion,
+	A.Compra_Fecha,
+	A.Compra_Cantidad
 FROM [gd_esquema].[Maestra] AS A
 INNER JOIN [LOPEZ_Y_CIA].[Publicacion] AS B ON A.Publicacion_Cod = B.codigoPublicacion
-INNER JOIN [LOPEZ_Y_CIA].[Factura] AS C ON B.idPublicacion = C.idPublicacion
 INNER JOIN [LOPEZ_Y_CIA].[Cliente] AS D ON D.dni = A.Cli_Dni
 INNER JOIN [LOPEZ_Y_CIA].[Calificacion] AS E ON E.codigo = A.Calificacion_Codigo
 WHERE Compra_Cantidad IS NOT NULL
