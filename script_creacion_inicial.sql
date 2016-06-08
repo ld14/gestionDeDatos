@@ -364,7 +364,7 @@ PRINT 'TABLA: DatosBasicos'
 --
 
 DECLARE @aux int = 1
-DECLARE @psw nvarchar(255) = N'asd'
+DECLARE @psw nvarchar(255) = N'688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6'
 DECLARE @sqlcmd nvarchar(4000) = N'INSERT INTO [LOPEZ_Y_CIA].[Usuario] (userName, password, activoUsuario, intentosFallidos, publicacionGratis, idDatosBasicos) VALUES' + CHAR(13)
 
 SET @sqlcmd += N'(''u' + CAST(@aux as nvarchar(3)) + N''', ''' + @psw + N''', 1, 0, 0, ' + CAST(@aux as nvarchar(3)) + N')'
