@@ -12,8 +12,6 @@ A continuación dejo los puntos que quedaron fuera del alcanze de la versión 1.
 
 Cliente:
  - fechaCreacion
- - comprasEfectuadas
- - comprasCalificadas
 
 Funciones:
  - Cargar todas las funciones
@@ -24,11 +22,6 @@ RolFunciones:
 Rubro:
  - codigo
 
-RubroPublicacion:
- - Ordenar por id asc
-
-Usuario:
- - Encriptar la contraseña con SHA-256
 
   
 Triggers y Tareas Programadas
