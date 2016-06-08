@@ -216,7 +216,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
                     PublicacionNormal nuevaPublicacionTemp = (PublicacionNormal)this.Tag;
                     PublicacionNormal nuevaPublicacion = publicacionSubastaDaoImpl.GetPublicacionByCodigo(nuevaPublicacionTemp.codigoPublicacion);
-
+                    //Esto habria que pasarlo abajo
                     if (selectedEstado.nombre.Equals("Activa"))
                     {
                         ItemFactura nuevoItemFactura = new ItemFactura();
@@ -226,7 +226,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                         lst.Add(nuevoItemFactura);
 
 
-                        nuevaFactura.setFacturaNueva(36625, fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                        nuevaFactura.setFacturaNueva(4000, fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
                         FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                         factDaoImpl.Add(nuevaFactura);
 

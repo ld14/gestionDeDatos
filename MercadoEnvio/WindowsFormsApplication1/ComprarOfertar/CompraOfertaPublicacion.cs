@@ -107,7 +107,7 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 for (int i = 1; i <= stock; i++) {
                     cantidadCompra.Add(i);
                 }
-                comboBox2.DataSource = cantidadCompra;
+                CantidadComprada.DataSource = cantidadCompra;
 
                 //Datos para Subasta - valorActual
                 PrecioActualTxt.Text = Convert.ToString(valorActual);
@@ -172,38 +172,45 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 MessageBox.Show("Su Oferta Fue Efectuada");
 
             } else {
-                
+                PublicacionNormalDaoImpl actualizarPublicImpl = new PublicacionNormalDaoImpl();
                 PublicacionNormal nuevaCompraPublicacion = (PublicacionNormal)this.Tag;
 
-                if (nuevaCompraPublicacion.stock > Convert.ToDouble(ValorOferta.Text))
+                if (nuevaCompraPublicacion.stock > Convert.ToDouble(CantidadComprada.Text))
                 {
                     //Al total del producto le resto el valor solicitado
-                    nuevaCompraPublicacion.stock = nuevaCompraPublicacion.stock - Convert.ToDouble(ValorOferta.Text);
-                }
-                else {
+                    nuevaCompraPublicacion.stock = nuevaCompraPublicacion.stock - Convert.ToDouble(CantidadComprada.Text);
+                } else {
                     //Se vendio el total del producto.
                     nuevaCompraPublicacion.stock = 0;
-
+                    
+                    // Paso la compra a estado finalizado, actualizo el Stock y sumo una venta al cliente que publico
                     EstadoPublicacionDaoDaoImpl estadoDaoImpl = new EstadoPublicacionDaoDaoImpl();
                     nuevaCompraPublicacion.EstadoPublicacion = estadoDaoImpl.darEstadoByID(4);
+                    nuevaCompraPublicacion.Usuario.cantidadVentas = nuevaCompraPublicacion.Usuario.cantidadVentas + 1;
+                    actualizarPublicImpl.Update(nuevaCompraPublicacion);
 
-                    Factura factura = new Factura();
-                    factura.nroFactura = 1223454;
-                    factura.fecha = fehaSistema;
-                    factura.Publicacion = nuevaCompraPublicacion;
-                    factura.formaPagoDesc = "Efectivo";
+                    //Genero la compra Cliente y actualizo sus contadores
+                    ClienteDaoImpl usrImpl = new ClienteDaoImpl();
+                    Cliente usr = usrImpl.GetUsuarioById(1); //Esto se debe cambiar por el cliente loguado.
+                    usr.comprasEfectuadas = usr.comprasEfectuadas + 1;
+                    usrImpl.Update(usr);
 
-                    /*        public virtual double? nroFactura { get; set; }
-        public virtual DateTime? fecha { get; set; }
-        public virtual double? montoTotal { get; set; }
-        public virtual string formaPagoDesc { get; set; }
-        public virtual Publicacion Publicacion { get; set; }
-        public virtual ISet<ItemFactura> ItemFacturas { get; set; }*/           
+                    //Actualizo la factura y cargo los datos del nuevo item
+                    FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                    Factura fact = factDaoImpl.darFacturaByPublicacionID(nuevaCompraPublicacion.idPublicacion);
+
+                    double? montoAgregado = (nuevaCompraPublicacion.stock * nuevaCompraPublicacion.Visibilidad.costo) * nuevaCompraPublicacion.Visibilidad.porcentaje;
+
+                    ItemFactura nuevoItemFactura = new ItemFactura();
+                    nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
+                    nuevoItemFactura.Factura = fact;
+                    nuevoItemFactura.monto = montoAgregado;
+                    
+                    fact.ItemFacturasLts.Add(nuevoItemFactura);
+                    fact.montoTotal = fact.montoTotal + montoAgregado;
+
+                    factDaoImpl.Update(fact);
                 }
-                
-
-
-
             }
         }
 

@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
 
             //Esto debe ser autoIncrementable
-            double codigoPublicacion = 232123;
+            double codigoPublicacion = 444446;
 
             //Esto hay que cambiarlo por el usuario logueado
 
@@ -68,6 +68,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             IList<ItemFactura> lst = new List<ItemFactura>();
 
             if(TipoPubliSelect.Text.Equals("Publicación Subasta")){
+
                 PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
                 nuevaPublicacion.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
                                                        codigoPublicacion, descripcion, fechaIncioDateTime,
@@ -113,7 +114,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     lst.Add(nuevoItemFactura);
 
 
-                    nuevaFactura.setFacturaNueva(36626, fehaSistema, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                    nuevaFactura.setFacturaNueva(36661, fehaSistema, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
 
                     FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                     factDaoImpl.Add(nuevaFactura);

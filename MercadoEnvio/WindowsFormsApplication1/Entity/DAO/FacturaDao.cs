@@ -9,7 +9,7 @@ namespace WindowsFormsApplication1.Entity.DAO
         void Add(Factura factura);
         void Update(Factura factura);
         void Remove(Factura factura);
-
+        Factura darFacturaByPublicacionID(int id);
     }
 }
 

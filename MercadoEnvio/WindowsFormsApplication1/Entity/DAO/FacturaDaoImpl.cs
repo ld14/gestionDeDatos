@@ -47,13 +47,13 @@ namespace WindowsFormsApplication1
 
 
 
-        public IList<Rol> darRolActivo()
-        {
+        public Factura darFacturaByPublicacionID(int id)    {
             using (NHibernateManager manager = new NHibernateManager()) {
 
-                ICriteria crit = manager.Session.CreateCriteria<Rol>();
-                crit.Add(Expression.Eq("activo", true));
-                return crit.List<Rol>(); 
+                ICriteria crit = manager.Session.CreateCriteria<Factura>();
+                crit.CreateAlias("Publicacion", "pub");
+                crit.Add(Expression.Eq("pub.idPublicacion", id));
+                return crit.UniqueResult<Factura>();
                 
 
         }
