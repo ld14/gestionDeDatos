@@ -1,32 +1,18 @@
-# Notas de la versión 1.1.1
+# Notas de la versión 1.2
 
-Se ha mejorado el código para que este mas legible.
-Se agruparon todas las inserciones por tabla y se detalla las tablas afectadas.
-Se agregó las secuencias para código Visibilidad y Calificacion.
-Se cambiaron algunos tipos de datos para mayor eficiencia.
-Se insertaron el estado inicial y el workflow de estados.
+Se agregaron las secuencias para algunos campos autoincrementales <br />
+Se corrigio compraUsuario como fue solicitado <br />
+Se termino de cargar el 100% de la Tabla Maestra <br />
+Se encriptaron las contraseñas para todos los usuarios con SHA-256 <br />
+Se hicieron transacciones para la incorporacion de algunos datos que quedaron afuera
 
 -----------------------
 
-A continuación dejo los puntos que quedaron fuera del alcanze de la versión 1.1.1, los cuales deberán tratarse a la brevedad:
+### Temas que faltan tratar:
 
-Cliente:
- - fechaCreacion
+ - Definir que fecha de creacion le pongo a los clientes ya importados
+ - Cargar todas las funciones que va a tener la aplicacion y setear las funciones por rol
+ - Ver si definimos codigos para los Rubros
+ - Realizar un Trigger para insertar publicaciones nuevas (codigo autoincremental)
+ - Determinar si implementamos un JOB para que el motor de base de datos actualize todos los dias aquellas publicaciones ya vencidas y las pase a finalizadas o dejamos que de eso se encargue la aplicacion.
 
-Funciones:
- - Cargar todas las funciones
-
-RolFunciones:
- - Cargar todas las funciones por rol
-
-Rubro:
- - codigo
-
-
-  
-Triggers y Tareas Programadas
------------------------------
- - No se muy bien como se va a implementar esto, por ahora investigar como hacer que SQL tome la fecha y actualize
- el estadoPublicacion de aquellas que hallan vencido. (JOB)
-
- - Hacer que cada nuevo insert a la tabla Publicacion genere un nuevo cógido que sea el anterior + 1.
