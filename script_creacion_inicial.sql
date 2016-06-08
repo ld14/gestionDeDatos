@@ -773,5 +773,14 @@ COMMIT TRAN;
 
 PRINT 'UPDATE A TABLA: Cliente'
 
+--
+
+/* Seteando el codigo autoincremental desde el ultimo valor ingresado */
+BEGIN TRAN;
+CREATE SEQUENCE [LOPEZ_Y_CIA].[secuenciaPubli] START WITH 71079
+ALTER TABLE [LOPEZ_Y_CIA].[Publicacion] ADD CONSTRAINT [Secuencia_Publicacion]
+DEFAULT (NEXT VALUE FOR [LOPEZ_Y_CIA].[secuenciaPubli]) FOR [codigoPublicacion]
+COMMIT TRAN;
+
 GO
 /** FIN DEL SCRIPT **/
