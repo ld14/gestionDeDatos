@@ -180,6 +180,8 @@ namespace WindowsFormsApplication1.ComprarOfertar
                     //Al total del producto le resto el valor solicitado
                     nuevaCompraPublicacion.stock = nuevaCompraPublicacion.stock - Convert.ToDouble(CantidadComprada.Text);
                 } else {
+                    double cantidadVendida = Convert.ToDouble(CantidadComprada.Text);
+                    ComisionesParametrizablesDaoImpl cparImpl = new ComisionesParametrizablesDaoImpl();
                     //Se vendio el total del producto.
                     nuevaCompraPublicacion.stock = 0;
                     
@@ -196,16 +198,37 @@ namespace WindowsFormsApplication1.ComprarOfertar
                     usrImpl.Update(usr);
 
                     //Actualizo la factura y cargo los datos del nuevo item
+                    //TODO: ACA DEBERIA HABER HECHO UNA LISTA Y RECORRERLA CON LOS ITEMS SI QUEDA TIEMPO LO REFACTORIZO
                     FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                     Factura fact = factDaoImpl.darFacturaByPublicacionID(nuevaCompraPublicacion.idPublicacion);
 
-                    double? montoAgregado = (nuevaCompraPublicacion.stock * nuevaCompraPublicacion.Visibilidad.costo) * nuevaCompraPublicacion.Visibilidad.porcentaje;
+                    double? montoAgregado = (cantidadVendida * nuevaCompraPublicacion.Visibilidad.costo) * nuevaCompraPublicacion.Visibilidad.porcentaje;
 
                     ItemFactura nuevoItemFactura = new ItemFactura();
                     nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
                     nuevoItemFactura.Factura = fact;
                     nuevoItemFactura.monto = montoAgregado;
-                    
+                    fact.ItemFacturasLts.Add(nuevoItemFactura);
+                    fact.montoTotal = fact.montoTotal + montoAgregado;
+
+                    //Costos parametrizable segun compra. env
+                    if (nuevaCompraPublicacion.envioSN==true) {
+                        ComisionesParametrizables comiP = cparImpl.darComisionesParametrizablesByNombreCorto("env");
+                        montoAgregado = (cantidadVendida * nuevaCompraPublicacion.precioPorUnidad) * comiP.porcentaje;
+                        nuevoItemFactura = new ItemFactura();
+                        nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
+                        nuevoItemFactura.Factura = fact;
+                        nuevoItemFactura.monto = montoAgregado;
+                        fact.ItemFacturasLts.Add(nuevoItemFactura);
+                        fact.montoTotal = fact.montoTotal + montoAgregado;
+                    }
+
+                    ComisionesParametrizables comiProv = cparImpl.darComisionesParametrizablesByNombreCorto("prov");
+                    montoAgregado = (cantidadVendida * nuevaCompraPublicacion.precioPorUnidad) * comiProv.porcentaje;
+                    nuevoItemFactura = new ItemFactura();
+                    nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
+                    nuevoItemFactura.Factura = fact;
+                    nuevoItemFactura.monto = montoAgregado;
                     fact.ItemFacturasLts.Add(nuevoItemFactura);
                     fact.montoTotal = fact.montoTotal + montoAgregado;
 

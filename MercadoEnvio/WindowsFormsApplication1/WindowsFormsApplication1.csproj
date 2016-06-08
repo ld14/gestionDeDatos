@@ -118,6 +118,8 @@
     <Compile Include="Entity\DAO\ClienteDaoImpl.cs" />
     <Compile Include="Entity\DAO\BusquedaDePublicacionDao.cs" />
     <Compile Include="Entity\DAO\BusquedaDePublicacionDaoImpl.cs" />
+    <Compile Include="Entity\DAO\ComisionesParametrizablesDao.cs" />
+    <Compile Include="Entity\DAO\ComisionesParametrizablesDaoImpl.cs" />
     <Compile Include="Entity\DAO\ItemFacturaDaoImpl.cs" />
     <Compile Include="Entity\DAO\ItemFacturaDao.cs" />
     <Compile Include="Entity\DAO\FacturaDaoImpl.cs" />
