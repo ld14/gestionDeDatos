@@ -36,10 +36,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             Double precio = Convert.ToDouble(PrecioTxt.Text);
             Double valorActual = 0;
             
-            Random random = new Random();
-            Double codigoPublicacion = Convert.ToDouble(random.Next(8000,300000));
-
-
 
             DateTime fechaIncioDateTime =   DateUtils.convertirStringEnFecha(FechaIncioDateTime.Value.ToString("dd/MM/yyyy"));
             DateTime fechaVencimientoDateTime = DateUtils.convertirStringEnFecha(FechaVencimientoDateTime.Value.ToString("dd/MM/yyyy"));
@@ -67,13 +63,13 @@ namespace WindowsFormsApplication1.Generar_Publicación
             IList<ItemFactura> lst = new List<ItemFactura>();
 
             if(TipoPubliSelect.Text.Equals("Publicación Subasta")){
-
+                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
                 PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
                 nuevaPublicacion.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
-                                                       codigoPublicacion,descripcion, fechaIncioDateTime,
+                                                       publicacionSubastaDaoImpl.getProfileIdSequence(), descripcion, fechaIncioDateTime,
                                                        fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, valorActual, selectedRubro);
 
-                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+                
                 publicacionSubastaDaoImpl.Add(nuevaPublicacion);
 
                 if (selectedEstado.nombre.Equals("Activa"))
@@ -96,12 +92,13 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 modificarPublicacionPage.Tag = nuevaPublicacion;
 
             }else{
+                PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
                 PublicacionNormal nuevaPublicacion = new PublicacionNormal();
                 nuevaPublicacion.setPublicacionNormal(selectedEstado, selectedVisibilidad, usr,
-                                       codigoPublicacion,descripcion, fechaIncioDateTime,
+                                       publicacionSubastaDaoImpl.getProfileIdSequence(), descripcion, fechaIncioDateTime,
                                        fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
 
-                PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
+                
                 publicacionSubastaDaoImpl.Add(nuevaPublicacion);
 
                 if (selectedEstado.nombre.Equals("Activa"))

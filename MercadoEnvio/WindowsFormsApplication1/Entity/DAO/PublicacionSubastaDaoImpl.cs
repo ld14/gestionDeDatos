@@ -79,5 +79,17 @@ namespace WindowsFormsApplication1
                 return crit.UniqueResult<PublicacionSubasta>();
             }
         }
+
+        public int getProfileIdSequence()
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
+                    int sequence = (int)manager.Session.CreateSQLQuery("SELECT NEXT VALUE FOR [LOPEZ_Y_CIA].[secuenciaPubli] AS secuencia").AddScalar("secuencia", NHibernateUtil.Int32).UniqueResult();
+                    return sequence;
+                }
+            }
+        }
     }
 }

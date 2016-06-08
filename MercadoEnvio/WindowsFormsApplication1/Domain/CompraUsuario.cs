@@ -7,8 +7,10 @@ namespace WindowsFormsApplication1 {
     
     public class CompraUsuario {
         public virtual int idCompraUsuario { get; set; }
+        public virtual Publicacion Publicacion { get; set; }
         public virtual Factura Factura { get; set; }
         public virtual Usuario Usuario { get; set; }
         public virtual Calificacion Calificacion { get; set; }
+        public virtual int compraCantidad { get; set; }
     }
 }
