@@ -5,6 +5,9 @@
       <generator class="identity" />
     </id>
     
+
+    <many-to-one not-null="true" name="Factura" column="idFactura" />
+    
     <property name="cantidad">
       <column name="cantidad" sql-type="numeric" not-null="false" />
     </property>

@@ -10,6 +10,7 @@ namespace WindowsFormsApplication1.Entity.DAO
         void Update(Rubro rubro);
         void Remove(Rubro rubro);
         IList<Rubro> darRubroActivo();
+        Rubro GetRubroById(int id);
     }
 }
 

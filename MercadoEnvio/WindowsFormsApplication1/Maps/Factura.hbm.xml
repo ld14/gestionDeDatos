@@ -27,13 +27,21 @@
     <bag name="ItemaFactura">
       <key column="idFactura" />
       <one-to-many class="ItemaFactura" />
-    </bag> -->
+    </bag>
 
-
-      <set name="ItemFacturas" inverse="true" cascade="save-update">
-        <key column="idFactura"  not-null="true"/>
-        <one-to-many class="ItemFactura" />
-      </set>
+    <set name="ItemFacturasLts" cascade="all">
+      <key column="idFactura"  not-null="true"/>
+      <one-to-many class="ItemFactura" />
+    </set> -->
+    
+    <bag name="ItemFacturasLts"
+           lazy="true"
+           inverse="true"
+           batch-size="25"
+           cascade="all-delete-orphan" >
+      <key column="idFactura" />
+      <one-to-many class="ItemFactura" />
+    </bag>
     
   </class>
 </hibernate-mapping>

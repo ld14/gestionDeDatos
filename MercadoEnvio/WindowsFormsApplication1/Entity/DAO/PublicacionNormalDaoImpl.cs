@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
             using (NHibernateManager manager = new NHibernateManager()) {
                 using (ITransaction transaction = manager.Session.BeginTransaction()) {
                     PublicacionNormal newEntityRef = manager.Session.Merge(publicacionNormal); //getSession().merge(entity);  
-                    manager.Session.SaveOrUpdate(newEntityRef);
+                    manager.Session.Update(newEntityRef);
                     transaction.Commit();
                 }
             }

@@ -118,6 +118,10 @@
     <Compile Include="Entity\DAO\ClienteDaoImpl.cs" />
     <Compile Include="Entity\DAO\BusquedaDePublicacionDao.cs" />
     <Compile Include="Entity\DAO\BusquedaDePublicacionDaoImpl.cs" />
+    <Compile Include="Entity\DAO\ItemFacturaDaoImpl.cs" />
+    <Compile Include="Entity\DAO\ItemFacturaDao.cs" />
+    <Compile Include="Entity\DAO\FacturaDaoImpl.cs" />
+    <Compile Include="Entity\DAO\FacturaDao.cs" />
     <Compile Include="Entity\DAO\OfertaSubastaDaoImpl.cs" />
     <Compile Include="Entity\DAO\OfertaSuabastaDao.cs" />
     <Compile Include="Entity\DAO\PublicacionNormalDaoImpl.cs" />
@@ -323,7 +327,9 @@
     <EmbeddedResource Include="Maps\Funciones.hbm.xml" />
     <EmbeddedResource Include="Maps\ItemFactura.hbm.xml" />
     <EmbeddedResource Include="Maps\Preguntas.hbm.xml" />
-    <EmbeddedResource Include="Maps\Publicacion.hbm.xml" />
+    <EmbeddedResource Include="Maps\Publicacion.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Maps\Rol.hbm.xml" />
     <EmbeddedResource Include="Maps\Rubro.hbm.xml" />
     <EmbeddedResource Include="Maps\Usuario.hbm.xml">

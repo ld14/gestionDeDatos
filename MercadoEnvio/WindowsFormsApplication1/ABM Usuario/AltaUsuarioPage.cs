@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace WindowsFormsApplication1.ABM_Usuario
 {
@@ -33,7 +34,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.Text.Equals("Empresa")){
+            if (tipoDeUsuarioComboBox.Text.Equals("Empresa")){
                 EmpresaGroup.Visible = true;
                 ClienteGroup.Visible = false;
             }
@@ -46,47 +47,55 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private void button1_Click(object sender, EventArgs e)
         {
             String nombreUsuario = userNameInput.Text;
-            //MessageBox.Show(nombreUsuario);
-            String Password = textBox2.Text;
-            String TipoDeUsuario = comboBox1.Text;
-            String RazonSocial = ClienteRazonSocialTxt.Text;
-            String Cuit = ClienteCuitTxt.Text;
-            String NombreContacto = ClienteNombreContactoTxt.Text;
-            String Mail = textBox16.Text;
-            String Telefono = textBox15.Text;
-            String DomicilioCalle = textBox1.Text;
-            Double nroCalle = Convert.ToDouble(textBox11.Text);
-            Double piso =  Convert.ToDouble(textBox12.Text);
-            String depto = textBox13.Text;
-            String localidad = textBox8.Text;
-            String ciudad = textBox3.Text;
-            String CodigoPostal = textBox9.Text;
+            String Password = userPasswordImput.Text;
+            String TipoDeUsuario = tipoDeUsuarioComboBox.Text;
+            String Mail = DatosBasicosEmailTxt.Text;
+            String Telefono = DatosBasicosTelefono.Text;
+            String DomicilioCalle = DatosBasicosDomicilioCalle.Text;
+            Double nroCalle = Convert.ToDouble(DatosBasicosNroCalle.Text);
+            Double piso =  Convert.ToDouble(DatosBasicosPiso.Text);
+            String depto = DatosBasicosDepto.Text;
+            String localidad = DatosBasicosLocalidad.Text;
+            String ciudad = DatosBasicosCiudad.Text;
+            String CodigoPostal = DatosBasicosCodigoPostal.Text;
             
-            int tipoDocumento = 1;//Convert.ToInt32(ClienteTipoDocComboBox.Text);
-            Double DNI = Convert.ToDouble(ClienteDNITxt.Text);
+            int tipoDocumento = 1;
             String Nombre = ClienteNombreTxt.Text;
             String Apellido = ClienteApellidoTxt.Text;
 
             DateTime FechaNacimiento = DateUtils.convertirStringEnFecha(ClienteFechaNacDateTime.Value.ToString("dd/MM/yyyy"));
-            DateTime FechaCreacion = DateUtils.convertirStringEnFecha(FechaCreacionDateTime.Value.ToString("dd/MM/yyyy"));
-
-            if (comboBox1.Text.Equals("Cliente"))
+            DateTime FechaCreacion = DateUtils.convertirStringEnFecha(EmpresaFechaCreacionDateTime.Value.ToString("dd/MM/yyyy"));
+            String RazonSocial = EmpresaRazonSocialTxt.Text;
+            String Cuit = EmpresaCuitTxt.Text;
+            String NombreContacto = EmpresaNombreContactoTxt.Text;
+           
+          
+            if (tipoDeUsuarioComboBox.Text.Equals("Cliente"))
             {
+                Double DNI = Convert.ToDouble(ClienteDNITxt.Text);
                 Cliente nuevoCliente = new Cliente();
-
-                nuevoCliente.userName = "";
-                nuevoCliente.password = ""; //Colocar Algoritmo de Encriptacion
+                /*Encriptacion password*/
+                var mesage = Encoding.UTF8.GetBytes(Password);
+                SHA256Managed hashString = new SHA256Managed();
+                String pass = "";
+                var hashValue = hashString.ComputeHash(mesage);
+                foreach (byte x in hashValue)
+                {
+                    pass += String.Format("{0:x2}", x);
+                }
+                nuevoCliente.userName = nombreUsuario;
+                nuevoCliente.password = pass; 
                 
                 nuevoCliente.dni = DNI;
                 nuevoCliente.tipoDocumento = tipoDocumento;
                 nuevoCliente.nombre = Nombre;
                 nuevoCliente.apellido = Apellido;
                 nuevoCliente.fechaNacimiento = FechaNacimiento;
-                // ver si joaco lo pone cuando detecta un usuario nuevo tanto el perfil activo como compras y calificadas
                 nuevoCliente.perfilActivo = true;
                 nuevoCliente.fechaCreacion = FechaCreacion;
                 nuevoCliente.comprasEfectuadas = 0;
                 nuevoCliente.comprasCalificadas = 0;
+                nuevoCliente.publicacionGratis = true;
 
                 DatosBasicos nuevoDatoBasico = new DatosBasicos();
                 nuevoCliente.DatosBasicos = nuevoDatoBasico;
@@ -106,12 +115,27 @@ namespace WindowsFormsApplication1.ABM_Usuario
             else
             {
                 Empresa nuevaEmpresa = new Empresa();
+                /*Encriptacion password*/
+                var mesage = Encoding.UTF8.GetBytes(Password);
+                SHA256Managed hashString = new SHA256Managed();
+                String pass = "";
+                var hashValue = hashString.ComputeHash(mesage);
+                foreach (byte x in hashValue)
+                {
+                    pass += String.Format("{0:x2}", x);
+                }
+                nuevaEmpresa.userName = nombreUsuario;
+                nuevaEmpresa.password = pass;
                 nuevaEmpresa.razonSocial = RazonSocial;
                 nuevaEmpresa.cuit = Cuit;
                 nuevaEmpresa.fechaCreacion = FechaCreacion;
-                //nuevaEmpresa.perfilActivo = true;// aca hay que cambiar en la tabla el tipo de dato a bool ya que figura int
+                nuevaEmpresa.perfilActivo = true;
                 nuevaEmpresa.nombreContacto = NombreContacto;
-                
+                nuevaEmpresa.publicacionGratis = true;
+
+                DatosBasicos nuevoDatoBasico = new DatosBasicos();
+                nuevaEmpresa.DatosBasicos = nuevoDatoBasico;
+
                 nuevaEmpresa.DatosBasicos.email = Mail;
                 nuevaEmpresa.DatosBasicos.domCalle = DomicilioCalle;
                 nuevaEmpresa.DatosBasicos.nroCalle = nroCalle;

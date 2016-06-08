@@ -32,6 +32,43 @@ namespace WindowsFormsApplication1
             /*
             try
             {
+            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
+            DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
+            Factura nuevaFactura = new Factura();
+            IList<ItemFactura> lst = new List<ItemFactura>();
+
+            PublicacionSubastaDaoImpl pb = new PublicacionSubastaDaoImpl();
+            PublicacionSubasta pub = pb.GetById(59735);
+            
+           
+            for (int i = 1; i <= 2; i++)
+            {
+                ItemFactura itmf = new ItemFactura();
+                itmf.monto = 20 * i;
+                itmf.Factura = nuevaFactura;
+                itmf.cantidad = 2 * i;
+                lst.Add(itmf);
+            }
+
+            
+            nuevaFactura.setFacturaNueva(36623, DateTime.Now, 21112, "cash", pub, lst);
+
+            FacturaDaoImpl nuevaFacturaDaoImp = new FacturaDaoImpl();
+            nuevaFacturaDaoImp.Add(nuevaFactura);
+
+            
+
+
+            }
+            catch (Exception conect)
+            {
+
+                throw;
+            }
+            
+                        
+            try
+            {
                 myConfiguration = new Configuration();
                 myConfiguration.Configure();
                 mySessionFactory = myConfiguration.BuildSessionFactory();

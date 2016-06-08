@@ -26,6 +26,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
+            DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
 
             String descripcion = DescripcionPublicacionTxt.Text;
             Double stock = Convert.ToDouble(StockTxt.Text);
@@ -34,8 +36,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             Double precio = Convert.ToDouble(PrecioTxt.Text);
             Double valorActual = 0;
 
-            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
-            DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
+
 
 
             DateTime fechaIncioDateTime =   DateUtils.convertirStringEnFecha(FechaIncioDateTime.Value.ToString("dd/MM/yyyy"));
@@ -44,7 +45,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
 
             //Esto debe ser autoIncrementable
-            double codigoPublicacion = 145441;
+            double codigoPublicacion = 14141414;
 
             //Esto hay que cambiarlo por el usuario logueado
 
@@ -57,6 +58,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
             Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
 
+            //ESTO HAY Q CAMBIARLO POR EL USUARIO LOGUEADO
             ClienteDaoImpl usrImpl = new ClienteDaoImpl();
             Cliente usr = usrImpl.GetUsuarioById(1);
 
@@ -69,9 +71,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
                                                        fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, valorActual, selectedRubro);
 
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
-                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+                publicacionSubastaDaoImpl.Add(nuevaPublicacion);
 
-                
+
 
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
                 modificarPublicacionPage.Tag = nuevaPublicacion;
@@ -83,7 +85,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                                        fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
 
                 PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
-                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+                publicacionSubastaDaoImpl.Add(nuevaPublicacion);
                 
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
                 modificarPublicacionPage.Tag = nuevaPublicacion;

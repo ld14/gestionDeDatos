@@ -68,5 +68,14 @@ namespace WindowsFormsApplication1
                 return crit.List<Rubro>(); 
             }
         }
+
+        public Rubro GetRubroById(int id)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.Get<Rubro>(id);
+            }
+        }
+
     }
 }
