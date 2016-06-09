@@ -11,6 +11,7 @@ using WindowsFormsApplication1.ABM_Rubro;
 using WindowsFormsApplication1.ABM_Visibilidad;
 using WindowsFormsApplication1.Generar_Publicación;
 using WindowsFormsApplication1.ComprarOfertar;
+using WindowsFormsApplication1.Entity.Utils;
 
 
 
@@ -21,16 +22,57 @@ namespace WindowsFormsApplication1
         private Configuration myConfiguration;
         private ISessionFactory mySessionFactory;
         private ISession mySession;
+        
 
         public Login()
         {
             InitializeComponent();
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            //Seteo todo en vacio
+            aBMMenu.Visible = false;
+            PublicacionMenu.Visible = false;
+            comprarOfertarMenu.Visible = false;
 
+            //Abro la pagina de Logueo
+            pageLogin nuevaPagina = new pageLogin();
+            nuevaPagina.ShowDialog();
+
+
+            //Tomo el usuario de sesion.
+            Usuario user = SessionAttribute.user;
+            ICollection<Rol> roles = user.RolesLst;
+
+            //Recorro los roles
+            foreach (Rol rol in roles)
+            {
+                if (true) { //Este IF debe cambiarse por la seleccion del rol en la pantalla de Loguin
+                   foreach (Funciones fun in rol.FuncionesLst) {
+                        switch (fun.nombre) {
+                            case "comprarOfertarMenu":
+                                {
+                                    comprarOfertarMenu.Visible = true;
+                                    break;
+                                }
+                            case "PublicacionMenu":
+                                {
+                                    PublicacionMenu.Visible = true;
+                                    break;
+                                }
+                            case "aBMMenu":
+                                {
+                                    aBMMenu.Visible = true;
+                                    break;
+                                }
+                        }
+                    }
+                   
+                }
+            }
 
             /*
              * FacturaDaoImpl factDaoImp = new FacturaDaoImpl();
@@ -115,14 +157,21 @@ namespace WindowsFormsApplication1
             publicacionSubastaDaoImpl.Add(nuevaSubasta);
             */
 
-            pageLogin nuevaPagina = new pageLogin();
-            nuevaPagina.MdiParent = this;
-            ///Hola...2222
-            nuevaPagina.Show();
 
 
+
+
+
+
+
+            //
 
             /*
+             *             comprarOfertarMenu
+PublicacionMenu
+aBMMenu
+
+
              * try
               {
                   myConfiguration = new Configuration();
@@ -323,6 +372,11 @@ namespace WindowsFormsApplication1
             BusquedaPublicacion busquedaPublicacion = new BusquedaPublicacion();
             busquedaPublicacion.MdiParent = this;
             busquedaPublicacion.Show();
+        }
+
+        private void comprarOfertarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

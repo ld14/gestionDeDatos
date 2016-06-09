@@ -145,6 +145,7 @@
     <Compile Include="Entity\Utils\CustomControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Entity\Utils\SessionAttribute.cs" />
     <Compile Include="Generar Publicación\BuscadorPublicacion.cs">
       <SubType>Form</SubType>
     </Compile>

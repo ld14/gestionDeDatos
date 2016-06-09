@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.aBMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBMMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,11 +39,11 @@
             this.nuevoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.visibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generarPublicacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PublicacionMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comprarOfertarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comprarOfertarMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -51,22 +51,22 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aBMToolStripMenuItem,
-            this.generarPublicacionToolStripMenuItem,
-            this.comprarOfertarToolStripMenuItem});
+            this.aBMMenu,
+            this.PublicacionMenu,
+            this.comprarOfertarMenu});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
-            // aBMToolStripMenuItem
+            // aBMMenu
             // 
-            this.aBMToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aBMMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuarioToolStripMenuItem,
             this.rolToolStripMenuItem,
             this.rubroToolStripMenuItem,
             this.visibToolStripMenuItem});
-            this.aBMToolStripMenuItem.Name = "aBMToolStripMenuItem";
-            resources.ApplyResources(this.aBMToolStripMenuItem, "aBMToolStripMenuItem");
+            this.aBMMenu.Name = "aBMMenu";
+            resources.ApplyResources(this.aBMMenu, "aBMMenu");
             // 
             // usuarioToolStripMenuItem
             // 
@@ -122,14 +122,14 @@
             resources.ApplyResources(this.nuevaToolStripMenuItem, "nuevaToolStripMenuItem");
             this.nuevaToolStripMenuItem.Click += new System.EventHandler(this.nuevaToolStripMenuItem_Click);
             // 
-            // generarPublicacionToolStripMenuItem
+            // PublicacionMenu
             // 
-            this.generarPublicacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PublicacionMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevaToolStripMenuItem1,
             this.modificacionToolStripMenuItem,
             this.buscarToolStripMenuItem});
-            this.generarPublicacionToolStripMenuItem.Name = "generarPublicacionToolStripMenuItem";
-            resources.ApplyResources(this.generarPublicacionToolStripMenuItem, "generarPublicacionToolStripMenuItem");
+            this.PublicacionMenu.Name = "PublicacionMenu";
+            resources.ApplyResources(this.PublicacionMenu, "PublicacionMenu");
             // 
             // nuevaToolStripMenuItem1
             // 
@@ -149,12 +149,13 @@
             resources.ApplyResources(this.buscarToolStripMenuItem, "buscarToolStripMenuItem");
             this.buscarToolStripMenuItem.Click += new System.EventHandler(this.buscarToolStripMenuItem_Click);
             // 
-            // comprarOfertarToolStripMenuItem
+            // comprarOfertarMenu
             // 
-            this.comprarOfertarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.comprarOfertarMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buscarToolStripMenuItem1});
-            this.comprarOfertarToolStripMenuItem.Name = "comprarOfertarToolStripMenuItem";
-            resources.ApplyResources(this.comprarOfertarToolStripMenuItem, "comprarOfertarToolStripMenuItem");
+            this.comprarOfertarMenu.Name = "comprarOfertarMenu";
+            resources.ApplyResources(this.comprarOfertarMenu, "comprarOfertarMenu");
+            this.comprarOfertarMenu.Click += new System.EventHandler(this.comprarOfertarToolStripMenuItem_Click);
             // 
             // buscarToolStripMenuItem1
             // 
@@ -182,7 +183,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem aBMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBMMenu;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rolToolStripMenuItem;
@@ -191,11 +192,11 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem visibToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem generarPublicacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PublicacionMenu;
         private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem comprarOfertarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comprarOfertarMenu;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem1;
 
 

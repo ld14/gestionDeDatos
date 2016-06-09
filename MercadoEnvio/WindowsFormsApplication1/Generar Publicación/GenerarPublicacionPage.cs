@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Entity.Utils;
 
 namespace WindowsFormsApplication1.Generar_Publicación
 {
@@ -139,6 +140,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void GenerarPublicacionPage_Load(object sender, EventArgs e)
         {
+
+            Usuario user = SessionAttribute.user;
+            ICollection<Rol> ba = user.RolesLst;
 
             //----------------------Campos seccion Estados-------------------------------------------//
             WorkflowEstadosDaoImpl workflowEstadosDaoImpl = new WorkflowEstadosDaoImpl();
