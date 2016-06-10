@@ -60,5 +60,18 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public IList<Cliente> getAllClienteActivos()
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
+                    ICriteria crit = manager.Session.CreateCriteria<Cliente>();
+                    crit.Add(Expression.Eq("perfilActivo", true));
+                    return crit.List<Cliente>();
+                }
+            }
+        }
+
     }     
 }

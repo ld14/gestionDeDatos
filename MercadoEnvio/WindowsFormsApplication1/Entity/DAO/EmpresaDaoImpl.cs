@@ -47,6 +47,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+        
         public Empresa GetEmpresaByRazonSocial(string razonSocial)    {
             using (NHibernateManager manager = new NHibernateManager())
             {
@@ -66,8 +67,20 @@ namespace WindowsFormsApplication1
                 crit.Add(Expression.Eq("cuit",cuit));
                 return crit.UniqueResult<Empresa>();
 
+            }  
         }
-    }
+
+        public IList<Empresa> getAllEmpresaActivas()        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
+                    ICriteria crit = manager.Session.CreateCriteria<Empresa>();
+                    crit.Add(Expression.Eq("perfilActivo", true));
+                    return crit.List<Empresa>(); 
+                }
+            }
+        }
 
     }
 }

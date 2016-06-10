@@ -47,6 +47,8 @@
             this.buscarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.historialDeCompraMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscarToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +58,8 @@
             this.aBMMenu,
             this.PublicacionMenu,
             this.comprarOfertarMenu,
-            this.historialDeCompraMenu});
+            this.historialDeCompraMenu,
+            this.facturacionToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -179,6 +182,19 @@
             resources.ApplyResources(this.buscarToolStripMenuItem2, "buscarToolStripMenuItem2");
             this.buscarToolStripMenuItem2.Click += new System.EventHandler(this.buscarToolStripMenuItem2_Click);
             // 
+            // facturacionToolStripMenuItem
+            // 
+            this.facturacionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buscarToolStripMenuItem3});
+            this.facturacionToolStripMenuItem.Name = "facturacionToolStripMenuItem";
+            resources.ApplyResources(this.facturacionToolStripMenuItem, "facturacionToolStripMenuItem");
+            // 
+            // buscarToolStripMenuItem3
+            // 
+            this.buscarToolStripMenuItem3.Name = "buscarToolStripMenuItem3";
+            resources.ApplyResources(this.buscarToolStripMenuItem3, "buscarToolStripMenuItem3");
+            this.buscarToolStripMenuItem3.Click += new System.EventHandler(this.buscarToolStripMenuItem3_Click);
+            // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
@@ -216,6 +232,8 @@
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem historialDeCompraMenu;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem facturacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem3;
 
 
     }

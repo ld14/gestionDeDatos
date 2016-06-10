@@ -10,6 +10,7 @@ namespace WindowsFormsApplication1.Entity.DAO
         void Update(Cliente usuario);
         void Remove(Cliente usuario);
         Cliente GetUsuarioById(int id);
+        IList<Cliente> getAllClienteActivos();
     }
 }
 

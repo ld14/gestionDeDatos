@@ -13,5 +13,6 @@ namespace WindowsFormsApplication1
         Empresa GetEmpresaByIdUsuario(int idUsuario);
         Empresa GetEmpresaByRazonSocial(string razonSocial);
         Empresa GetEmpresaByCuit(string cuit);
+        IList<Empresa> getAllEmpresaActivas();
     }
 }

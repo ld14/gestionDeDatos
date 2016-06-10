@@ -13,6 +13,7 @@ using WindowsFormsApplication1.Generar_Publicación;
 using WindowsFormsApplication1.ComprarOfertar;
 using WindowsFormsApplication1.Entity.Utils;
 using WindowsFormsApplication1.Historial_Cliente;
+using WindowsFormsApplication1.Facturas;
 
 
 
@@ -396,6 +397,13 @@ aBMMenu
             CompraVentaForm compraVentaForm = new CompraVentaForm();
             compraVentaForm.MdiParent = this;
             compraVentaForm.Show();
+        }
+
+        private void buscarToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            FacturasEmitidasForm facturasEmitidasFormForm = new FacturasEmitidasForm();
+            facturasEmitidasFormForm.MdiParent = this;
+            facturasEmitidasFormForm.Show();
         }
     }
 }
