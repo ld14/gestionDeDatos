@@ -128,7 +128,7 @@
     <value>Nuevo</value>
   </data>
   <data name="usuarioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="usuarioToolStripMenuItem.Text" xml:space="preserve">
     <value>Usuario</value>
@@ -140,7 +140,7 @@
     <value>Nuevo</value>
   </data>
   <data name="rolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="rolToolStripMenuItem.Text" xml:space="preserve">
     <value>Rol</value>
@@ -152,7 +152,7 @@
     <value>Nuevo</value>
   </data>
   <data name="rubroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="rubroToolStripMenuItem.Text" xml:space="preserve">
     <value>Rubro</value>
@@ -164,7 +164,7 @@
     <value>Nueva</value>
   </data>
   <data name="visibToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="visibToolStripMenuItem.Text" xml:space="preserve">
     <value>Visibilidad</value>
@@ -176,19 +176,19 @@
     <value>ABM</value>
   </data>
   <data name="nuevaToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>144, 22</value>
   </data>
   <data name="nuevaToolStripMenuItem1.Text" xml:space="preserve">
     <value>Alta</value>
   </data>
   <data name="modificacionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>144, 22</value>
   </data>
   <data name="modificacionToolStripMenuItem.Text" xml:space="preserve">
     <value>Modificacion</value>
   </data>
   <data name="buscarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>144, 22</value>
   </data>
   <data name="buscarToolStripMenuItem.Text" xml:space="preserve">
     <value>Buscar</value>
@@ -200,7 +200,7 @@
     <value>Publicacion</value>
   </data>
   <data name="buscarToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>109, 22</value>
   </data>
   <data name="buscarToolStripMenuItem1.Text" xml:space="preserve">
     <value>Buscar</value>
@@ -210,6 +210,18 @@
   </data>
   <data name="comprarOfertarMenu.Text" xml:space="preserve">
     <value>Comprar/Ofertar</value>
+  </data>
+  <data name="buscarToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="buscarToolStripMenuItem2.Text" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="historialDeCompraMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 20</value>
+  </data>
+  <data name="historialDeCompraMenu.Text" xml:space="preserve">
+    <value>Historial de Compra</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -3723,6 +3735,18 @@
     <value>buscarToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;buscarToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;historialDeCompraMenu.Name" xml:space="preserve">
+    <value>historialDeCompraMenu</value>
+  </data>
+  <data name="&gt;&gt;historialDeCompraMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buscarToolStripMenuItem2.Name" xml:space="preserve">
+    <value>buscarToolStripMenuItem2</value>
+  </data>
+  <data name="&gt;&gt;buscarToolStripMenuItem2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

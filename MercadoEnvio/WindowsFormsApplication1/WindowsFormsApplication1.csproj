@@ -114,6 +114,7 @@
     </Compile>
     <Compile Include="Domain\BusquedaDePublicacion.cs" />
     <Compile Include="Domain\Ofertasubasta.cs" />
+    <Compile Include="Domain\SubastaCompraDelSistema.cs" />
     <Compile Include="Entity\DAO\ClienteDao.cs" />
     <Compile Include="Entity\DAO\ClienteDaoImpl.cs" />
     <Compile Include="Entity\DAO\BusquedaDePublicacionDao.cs" />
@@ -122,6 +123,8 @@
     <Compile Include="Entity\DAO\ComisionesParametrizablesDaoImpl.cs" />
     <Compile Include="Entity\DAO\CompraUsuarioDaoImpl.cs" />
     <Compile Include="Entity\DAO\CompraUsuarioDao.cs" />
+    <Compile Include="Entity\DAO\SubastaCompraDelSistemaDaoDaoImpl.cs" />
+    <Compile Include="Entity\DAO\SubastaCompraDelSistemaDao.cs" />
     <Compile Include="Entity\DAO\ItemFacturaDaoImpl.cs" />
     <Compile Include="Entity\DAO\ItemFacturaDao.cs" />
     <Compile Include="Entity\DAO\FacturaDaoImpl.cs" />
@@ -171,6 +174,13 @@
     <Compile Include="Generar Publicación\ModificarPublicacionPage.Designer.cs">
       <DependentUpon>ModificarPublicacionPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Historial Cliente\CompraVentaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial Cliente\CompraVentaForm.Designer.cs">
+      <DependentUpon>CompraVentaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Historial Cliente\GrillaCompraVenta.cs" />
     <Compile Include="Login_page\pageLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,12 +227,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Historial Cliente\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Historial Cliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Listado Estadistico\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicación\ModificarPublicacionPage.resx">
       <DependentUpon>ModificarPublicacionPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial Cliente\CompraVentaForm.resx">
+      <DependentUpon>CompraVentaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login_page\pageLogin.resx">
       <DependentUpon>pageLogin.cs</DependentUpon>
@@ -344,6 +351,7 @@
     <EmbeddedResource Include="Maps\WorkflowEstados.hbm.xml" />
     <EmbeddedResource Include="Maps\BusquedaDePublicacion.hbm.xml" />
     <EmbeddedResource Include="Maps\OfertaSubasta.hbm.xml" />
+    <EmbeddedResource Include="Maps\SubastaCompraDelSistema.hbm.xml" />
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <ItemGroup />

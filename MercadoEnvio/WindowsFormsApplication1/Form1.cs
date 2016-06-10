@@ -12,6 +12,7 @@ using WindowsFormsApplication1.ABM_Visibilidad;
 using WindowsFormsApplication1.Generar_Publicación;
 using WindowsFormsApplication1.ComprarOfertar;
 using WindowsFormsApplication1.Entity.Utils;
+using WindowsFormsApplication1.Historial_Cliente;
 
 
 
@@ -32,11 +33,11 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             //Seteo todo en vacio
             aBMMenu.Visible = false;
             PublicacionMenu.Visible = false;
             comprarOfertarMenu.Visible = false;
+            //historialDeCompraMenu
 
             //Abro la pagina de Logueo
             pageLogin nuevaPagina = new pageLogin();
@@ -44,8 +45,19 @@ namespace WindowsFormsApplication1
 
 
             //Tomo el usuario de sesion.
-            Usuario user = SessionAttribute.user;
-            ICollection<Rol> roles = user.RolesLst;
+            ICollection<Rol> roles = new List<Rol>();
+
+            if (SessionAttribute.user is Cliente) {
+                Cliente user = (Cliente)SessionAttribute.user;
+                roles = user.RolesLst;
+            }
+            if (SessionAttribute.user is Empresa)
+            {
+                Empresa user = (Empresa)SessionAttribute.user;
+                roles = user.RolesLst;
+            }
+
+            
 
             //Recorro los roles
             foreach (Rol rol in roles)
@@ -377,6 +389,13 @@ aBMMenu
         private void comprarOfertarToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            CompraVentaForm compraVentaForm = new CompraVentaForm();
+            compraVentaForm.MdiParent = this;
+            compraVentaForm.Show();
         }
     }
 }

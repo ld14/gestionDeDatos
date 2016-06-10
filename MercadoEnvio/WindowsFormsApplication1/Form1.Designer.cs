@@ -45,6 +45,8 @@
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprarOfertarMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.historialDeCompraMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +55,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aBMMenu,
             this.PublicacionMenu,
-            this.comprarOfertarMenu});
+            this.comprarOfertarMenu,
+            this.historialDeCompraMenu});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -163,6 +166,19 @@
             resources.ApplyResources(this.buscarToolStripMenuItem1, "buscarToolStripMenuItem1");
             this.buscarToolStripMenuItem1.Click += new System.EventHandler(this.buscarToolStripMenuItem1_Click);
             // 
+            // historialDeCompraMenu
+            // 
+            this.historialDeCompraMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buscarToolStripMenuItem2});
+            this.historialDeCompraMenu.Name = "historialDeCompraMenu";
+            resources.ApplyResources(this.historialDeCompraMenu, "historialDeCompraMenu");
+            // 
+            // buscarToolStripMenuItem2
+            // 
+            this.buscarToolStripMenuItem2.Name = "buscarToolStripMenuItem2";
+            resources.ApplyResources(this.buscarToolStripMenuItem2, "buscarToolStripMenuItem2");
+            this.buscarToolStripMenuItem2.Click += new System.EventHandler(this.buscarToolStripMenuItem2_Click);
+            // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
@@ -198,6 +214,8 @@
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comprarOfertarMenu;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem historialDeCompraMenu;
+        private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem2;
 
 
     }

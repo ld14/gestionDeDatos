@@ -28,6 +28,11 @@ namespace WindowsFormsApplication1.Login_page
             ClienteDaoImpl usrImpl = new ClienteDaoImpl();
             Cliente usr = usrImpl.GetUsuarioById(1);
             SessionAttribute.user = usr;
+
+            //EmpresaDaoImpl empImpl = new EmpresaDaoImpl();
+            //Empresa usr = empImpl.GetEmpresaByIdUsuario(29);
+            //SessionAttribute.user = usr;
+
             this.Close();
             
 

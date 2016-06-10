@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1.ComprarOfertar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            customerList = new List<GrillaPublicacion>();
             List<string> selectedRubrosLst = new List<string>();
 
             foreach(Rubro itemChecked in RubroCheckedList.CheckedItems){
