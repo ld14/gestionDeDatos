@@ -188,11 +188,11 @@ CREATE TABLE [LOPEZ_Y_CIA].[Usuario](
 	[userName] [varchar](50) NOT NULL UNIQUE,
 	[password] [varchar](255) NOT NULL,
 	[activoUsuario] [bit] NOT NULL,
-	[intentosFallidos] [int] NOT NULL,
+	[intentosFallidos] [int] NULL,
 	[publicacionGratis] [bit] NULL,
 	[cantidadEstrellas] [int] NULL,
 	[cantidadVentas] [int] NULL,
-	[idDatosBasicos] [int] NOT NULL,
+	[idDatosBasicos] [int] NULL,
 	CONSTRAINT [PK_Usuario_1] PRIMARY KEY CLUSTERED([idUsuario] ASC)
 ) ON [PRIMARY]
 
@@ -785,6 +785,9 @@ COMMIT TRAN;
 GO
 
 /** VISTAS Y OTROS **/
+
+INSERT INTO [LOPEZ_Y_CIA].[Usuario] (userName, password, activoUsuario)
+VALUES ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1)
 
 CREATE VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion] AS
 	SELECT ROW_NUMBER() OVER(ORDER BY idPublicacion DESC) AS rowID, * 
