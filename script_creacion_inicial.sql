@@ -783,4 +783,48 @@ DEFAULT (NEXT VALUE FOR [LOPEZ_Y_CIA].[secuenciaPubli]) FOR [codigoPublicacion]
 COMMIT TRAN;
 
 GO
+
+/** VISTAS Y OTROS **/
+
+CREATE VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion] AS
+	SELECT ROW_NUMBER() OVER(ORDER BY idPublicacion DESC) AS rowID, * 
+	FROM (
+		SELECT
+			pub.idPublicacion,
+			'Subasta' AS tipoPublicacion,
+			pub.codigoPublicacion,
+			pub.descripcion,
+			pub.fechaCreacion,
+			pub.fechaVencimiento,
+			pubSub.valorActual AS precio,
+			rubro.descripcion AS desRubro,
+			visb.costo,
+			pub.idUsuario
+		FROM [LOPEZ_Y_CIA].[PublicacionSubasta] AS pubSub
+		JOIN [LOPEZ_Y_CIA].[Publicacion] AS pub ON pubSub.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[Visibilidad] AS visb ON pub.idVisibilidad = visb.idVisibilidad 
+		JOIN [LOPEZ_Y_CIA].[RubroPublicacion] AS rubropublic ON rubropublic.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[Rubro] AS rubro ON rubropublic.idRubro = rubro.idRubro
+		WHERE pub.idEstadoPublicacion = 2
+		UNION ALL
+		SELECT
+			pub.idPublicacion,
+			'Compra Directa' AS tipoPublicacion,
+			pub.codigoPublicacion,
+			pub.descripcion,
+			pub.fechaCreacion,
+			pub.fechaVencimiento,
+			pubNormal.precioPorUnidad AS precio,
+			rubro.descripcion AS desRubro,
+			visb.costo,
+			pub.idUsuario
+		FROM [LOPEZ_Y_CIA].[PublicacionNormal] AS pubNormal
+		JOIN [LOPEZ_Y_CIA].[Publicacion] AS pub ON pubNormal.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[Visibilidad] AS visb ON pub.idVisibilidad = visb.idVisibilidad
+		JOIN [LOPEZ_Y_CIA].[RubroPublicacion] AS rubropublic ON rubropublic.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[Rubro] AS rubro ON rubropublic.idRubro = rubro.idRubro
+		WHERE pub.idEstadoPublicacion = 2
+	) x
+
+GO
 /** FIN DEL SCRIPT **/

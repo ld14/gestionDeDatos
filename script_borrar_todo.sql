@@ -20,7 +20,10 @@ DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaCalif];
 DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaVisib];
 DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaFactu];
 DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaPubli];
+
+DROP VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion];
+
 DROP SCHEMA [LOPEZ_Y_CIA];'
 
 PRINT @sql;
---EXEC sp_executesql @sql;
+EXEC sp_executesql @sql;
