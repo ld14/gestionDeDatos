@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1.Facturas
 
         private void FacturasEmitidasForm1_Load(object sender, EventArgs e)
         {
-            ??Hola Mundo
+            //Hola Mundo
         }
     }
 }
