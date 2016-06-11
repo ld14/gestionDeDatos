@@ -51,6 +51,7 @@ CREATE TABLE [LOPEZ_Y_CIA].[CompraUsuario](
 CREATE TABLE [LOPEZ_Y_CIA].[DatosBasicos](
 	[idDatosBasicos] [int] IDENTITY(1,1) NOT NULL,
 	[email] [varchar](255) NOT NULL,
+	[telefono] [varchar](50) NULL,
 	[domCalle] [varchar](255) NULL,
 	[nroCalle] [int] NULL,
 	[piso] [int] NULL,
@@ -788,8 +789,10 @@ GO
 
 INSERT INTO [LOPEZ_Y_CIA].[Usuario] (userName, password, activoUsuario)
 VALUES ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1)
+INSERT INTO [LOPEZ_Y_CIA].[RolUsuario]
+VALUES (3, 96, 1)
 
-Go
+GO
 CREATE VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion] AS
 	SELECT ROW_NUMBER() OVER(ORDER BY idPublicacion DESC) AS rowID, * 
 	FROM (
