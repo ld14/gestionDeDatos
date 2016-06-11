@@ -187,10 +187,10 @@ namespace WindowsFormsApplication1.ComprarOfertar
                     // Paso la compra a estado finalizado, actualizo el Stock y sumo una venta al cliente que publico
                     EstadoPublicacionDaoDaoImpl estadoDaoImpl = new EstadoPublicacionDaoDaoImpl();
                     nuevaCompraPublicacion.EstadoPublicacion = estadoDaoImpl.darEstadoByID(4);
-                }    
-                    
-                    
-                nuevaCompraPublicacion.Usuario.cantidadVentas = nuevaCompraPublicacion.Usuario.cantidadVentas + 1;
+                }
+
+
+                nuevaCompraPublicacion.Usuario.cantidadVentas = nuevaCompraPublicacion.Usuario.cantidadVentas + Convert.ToInt32(cantidadVendida);
                 actualizarPublicImpl.Update(nuevaCompraPublicacion);
 
 

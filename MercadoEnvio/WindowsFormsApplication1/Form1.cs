@@ -14,6 +14,7 @@ using WindowsFormsApplication1.ComprarOfertar;
 using WindowsFormsApplication1.Entity.Utils;
 using WindowsFormsApplication1.Historial_Cliente;
 using WindowsFormsApplication1.Facturas;
+using WindowsFormsApplication1.Listado_Estadistico;
 
 
 
@@ -402,6 +403,13 @@ aBMMenu
         private void buscarToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             FacturasEmitidasForm facturasEmitidasFormForm = new FacturasEmitidasForm();
+            facturasEmitidasFormForm.MdiParent = this;
+            facturasEmitidasFormForm.Show();
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListadoEstadisitico facturasEmitidasFormForm = new ListadoEstadisitico();
             facturasEmitidasFormForm.MdiParent = this;
             facturasEmitidasFormForm.Show();
         }
