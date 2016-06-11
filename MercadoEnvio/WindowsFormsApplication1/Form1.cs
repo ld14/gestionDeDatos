@@ -14,6 +14,7 @@ using WindowsFormsApplication1.ComprarOfertar;
 using WindowsFormsApplication1.Entity.Utils;
 using WindowsFormsApplication1.Historial_Cliente;
 using WindowsFormsApplication1.Facturas;
+using System.Collections;
 
 
 
@@ -46,7 +47,7 @@ namespace WindowsFormsApplication1
 
 
             //Tomo el usuario de sesion.
-            ICollection<Rol> roles = new List<Rol>();
+           /* ICollection<Rol> roles = new List<Rol>();
 
             if (SessionAttribute.user is Cliente) {
                 Cliente user = (Cliente)SessionAttribute.user;
@@ -57,8 +58,11 @@ namespace WindowsFormsApplication1
                 Empresa user = (Empresa)SessionAttribute.user;
                 roles = user.RolesLst;
             }
+            */
+            IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
+            rolUser.MoveNext();
 
-            
+            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.idUsuario + "] [Rol: " + rolUser.Current.nombre + "]";
 
             //Recorro los roles
             foreach (Rol rol in roles)
