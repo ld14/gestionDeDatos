@@ -60,5 +60,18 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public Usuario Acceder(string name)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                IList<Usuario> user;
+                user = manager.Session.QueryOver<Usuario>().Where(x => x.userName == name).List();
+                if (user.Count() == 0)
+                    return null;
+                else
+                    return user.First();
+            }
+        }
+
     }     
 }
