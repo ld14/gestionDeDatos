@@ -834,4 +834,164 @@ CREATE VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion] AS
 	) x
 
 GO
+
+CREATE VIEW [LOPEZ_Y_CIA].[SubastaCompraDelSistema] AS
+	SELECT ROW_NUMBER() OVER(ORDER BY codigoPublicacion DESC) AS rowID, * 
+	FROM (
+		SELECT
+			cp1.idUsuario,
+			'Compras' AS tipoCompra,
+			cp1.fecha,
+			cp1.compraCantidad, 
+			pub1.codigoPublicacion,
+			pub1.descripcion,
+			cal1.cantEstrellas,
+			cal1.descripcion AS descripcionCalificacion
+		FROM [LOPEZ_Y_CIA].[CompraUsuario] cp1
+		LEFT JOIN [LOPEZ_Y_CIA].[Usuario] usr1 ON cp1.idUsuario = usr1.idUsuario 
+		JOIN [LOPEZ_Y_CIA].[Publicacion] pub1 ON cp1.idPublicacion = pub1.idPublicacion 
+		LEFT JOIN [LOPEZ_Y_CIA].[Calificacion] cal1 ON cal1.idCalificacion = cp1.idCalificacion
+		UNION ALL
+		SELECT
+			sb1.idUsuario,
+			'Oferta Subasta' AS tipoCompra,
+			sb1.fecha,
+			0 AS compraCantidad, 
+			pub1.codigoPublicacion,
+			pub1.descripcion,
+			'' AS cantEstrellas,
+			'' AS descripcionCalificacion
+		FROM [LOPEZ_Y_CIA].[OfertaSubasta] sb1
+		LEFT JOIN [LOPEZ_Y_CIA].[Usuario] usr1 ON sb1.idUsuario = usr1.idUsuario 
+		JOIN [LOPEZ_Y_CIA].[Publicacion] pub1 ON sb1.idPublicacion = pub1.idPublicacion
+		WHERE sb1.idOfertaSubasta NOT IN (
+			SELECT sb2.idOfertaSubasta
+			FROM
+				[LOPEZ_Y_CIA].[OfertaSubasta] sb2,
+				[LOPEZ_Y_CIA].[CompraUsuario] cp2
+			WHERE sb2.idPublicacion = cp2.idPublicacion AND sb2.idUsuario = cp2.idUsuario				
+		)
+	) x 
+GO
+
+CREATE VIEW [LOPEZ_Y_CIA].[EstadisticaCompradores] AS
+	SELECT ROW_NUMBER() OVER(ORDER BY fecha, idUsuario DESC) AS rowID, * 
+	FROM (
+		SELECT
+			pub.idPublicacion,
+			pub.codigoPublicacion,
+			pub.descripcion,
+			pub.idUsuario,
+			emp.razonSocial AS nombre,
+			cp.compraCantidad,
+			cp.fecha,
+			rub.idRubro,
+			rub.descripcion AS descript
+		FROM [LOPEZ_Y_CIA].[CompraUsuario] cp
+		JOIN [LOPEZ_Y_CIA].[Publicacion] pub ON cp.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[RubroPublicacion] rubPub ON rubPub.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[Rubro] rub ON rubPub.idRubro = rub.idRubro
+		JOIN [LOPEZ_Y_CIA].[Empresa] emp ON emp.idUsuario = pub.idUsuario
+		UNION ALL
+		SELECT
+			pub.idPublicacion,
+			pub.codigoPublicacion,
+			pub.descripcion,
+			pub.idUsuario,
+			emp.nombre + ' ' + emp.apellido AS nombre,
+			cp.compraCantidad,
+			cp.fecha,
+			rub.idRubro,
+			rub.descripcion AS descript
+		FROM [LOPEZ_Y_CIA].[CompraUsuario] cp
+		JOIN [LOPEZ_Y_CIA].[Publicacion] pub ON cp.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[RubroPublicacion] rubPub ON rubPub.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[Rubro] rub ON rubPub.idRubro = rub.idRubro
+		JOIN [LOPEZ_Y_CIA].[Cliente] emp ON emp.idUsuario = pub.idUsuario
+	) x	
+GO
+
+CREATE VIEW [LOPEZ_Y_CIA].[EstadisticaVendedores] AS
+	SELECT ROW_NUMBER() OVER(ORDER BY fechaCreacion, costo DESC) AS rowID, * 
+	FROM (
+		SELECT
+			pub.idPublicacion,
+			pub.idUsuario,
+			emp.razonSocial AS nombre,
+			pub.fechaCreacion,
+			pub.stock,
+			vib.idVisibilidad,
+			vib.costo
+		FROM [LOPEZ_Y_CIA].[PublicacionNormal] pubN1
+		JOIN [LOPEZ_Y_CIA].[Publicacion] pub ON pubN1.idPublicacion = pub.idEstadoPublicacion
+		JOIN [LOPEZ_Y_CIA].[Visibilidad] vib ON pub.idVisibilidad = vib.idVisibilidad
+		JOIN [LOPEZ_Y_CIA].[Empresa] emp ON emp.idUsuario = pub.idUsuario
+		WHERE pub.stock > 0 AND pub.idEstadoPublicacion = 4
+		UNION ALL
+		SELECT
+			pub.idPublicacion,
+			pub.idUsuario,
+			emp.nombre + ' ' + emp.apellido AS nombre,
+			pub.fechaCreacion,
+			pub.stock,
+			vib.idVisibilidad,
+			vib.costo
+		FROM [LOPEZ_Y_CIA].[PublicacionNormal] pubN1
+		JOIN [LOPEZ_Y_CIA].[Publicacion] pub ON pubN1.idPublicacion = pub.idEstadoPublicacion
+		JOIN [LOPEZ_Y_CIA].[Visibilidad] vib ON pub.idVisibilidad = vib.idVisibilidad
+		JOIN [LOPEZ_Y_CIA].[Cliente] emp ON emp.idUsuario = pub.idUsuario
+		WHERE pub.stock > 0 AND pub.idEstadoPublicacion = 4
+		UNION ALL
+		SELECT
+			pub.idPublicacion, 
+			pub.idUsuario,
+			emp.nombre + ' ' + emp.apellido AS nombre,
+			pub.fechaCreacion,
+			pub.stock,
+			vib.idVisibilidad,
+			vib.costo 
+		FROM [LOPEZ_Y_CIA].[PublicacionSubasta] ps1
+		JOIN [LOPEZ_Y_CIA].[Publicacion] pub ON ps1.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[Visibilidad] vib ON pub.idVisibilidad = vib.idVisibilidad
+		JOIN [LOPEZ_Y_CIA].[Cliente] emp ON emp.idUsuario = pub.idUsuario
+		WHERE pub.idPublicacion NOT IN (
+			SELECT cp.idPublicacion
+			FROM [LOPEZ_Y_CIA].[CompraUsuario] cp
+		) AND pub.idEstadoPublicacion = 4
+		UNION ALL
+		SELECT
+			pub.idPublicacion,
+			pub.idUsuario,
+			emp.razonSocial AS nombre,
+			pub.fechaCreacion,
+			pub.stock,
+			vib.idVisibilidad,
+			vib.costo 
+		FROM [LOPEZ_Y_CIA].[PublicacionSubasta] ps1
+		JOIN [LOPEZ_Y_CIA].[Publicacion] pub ON ps1.idPublicacion = pub.idPublicacion
+		JOIN [LOPEZ_Y_CIA].[Visibilidad] vib ON pub.idVisibilidad = vib.idVisibilidad
+		JOIN [LOPEZ_Y_CIA].[Empresa] emp ON emp.idUsuario = pub.idUsuario
+		WHERE pub.idPublicacion NOT IN (
+			SELECT cp.idPublicacion
+			FROM [LOPEZ_Y_CIA].[CompraUsuario] cp
+		) AND pub.idEstadoPublicacion = 4
+	
+	) x	
+GO
+
+CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
+ON [LOPEZ_Y_CIA].[Rol] FOR UPDATE AS
+BEGIN TRAN
+	MERGE [LOPEZ_Y_CIA].[RolUsuario] AS T1
+	USING (
+		SELECT *
+		FROM [LOPEZ_Y_CIA].[Rol]
+		WHERE activo = 0
+	) T2
+	ON (T1.idRol = T2.idRol) 
+	WHEN MATCHED THEN UPDATE SET
+		T1.activo = 0;
+COMMIT TRAN;
+
+GO
 /** FIN DEL SCRIPT **/
