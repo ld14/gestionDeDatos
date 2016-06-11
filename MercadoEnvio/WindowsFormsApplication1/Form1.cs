@@ -14,8 +14,8 @@ using WindowsFormsApplication1.ComprarOfertar;
 using WindowsFormsApplication1.Entity.Utils;
 using WindowsFormsApplication1.Historial_Cliente;
 using WindowsFormsApplication1.Facturas;
-using System.Collections;
 using WindowsFormsApplication1.Listado_Estadistico;
+
 
 
 namespace WindowsFormsApplication1
@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
         private Configuration myConfiguration;
         private ISessionFactory mySessionFactory;
         private ISession mySession;
-        
+
 
         public Login()
         {
@@ -36,9 +36,9 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             //Seteo todo en vacio
-            aBMMenu.Visible = true;
-            PublicacionMenu.Visible = true;
-            comprarOfertarMenu.Visible = true;
+            aBMMenu.Visible = false;
+            PublicacionMenu.Visible = false;
+            comprarOfertarMenu.Visible = false;
             //historialDeCompraMenu
 
             //Abro la pagina de Logueo
@@ -47,22 +47,20 @@ namespace WindowsFormsApplication1
 
 
             //Tomo el usuario de sesion.
-            /* ICollection<Rol> roles = new List<Rol>();
+            ICollection<Rol> roles = new List<Rol>();
 
-             if (SessionAttribute.user is Cliente) {
-                 Cliente user = (Cliente)SessionAttribute.user;
-                 roles = user.RolesLst;
-             }
-             if (SessionAttribute.user is Empresa)
-             {
-                 Empresa user = (Empresa)SessionAttribute.user;
-                 roles = user.RolesLst;
-             }
-             */
-            IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
-            rolUser.MoveNext();
+            if (SessionAttribute.user is Cliente)
+            {
+                Cliente user = (Cliente)SessionAttribute.user;
+                roles = user.RolesLst;
+            }
+            if (SessionAttribute.user is Empresa)
+            {
+                Empresa user = (Empresa)SessionAttribute.user;
+                roles = user.RolesLst;
+            }
 
-            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.idUsuario + "] [Rol: " + rolUser.Current.nombre + "]";
+
 
             //Recorro los roles
             foreach (Rol rol in roles)

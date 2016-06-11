@@ -204,6 +204,7 @@
             this.reportesToolStripMenuItem});
             this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
             resources.ApplyResources(this.estadisticasToolStripMenuItem, "estadisticasToolStripMenuItem");
+            
             // 
             // reportesToolStripMenuItem
             // 
