@@ -8,10 +8,10 @@
       <generator class="identity" />
     </id>
     <property name="nombreCorto">
-      <column name="nombreCorto" sql-type="nchar" not-null="true" />
+      <column name="nombreCorto" sql-type="varchar" not-null="true" />
     </property>
     <property name="nombre">
-      <column name="nombre" sql-type="nvarchar" not-null="true" />
+      <column name="nombre" sql-type="varchar" not-null="true" />
     </property>
     <property name="porcentaje">
       <column name="porcentaje" sql-type="numeric" not-null="true" />

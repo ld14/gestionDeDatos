@@ -352,7 +352,9 @@
     <EmbeddedResource Include="Maps\ComisionesParametrizables.hbm.xml" />
     <EmbeddedResource Include="Maps\CompraUsuario.hbm.xml" />
     <EmbeddedResource Include="Maps\Contact.hbm.xml" />
-    <EmbeddedResource Include="Maps\DatosBasicos.hbm.xml" />
+    <EmbeddedResource Include="Maps\DatosBasicos.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Maps\EstadoPublicacion.hbm.xml" />
     <EmbeddedResource Include="Maps\Factura.hbm.xml" />
     <EmbeddedResource Include="Maps\Funciones.hbm.xml" />
