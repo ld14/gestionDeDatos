@@ -22,6 +22,11 @@ DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaFactu];
 DROP SEQUENCE [LOPEZ_Y_CIA].[secuenciaPubli];
 
 DROP VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion];
+DROP VIEW [LOPEZ_Y_CIA].[EstadisticaVendedores];
+DROP VIEW [LOPEZ_Y_CIA].[EstadisticaCompradores];
+DROP VIEW [LOPEZ_Y_CIA].[SubastaCompraDelSistema];
+
+DROP TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol];
 
 DROP SCHEMA [LOPEZ_Y_CIA];'
 
