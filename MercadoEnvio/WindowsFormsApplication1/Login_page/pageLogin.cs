@@ -58,7 +58,7 @@ namespace WindowsFormsApplication1.Login_page
             }
             else
             {
-                pswError.SetError(this.password, "PONE ALGO BOLUDO!!!");
+                pswError.SetError(this.password, "Ingrese Datos!!!"); //No hagan pelotudeces en el codigo.
             }
 
         }
