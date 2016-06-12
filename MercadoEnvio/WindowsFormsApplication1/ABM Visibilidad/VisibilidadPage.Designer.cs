@@ -34,10 +34,8 @@
             this.VisibilidadPorcentajeTxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.VisibilidadCostoTxt = new System.Windows.Forms.TextBox();
-            this.VisibilidadCodigotxt = new System.Windows.Forms.TextBox();
             this.VisibilidadNombreTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -70,10 +68,8 @@
             this.groupBox3.Controls.Add(this.VisibilidadPorcentajeTxt);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.VisibilidadCostoTxt);
-            this.groupBox3.Controls.Add(this.VisibilidadCodigotxt);
             this.groupBox3.Controls.Add(this.VisibilidadNombreTxt);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(9, 21);
             this.groupBox3.Name = "groupBox3";
@@ -84,7 +80,7 @@
             // 
             // VisibilidadPorcentajeTxt
             // 
-            this.VisibilidadPorcentajeTxt.Location = new System.Drawing.Point(450, 262);
+            this.VisibilidadPorcentajeTxt.Location = new System.Drawing.Point(450, 200);
             this.VisibilidadPorcentajeTxt.MaxLength = 21;
             this.VisibilidadPorcentajeTxt.Name = "VisibilidadPorcentajeTxt";
             this.VisibilidadPorcentajeTxt.Size = new System.Drawing.Size(240, 20);
@@ -93,7 +89,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(279, 262);
+            this.label5.Location = new System.Drawing.Point(279, 206);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 19;
@@ -101,19 +97,11 @@
             // 
             // VisibilidadCostoTxt
             // 
-            this.VisibilidadCostoTxt.Location = new System.Drawing.Point(450, 230);
+            this.VisibilidadCostoTxt.Location = new System.Drawing.Point(450, 229);
             this.VisibilidadCostoTxt.MaxLength = 21;
             this.VisibilidadCostoTxt.Name = "VisibilidadCostoTxt";
             this.VisibilidadCostoTxt.Size = new System.Drawing.Size(240, 20);
             this.VisibilidadCostoTxt.TabIndex = 18;
-            // 
-            // VisibilidadCodigotxt
-            // 
-            this.VisibilidadCodigotxt.Location = new System.Drawing.Point(450, 201);
-            this.VisibilidadCodigotxt.MaxLength = 18;
-            this.VisibilidadCodigotxt.Name = "VisibilidadCodigotxt";
-            this.VisibilidadCodigotxt.Size = new System.Drawing.Size(240, 20);
-            this.VisibilidadCodigotxt.TabIndex = 17;
             // 
             // VisibilidadNombreTxt
             // 
@@ -131,15 +119,6 @@
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Costo";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(279, 206);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Codigo Visibilidad";
             // 
             // label2
             // 
@@ -189,10 +168,8 @@
         private System.Windows.Forms.TextBox VisibilidadPorcentajeTxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox VisibilidadCostoTxt;
-        private System.Windows.Forms.TextBox VisibilidadCodigotxt;
         private System.Windows.Forms.TextBox VisibilidadNombreTxt;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
     }
