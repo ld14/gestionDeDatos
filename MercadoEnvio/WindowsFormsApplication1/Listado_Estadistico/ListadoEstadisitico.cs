@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1.Listado_Estadistico
             dataGridView1.Columns[0].Visible = false;
             
 
-            //myGridView.Columns["mySecondCol"].DisplayIndex = 1;
+            //myGridView.Columns["mySecondCol"].DisplayIndex = 1; ARRREGALNDO ELBAROD
 
 
         }

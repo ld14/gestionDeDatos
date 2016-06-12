@@ -9,6 +9,6 @@ namespace WindowsFormsApplication1.Listado_Estadistico
     {
         public virtual int idUsuario { get; set; }
         public virtual string nombre { get; set; }
-        public virtual int? cantidad { get; set; }
+        public virtual int? cantidad { get; set; }      
     }
 }

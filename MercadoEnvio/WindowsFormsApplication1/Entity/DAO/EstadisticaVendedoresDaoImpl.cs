@@ -81,7 +81,7 @@ namespace WindowsFormsApplication1
                 using (ITransaction transaction = manager.Session.BeginTransaction())
                 {
 
-
+                    //Busqueda
                     ICriteria crit = manager.Session.CreateCriteria<EstadisticaCompradores>();
                     crit.Add(Expression.Between("fecha", fechaDesde, fechaHasta));
                     crit.Add(Expression.Eq("idRubro", rubro));
