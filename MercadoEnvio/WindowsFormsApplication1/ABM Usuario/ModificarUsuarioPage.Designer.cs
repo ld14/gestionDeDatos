@@ -32,15 +32,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.EmpresaGroup = new System.Windows.Forms.GroupBox();
-            this.EmpresaFechaCreacionDateTime = new System.Windows.Forms.DateTimePicker();
-            this.EmpresaNombreContactoTxt = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.EmpresaCuitTxt = new System.Windows.Forms.TextBox();
-            this.EmpresaRazonSocialTxt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tipoDeUsuarioComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -68,6 +59,15 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ClienteGroup = new System.Windows.Forms.GroupBox();
+            this.EmpresaGroup = new System.Windows.Forms.GroupBox();
+            this.EmpresaFechaCreacionDateTime = new System.Windows.Forms.DateTimePicker();
+            this.EmpresaNombreContactoTxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.EmpresaCuitTxt = new System.Windows.Forms.TextBox();
+            this.EmpresaRazonSocialTxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.ClienteApellidoTxt = new System.Windows.Forms.TextBox();
             this.ClienteNombreTxt = new System.Windows.Forms.TextBox();
             this.ClienteFechaNacDateTime = new System.Windows.Forms.DateTimePicker();
@@ -81,10 +81,10 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Grabar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.EmpresaGroup.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.ClienteGroup.SuspendLayout();
+            this.EmpresaGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,91 +104,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alta de Usuario";
-            // 
-            // EmpresaGroup
-            // 
-            this.EmpresaGroup.Controls.Add(this.EmpresaFechaCreacionDateTime);
-            this.EmpresaGroup.Controls.Add(this.EmpresaNombreContactoTxt);
-            this.EmpresaGroup.Controls.Add(this.label7);
-            this.EmpresaGroup.Controls.Add(this.EmpresaCuitTxt);
-            this.EmpresaGroup.Controls.Add(this.EmpresaRazonSocialTxt);
-            this.EmpresaGroup.Controls.Add(this.label4);
-            this.EmpresaGroup.Controls.Add(this.label5);
-            this.EmpresaGroup.Controls.Add(this.label10);
-            this.EmpresaGroup.Location = new System.Drawing.Point(0, 0);
-            this.EmpresaGroup.Name = "EmpresaGroup";
-            this.EmpresaGroup.Size = new System.Drawing.Size(484, 277);
-            this.EmpresaGroup.TabIndex = 10;
-            this.EmpresaGroup.TabStop = false;
-            this.EmpresaGroup.Text = "Datos Tipo Usuario";
-            this.EmpresaGroup.Visible = false;
-            // 
-            // EmpresaFechaCreacionDateTime
-            // 
-            this.EmpresaFechaCreacionDateTime.Location = new System.Drawing.Point(124, 132);
-            this.EmpresaFechaCreacionDateTime.Name = "EmpresaFechaCreacionDateTime";
-            this.EmpresaFechaCreacionDateTime.Size = new System.Drawing.Size(200, 20);
-            this.EmpresaFechaCreacionDateTime.TabIndex = 53;
-            // 
-            // EmpresaNombreContactoTxt
-            // 
-            this.EmpresaNombreContactoTxt.Location = new System.Drawing.Point(124, 106);
-            this.EmpresaNombreContactoTxt.Name = "EmpresaNombreContactoTxt";
-           
-            this.EmpresaNombreContactoTxt.Size = new System.Drawing.Size(126, 20);
-            this.EmpresaNombreContactoTxt.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 111);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Nombre Contacto";
-            // 
-            // EmpresaCuitTxt
-            // 
-            this.EmpresaCuitTxt.Location = new System.Drawing.Point(124, 82);
-            this.EmpresaCuitTxt.Name = "EmpresaCuitTxt";
-           
-            this.EmpresaCuitTxt.Size = new System.Drawing.Size(126, 20);
-            this.EmpresaCuitTxt.TabIndex = 9;
-            // 
-            // EmpresaRazonSocialTxt
-            // 
-            this.EmpresaRazonSocialTxt.Location = new System.Drawing.Point(124, 58);
-            this.EmpresaRazonSocialTxt.Name = "EmpresaRazonSocialTxt";
-            
-            this.EmpresaRazonSocialTxt.Size = new System.Drawing.Size(126, 20);
-            this.EmpresaRazonSocialTxt.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "CUIT";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Razon social";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 134);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 13);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Fecha de Creacion";
             // 
             // label3
             // 
@@ -243,7 +158,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.DatosBasicosCiudad.Name = "DatosBasicosCiudad";
             this.DatosBasicosCiudad.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosCiudad.TabIndex = 50;
-            this.DatosBasicosCiudad.Text = SessionAttribute.user.DatosBasicos.ciudad;
+            this.DatosBasicosCiudad.Text = "System.CodeDom.CodePropertyReferenceExpression";
+            this.DatosBasicosCiudad.TextChanged += new System.EventHandler(this.DatosBasicosCiudad_TextChanged);
             // 
             // label8
             // 
@@ -258,7 +174,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.DatosBasicosDepto.Location = new System.Drawing.Point(140, 177);
             this.DatosBasicosDepto.Name = "DatosBasicosDepto";
-            this.DatosBasicosCiudad.Text = SessionAttribute.user.DatosBasicos.depto;
             this.DatosBasicosDepto.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosDepto.TabIndex = 47;
             // 
@@ -266,7 +181,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.DatosBasicosPiso.Location = new System.Drawing.Point(140, 148);
             this.DatosBasicosPiso.Name = "DatosBasicosPiso";
-            this.DatosBasicosCiudad.Text = SessionAttribute.user.DatosBasicos.piso.ToString();
             this.DatosBasicosPiso.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosPiso.TabIndex = 46;
             // 
@@ -274,7 +188,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.DatosBasicosNroCalle.Location = new System.Drawing.Point(140, 119);
             this.DatosBasicosNroCalle.Name = "DatosBasicosNroCalle";
-            this.DatosBasicosCiudad.Text = SessionAttribute.user.DatosBasicos.nroCalle.ToString();
             this.DatosBasicosNroCalle.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosNroCalle.TabIndex = 45;
             // 
@@ -318,7 +231,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.DatosBasicosCodigoPostal.Location = new System.Drawing.Point(140, 235);
             this.DatosBasicosCodigoPostal.Name = "DatosBasicosCodigoPostal";
-            this.DatosBasicosCiudad.Text = SessionAttribute.user.DatosBasicos.codPostal.ToString();
             this.DatosBasicosCodigoPostal.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosCodigoPostal.TabIndex = 39;
             // 
@@ -326,7 +238,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.DatosBasicosLocalidad.Location = new System.Drawing.Point(140, 206);
             this.DatosBasicosLocalidad.Name = "DatosBasicosLocalidad";
-            this.DatosBasicosCiudad.Text = SessionAttribute.user.DatosBasicos.localidad;
             this.DatosBasicosLocalidad.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosLocalidad.TabIndex = 38;
             // 
@@ -334,7 +245,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.DatosBasicosDomicilioCalle.Location = new System.Drawing.Point(140, 90);
             this.DatosBasicosDomicilioCalle.Name = "DatosBasicosDomicilioCalle";
-            this.DatosBasicosCiudad.Text = SessionAttribute.user.DatosBasicos.domCalle;
             this.DatosBasicosDomicilioCalle.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosDomicilioCalle.TabIndex = 37;
             // 
@@ -342,7 +252,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.DatosBasicosTelefono.Location = new System.Drawing.Point(140, 61);
             this.DatosBasicosTelefono.Name = "DatosBasicosTelefono";
-            //agregar el telefono cuando joaco lo tenga
             this.DatosBasicosTelefono.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosTelefono.TabIndex = 36;
             // 
@@ -350,7 +259,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.DatosBasicosEmailTxt.Location = new System.Drawing.Point(140, 33);
             this.DatosBasicosEmailTxt.Name = "DatosBasicosEmailTxt";
-            this.DatosBasicosCiudad.Text = SessionAttribute.user.DatosBasicos.email;
             this.DatosBasicosEmailTxt.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosEmailTxt.TabIndex = 51;
             // 
@@ -453,11 +361,92 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.ClienteGroup.Text = "Datos Tipo Usuario";
             this.ClienteGroup.Visible = false;
             // 
+            // EmpresaGroup
+            // 
+            this.EmpresaGroup.Controls.Add(this.EmpresaFechaCreacionDateTime);
+            this.EmpresaGroup.Controls.Add(this.EmpresaNombreContactoTxt);
+            this.EmpresaGroup.Controls.Add(this.label7);
+            this.EmpresaGroup.Controls.Add(this.EmpresaCuitTxt);
+            this.EmpresaGroup.Controls.Add(this.EmpresaRazonSocialTxt);
+            this.EmpresaGroup.Controls.Add(this.label4);
+            this.EmpresaGroup.Controls.Add(this.label5);
+            this.EmpresaGroup.Controls.Add(this.label10);
+            this.EmpresaGroup.Location = new System.Drawing.Point(0, 0);
+            this.EmpresaGroup.Name = "EmpresaGroup";
+            this.EmpresaGroup.Size = new System.Drawing.Size(484, 277);
+            this.EmpresaGroup.TabIndex = 10;
+            this.EmpresaGroup.TabStop = false;
+            this.EmpresaGroup.Text = "Datos Tipo Usuario";
+            this.EmpresaGroup.Visible = false;
+            // 
+            // EmpresaFechaCreacionDateTime
+            // 
+            this.EmpresaFechaCreacionDateTime.Location = new System.Drawing.Point(124, 132);
+            this.EmpresaFechaCreacionDateTime.Name = "EmpresaFechaCreacionDateTime";
+            this.EmpresaFechaCreacionDateTime.Size = new System.Drawing.Size(200, 20);
+            this.EmpresaFechaCreacionDateTime.TabIndex = 53;
+            // 
+            // EmpresaNombreContactoTxt
+            // 
+            this.EmpresaNombreContactoTxt.Location = new System.Drawing.Point(124, 106);
+            this.EmpresaNombreContactoTxt.Name = "EmpresaNombreContactoTxt";
+            this.EmpresaNombreContactoTxt.Size = new System.Drawing.Size(126, 20);
+            this.EmpresaNombreContactoTxt.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 111);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Nombre Contacto";
+            // 
+            // EmpresaCuitTxt
+            // 
+            this.EmpresaCuitTxt.Location = new System.Drawing.Point(124, 82);
+            this.EmpresaCuitTxt.Name = "EmpresaCuitTxt";
+            this.EmpresaCuitTxt.Size = new System.Drawing.Size(126, 20);
+            this.EmpresaCuitTxt.TabIndex = 9;
+            // 
+            // EmpresaRazonSocialTxt
+            // 
+            this.EmpresaRazonSocialTxt.Location = new System.Drawing.Point(124, 58);
+            this.EmpresaRazonSocialTxt.Name = "EmpresaRazonSocialTxt";
+            this.EmpresaRazonSocialTxt.Size = new System.Drawing.Size(126, 20);
+            this.EmpresaRazonSocialTxt.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "CUIT";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Razon social";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 134);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Fecha de Creacion";
+            // 
             // ClienteApellidoTxt
             // 
             this.ClienteApellidoTxt.Location = new System.Drawing.Point(322, 94);
             this.ClienteApellidoTxt.Name = "ClienteApellidoTxt";
-            
             this.ClienteApellidoTxt.Size = new System.Drawing.Size(126, 20);
             this.ClienteApellidoTxt.TabIndex = 41;
             // 
@@ -465,7 +454,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.ClienteNombreTxt.Location = new System.Drawing.Point(122, 93);
             this.ClienteNombreTxt.Name = "ClienteNombreTxt";
-           
             this.ClienteNombreTxt.Size = new System.Drawing.Size(126, 20);
             this.ClienteNombreTxt.TabIndex = 40;
             // 
@@ -524,7 +512,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             this.ClienteDNITxt.Location = new System.Drawing.Point(322, 66);
             this.ClienteDNITxt.Name = "ClienteDNITxt";
-           
             this.ClienteDNITxt.Size = new System.Drawing.Size(126, 20);
             this.ClienteDNITxt.TabIndex = 33;
             // 
@@ -569,33 +556,15 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.EmpresaGroup.ResumeLayout(false);
-            this.EmpresaGroup.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.ClienteGroup.ResumeLayout(false);
             this.ClienteGroup.PerformLayout();
+            this.EmpresaGroup.ResumeLayout(false);
+            this.EmpresaGroup.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            
-            IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
-           rolUser.MoveNext();
-
-           if (rolUser.Current.nombre == "Cliente")
-           {
-               this.ClienteApellidoTxt.Text = SessionAttribute.clienteUser.apellido;
-               this.ClienteNombreTxt.Text = SessionAttribute.clienteUser.nombre;
-               this.ClienteDNITxt.Text = SessionAttribute.clienteUser.dni.ToString();
-           }
-           else
-           {
-               this.EmpresaNombreContactoTxt.Text = SessionAttribute.empresaUser.nombreContacto;
-               this.EmpresaCuitTxt.Text = SessionAttribute.empresaUser.cuit;
-               this.EmpresaRazonSocialTxt.Text = SessionAttribute.empresaUser.razonSocial;
-  
-           }
-
 
         }
 
