@@ -720,6 +720,22 @@ WHERE Compra_Cantidad IS NOT NULL
 ORDER BY 1
 
 PRINT 'TABLA: CompraUsuario'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[Funciones] (nombre, activo) VALUES
+	('ABM Usuario', 1),
+	('ABM Rol', 1),
+	('ABM Visibilidad', 1),
+	('Publicacion', 1),
+	('Compra/Oferta', 1),
+	('Historial Compra', 1),
+	('Facturacion', 1),
+	('Estadisticas', 1),
+	('Mostrar Mis Datos', 1),
+	('Calificar', 1)
+
+PRINT 'TABLA: Funciones'
 PRINT CHAR(13) + '--------------------------------'
 
 GO
