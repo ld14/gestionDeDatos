@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NHibernate.Mapping;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +13,16 @@ namespace WindowsFormsApplication1.Listado_Estadistico
 {
     public partial class ListadoEstadisitico : Form
     {
+
+        public static int totalRecords = 0;
+        private const int pageSize = 10;
+        List<Object> customerList = new List<Object>();
+
+        public static int TotalRecords
+        {
+            get { return totalRecords; }
+            set { totalRecords = value; }
+        }
 
         public ListadoEstadisitico()
         {
@@ -87,16 +99,34 @@ namespace WindowsFormsApplication1.Listado_Estadistico
 
             DateTime dateFechaInicial =   DateUtils.convertirStringEnFecha(fechaInicial);
             DateTime dateFechaFin = DateUtils.convertirStringEnFecha(fechaFinal);
+            EstadisticaVendedoresDaoImpl estaVendImpl = new EstadisticaVendedoresDaoImpl();
 
             if (reporteSelect.Text.Equals("Vendedores con mayor cantidad de productos no vendidos")) {
-                EstadisticaVendedoresDaoImpl estaVendImpl = new EstadisticaVendedoresDaoImpl();
-                IList<EstadisticasVendedoresGrilla> resultado = estaVendImpl.darEstadisticasVendedores(dateFechaInicial, dateFechaFin, 1);
+                
+                customerList = new List<Object>(estaVendImpl.darEstadisticasVendedores(dateFechaInicial, dateFechaFin, 1));
+                TotalRecords = this.customerList.Count;
+                //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "idPublicacion" });
+                bindingNavigator1.BindingSource = bindingSource1;
+                bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChanged);
+                bindingSource1.DataSource = new PageOffsetList();
             }
-           
+
+            if (reporteSelect.Text.Equals("Clientes con mayor cantidad de productos comprados"))
+            {
+                customerList = new List<Object>(estaVendImpl.darEstadisticasCompradores(dateFechaInicial, dateFechaFin, 1));
+                TotalRecords = this.customerList.Count;
+                //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "idPublicacion" });
+                bindingNavigator1.BindingSource = bindingSource1;
+                bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChangedCompra);
+                bindingSource1.DataSource = new PageOffsetList();
+            }
             /*Vendedores con mayor cantidad de productos no vendidos
             Vendedores con mayor cantidad de facturas
             Vendedores con mayor monto facturado
             Clientes con mayor cantidad de productos comprados*/
+
+
+
             MessageBox.Show("casi estasmos");
 
         }
@@ -105,6 +135,97 @@ namespace WindowsFormsApplication1.Listado_Estadistico
         {
 
         }
+
+        private void bindingSource1_CurrentChangedCompra(object sender, EventArgs e)
+        {
+            // The desired page has changed, so fetch the page of records using the "Current" offset 
+            var mesesDicionario = new Dictionary<int, string>();
+                mesesDicionario.Add(1,"enero");
+                mesesDicionario.Add(2,"febrero");
+                mesesDicionario.Add(3,"marzo");
+                mesesDicionario.Add(4,"abril");
+                mesesDicionario.Add(5,"mayo");
+                mesesDicionario.Add(6,"junio");
+                mesesDicionario.Add(7,"julio"); 
+                mesesDicionario.Add(8,"agosto");
+                mesesDicionario.Add(9,"septiembre");
+                mesesDicionario.Add(10,"octubre");
+                mesesDicionario.Add(11,"noviembre");
+                mesesDicionario.Add(12,"diciembre");
+                
+
+            int offset = (int)bindingSource1.Current;
+            var records = new List<Object>();
+
+            for (int i = offset; i < offset + pageSize && i < totalRecords; i++) {
+                EstadisticaCompradoresGrilla nuevo = this.customerList[i] as EstadisticaCompradoresGrilla;
+               // nuevo.NombreMes = mesesDicionario[nuevo.mes];
+                records.Add(nuevo);
+            }
+            
+
+            dataGridView1.DataSource = records;
+
+            
+            
+            dataGridView1.Columns[3].HeaderText = "Mes";
+            dataGridView1.Columns[3].DisplayIndex = 1;
+            dataGridView1.Columns[2].HeaderText = "Usuario";
+            dataGridView1.Columns[2].DisplayIndex = 2;
+            dataGridView1.Columns[2].Width = 200;
+            dataGridView1.Columns[1].HeaderText = "Cantidad Comprada";
+            dataGridView1.Columns[1].DisplayIndex = 3;
+
+            dataGridView1.Columns[0].Visible = false;
+            
+
+            //myGridView.Columns["mySecondCol"].DisplayIndex = 1;
+
+
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+            // The desired page has changed, so fetch the page of records using the "Current" offset 
+            int offset = (int)bindingSource1.Current;
+            var records = new List<Object>();
+            for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
+                records.Add(this.customerList[i]);
+            dataGridView1.DataSource = records;
+
+            /*
+            dataGridView1.Columns[0].Visible = false;
+
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
+            dataGridView1.Columns[9].Visible = false;
+
+            dataGridView1.Columns[1].HeaderText = "Codigo";
+            dataGridView1.Columns[2].HeaderText = "Tipo De Venta";
+            dataGridView1.Columns[3].HeaderText = "Descripcion Producto";
+            dataGridView1.Columns[3].Width = 200;
+            dataGridView1.Columns[4].HeaderText = "Rubro";
+            dataGridView1.Columns[4].Width = 200;
+            dataGridView1.Columns[5].HeaderText = "Precio";
+            dataGridView1.Columns[7].HeaderText = "Fin de Venta";*/
+
+
+        }
+
+        class PageOffsetList : System.ComponentModel.IListSource
+        {
+            public bool ContainsListCollection { get; protected set; }
+
+            public System.Collections.IList GetList()
+            {
+                // Return a list of page offsets based on "totalRecords" and "pageSize"
+                var pageOffsets = new List<int>();
+                for (int offset = 0; offset < TotalRecords; offset += pageSize)
+                    pageOffsets.Add(offset);
+                return pageOffsets;
+            }
+        }
+
 
         private string generarFecha(int mesInicial,int anio,bool inical){
             string diaInicial = "01";

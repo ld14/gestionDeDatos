@@ -73,6 +73,34 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+        public IList<EstadisticaCompradoresGrilla> darEstadisticasCompradores(DateTime fechaDesde, DateTime fechaHasta, int rubro)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
+
+
+                    ICriteria crit = manager.Session.CreateCriteria<EstadisticaCompradores>();
+                    crit.Add(Expression.Between("fecha", fechaDesde, fechaHasta));
+                    crit.Add(Expression.Eq("idRubro", rubro));
+                    crit.SetProjection(
+                            Projections.ProjectionList()
+                                    .Add(Projections.GroupProperty(Projections.SqlFunction("month",
+                                                                   NHibernateUtil.Date,
+                                                                   Projections.GroupProperty("fecha"))), "mes")
+                                    .Add(Projections.Sum("codigoPublicacion"), "compraCantidad")
+                                    .Add(Projections.GroupProperty("nombre"), "nombre"))
+                                    .SetResultTransformer(Transformers.AliasToBean(typeof(EstadisticaCompradoresGrilla)));
+
+
+
+                    return crit.List<EstadisticaCompradoresGrilla>();
+
+                }
+            }
+        }
     }
 }
 

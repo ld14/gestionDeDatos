@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="EstadisticaCompradores" table="EstadisticaCompradores" lazy="true" >
+    
+    <id name="rowID" column="rowID" />
+    
+    <property name="idPublicacion">
+      <column name="idPublicacion" sql-type="int" not-null="true" />
+    </property>
+    <property name="codigoPublicacion">
+      <column name="codigoPublicacion" sql-type="int" not-null="false" />
+    </property>
+    <property name="descripcion">
+      <column name="descripcion" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="idUsuario">
+      <column name="idUsuario" sql-type="int" not-null="true" />
+    </property>
+    <property name="nombre">
+      <column name="nombre" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="compraCantidad">
+      <column name="compraCantidad" sql-type="int" not-null="true" />
+    </property>
+    <property name="fecha">
+      <column name="fecha" sql-type="datetime" not-null="false" />
+    </property>
+    <property name="idRubro">
+      <column name="idRubro" sql-type="int" not-null="true" />
+    </property>
+    <property name="descript">
+      <column name="descript" sql-type="varchar" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

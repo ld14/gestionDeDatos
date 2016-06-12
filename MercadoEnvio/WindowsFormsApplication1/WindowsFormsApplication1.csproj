@@ -113,6 +113,7 @@
       <DependentUpon>CompraOfertaPublicacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Domain\BusquedaDePublicacion.cs" />
+    <Compile Include="Domain\EstadisticaCompradores.cs" />
     <Compile Include="Domain\EstadisticaVendedores.cs" />
     <Compile Include="Domain\FacturasEmitidas.cs" />
     <Compile Include="Domain\Ofertasubasta.cs" />
@@ -193,6 +194,7 @@
       <DependentUpon>CompraVentaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Historial Cliente\GrillaCompraVenta.cs" />
+    <Compile Include="Listado_Estadistico\EstadisticaCompradoresGrilla.cs" />
     <Compile Include="Listado_Estadistico\EstadisticasVendedoresGrilla.cs" />
     <Compile Include="Listado_Estadistico\ListadoEstadisitico.cs">
       <SubType>Form</SubType>
@@ -375,6 +377,7 @@
     <EmbeddedResource Include="Maps\SubastaCompraDelSistema.hbm.xml" />
     <EmbeddedResource Include="Maps\FacturasEmitidas.hbm.xml" />
     <EmbeddedResource Include="Maps\EstadisticaVendedores.hbm.xml" />
+    <EmbeddedResource Include="Maps\EstadisticaCompradores.hbm.xml" />
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <ItemGroup />
