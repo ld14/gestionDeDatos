@@ -43,22 +43,22 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.grillaPublicacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fechaVencimientoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaInicioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rubroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idPublicacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tipoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idPublicacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rubroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaInicioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaVencimientoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grillaPublicacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grillaPublicacionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaPublicacionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -111,8 +111,8 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorDeleteItem
@@ -183,79 +183,6 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // grillaPublicacionBindingSource
-            // 
-            this.grillaPublicacionBindingSource.DataSource = typeof(WindowsFormsApplication1.Generar_Publicación.GrillaPublicacion);
-            // 
-            // fechaVencimientoDataGridViewTextBoxColumn
-            // 
-            this.fechaVencimientoDataGridViewTextBoxColumn.DataPropertyName = "fechaVencimiento";
-            this.fechaVencimientoDataGridViewTextBoxColumn.HeaderText = "fechaVencimiento";
-            this.fechaVencimientoDataGridViewTextBoxColumn.Name = "fechaVencimientoDataGridViewTextBoxColumn";
-            this.fechaVencimientoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaInicioDataGridViewTextBoxColumn
-            // 
-            this.fechaInicioDataGridViewTextBoxColumn.DataPropertyName = "fechaInicio";
-            this.fechaInicioDataGridViewTextBoxColumn.HeaderText = "fechaInicio";
-            this.fechaInicioDataGridViewTextBoxColumn.Name = "fechaInicioDataGridViewTextBoxColumn";
-            this.fechaInicioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // estadoDataGridViewTextBoxColumn
-            // 
-            this.estadoDataGridViewTextBoxColumn.DataPropertyName = "estado";
-            this.estadoDataGridViewTextBoxColumn.HeaderText = "estado";
-            this.estadoDataGridViewTextBoxColumn.Name = "estadoDataGridViewTextBoxColumn";
-            this.estadoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.estadoDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // rubroDataGridViewTextBoxColumn
-            // 
-            this.rubroDataGridViewTextBoxColumn.DataPropertyName = "rubro";
-            this.rubroDataGridViewTextBoxColumn.HeaderText = "rubro";
-            this.rubroDataGridViewTextBoxColumn.Name = "rubroDataGridViewTextBoxColumn";
-            this.rubroDataGridViewTextBoxColumn.ReadOnly = true;
-            this.rubroDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            this.precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
-            this.precioDataGridViewTextBoxColumn.HeaderText = "precio";
-            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            this.precioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.precioDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // descProductoDataGridViewTextBoxColumn
-            // 
-            this.descProductoDataGridViewTextBoxColumn.DataPropertyName = "descProducto";
-            this.descProductoDataGridViewTextBoxColumn.HeaderText = "descProducto";
-            this.descProductoDataGridViewTextBoxColumn.Name = "descProductoDataGridViewTextBoxColumn";
-            this.descProductoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descProductoDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idPublicacionDataGridViewTextBoxColumn
-            // 
-            this.idPublicacionDataGridViewTextBoxColumn.DataPropertyName = "idPublicacion";
-            this.idPublicacionDataGridViewTextBoxColumn.HeaderText = "idPublicacion";
-            this.idPublicacionDataGridViewTextBoxColumn.Name = "idPublicacionDataGridViewTextBoxColumn";
-            this.idPublicacionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idPublicacionDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // tipoPublicacion
-            // 
-            this.tipoPublicacion.DataPropertyName = "tipoPublicacion";
-            this.tipoPublicacion.HeaderText = "tipoPublicacion";
-            this.tipoPublicacion.Name = "tipoPublicacion";
-            this.tipoPublicacion.ReadOnly = true;
-            this.tipoPublicacion.Visible = false;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -282,12 +209,84 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
+            // tipoPublicacion
+            // 
+            this.tipoPublicacion.DataPropertyName = "tipoPublicacion";
+            this.tipoPublicacion.HeaderText = "tipoPublicacion";
+            this.tipoPublicacion.Name = "tipoPublicacion";
+            this.tipoPublicacion.ReadOnly = true;
+            this.tipoPublicacion.Visible = false;
+            // 
+            // idPublicacionDataGridViewTextBoxColumn
+            // 
+            this.idPublicacionDataGridViewTextBoxColumn.DataPropertyName = "idPublicacion";
+            this.idPublicacionDataGridViewTextBoxColumn.HeaderText = "idPublicacion";
+            this.idPublicacionDataGridViewTextBoxColumn.Name = "idPublicacionDataGridViewTextBoxColumn";
+            this.idPublicacionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idPublicacionDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descProductoDataGridViewTextBoxColumn
+            // 
+            this.descProductoDataGridViewTextBoxColumn.DataPropertyName = "descProducto";
+            this.descProductoDataGridViewTextBoxColumn.HeaderText = "descProducto";
+            this.descProductoDataGridViewTextBoxColumn.Name = "descProductoDataGridViewTextBoxColumn";
+            this.descProductoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descProductoDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            this.precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            this.precioDataGridViewTextBoxColumn.HeaderText = "precio";
+            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            this.precioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.precioDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // rubroDataGridViewTextBoxColumn
+            // 
+            this.rubroDataGridViewTextBoxColumn.DataPropertyName = "rubro";
+            this.rubroDataGridViewTextBoxColumn.HeaderText = "rubro";
+            this.rubroDataGridViewTextBoxColumn.Name = "rubroDataGridViewTextBoxColumn";
+            this.rubroDataGridViewTextBoxColumn.ReadOnly = true;
+            this.rubroDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // estadoDataGridViewTextBoxColumn
+            // 
+            this.estadoDataGridViewTextBoxColumn.DataPropertyName = "estado";
+            this.estadoDataGridViewTextBoxColumn.HeaderText = "estado";
+            this.estadoDataGridViewTextBoxColumn.Name = "estadoDataGridViewTextBoxColumn";
+            this.estadoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.estadoDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // fechaInicioDataGridViewTextBoxColumn
+            // 
+            this.fechaInicioDataGridViewTextBoxColumn.DataPropertyName = "fechaInicio";
+            this.fechaInicioDataGridViewTextBoxColumn.HeaderText = "fechaInicio";
+            this.fechaInicioDataGridViewTextBoxColumn.Name = "fechaInicioDataGridViewTextBoxColumn";
+            this.fechaInicioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaVencimientoDataGridViewTextBoxColumn
+            // 
+            this.fechaVencimientoDataGridViewTextBoxColumn.DataPropertyName = "fechaVencimiento";
+            this.fechaVencimientoDataGridViewTextBoxColumn.HeaderText = "fechaVencimiento";
+            this.fechaVencimientoDataGridViewTextBoxColumn.Name = "fechaVencimientoDataGridViewTextBoxColumn";
+            this.fechaVencimientoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // grillaPublicacionBindingSource
+            // 
+            this.grillaPublicacionBindingSource.DataSource = typeof(WindowsFormsApplication1.Generar_Publicación.GrillaPublicacion);
+            // 
             // BuscadorPublicacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 660);
-            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BuscadorPublicacion";
@@ -301,8 +300,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grillaPublicacionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaPublicacionBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

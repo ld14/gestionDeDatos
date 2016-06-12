@@ -101,6 +101,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevoCliente.DatosBasicos = nuevoDatoBasico;
 
                 nuevoCliente.DatosBasicos.email = Mail;
+                nuevoCliente.DatosBasicos.telefono = Telefono;
                 nuevoCliente.DatosBasicos.domCalle = DomicilioCalle;
                 nuevoCliente.DatosBasicos.nroCalle = nroCalle;
                 nuevoCliente.DatosBasicos.piso = piso;
@@ -137,6 +138,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevaEmpresa.DatosBasicos = nuevoDatoBasico;
 
                 nuevaEmpresa.DatosBasicos.email = Mail;
+                nuevaEmpresa.DatosBasicos.telefono = Telefono;
                 nuevaEmpresa.DatosBasicos.domCalle = DomicilioCalle;
                 nuevaEmpresa.DatosBasicos.nroCalle = nroCalle;
                 nuevaEmpresa.DatosBasicos.piso = piso;
@@ -148,7 +150,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 EmpresaDaoImpl empresaDaoImpl = new EmpresaDaoImpl();
                 empresaDaoImpl.Add(nuevaEmpresa);
             }
-
             }
 
 

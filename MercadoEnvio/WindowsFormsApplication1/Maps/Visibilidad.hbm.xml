@@ -6,14 +6,14 @@
       <generator class="identity" />
     </id>
 
-    <property name="codigoVisibilidad">
-      <column name="codigoVisibilidad" sql-type="numeric" not-null="true" />
+    <property name="codigoVisibilidad" generated="always" update="false" insert="false">
+      <column name="codigoVisibilidad" sql-type="int" not-null="false" />
     </property>
     <property name="nombreVisibilidad">
-      <column name="nombreVisibilidad" sql-type="nvarchar" not-null="false" />
+      <column name="nombreVisibilidad" sql-type="varchar" not-null="false" />
     </property>
     <property name="costo">
-      <column name="costo" sql-type="numeric(18, 2)" not-null="true" />
+      <column name="costo" sql-type="numeric(18,2)" not-null="true" />
     </property>
     <property name="porcentaje">
       <column name="porcentaje" sql-type="numeric(5,4)" not-null="true" />

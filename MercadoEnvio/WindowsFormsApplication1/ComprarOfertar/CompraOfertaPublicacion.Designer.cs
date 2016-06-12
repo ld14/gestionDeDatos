@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.SubastaOpciones = new System.Windows.Forms.GroupBox();
-            this.PrecioActualTxt = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.ValorOferta = new System.Windows.Forms.TextBox();
             this.CompraDatos = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.CantidadComprada = new System.Windows.Forms.ComboBox();
@@ -41,6 +36,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.RubroComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.SubastaOpciones = new System.Windows.Forms.GroupBox();
+            this.PrecioActualTxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ValorOferta = new System.Windows.Forms.TextBox();
             this.PrecioTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,10 +56,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
-            this.SubastaOpciones.SuspendLayout();
             this.CompraDatos.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.SubastaOpciones.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,52 +77,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compra Seleccionada";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // SubastaOpciones
-            // 
-            this.SubastaOpciones.Controls.Add(this.PrecioActualTxt);
-            this.SubastaOpciones.Controls.Add(this.label7);
-            this.SubastaOpciones.Controls.Add(this.label12);
-            this.SubastaOpciones.Controls.Add(this.ValorOferta);
-            this.SubastaOpciones.Location = new System.Drawing.Point(81, 100);
-            this.SubastaOpciones.Name = "SubastaOpciones";
-            this.SubastaOpciones.Size = new System.Drawing.Size(429, 197);
-            this.SubastaOpciones.TabIndex = 19;
-            this.SubastaOpciones.TabStop = false;
-            this.SubastaOpciones.Text = "Oferta Subasta";
-            // 
-            // PrecioActualTxt
-            // 
-            this.PrecioActualTxt.Enabled = false;
-            this.PrecioActualTxt.Location = new System.Drawing.Point(143, 20);
-            this.PrecioActualTxt.Name = "PrecioActualTxt";
-            this.PrecioActualTxt.Size = new System.Drawing.Size(272, 20);
-            this.PrecioActualTxt.TabIndex = 7;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 24);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Precio Actual de Venta";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(19, 63);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 13);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Subasta";
-            // 
-            // ValorOferta
-            // 
-            this.ValorOferta.Location = new System.Drawing.Point(144, 60);
-            this.ValorOferta.Name = "ValorOferta";
-            this.ValorOferta.Size = new System.Drawing.Size(271, 20);
-            this.ValorOferta.TabIndex = 4;
             // 
             // CompraDatos
             // 
@@ -199,6 +153,52 @@
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Publicacion";
+            // 
+            // SubastaOpciones
+            // 
+            this.SubastaOpciones.Controls.Add(this.PrecioActualTxt);
+            this.SubastaOpciones.Controls.Add(this.label7);
+            this.SubastaOpciones.Controls.Add(this.label12);
+            this.SubastaOpciones.Controls.Add(this.ValorOferta);
+            this.SubastaOpciones.Location = new System.Drawing.Point(81, 100);
+            this.SubastaOpciones.Name = "SubastaOpciones";
+            this.SubastaOpciones.Size = new System.Drawing.Size(429, 197);
+            this.SubastaOpciones.TabIndex = 19;
+            this.SubastaOpciones.TabStop = false;
+            this.SubastaOpciones.Text = "Oferta Subasta";
+            // 
+            // PrecioActualTxt
+            // 
+            this.PrecioActualTxt.Enabled = false;
+            this.PrecioActualTxt.Location = new System.Drawing.Point(143, 20);
+            this.PrecioActualTxt.Name = "PrecioActualTxt";
+            this.PrecioActualTxt.Size = new System.Drawing.Size(272, 20);
+            this.PrecioActualTxt.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 24);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Precio Actual de Venta";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(19, 63);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(46, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Subasta";
+            // 
+            // ValorOferta
+            // 
+            this.ValorOferta.Location = new System.Drawing.Point(144, 60);
+            this.ValorOferta.Name = "ValorOferta";
+            this.ValorOferta.Size = new System.Drawing.Size(271, 20);
+            this.ValorOferta.TabIndex = 4;
             // 
             // PrecioTxt
             // 
@@ -326,7 +326,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 660);
-            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -340,14 +339,14 @@
             this.Load += new System.EventHandler(this.CompraOfertaPublicacion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.SubastaOpciones.ResumeLayout(false);
-            this.SubastaOpciones.PerformLayout();
             this.CompraDatos.ResumeLayout(false);
             this.CompraDatos.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.SubastaOpciones.ResumeLayout(false);
+            this.SubastaOpciones.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 

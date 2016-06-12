@@ -5,10 +5,10 @@
       <generator class="identity" />
     </id>
     <property name="nombre">
-      <column name="nombre" sql-type="char" not-null="true" />
+      <column name="nombre" sql-type="varchar" not-null="true" />
     </property>
     <property name="descripcion">
-      <column name="descripcion" sql-type="char" not-null="false" />
+      <column name="descripcion" sql-type="varchar" not-null="false" />
     </property>
     <property name="activo">
       <column name="activo" sql-type="bit" not-null="true" />

@@ -9,10 +9,10 @@
     <many-to-one not-null="true" name="Factura" column="idFactura" />
     
     <property name="cantidad">
-      <column name="cantidad" sql-type="numeric" not-null="false" />
+      <column name="cantidad" sql-type="int" not-null="true" />
     </property>
     <property name="monto">
-      <column name="monto" sql-type="numeric" not-null="false" />
+      <column name="monto" sql-type="numeric" not-null="true" />
     </property>
   </class>
 </hibernate-mapping>

@@ -9,6 +9,7 @@ namespace WindowsFormsApplication1 {
         public DatosBasicos() { }
         public virtual int idDatosBasicos { get; set; }
         public virtual string email { get; set; }
+        public virtual string telefono { get; set; }
         public virtual string domCalle { get; set; }
         public virtual double nroCalle { get; set; }
         public virtual double? piso { get; set; }

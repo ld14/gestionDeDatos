@@ -11,11 +11,11 @@
     </property>
     
     <property name="nombreCorto">
-      <column name="nombreCorto" sql-type="nvarchar" not-null="false" />
+      <column name="nombreCorto" sql-type="varchar" not-null="false" />
     </property>
     
     <property name="descripcion">
-      <column name="descripcion" sql-type="nvarchar" not-null="false" />
+      <column name="descripcion" sql-type="varchar" not-null="false" />
     </property>
     
   </class>

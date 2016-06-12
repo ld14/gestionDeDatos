@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApplication1.Listado_Estadistico
+﻿namespace WindowsFormsApplication1.Calificar
 {
-    partial class ListadoEstadisitico
+    partial class CalificacionesPage
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListadoEstadisitico));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.mesFinSelect = new System.Windows.Forms.ComboBox();
-            this.MesInitCombo = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.reporteSelect = new System.Windows.Forms.ComboBox();
-            this.anioSelect = new System.Windows.Forms.ComboBox();
-            this.CantEstrellasLabel = new System.Windows.Forms.Label();
-            this.labelCantCompras = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalificacionesPage));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -51,116 +42,26 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.CantidadDeEstrellasText = new System.Windows.Forms.Label();
+            this.ComentarioInput = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Calificar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.reporteSelect);
-            this.groupBox1.Controls.Add(this.anioSelect);
-            this.groupBox1.Controls.Add(this.CantEstrellasLabel);
-            this.groupBox1.Controls.Add(this.labelCantCompras);
-            this.groupBox1.Location = new System.Drawing.Point(23, 49);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(962, 177);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Estadisticas";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.mesFinSelect);
-            this.groupBox3.Controls.Add(this.MesInitCombo);
-            this.groupBox3.Location = new System.Drawing.Point(314, 29);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(491, 67);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Trimestre Comprendido entre";
-            // 
-            // mesFinSelect
-            // 
-            this.mesFinSelect.FormattingEnabled = true;
-            this.mesFinSelect.Location = new System.Drawing.Point(251, 29);
-            this.mesFinSelect.Name = "mesFinSelect";
-            this.mesFinSelect.Size = new System.Drawing.Size(219, 21);
-            this.mesFinSelect.TabIndex = 9;
-            // 
-            // MesInitCombo
-            // 
-            this.MesInitCombo.FormattingEnabled = true;
-            this.MesInitCombo.Location = new System.Drawing.Point(22, 29);
-            this.MesInitCombo.Name = "MesInitCombo";
-            this.MesInitCombo.Size = new System.Drawing.Size(223, 21);
-            this.MesInitCombo.TabIndex = 12;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(330, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(251, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Ver Reporte";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // reporteSelect
-            // 
-            this.reporteSelect.FormattingEnabled = true;
-            this.reporteSelect.Items.AddRange(new object[] {
-            "Vendedores con mayor cantidad de productos no vendidos",
-            "Vendedores con mayor cantidad de facturas",
-            "Vendedores con mayor monto facturado",
-            "Clientes con mayor cantidad de productos comprados"});
-            this.reporteSelect.Location = new System.Drawing.Point(83, 115);
-            this.reporteSelect.Name = "reporteSelect";
-            this.reporteSelect.Size = new System.Drawing.Size(722, 21);
-            this.reporteSelect.TabIndex = 10;
-            this.reporteSelect.SelectedIndexChanged += new System.EventHandler(this.reporteSelect_SelectedIndexChanged);
-            // 
-            // anioSelect
-            // 
-            this.anioSelect.FormattingEnabled = true;
-            this.anioSelect.Location = new System.Drawing.Point(83, 55);
-            this.anioSelect.Name = "anioSelect";
-            this.anioSelect.Size = new System.Drawing.Size(206, 21);
-            this.anioSelect.TabIndex = 7;
-            // 
-            // CantEstrellasLabel
-            // 
-            this.CantEstrellasLabel.AutoSize = true;
-            this.CantEstrellasLabel.Location = new System.Drawing.Point(80, 88);
-            this.CantEstrellasLabel.Name = "CantEstrellasLabel";
-            this.CantEstrellasLabel.Size = new System.Drawing.Size(68, 13);
-            this.CantEstrellasLabel.TabIndex = 6;
-            this.CantEstrellasLabel.Text = "Tipo de Filtro";
-            // 
-            // labelCantCompras
-            // 
-            this.labelCantCompras.AutoSize = true;
-            this.labelCantCompras.Location = new System.Drawing.Point(80, 29);
-            this.labelCantCompras.Name = "labelCantCompras";
-            this.labelCantCompras.Size = new System.Drawing.Size(29, 13);
-            this.labelCantCompras.TabIndex = 1;
-            this.labelCantCompras.Text = "Año ";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.bindingNavigator1);
-            this.groupBox2.Location = new System.Drawing.Point(23, 248);
+            this.groupBox2.Location = new System.Drawing.Point(21, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(962, 325);
-            this.groupBox2.TabIndex = 5;
+            this.groupBox2.Size = new System.Drawing.Size(962, 314);
+            this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultado";
             // 
@@ -268,42 +169,85 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // ListadoEstadisitico
+            // CantidadDeEstrellasText
+            // 
+            this.CantidadDeEstrellasText.AutoSize = true;
+            this.CantidadDeEstrellasText.Location = new System.Drawing.Point(28, 366);
+            this.CantidadDeEstrellasText.Name = "CantidadDeEstrellasText";
+            this.CantidadDeEstrellasText.Size = new System.Drawing.Size(108, 13);
+            this.CantidadDeEstrellasText.TabIndex = 7;
+            this.CantidadDeEstrellasText.Text = "Cantidad De Estrellas";
+            // 
+            // ComentarioInput
+            // 
+            this.ComentarioInput.AutoSize = true;
+            this.ComentarioInput.Location = new System.Drawing.Point(463, 366);
+            this.ComentarioInput.Name = "ComentarioInput";
+            this.ComentarioInput.Size = new System.Drawing.Size(60, 13);
+            this.ComentarioInput.TabIndex = 8;
+            this.ComentarioInput.Text = "Comentario";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown1.Location = new System.Drawing.Point(143, 366);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 9;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(530, 366);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(312, 20);
+            this.textBox1.TabIndex = 10;
+            // 
+            // Calificar
+            // 
+            this.Calificar.Location = new System.Drawing.Point(334, 423);
+            this.Calificar.Name = "Calificar";
+            this.Calificar.Size = new System.Drawing.Size(75, 23);
+            this.Calificar.TabIndex = 11;
+            this.Calificar.Text = "Calificar";
+            this.Calificar.UseVisualStyleBackColor = true;
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 622);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1004, 622);
+            this.Controls.Add(this.Calificar);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.ComentarioInput);
+            this.Controls.Add(this.CantidadDeEstrellasText);
             this.Controls.Add(this.groupBox2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "ListadoEstadisitico";
-            this.Text = "ListadoEstadisitico";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.ListadoEstadisitico_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
+            this.Name = "Form1";
+            this.Text = "Form1";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox reporteSelect;
-        private System.Windows.Forms.ComboBox mesFinSelect;
-        private System.Windows.Forms.ComboBox anioSelect;
-        private System.Windows.Forms.Label CantEstrellasLabel;
-        private System.Windows.Forms.Label labelCantCompras;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
@@ -316,9 +260,10 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox MesInitCombo;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label CantidadDeEstrellasText;
+        private System.Windows.Forms.Label ComentarioInput;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button Calificar;
     }
 }

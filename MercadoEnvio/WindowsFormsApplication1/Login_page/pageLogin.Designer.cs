@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            this.AcceptButton = button1;
             // 
             // button1
             // 
@@ -91,7 +92,7 @@
             this.Controls.Add(this.label1);
             this.Name = "pageLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "pageLogin";
+            this.Text = "Log-in";
             this.Load += new System.EventHandler(this.pageLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

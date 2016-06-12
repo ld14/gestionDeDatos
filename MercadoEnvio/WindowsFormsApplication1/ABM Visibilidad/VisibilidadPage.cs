@@ -19,13 +19,11 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
         private void button1_Click(object sender, EventArgs e)
         {
             string nombre = VisibilidadNombreTxt.Text;
-            double codigo = Convert.ToDouble(VisibilidadCodigotxt.Text);
             Double costo = Convert.ToDouble(VisibilidadCostoTxt.Text);
             Double porcentaje = Convert.ToDouble(VisibilidadPorcentajeTxt.Text);
 
             Visibilidad visibilidad = new Visibilidad();
             visibilidad.nombreVisibilidad=nombre;
-            visibilidad.codigoVisibilidad=codigo;
             visibilidad.costo=costo;
             visibilidad.porcentaje=porcentaje;
             VisibilidadDaoImpl visibilidadDaoImp = new VisibilidadDaoImpl();

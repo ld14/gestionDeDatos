@@ -9,6 +9,7 @@ using WindowsFormsApplication1.ABM_Usuario;
 using WindowsFormsApplication1.ABM_Rol;
 using WindowsFormsApplication1.ABM_Rubro;
 using WindowsFormsApplication1.ABM_Visibilidad;
+using WindowsFormsApplication1.Calificar;
 using WindowsFormsApplication1.Generar_Publicación;
 using WindowsFormsApplication1.ComprarOfertar;
 using WindowsFormsApplication1.Entity.Utils;
@@ -37,9 +38,9 @@ namespace WindowsFormsApplication1
         {
 
             //Seteo todo en vacio
-            aBMMenu.Visible = false;
-            PublicacionMenu.Visible = false;
-            comprarOfertarMenu.Visible = false;
+            aBMMenu.Visible = true;
+            PublicacionMenu.Visible = true;
+            comprarOfertarMenu.Visible = true;
             //historialDeCompraMenu
 
             //Abro la pagina de Logueo
@@ -435,6 +436,29 @@ aBMMenu
             ListadoEstadisitico facturasEmitidasFormForm = new ListadoEstadisitico();
             facturasEmitidasFormForm.MdiParent = this;
             facturasEmitidasFormForm.Show();
+        }
+
+
+        private void modificarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ModificarUsuarioPage modificarUsuarionPage = new ModificarUsuarioPage();
+            modificarUsuarionPage.MdiParent = this;
+            modificarUsuarionPage.Show();
+        }
+
+        private void calificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void calificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            CalificacionesPage calificacion = new CalificacionesPage();
+
+            calificacion.Text = "init";
+            calificacion.MdiParent = this;
+           calificacion.Show();
         }
     }
 }

@@ -7,18 +7,18 @@
 
     <many-to-one name="Publicacion" column="idPublicacion"  not-null="true" cascade="all"/>
     
-    <property name="nroFactura">
-      <column name="nroFactura" sql-type="numeric" not-null="false" />
+    <property name="nroFactura" generated="always" update="false" insert="false">
+      <column name="nroFactura" sql-type="int" not-null="false" />
     </property>   
     
     <property name="fecha">
       <column name="fecha" sql-type="datetime" not-null="false" />
     </property>
     <property name="montoTotal">
-      <column name="montoTotal" sql-type="numeric" not-null="false" />
+      <column name="montoTotal" sql-type="numeric" not-null="true" />
     </property>
     <property name="formaPagoDesc">
-      <column name="formaPagoDesc" sql-type="nvarchar" not-null="false" />
+      <column name="formaPagoDesc" sql-type="varchar" not-null="false" />
     </property>
     <!-- 
     <bag name="CompraUsuario">

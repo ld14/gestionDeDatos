@@ -5,16 +5,16 @@
       <generator class="identity" />
     </id>
     <property name="userName">
-      <column name="userName" sql-type="nvarchar" not-null="true" />
+      <column name="userName" sql-type="varchar" not-null="true" />
     </property>
     <property name="password">
-      <column name="password" sql-type="nvarchar" not-null="true" />
+      <column name="password" sql-type="varchar" not-null="true" />
     </property>
     <property name="activoUsuario"> 
       <column name="activoUsuario" sql-type="bit" not-null="true" />
     </property>
     <property name="intentosFallidos">
-      <column name="intentosFallidos" sql-type="numeric" not-null="true" />
+      <column name="intentosFallidos" sql-type="int" not-null="false" />
     </property>
     <property name="publicacionGratis">
       <column name="publicacionGratis" sql-type="bit" not-null="false" />

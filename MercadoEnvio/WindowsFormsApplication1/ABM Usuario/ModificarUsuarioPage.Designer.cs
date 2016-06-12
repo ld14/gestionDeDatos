@@ -1,6 +1,9 @@
-﻿namespace WindowsFormsApplication1.ABM_Usuario
+﻿using WindowsFormsApplication1.Entity.Utils;
+using System.Collections.Generic;
+
+namespace WindowsFormsApplication1.ABM_Usuario
 {
-    partial class AltaUsuarioPage
+    partial class ModificarUsuarioPage
     {
         /// <summary>
         /// Required designer variable.
@@ -29,15 +32,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.EmpresaGroup = new System.Windows.Forms.GroupBox();
-            this.EmpresaFechaCreacionDateTime = new System.Windows.Forms.DateTimePicker();
-            this.EmpresaNombreContactoTxt = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.EmpresaCuitTxt = new System.Windows.Forms.TextBox();
-            this.EmpresaRazonSocialTxt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tipoDeUsuarioComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -65,6 +59,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ClienteGroup = new System.Windows.Forms.GroupBox();
+            this.EmpresaGroup = new System.Windows.Forms.GroupBox();
+            this.EmpresaFechaCreacionDateTime = new System.Windows.Forms.DateTimePicker();
+            this.EmpresaNombreContactoTxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.EmpresaCuitTxt = new System.Windows.Forms.TextBox();
+            this.EmpresaRazonSocialTxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.ClienteApellidoTxt = new System.Windows.Forms.TextBox();
             this.ClienteNombreTxt = new System.Windows.Forms.TextBox();
             this.ClienteFechaNacDateTime = new System.Windows.Forms.DateTimePicker();
@@ -78,16 +81,15 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Grabar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.EmpresaGroup.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.ClienteGroup.SuspendLayout();
+            this.EmpresaGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.EmpresaGroup);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tipoDeUsuarioComboBox);
             this.groupBox1.Controls.Add(this.groupBox3);
@@ -96,94 +98,12 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(8, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(984, 493);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alta de Usuario";
-            // 
-            // EmpresaGroup
-            // 
-            this.EmpresaGroup.Controls.Add(this.EmpresaFechaCreacionDateTime);
-            this.EmpresaGroup.Controls.Add(this.EmpresaNombreContactoTxt);
-            this.EmpresaGroup.Controls.Add(this.label7);
-            this.EmpresaGroup.Controls.Add(this.EmpresaCuitTxt);
-            this.EmpresaGroup.Controls.Add(this.EmpresaRazonSocialTxt);
-            this.EmpresaGroup.Controls.Add(this.label4);
-            this.EmpresaGroup.Controls.Add(this.label5);
-            this.EmpresaGroup.Controls.Add(this.label10);
-            this.EmpresaGroup.Location = new System.Drawing.Point(23, 165);
-            this.EmpresaGroup.Name = "EmpresaGroup";
-            this.EmpresaGroup.Size = new System.Drawing.Size(484, 277);
-            this.EmpresaGroup.TabIndex = 10;
-            this.EmpresaGroup.TabStop = false;
-            this.EmpresaGroup.Text = "Datos Tipo Usuario";
-            this.EmpresaGroup.Visible = false;
-            // 
-            // EmpresaFechaCreacionDateTime
-            // 
-            this.EmpresaFechaCreacionDateTime.Location = new System.Drawing.Point(124, 132);
-            this.EmpresaFechaCreacionDateTime.Name = "EmpresaFechaCreacionDateTime";
-            this.EmpresaFechaCreacionDateTime.Size = new System.Drawing.Size(200, 20);
-            this.EmpresaFechaCreacionDateTime.TabIndex = 53;
-            // 
-            // EmpresaNombreContactoTxt
-            // 
-            this.EmpresaNombreContactoTxt.Location = new System.Drawing.Point(124, 106);
-            this.EmpresaNombreContactoTxt.Name = "EmpresaNombreContactoTxt";
-            this.EmpresaNombreContactoTxt.Size = new System.Drawing.Size(126, 20);
-            this.EmpresaNombreContactoTxt.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 111);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Nombre Contacto";
-            // 
-            // EmpresaCuitTxt
-            // 
-            this.EmpresaCuitTxt.Location = new System.Drawing.Point(124, 82);
-            this.EmpresaCuitTxt.Name = "EmpresaCuitTxt";
-            this.EmpresaCuitTxt.Size = new System.Drawing.Size(126, 20);
-            this.EmpresaCuitTxt.TabIndex = 9;
-            // 
-            // EmpresaRazonSocialTxt
-            // 
-            this.EmpresaRazonSocialTxt.Location = new System.Drawing.Point(124, 58);
-            this.EmpresaRazonSocialTxt.Name = "EmpresaRazonSocialTxt";
-            this.EmpresaRazonSocialTxt.Size = new System.Drawing.Size(126, 20);
-            this.EmpresaRazonSocialTxt.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "CUIT";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Razon social";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 134);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 13);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Fecha de Creacion";
             // 
             // label3
             // 
@@ -204,7 +124,6 @@
             this.tipoDeUsuarioComboBox.Name = "tipoDeUsuarioComboBox";
             this.tipoDeUsuarioComboBox.Size = new System.Drawing.Size(485, 21);
             this.tipoDeUsuarioComboBox.TabIndex = 12;
-            this.tipoDeUsuarioComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -232,7 +151,6 @@
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos Basicos";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // DatosBasicosCiudad
             // 
@@ -240,6 +158,8 @@
             this.DatosBasicosCiudad.Name = "DatosBasicosCiudad";
             this.DatosBasicosCiudad.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosCiudad.TabIndex = 50;
+            this.DatosBasicosCiudad.Text = "System.CodeDom.CodePropertyReferenceExpression";
+            this.DatosBasicosCiudad.TextChanged += new System.EventHandler(this.DatosBasicosCiudad_TextChanged);
             // 
             // label8
             // 
@@ -249,7 +169,6 @@
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 49;
             this.label8.Text = "Ciudad";
-            this.label8.Click += new System.EventHandler(this.label18_Click);
             // 
             // DatosBasicosDepto
             // 
@@ -378,7 +297,6 @@
             this.label18.Size = new System.Drawing.Size(26, 13);
             this.label18.TabIndex = 29;
             this.label18.Text = "Mail";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // userPasswordImput
             // 
@@ -424,6 +342,7 @@
             // 
             // ClienteGroup
             // 
+            this.ClienteGroup.Controls.Add(this.EmpresaGroup);
             this.ClienteGroup.Controls.Add(this.ClienteApellidoTxt);
             this.ClienteGroup.Controls.Add(this.ClienteNombreTxt);
             this.ClienteGroup.Controls.Add(this.ClienteFechaNacDateTime);
@@ -441,6 +360,88 @@
             this.ClienteGroup.TabStop = false;
             this.ClienteGroup.Text = "Datos Tipo Usuario";
             this.ClienteGroup.Visible = false;
+            // 
+            // EmpresaGroup
+            // 
+            this.EmpresaGroup.Controls.Add(this.EmpresaFechaCreacionDateTime);
+            this.EmpresaGroup.Controls.Add(this.EmpresaNombreContactoTxt);
+            this.EmpresaGroup.Controls.Add(this.label7);
+            this.EmpresaGroup.Controls.Add(this.EmpresaCuitTxt);
+            this.EmpresaGroup.Controls.Add(this.EmpresaRazonSocialTxt);
+            this.EmpresaGroup.Controls.Add(this.label4);
+            this.EmpresaGroup.Controls.Add(this.label5);
+            this.EmpresaGroup.Controls.Add(this.label10);
+            this.EmpresaGroup.Location = new System.Drawing.Point(0, 0);
+            this.EmpresaGroup.Name = "EmpresaGroup";
+            this.EmpresaGroup.Size = new System.Drawing.Size(484, 277);
+            this.EmpresaGroup.TabIndex = 10;
+            this.EmpresaGroup.TabStop = false;
+            this.EmpresaGroup.Text = "Datos Tipo Usuario";
+            this.EmpresaGroup.Visible = false;
+            // 
+            // EmpresaFechaCreacionDateTime
+            // 
+            this.EmpresaFechaCreacionDateTime.Location = new System.Drawing.Point(124, 132);
+            this.EmpresaFechaCreacionDateTime.Name = "EmpresaFechaCreacionDateTime";
+            this.EmpresaFechaCreacionDateTime.Size = new System.Drawing.Size(200, 20);
+            this.EmpresaFechaCreacionDateTime.TabIndex = 53;
+            // 
+            // EmpresaNombreContactoTxt
+            // 
+            this.EmpresaNombreContactoTxt.Location = new System.Drawing.Point(124, 106);
+            this.EmpresaNombreContactoTxt.Name = "EmpresaNombreContactoTxt";
+            this.EmpresaNombreContactoTxt.Size = new System.Drawing.Size(126, 20);
+            this.EmpresaNombreContactoTxt.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 111);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Nombre Contacto";
+            // 
+            // EmpresaCuitTxt
+            // 
+            this.EmpresaCuitTxt.Location = new System.Drawing.Point(124, 82);
+            this.EmpresaCuitTxt.Name = "EmpresaCuitTxt";
+            this.EmpresaCuitTxt.Size = new System.Drawing.Size(126, 20);
+            this.EmpresaCuitTxt.TabIndex = 9;
+            // 
+            // EmpresaRazonSocialTxt
+            // 
+            this.EmpresaRazonSocialTxt.Location = new System.Drawing.Point(124, 58);
+            this.EmpresaRazonSocialTxt.Name = "EmpresaRazonSocialTxt";
+            this.EmpresaRazonSocialTxt.Size = new System.Drawing.Size(126, 20);
+            this.EmpresaRazonSocialTxt.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "CUIT";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Razon social";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 134);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Fecha de Creacion";
             // 
             // ClienteApellidoTxt
             // 
@@ -526,13 +527,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.Grabar);
-            this.groupBox2.Location = new System.Drawing.Point(12, 524);
+            this.groupBox2.Location = new System.Drawing.Point(8, 511);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(984, 113);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Opciones";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // Grabar
             // 
@@ -540,36 +540,29 @@
             this.Grabar.Name = "Grabar";
             this.Grabar.Size = new System.Drawing.Size(222, 23);
             this.Grabar.TabIndex = 0;
-            this.Grabar.Text = "Grabar";
+            this.Grabar.Text = "Modificar";
             this.Grabar.UseVisualStyleBackColor = true;
-            this.Grabar.Click += new System.EventHandler(this.button1_Click);
+            this.Grabar.Click += new System.EventHandler(this.Grabar_Click);
             // 
-            // AltaUsuarioPage
+            // ModificarUsuarioPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1020, 660);
+            this.ClientSize = new System.Drawing.Size(1004, 622);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AltaUsuarioPage";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
+            this.Name = "ModificarUsuarioPage";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.EmpresaGroup.ResumeLayout(false);
-            this.EmpresaGroup.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.ClienteGroup.ResumeLayout(false);
             this.ClienteGroup.PerformLayout();
+            this.EmpresaGroup.ResumeLayout(false);
+            this.EmpresaGroup.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -578,15 +571,20 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox userPasswordImput;
-        private System.Windows.Forms.TextBox userNameInput;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox EmpresaGroup;
+        private System.Windows.Forms.DateTimePicker EmpresaFechaCreacionDateTime;
+        private System.Windows.Forms.TextBox EmpresaNombreContactoTxt;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox EmpresaCuitTxt;
+        private System.Windows.Forms.TextBox EmpresaRazonSocialTxt;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox tipoDeUsuarioComboBox;
-        private System.Windows.Forms.Button Grabar;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox DatosBasicosCiudad;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox DatosBasicosDepto;
         private System.Windows.Forms.TextBox DatosBasicosPiso;
         private System.Windows.Forms.TextBox DatosBasicosNroCalle;
@@ -599,17 +597,16 @@
         private System.Windows.Forms.TextBox DatosBasicosDomicilioCalle;
         private System.Windows.Forms.TextBox DatosBasicosTelefono;
         private System.Windows.Forms.TextBox DatosBasicosEmailTxt;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox userPasswordImput;
+        private System.Windows.Forms.TextBox userNameInput;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox ClienteGroup;
-        private System.Windows.Forms.GroupBox EmpresaGroup;
-        private System.Windows.Forms.TextBox EmpresaCuitTxt;
-        private System.Windows.Forms.TextBox EmpresaRazonSocialTxt;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox ClienteApellidoTxt;
         private System.Windows.Forms.TextBox ClienteNombreTxt;
         private System.Windows.Forms.DateTimePicker ClienteFechaNacDateTime;
@@ -620,11 +617,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox ClienteDNITxt;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox EmpresaNombreContactoTxt;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox DatosBasicosCiudad;
-        private System.Windows.Forms.DateTimePicker EmpresaFechaCreacionDateTime;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button Grabar;
     }
 }
