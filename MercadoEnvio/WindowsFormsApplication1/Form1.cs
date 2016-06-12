@@ -36,9 +36,9 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             //Seteo todo en vacio
-            aBMMenu.Visible = false;
-            PublicacionMenu.Visible = false;
-            comprarOfertarMenu.Visible = false;
+            aBMMenu.Visible = true;
+            PublicacionMenu.Visible = true;
+            comprarOfertarMenu.Visible = true;
             //historialDeCompraMenu
 
             //Abro la pagina de Logueo
@@ -434,6 +434,14 @@ aBMMenu
             ListadoEstadisitico facturasEmitidasFormForm = new ListadoEstadisitico();
             facturasEmitidasFormForm.MdiParent = this;
             facturasEmitidasFormForm.Show();
+        }
+
+
+        private void modificarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ModificarUsuarioPage modificarUsuarionPage = new ModificarUsuarioPage();
+            modificarUsuarionPage.MdiParent = this;
+            modificarUsuarionPage.Show();
         }
     }
 }

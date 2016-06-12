@@ -88,6 +88,12 @@
     <Compile Include="ABM Usuario\AltaUsuarioPage.Designer.cs">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Usuario\ModificarUsuarioPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Usuario\ModificarUsuarioPage.Designer.cs">
+      <DependentUpon>ModificarUsuarioPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM Visibilidad\VisibilidadPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\AltaUsuarioPage.resx">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Usuario\ModificarUsuarioPage.resx">
+      <DependentUpon>ModificarUsuarioPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Visibilidad\VisibilidadPage.resx">
       <DependentUpon>VisibilidadPage.cs</DependentUpon>
