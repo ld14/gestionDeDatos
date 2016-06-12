@@ -6,29 +6,29 @@
       <generator class="identity" />
     </id>
     <property name="email">
-      <column name="email" sql-type="nvarchar" not-null="false" />
+      <column name="email" sql-type="varchar" not-null="true" />
     </property>
     <property name="domCalle">
-      <column name="domCalle" sql-type="nvarchar" not-null="false" />
+      <column name="domCalle" sql-type="varchar" not-null="false" />
     </property>
     <property name="nroCalle">
-      <column name="nroCalle" sql-type="numeric" not-null="false" />
+      <column name="nroCalle" sql-type="int" not-null="false" />
     </property>
     <property name="piso">
-      <column name="piso" sql-type="numeric" not-null="false" />
+      <column name="piso" sql-type="int" not-null="false" />
     </property>
     <property name="depto">
-      <column name="depto" sql-type="nvarchar" not-null="false" />
+      <column name="depto" sql-type="varchar" not-null="false" />
     </property>
     <property name="codPostal">
-      <column name="codPostal" sql-type="nvarchar" not-null="false" />
+      <column name="codPostal" sql-type="varchar" not-null="false" />
     </property>
     <property name="localidad">
-      <column name="localidad" sql-type="nvarchar" not-null="false" />
+      <column name="localidad" sql-type="varchar" not-null="false" />
     </property>
     <property name="ciudad">
-      <column name="ciudad" sql-type="nvarchar" not-null="false" />
+      <column name="ciudad" sql-type="varchar" not-null="false" />
     </property>
-    
+
   </class>
 </hibernate-mapping>

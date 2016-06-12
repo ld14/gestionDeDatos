@@ -5,16 +5,16 @@
       <generator class="identity" />
     </id>
     
-    <property name="codigo">
-      <column name="codigo" sql-type="numeric" not-null="false" />
+    <property name="codigo" generated="always" update="false" insert="false">
+      <column name="codigo" sql-type="int" not-null="false" />
     </property>
     
     <property name="cantEstrellas">
-      <column name="cantEstrellas" sql-type="numeric" not-null="false" />
+      <column name="cantEstrellas" sql-type="int" not-null="true" />
     </property>
     
     <property name="descripcion">
-      <column name="descripcion" sql-type="nvarchar" not-null="false" />
+      <column name="descripcion" sql-type="varchar" not-null="false" />
     </property>
 
   </class>

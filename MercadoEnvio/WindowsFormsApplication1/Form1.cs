@@ -47,7 +47,8 @@ namespace WindowsFormsApplication1
 
 
             //Tomo el usuario de sesion.
-            ICollection<Rol> roles = new List<Rol>();
+            /*
+             * ICollection<Rol> roles = new List<Rol>();
 
             if (SessionAttribute.user is Cliente)
             {
@@ -59,9 +60,26 @@ namespace WindowsFormsApplication1
                 Empresa user = (Empresa)SessionAttribute.user;
                 roles = user.RolesLst;
             }
+            */
+
+            IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
+            rolUser.MoveNext();
+
+            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.idUsuario + "] [Rol: " + rolUser.Current.nombre + "]"; 
+ 
+            if (rolUser.Current.idRol == 1)
+            {
+                ClienteDaoImpl cli = new ClienteDaoImpl();
+                SessionAttribute.clienteUser = cli.GetUsuarioById(SessionAttribute.user.idUsuario);
+            }
+            if (rolUser.Current.idRol == 2)
+            {
+                EmpresaDaoImpl emp = new EmpresaDaoImpl();
+                SessionAttribute.empresaUser = emp.GetEmpresaByIdUsuario(SessionAttribute.user.idUsuario);
+            }
 
 
-
+            /*
             //Recorro los roles
             foreach (Rol rol in roles)
             {
@@ -91,7 +109,7 @@ namespace WindowsFormsApplication1
 
                 }
             }
-
+            */
             /*
              * FacturaDaoImpl factDaoImp = new FacturaDaoImpl();
             double nroFactura = factDaoImp.getProfileIdSequence();
