@@ -26,8 +26,6 @@ DROP VIEW [LOPEZ_Y_CIA].[EstadisticaVendedores];
 DROP VIEW [LOPEZ_Y_CIA].[EstadisticaCompradores];
 DROP VIEW [LOPEZ_Y_CIA].[SubastaCompraDelSistema];
 
-DROP TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol];
-
 DROP SCHEMA [LOPEZ_Y_CIA];'
 
 PRINT @sql;
