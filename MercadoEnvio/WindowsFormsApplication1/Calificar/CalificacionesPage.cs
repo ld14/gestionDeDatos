@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.Calificar
 {
-    public partial class Form1 : Form
+    public partial class CalificacionesPage : Form
     {
-        public Form1()
+        public CalificacionesPage()
         {
             InitializeComponent();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
