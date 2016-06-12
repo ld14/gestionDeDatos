@@ -7,11 +7,11 @@
     </id>
     
     <property name="nombre">
-      <column name="nombre" sql-type="nvarchar" not-null="false" />
+      <column name="nombre" sql-type="varchar" not-null="true" />
     </property>
     
     <property name="nombreCorto">
-      <column name="nombreCorto" sql-type="nchar" not-null="false" />
+      <column name="nombreCorto" sql-type="varchar" not-null="false" />
     </property>
   
   </class>

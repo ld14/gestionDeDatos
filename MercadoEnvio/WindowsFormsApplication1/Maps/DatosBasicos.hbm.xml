@@ -8,6 +8,9 @@
     <property name="email">
       <column name="email" sql-type="varchar" not-null="true" />
     </property>
+    <property name="telefono">
+      <column name="telefono" sql-type="varchar" not-null="false" />
+    </property>
     <property name="domCalle">
       <column name="domCalle" sql-type="varchar" not-null="false" />
     </property>

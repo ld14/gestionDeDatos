@@ -5,20 +5,20 @@
       <generator class="identity" />
     </id>
 
-    <property name="codigoPublicacion">
-      <column name="codigoPublicacion" sql-type="numeric" not-null="false" />
+    <property name="codigoPublicacion" generated="always" update="false" insert="false">
+      <column name="codigoPublicacion" sql-type="int" not-null="false" />
     </property>
     <property name="descripcion">
-      <column name="descripcion" sql-type="nvarchar" not-null="false" />
+      <column name="descripcion" sql-type="varchar" not-null="false" />
     </property>
     <property name="fechaCreacion">
-      <column name="fechaCreacion" sql-type="date" not-null="false" />
+      <column name="fechaCreacion" sql-type="date" not-null="true" />
     </property>
     <property name="fechaVencimiento">
       <column name="fechaVencimiento" sql-type="date" not-null="false" />
     </property>
     <property name="stock">
-      <column name="stock" sql-type="numeric" not-null="false" />
+      <column name="stock" sql-type="int" not-null="false" />
     </property>
     <property name="preguntasSN">
       <column name="preguntasSN" sql-type="bit" not-null="false" />
