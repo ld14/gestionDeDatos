@@ -31,8 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListadoEstadisitico));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.reporteSelect = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.mesFinSelect = new System.Windows.Forms.ComboBox();
+            this.MesInitCombo = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.reporteSelect = new System.Windows.Forms.ComboBox();
             this.anioSelect = new System.Windows.Forms.ComboBox();
             this.CantEstrellasLabel = new System.Windows.Forms.Label();
             this.labelCantCompras = new System.Windows.Forms.Label();
@@ -49,16 +52,13 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.MesInitCombo = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -76,6 +76,43 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estadisticas";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.mesFinSelect);
+            this.groupBox3.Controls.Add(this.MesInitCombo);
+            this.groupBox3.Location = new System.Drawing.Point(314, 29);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(491, 67);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Trimestre Comprendido entre";
+            // 
+            // mesFinSelect
+            // 
+            this.mesFinSelect.FormattingEnabled = true;
+            this.mesFinSelect.Location = new System.Drawing.Point(251, 29);
+            this.mesFinSelect.Name = "mesFinSelect";
+            this.mesFinSelect.Size = new System.Drawing.Size(219, 21);
+            this.mesFinSelect.TabIndex = 9;
+            // 
+            // MesInitCombo
+            // 
+            this.MesInitCombo.FormattingEnabled = true;
+            this.MesInitCombo.Location = new System.Drawing.Point(22, 29);
+            this.MesInitCombo.Name = "MesInitCombo";
+            this.MesInitCombo.Size = new System.Drawing.Size(223, 21);
+            this.MesInitCombo.TabIndex = 12;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(330, 148);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(251, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Ver Reporte";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // reporteSelect
             // 
             this.reporteSelect.FormattingEnabled = true;
@@ -89,14 +126,6 @@
             this.reporteSelect.Size = new System.Drawing.Size(722, 21);
             this.reporteSelect.TabIndex = 10;
             this.reporteSelect.SelectedIndexChanged += new System.EventHandler(this.reporteSelect_SelectedIndexChanged);
-            // 
-            // mesFinSelect
-            // 
-            this.mesFinSelect.FormattingEnabled = true;
-            this.mesFinSelect.Location = new System.Drawing.Point(251, 29);
-            this.mesFinSelect.Name = "mesFinSelect";
-            this.mesFinSelect.Size = new System.Drawing.Size(219, 21);
-            this.mesFinSelect.TabIndex = 9;
             // 
             // anioSelect
             // 
@@ -175,8 +204,8 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
@@ -239,41 +268,11 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(330, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(251, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Ver Reporte";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // MesInitCombo
-            // 
-            this.MesInitCombo.FormattingEnabled = true;
-            this.MesInitCombo.Location = new System.Drawing.Point(22, 29);
-            this.MesInitCombo.Name = "MesInitCombo";
-            this.MesInitCombo.Size = new System.Drawing.Size(223, 21);
-            this.MesInitCombo.TabIndex = 12;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.mesFinSelect);
-            this.groupBox3.Controls.Add(this.MesInitCombo);
-            this.groupBox3.Location = new System.Drawing.Point(314, 29);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(491, 67);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Trimestre Comprendido entre";
-            // 
             // ListadoEstadisitico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 622);
-            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -285,6 +284,7 @@
             this.Load += new System.EventHandler(this.ListadoEstadisitico_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -292,7 +292,6 @@
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

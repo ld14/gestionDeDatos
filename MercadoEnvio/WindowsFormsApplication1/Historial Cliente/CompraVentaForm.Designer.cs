@@ -46,13 +46,13 @@
             this.cantSCalifLabel = new System.Windows.Forms.Label();
             this.labelCantCompras = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.canCaliLabel = new System.Windows.Forms.Label();
-            this.CantEstrellasLabel = new System.Windows.Forms.Label();
-            this.CantSinCalif = new System.Windows.Forms.TextBox();
-            this.CantidadCompras = new System.Windows.Forms.TextBox();
-            this.CantCalif = new System.Windows.Forms.TextBox();
-            this.CantidadEstrellas = new System.Windows.Forms.TextBox();
             this.DatosUsuario = new System.Windows.Forms.TextBox();
+            this.CantidadEstrellas = new System.Windows.Forms.TextBox();
+            this.CantCalif = new System.Windows.Forms.TextBox();
+            this.CantidadCompras = new System.Windows.Forms.TextBox();
+            this.CantSinCalif = new System.Windows.Forms.TextBox();
+            this.CantEstrellasLabel = new System.Windows.Forms.Label();
+            this.canCaliLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -124,8 +124,8 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // dataGridView1
@@ -212,14 +212,40 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
             // 
-            // canCaliLabel
+            // DatosUsuario
             // 
-            this.canCaliLabel.AutoSize = true;
-            this.canCaliLabel.Location = new System.Drawing.Point(509, 78);
-            this.canCaliLabel.Name = "canCaliLabel";
-            this.canCaliLabel.Size = new System.Drawing.Size(103, 13);
-            this.canCaliLabel.TabIndex = 5;
-            this.canCaliLabel.Text = "Cantidad Calificadas";
+            this.DatosUsuario.Location = new System.Drawing.Point(22, 37);
+            this.DatosUsuario.Name = "DatosUsuario";
+            this.DatosUsuario.Size = new System.Drawing.Size(913, 20);
+            this.DatosUsuario.TabIndex = 11;
+            // 
+            // CantidadEstrellas
+            // 
+            this.CantidadEstrellas.Location = new System.Drawing.Point(740, 95);
+            this.CantidadEstrellas.Name = "CantidadEstrellas";
+            this.CantidadEstrellas.Size = new System.Drawing.Size(195, 20);
+            this.CantidadEstrellas.TabIndex = 10;
+            // 
+            // CantCalif
+            // 
+            this.CantCalif.Location = new System.Drawing.Point(512, 95);
+            this.CantCalif.Name = "CantCalif";
+            this.CantCalif.Size = new System.Drawing.Size(195, 20);
+            this.CantCalif.TabIndex = 9;
+            // 
+            // CantidadCompras
+            // 
+            this.CantidadCompras.Location = new System.Drawing.Point(22, 95);
+            this.CantidadCompras.Name = "CantidadCompras";
+            this.CantidadCompras.Size = new System.Drawing.Size(195, 20);
+            this.CantidadCompras.TabIndex = 8;
+            // 
+            // CantSinCalif
+            // 
+            this.CantSinCalif.Location = new System.Drawing.Point(257, 95);
+            this.CantSinCalif.Name = "CantSinCalif";
+            this.CantSinCalif.Size = new System.Drawing.Size(195, 20);
+            this.CantSinCalif.TabIndex = 7;
             // 
             // CantEstrellasLabel
             // 
@@ -230,47 +256,20 @@
             this.CantEstrellasLabel.TabIndex = 6;
             this.CantEstrellasLabel.Text = "Cantidad de Estrellas";
             // 
-            // CantSinCalif
+            // canCaliLabel
             // 
-            this.CantSinCalif.Location = new System.Drawing.Point(257, 95);
-            this.CantSinCalif.Name = "CantSinCalif";
-            this.CantSinCalif.Size = new System.Drawing.Size(195, 20);
-            this.CantSinCalif.TabIndex = 7;
-            // 
-            // CantidadCompras
-            // 
-            this.CantidadCompras.Location = new System.Drawing.Point(22, 95);
-            this.CantidadCompras.Name = "CantidadCompras";
-            this.CantidadCompras.Size = new System.Drawing.Size(195, 20);
-            this.CantidadCompras.TabIndex = 8;
-            // 
-            // CantCalif
-            // 
-            this.CantCalif.Location = new System.Drawing.Point(512, 95);
-            this.CantCalif.Name = "CantCalif";
-            this.CantCalif.Size = new System.Drawing.Size(195, 20);
-            this.CantCalif.TabIndex = 9;
-            // 
-            // CantidadEstrellas
-            // 
-            this.CantidadEstrellas.Location = new System.Drawing.Point(740, 95);
-            this.CantidadEstrellas.Name = "CantidadEstrellas";
-            this.CantidadEstrellas.Size = new System.Drawing.Size(195, 20);
-            this.CantidadEstrellas.TabIndex = 10;
-            // 
-            // DatosUsuario
-            // 
-            this.DatosUsuario.Location = new System.Drawing.Point(22, 37);
-            this.DatosUsuario.Name = "DatosUsuario";
-            this.DatosUsuario.Size = new System.Drawing.Size(913, 20);
-            this.DatosUsuario.TabIndex = 11;
+            this.canCaliLabel.AutoSize = true;
+            this.canCaliLabel.Location = new System.Drawing.Point(509, 78);
+            this.canCaliLabel.Name = "canCaliLabel";
+            this.canCaliLabel.Size = new System.Drawing.Size(103, 13);
+            this.canCaliLabel.TabIndex = 5;
+            this.canCaliLabel.Text = "Cantidad Calificadas";
             // 
             // CompraVentaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 660);
-            this.ControlBox = false;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
