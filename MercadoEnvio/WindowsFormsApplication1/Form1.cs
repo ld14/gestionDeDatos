@@ -36,16 +36,6 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            try
-            {
-                myConfiguration = new Configuration();
-                myConfiguration.Configure();
-                mySessionFactory = myConfiguration.BuildSessionFactory();
-                mySession = mySessionFactory.OpenSession();
-            }
-            catch (Exception conect)
-            {
-            }
             //Seteo todo en vacio
             aBMMenu.Visible = false;
             PublicacionMenu.Visible = false;

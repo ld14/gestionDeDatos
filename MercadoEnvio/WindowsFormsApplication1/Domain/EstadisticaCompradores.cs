@@ -15,6 +15,6 @@ namespace WindowsFormsApplication1 {
         public virtual int compraCantidad { get; set; }
         public virtual DateTime? fecha { get; set; }
         public virtual int idRubro { get; set; }
-        public virtual string descript { get; set; }
+        public virtual string descript { get; set; }  
     }
 }

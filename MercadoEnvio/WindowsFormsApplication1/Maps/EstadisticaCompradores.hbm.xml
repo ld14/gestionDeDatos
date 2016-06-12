@@ -30,6 +30,6 @@
     </property>
     <property name="descript">
       <column name="descript" sql-type="varchar" not-null="false" />
-    </property>
+    </property>    
   </class>
 </hibernate-mapping>

@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1.Entity.DAO
         void Update(EstadisticaVendedores factura);
         void Remove(EstadisticaVendedores factura);
         IList<EstadisticasVendedoresGrilla> darEstadisticasVendedores(DateTime fechaDesde, DateTime fechaHasta, int visbilidad);
-        IList<EstadisticaCompradoresGrilla> darEstadisticasCompradores(DateTime fechaDesde, DateTime fechaHasta, int rubro);
+        IList<EstadisticaCompradoresGrilla> darEstadisticasCompradores(DateTime fechaDesde, DateTime fechaHasta, int rubro);  
     }
 }
 
