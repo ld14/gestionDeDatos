@@ -56,7 +56,15 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public IList<Funciones> obtenerFunciones(int idRol)
+        public IList<Funciones> obtenerFunciones()
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.QueryOver<Funciones>().List();
+            }
+        }
+
+        public IList<Funciones> obtenerFuncionesPorRol(int idRol)
         {
             using (NHibernateManager manager = new NHibernateManager())
             {
@@ -71,7 +79,7 @@ namespace WindowsFormsApplication1
                         fin.Add(funcion);
                     }
                 }
-               return fin;
+                return fin;
             }
         }
 

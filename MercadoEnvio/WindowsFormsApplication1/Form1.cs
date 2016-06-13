@@ -69,7 +69,7 @@ namespace WindowsFormsApplication1
 
             //Habilito funcionalidades segun Usuario
             RolDaoImpl rl = new RolDaoImpl();
-            IList<Funciones> func = rl.obtenerFunciones(rolUser.Current.idRol);
+            IList<Funciones> func = rl.obtenerFuncionesPorRol(rolUser.Current.idRol);
             foreach (Funciones funcion in func)
             {
                 switch (funcion.idFunciones)

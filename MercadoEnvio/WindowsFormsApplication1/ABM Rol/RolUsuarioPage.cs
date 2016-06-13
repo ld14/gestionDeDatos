@@ -29,12 +29,34 @@ namespace WindowsFormsApplication1.ABM_Rol
         private void RolUsuarioPage_Load(object sender, EventArgs e)
         {
             //FuncionalidadesChkLst
-            RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
-            IList<Rubro> rubroLts = rubroDaoImpli.darRubroActivo();
+            RolDaoImpl rolDao = new RolDaoImpl();
+            IList<Funciones> func = rolDao.obtenerFunciones();
 
-            FuncionalidadesChkLst.DataSource = rubroLts;
-            FuncionalidadesChkLst.DisplayMember = "descripcion";
-            FuncionalidadesChkLst.ValueMember = "idRubro";            
+            FuncionalidadesChkLst.DataSource = func;
+            FuncionalidadesChkLst.DisplayMember = "nombre";
+            FuncionalidadesChkLst.ValueMember = "idFunciones";            
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Rol rol = new Rol();
+            rol.activo = RolActivoChk.Checked;
+            rol.nombre = RolNombreTxt.Text;
+            rol.FuncionesLst = new List<Funciones>();
+
+            var funciones = FuncionalidadesChkLst.CheckedItems.Cast<Funciones>();
+            foreach (Funciones func in funciones)
+            {
+                rol.FuncionesLst.Add(func);
+            }
+
+            RolDaoImpl rolDao = new RolDaoImpl();
+            rolDao.Add(rol);
         }
     }
 }
