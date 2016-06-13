@@ -46,7 +46,6 @@ namespace WindowsFormsApplication1
         }
 
 
-
         public IList<Rol> darRolActivo()
         {
             using (NHibernateManager manager = new NHibernateManager()) {
@@ -54,10 +53,27 @@ namespace WindowsFormsApplication1
                 ICriteria crit = manager.Session.CreateCriteria<Rol>();
                 crit.Add(Expression.Eq("activo", true));
                 return crit.List<Rol>(); 
-                
-
+            }
         }
-    }
+
+        public IList<Funciones> obtenerFunciones(int idRol)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                IList<Funciones> ff = manager.Session.QueryOver<Funciones>().List();
+                IList<Rol> rr;
+                IList<Funciones> fin = new List<Funciones>();
+                foreach (Funciones funcion in ff)
+                {
+                    rr = funcion.RolLst.ToList();
+                    if (rr.Any(x => x.idRol == idRol))
+                    {
+                        fin.Add(funcion);
+                    }
+                }
+               return fin;
+            }
+        }
 
     }
 }

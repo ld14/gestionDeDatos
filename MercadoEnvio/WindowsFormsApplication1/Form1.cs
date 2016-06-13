@@ -1,21 +1,21 @@
 ﻿using NHibernate;
 using NHibernate.Cfg;
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Globalization;
-using WindowsFormsApplication1.Login_page;
-using WindowsFormsApplication1.ABM_Usuario;
+using System.Windows.Forms;
 using WindowsFormsApplication1.ABM_Rol;
 using WindowsFormsApplication1.ABM_Rubro;
+using WindowsFormsApplication1.ABM_Usuario;
 using WindowsFormsApplication1.ABM_Visibilidad;
 using WindowsFormsApplication1.Calificar;
-using WindowsFormsApplication1.Generar_Publicación;
 using WindowsFormsApplication1.ComprarOfertar;
 using WindowsFormsApplication1.Entity.Utils;
-using WindowsFormsApplication1.Historial_Cliente;
 using WindowsFormsApplication1.Facturas;
+using WindowsFormsApplication1.Generar_Publicación;
+using WindowsFormsApplication1.Historial_Cliente;
 using WindowsFormsApplication1.Listado_Estadistico;
+using WindowsFormsApplication1.Login_page;
 
 
 
@@ -36,39 +36,26 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            //Seteo todo en vacio
-            aBMMenu.Visible = true;
-            PublicacionMenu.Visible = true;
-            comprarOfertarMenu.Visible = true;
-            //historialDeCompraMenu
+            //Oculto todas las funcionalidades
+            aBMMenu.Visible = false;
+            PublicacionMenu.Visible = false;
+            comprarOfertarMenu.Visible = false;
+            calificacionesToolStripMenuItem.Visible = false;
+            historialDeCompraMenu.Visible = false;
+            estadisticasToolStripMenuItem.Visible = false;
+            facturacionToolStripMenuItem.Visible = false;
+            misDatosToolStripMenuItem.Visible = false;
 
             //Abro la pagina de Logueo
             pageLogin nuevaPagina = new pageLogin();
             nuevaPagina.ShowDialog();
 
-
-            //Tomo el usuario de sesion.
-            /*
-             * ICollection<Rol> roles = new List<Rol>();
-
-            if (SessionAttribute.user is Cliente)
-            {
-                Cliente user = (Cliente)SessionAttribute.user;
-                roles = user.RolesLst;
-            }
-            if (SessionAttribute.user is Empresa)
-            {
-                Empresa user = (Empresa)SessionAttribute.user;
-                roles = user.RolesLst;
-            }
-            */
-
+            //Asigno el Rol correspondiente al Usuario logeado
             IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
             rolUser.MoveNext();
-
             this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.idUsuario + "] [Rol: " + rolUser.Current.nombre + "]"; 
  
+            //Obtener datos del Usuario
             if (rolUser.Current.idRol == 1)
             {
                 ClienteDaoImpl cli = new ClienteDaoImpl();
@@ -80,38 +67,41 @@ namespace WindowsFormsApplication1
                 SessionAttribute.empresaUser = emp.GetEmpresaByIdUsuario(SessionAttribute.user.idUsuario);
             }
 
-
-            /*
-            //Recorro los roles
-            foreach (Rol rol in roles)
+            //Habilito funcionalidades segun Usuario
+            RolDaoImpl rl = new RolDaoImpl();
+            IList<Funciones> func = rl.obtenerFunciones(rolUser.Current.idRol);
+            foreach (Funciones funcion in func)
             {
-                if (true)
-                { //Este IF debe cambiarse por la seleccion del rol en la pantalla de Loguin
-                    foreach (Funciones fun in rol.FuncionesLst)
-                    {
-                        switch (fun.nombre)
-                        {
-                            case "comprarOfertarMenu":
-                                {
-                                    comprarOfertarMenu.Visible = true;
-                                    break;
-                                }
-                            case "PublicacionMenu":
-                                {
-                                    PublicacionMenu.Visible = true;
-                                    break;
-                                }
-                            case "aBMMenu":
-                                {
-                                    aBMMenu.Visible = true;
-                                    break;
-                                }
-                        }
-                    }
-
+                switch (funcion.idFunciones)
+                {
+                    case 1:
+                        aBMMenu.Visible = true;
+                        break;
+                    case 2:
+                        PublicacionMenu.Visible = true;
+                        break;
+                    case 3:
+                        comprarOfertarMenu.Visible = true;
+                        break;
+                    case 4:
+                        historialDeCompraMenu.Visible = true;
+                        break;
+                    case 5:
+                        facturacionToolStripMenuItem.Visible = true;
+                        break;
+                    case 6:
+                        estadisticasToolStripMenuItem.Visible = true;
+                        break;
+                    case 7:
+                        misDatosToolStripMenuItem.Visible = true;
+                        break;
+                    case 8:
+                        calificacionesToolStripMenuItem.Visible = true;
+                        break;
                 }
             }
-            */
+
+
             /*
              * FacturaDaoImpl factDaoImp = new FacturaDaoImpl();
             double nroFactura = factDaoImp.getProfileIdSequence();
@@ -459,6 +449,11 @@ aBMMenu
             calificacion.Text = "init";
             calificacion.MdiParent = this;
            calificacion.Show();
+        }
+
+        private void misDatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

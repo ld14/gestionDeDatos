@@ -54,6 +54,7 @@
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.misDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +67,8 @@
             this.historialDeCompraMenu,
             this.facturacionToolStripMenuItem,
             this.estadisticasToolStripMenuItem,
-            this.calificacionesToolStripMenuItem});
+            this.calificacionesToolStripMenuItem,
+            this.misDatosToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -236,6 +238,12 @@
             resources.ApplyResources(this.calificarToolStripMenuItem, "calificarToolStripMenuItem");
             this.calificarToolStripMenuItem.Click += new System.EventHandler(this.calificarToolStripMenuItem_Click);
             // 
+            // misDatosToolStripMenuItem
+            // 
+            this.misDatosToolStripMenuItem.Name = "misDatosToolStripMenuItem";
+            resources.ApplyResources(this.misDatosToolStripMenuItem, "misDatosToolStripMenuItem");
+            this.misDatosToolStripMenuItem.Click += new System.EventHandler(this.misDatosToolStripMenuItem_Click);
+            // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
@@ -280,6 +288,7 @@
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calificacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calificarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem misDatosToolStripMenuItem;
 
 
     }
