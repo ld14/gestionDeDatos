@@ -724,9 +724,7 @@ PRINT 'TABLA: CompraUsuario'
 --
 
 INSERT INTO [LOPEZ_Y_CIA].[Funciones] (nombre, activo) VALUES
-	('ABM Usuario', 1),
-	('ABM Rol', 1),
-	('ABM Visibilidad', 1),
+	('ABMs', 1),
 	('Publicacion', 1),
 	('Compra/Oferta', 1),
 	('Historial Compra', 1),
@@ -736,6 +734,22 @@ INSERT INTO [LOPEZ_Y_CIA].[Funciones] (nombre, activo) VALUES
 	('Calificar', 1)
 
 PRINT 'TABLA: Funciones'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[RolFunciones] VALUES
+	(1, 2),
+	(1, 3),
+	(1, 4),
+	(1, 7),
+	(1, 8),
+	(2, 2),
+	(2, 5),
+	(2, 7),
+	(3, 1),
+	(3, 6)
+
+PRINT 'TABLA: RolFunciones'
 PRINT CHAR(13) + '--------------------------------'
 
 GO
@@ -802,6 +816,10 @@ COMMIT TRAN;
 GO
 
 /** VISTAS Y OTROS **/
+
+
+PRINT CHAR(13) + '--------------------------------'
+PRINT CHAR(13) + 'Insert Admin:'
 
 INSERT INTO [LOPEZ_Y_CIA].[Usuario] (userName, password, activoUsuario)
 VALUES ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1)
