@@ -21,8 +21,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Estadopublicacion selectedEstado = EstadoComboBox.SelectedItem as Estadopublicacion;
+            //Estadopublicacion selectedEstado = EstadoComboBox.SelectedItem as Estadopublicacion;
             //MessageBox.Show(selectedEstado.nombre, "caption goes here");
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,9 +48,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
 
 
-            Estadopublicacion selectedEstadoBox = EstadoComboBox.SelectedItem as Estadopublicacion;
+            //Estadopublicacion selectedEstadoBox = EstadoComboBox.SelectedItem as Estadopublicacion;
             EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
-            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(selectedEstadoBox.idEstadoPublicacion);
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(1);
 
             Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
             Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
@@ -63,7 +64,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             Factura nuevaFactura = new Factura();
             IList<ItemFactura> lst = new List<ItemFactura>();
 
-            if(TipoPubliSelect.Text.Equals("Publicación Subasta")){
+            if(TipoPubliSelect.Text.Equals("Subasta")){
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
                 PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
                 nuevaPublicacion.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
@@ -135,7 +136,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            var asd = (Visibilidad)visibilidadComboBox.SelectedItem;
+            costoValue.Text = "$" + Convert.ToString(asd.costo);
+            porcentajeValue.Text = Convert.ToString(asd.porcentaje * 100) + "%";
         }
 
         private void GenerarPublicacionPage_Load(object sender, EventArgs e)
@@ -145,6 +148,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             ICollection<Rol> ba = user.RolesLst;
 
             //----------------------Campos seccion Estados-------------------------------------------//
+            /*
             WorkflowEstadosDaoImpl workflowEstadosDaoImpl = new WorkflowEstadosDaoImpl();
             IList<Estadopublicacion> estadosPublicacionLts = workflowEstadosDaoImpl.darWorkflowEstadosActivoByEstadoActual(1);
 
@@ -153,7 +157,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             EstadoComboBox.DataSource = estadosPublicacionLts;
             EstadoComboBox.DisplayMember = "nombre";
             EstadoComboBox.ValueMember = "idEstadoPublicacion";
-
+            */
             //----------------------Campos seccion Rubro ----------------------------------------------//
             RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
             IList<Rubro> rubroLts = rubroDaoImpli.darRubroActivo();
@@ -162,7 +166,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             RubroComboBox.DisplayMember = "descripcion";
             RubroComboBox.ValueMember = "idRubro";
 
-
+            PublicacionSubastaDaoImpl publicacionDaoImpl = new PublicacionSubastaDaoImpl();
+            textBox4.Text = Convert.ToString(publicacionDaoImpl.getProfileIdSequence());
 
             //----------------------Campos seccion Visibilidad --------------------------------------//
             VisibilidadDaoImpl visibilidadDao = new VisibilidadDaoImpl();
@@ -174,7 +179,50 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         }
 
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+ 
+        }
+
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+        }
+
+
+        private void groupBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var asd = (String)TipoPubliSelect.SelectedItem;
+            if (asd == "Compra Inmediata")
+            {
+                label2.Text = "Precio por Unidad";
+                label10.Visible = true;
+                StockTxt.Visible = true;
+            }
+            if (asd == "Subasta")
+            {
+                label2.Text = "Precio Inicial";
+                label10.Visible = false;
+                StockTxt.Visible = false;
+            }
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EnvioCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }

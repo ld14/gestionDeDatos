@@ -221,19 +221,21 @@
             this.Calificar.Text = "Calificar";
             this.Calificar.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // CalificacionesPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 622);
+            this.ClientSize = new System.Drawing.Size(1008, 682);
             this.Controls.Add(this.Calificar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.ComentarioInput);
             this.Controls.Add(this.CantidadDeEstrellasText);
             this.Controls.Add(this.groupBox2);
-            this.Name = "Form1";
+            this.Name = "CalificacionesPage";
+            this.ShowIcon = false;
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
