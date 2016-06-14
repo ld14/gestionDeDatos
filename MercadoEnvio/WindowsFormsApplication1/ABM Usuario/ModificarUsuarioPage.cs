@@ -44,6 +44,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 this.ClienteApellidoTxt.Text = SessionAttribute.clienteUser.apellido;
                 this.ClienteNombreTxt.Text = SessionAttribute.clienteUser.nombre;
                 this.ClienteDNITxt.Text = SessionAttribute.clienteUser.dni.ToString();
+                this.ClienteTipoDocComboBox.Text = Convert.ToString(SessionAttribute.clienteUser.tipoDocumento);
 
                 this.DatosBasicosEmailTxt.Text = SessionAttribute.clienteUser.DatosBasicos.email;
                 this.DatosBasicosTelefono.Text = SessionAttribute.clienteUser.DatosBasicos.telefono;

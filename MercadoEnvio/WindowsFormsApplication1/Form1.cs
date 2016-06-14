@@ -458,5 +458,52 @@ aBMMenu
             usuario.MdiParent = this;
             usuario.Show();
         }
+
+        private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void modificarToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+          
+            ModificarRolPage modificarUsuarionPage = new ModificarRolPage();
+            modificarUsuarionPage.MdiParent = this;
+            modificarUsuarionPage.Show();
+        
+        }
+
+        private void modificarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+           
+            ModificarVisibilidadPage modificarUsuarionPage = new ModificarVisibilidadPage();
+            modificarUsuarionPage.MdiParent = this;
+            modificarUsuarionPage.Show();
+        
+        }
+
+        private void elimiarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EliminarUsuarioPage modificarUsuarionPage = new EliminarUsuarioPage();
+            modificarUsuarionPage.MdiParent = this;
+            modificarUsuarionPage.Show();
+        
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EliminarRolPage modificarUsuarionPage = new EliminarRolPage();
+            modificarUsuarionPage.MdiParent = this;
+            modificarUsuarionPage.Show();
+        
+        }
+
+        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            EliminarVisibilidadPage modificarUsuarionPage = new EliminarVisibilidadPage();
+            modificarUsuarionPage.MdiParent = this;
+            modificarUsuarionPage.Show();
+        
+        }
     }
 }

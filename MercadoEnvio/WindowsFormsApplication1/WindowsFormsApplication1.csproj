@@ -70,6 +70,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABM Rol\EliminarRolPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Rol\EliminarRolPage.Designer.cs">
+      <DependentUpon>EliminarRolPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Rol\ModificarRolPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Rol\ModificarRolPage.Designer.cs">
+      <DependentUpon>ModificarRolPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM Rol\RolUsuarioPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,11 +100,29 @@
     <Compile Include="ABM Usuario\AltaUsuarioPage.Designer.cs">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Usuario\EliminarUsuarioPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Usuario\EliminarUsuarioPage.Designer.cs">
+      <DependentUpon>EliminarUsuarioPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM Usuario\ModificarUsuarioPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ABM Usuario\ModificarUsuarioPage.Designer.cs">
       <DependentUpon>ModificarUsuarioPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Visibilidad\EliminarVisibilidadPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Visibilidad\EliminarVisibilidadPage.Designer.cs">
+      <DependentUpon>EliminarVisibilidadPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Visibilidad\ModificarVisibilidadPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Visibilidad\ModificarVisibilidadPage.Designer.cs">
+      <DependentUpon>ModificarVisibilidadPage.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM Visibilidad\VisibilidadPage.cs">
       <SubType>Form</SubType>
@@ -255,6 +285,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ABM Rol\EliminarRolPage.resx">
+      <DependentUpon>EliminarRolPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Rol\ModificarRolPage.resx">
+      <DependentUpon>ModificarRolPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM Rol\RolUsuarioPage.resx">
       <DependentUpon>RolUsuarioPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,8 +300,17 @@
     <EmbeddedResource Include="ABM Usuario\AltaUsuarioPage.resx">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM Usuario\EliminarUsuarioPage.resx">
+      <DependentUpon>EliminarUsuarioPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\ModificarUsuarioPage.resx">
       <DependentUpon>ModificarUsuarioPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Visibilidad\EliminarVisibilidadPage.resx">
+      <DependentUpon>EliminarVisibilidadPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Visibilidad\ModificarVisibilidadPage.resx">
+      <DependentUpon>ModificarVisibilidadPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Visibilidad\VisibilidadPage.resx">
       <DependentUpon>VisibilidadPage.cs</DependentUpon>

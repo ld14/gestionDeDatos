@@ -58,8 +58,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
             String localidad = DatosBasicosLocalidad.Text;
             String ciudad = DatosBasicosCiudad.Text;
             String CodigoPostal = DatosBasicosCodigoPostal.Text;
+
             
-            int tipoDocumento = 1;
             String Nombre = ClienteNombreTxt.Text;
             String Apellido = ClienteApellidoTxt.Text;
 
@@ -72,6 +72,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
           
             if (tipoDeUsuarioComboBox.Text.Equals("Cliente"))
             {
+                int tipoDocumento = Convert.ToInt16(ClienteTipoDocComboBox.Text);
                 Double DNI = Convert.ToDouble(ClienteDNITxt.Text);
                 Cliente nuevoCliente = new Cliente();
                 /*Encriptacion password*/
@@ -159,6 +160,11 @@ namespace WindowsFormsApplication1.ABM_Usuario
         }
 
         private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }      

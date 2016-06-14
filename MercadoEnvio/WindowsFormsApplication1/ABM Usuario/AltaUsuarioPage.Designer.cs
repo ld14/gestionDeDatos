@@ -113,7 +113,7 @@
             this.EmpresaGroup.Controls.Add(this.label4);
             this.EmpresaGroup.Controls.Add(this.label5);
             this.EmpresaGroup.Controls.Add(this.label10);
-            this.EmpresaGroup.Location = new System.Drawing.Point(23, 165);
+            this.EmpresaGroup.Location = new System.Drawing.Point(22, 159);
             this.EmpresaGroup.Name = "EmpresaGroup";
             this.EmpresaGroup.Size = new System.Drawing.Size(484, 277);
             this.EmpresaGroup.TabIndex = 10;
@@ -493,6 +493,10 @@
             // ClienteTipoDocComboBox
             // 
             this.ClienteTipoDocComboBox.FormattingEnabled = true;
+            this.ClienteTipoDocComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
             this.ClienteTipoDocComboBox.Location = new System.Drawing.Point(122, 61);
             this.ClienteTipoDocComboBox.Name = "ClienteTipoDocComboBox";
             this.ClienteTipoDocComboBox.Size = new System.Drawing.Size(126, 21);
@@ -519,9 +523,10 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(260, 69);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 31;
-            this.label6.Text = "DNI";
+            this.label6.Text = "Numero";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // groupBox2
             // 
