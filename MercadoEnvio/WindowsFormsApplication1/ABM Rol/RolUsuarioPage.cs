@@ -60,5 +60,6 @@ namespace WindowsFormsApplication1.ABM_Rol
             RolDaoImpl rolDao = new RolDaoImpl();
             rolDao.Add(rol);
         }
+
     }
 }
