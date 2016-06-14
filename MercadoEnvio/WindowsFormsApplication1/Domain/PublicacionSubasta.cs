@@ -12,14 +12,14 @@ namespace WindowsFormsApplication1 {
         public virtual double? valorActual { get; set; }
 
         public virtual void setPublicacionSubasta(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
-                           double codigoPublicacion, string descripcion, DateTime fechaCreacion,
-                           DateTime fechaVencimiento, double stock, bool preguntasSN, bool envioSN,double valorInicialVenta,double valorActual,Rubro rubro)
+                           string descripcion, DateTime fechaCreacion, DateTime fechaVencimiento, double stock,
+                           bool preguntasSN, bool envioSN,double valorInicialVenta,double valorActual,Rubro rubro)
         {
             this.EstadoPublicacion = estadoPublicacion;
             this.Visibilidad = visibilidad;
             this.Usuario = usuario;
 
-            this.codigoPublicacion = codigoPublicacion;
+            //this.codigoPublicacion = codigoPublicacion;
             this.descripcion = descripcion;
             this.fechaCreacion = fechaCreacion;
             this.fechaVencimiento = fechaVencimiento;

@@ -16,7 +16,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
         public GenerarPublicacionPage()
         {
             InitializeComponent();
-            
+            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
+            FechaIncioDateTime.Value = DateUtils.convertirStringEnFecha(fechaSistema);
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -28,52 +29,51 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
-            DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
-
+            Double stock = 0;
             String descripcion = DescripcionPublicacionTxt.Text;
-            Double stock = Convert.ToDouble(StockTxt.Text);
+            if (TipoPubliSelect.Text != "Subasta")
+                stock = Convert.ToDouble(StockTxt.Text);
             bool envioSN = EnvioCheckBox.Checked;
             bool preguntasSN = PreguntasCheckBox.Checked;
             Double precio = Convert.ToDouble(PrecioTxt.Text);
-            Double valorActual = 0;
+            DateTime fechaIncioDateTime = FechaIncioDateTime.Value;
+            DateTime fechaVencimientoDateTime = FechaIncioDateTime.Value;
+            switch (vencimientoBox.Text)
+            {
+                case "7 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(7);
+                    break;
+                case "14 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(14);
+                    break;
+                case "21 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(21);
+                    break;
+                case "28 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(28);
+                    break;
+            }
             
-
-            DateTime fechaIncioDateTime =   DateUtils.convertirStringEnFecha(FechaIncioDateTime.Value.ToString("dd/MM/yyyy"));
-            DateTime fechaVencimientoDateTime = DateUtils.convertirStringEnFecha(FechaVencimientoDateTime.Value.ToString("dd/MM/yyyy"));
-
-
-
-            //Esto hay que cambiarlo por el usuario logueado
-
-
-
-            //Estadopublicacion selectedEstadoBox = EstadoComboBox.SelectedItem as Estadopublicacion;
             EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
             Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(1);
-
             Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
             Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
-
-            //ESTO HAY Q CAMBIARLO POR EL USUARIO LOGUEADO
-            ClienteDaoImpl usrImpl = new ClienteDaoImpl();
-            Cliente usr = usrImpl.GetUsuarioById(1);
-
-            ModificarPublicacionPage modificarPublicacionPage = new ModificarPublicacionPage();
-
+            Usuario usr = SessionAttribute.user;
             Factura nuevaFactura = new Factura();
             IList<ItemFactura> lst = new List<ItemFactura>();
 
-            if(TipoPubliSelect.Text.Equals("Subasta")){
+            //ModificarPublicacionPage modificarPublicacionPage = new ModificarPublicacionPage();
+
+            if(TipoPubliSelect.Text.Equals("Subasta"))
+            {
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
                 PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
                 nuevaPublicacion.setPublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
-                                                       publicacionSubastaDaoImpl.getProfileIdSequence(), descripcion, fechaIncioDateTime,
-                                                       fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, valorActual, selectedRubro);
-
-                
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock, preguntasSN, envioSN,
+                        precio, precio, selectedRubro);
                 publicacionSubastaDaoImpl.Add(nuevaPublicacion);
 
+                /*
                 if (selectedEstado.nombre.Equals("Activa"))
                 {
                     ItemFactura nuevoItemFactura = new ItemFactura();
@@ -88,21 +88,23 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                     factDaoImpl.Add(nuevaFactura);
                 }
-
-
+                
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
                 modificarPublicacionPage.Tag = nuevaPublicacion;
+                */
 
-            }else{
+            }
+
+            if (TipoPubliSelect.Text.Equals("Compra Inmediata"))
+            {
                 PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
                 PublicacionNormal nuevaPublicacion = new PublicacionNormal();
                 nuevaPublicacion.setPublicacionNormal(selectedEstado, selectedVisibilidad, usr,
-                                       publicacionSubastaDaoImpl.getProfileIdSequence(), descripcion, fechaIncioDateTime,
-                                       fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
-
-                
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock,
+                        preguntasSN, envioSN, precio, selectedRubro);
                 publicacionSubastaDaoImpl.Add(nuevaPublicacion);
 
+                /*
                 if (selectedEstado.nombre.Equals("Activa"))
                 {
                     ItemFactura nuevoItemFactura = new ItemFactura();
@@ -117,15 +119,18 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                     factDaoImpl.Add(nuevaFactura);
                 }
-
+                
                 modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
                 modificarPublicacionPage.Tag = nuevaPublicacion;
+                */
             }
 
-
+            /*
             modificarPublicacionPage.MdiParent = this.ParentForm;
             
             modificarPublicacionPage.Show();
+            */
+            MessageBox.Show("Se ha guardado Satisfactoriamente su publicación.\nSi desea publicarla ir a [Publicacion] -> [Modificar]");
             this.Close();
         }
 
@@ -223,6 +228,11 @@ namespace WindowsFormsApplication1.Generar_Publicación
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FechaIncioDateTime_ValueChanged(object sender, EventArgs e)
         {
 
         }

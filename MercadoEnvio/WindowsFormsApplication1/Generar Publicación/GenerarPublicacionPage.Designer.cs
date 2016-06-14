@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApplication1.Generar_Publicación
+﻿using System;
+using System.Windows.Forms;
+namespace WindowsFormsApplication1.Generar_Publicación
 {
     partial class GenerarPublicacionPage
     {
@@ -31,16 +33,20 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.porcentajeValue = new System.Windows.Forms.Label();
+            this.costoValue = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.visibilidadComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.RubroComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.vencimientoBox = new System.Windows.Forms.ComboBox();
             this.PrecioTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.FechaVencimientoDateTime = new System.Windows.Forms.DateTimePicker();
             this.FechaIncioDateTime = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -55,10 +61,6 @@
             this.TipoPubliSelect = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.costoValue = new System.Windows.Forms.Label();
-            this.porcentajeValue = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -105,6 +107,50 @@
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Visibilidad";
+            // 
+            // porcentajeValue
+            // 
+            this.porcentajeValue.AutoSize = true;
+            this.porcentajeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.porcentajeValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.porcentajeValue.Location = new System.Drawing.Point(357, 80);
+            this.porcentajeValue.Name = "porcentajeValue";
+            this.porcentajeValue.Size = new System.Drawing.Size(16, 13);
+            this.porcentajeValue.TabIndex = 26;
+            this.porcentajeValue.Text = "%";
+            // 
+            // costoValue
+            // 
+            this.costoValue.AutoSize = true;
+            this.costoValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costoValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.costoValue.Location = new System.Drawing.Point(130, 80);
+            this.costoValue.Name = "costoValue";
+            this.costoValue.Size = new System.Drawing.Size(14, 13);
+            this.costoValue.TabIndex = 25;
+            this.costoValue.Text = "$";
+            this.costoValue.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(259, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 13);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Comisión por Venta:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label4.Location = new System.Drawing.Point(48, 80);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Costo Visibilidad:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label12
             // 
@@ -155,10 +201,10 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.vencimientoBox);
             this.groupBox4.Controls.Add(this.PrecioTxt);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.FechaVencimientoDateTime);
             this.groupBox4.Controls.Add(this.FechaIncioDateTime);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.textBox4);
@@ -175,6 +221,20 @@
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Publicación";
+            // 
+            // vencimientoBox
+            // 
+            this.vencimientoBox.FormattingEnabled = true;
+            this.vencimientoBox.Items.AddRange(new object[] {
+            "7 Días",
+            "14 Días",
+            "21 Días",
+            "28 Días"});
+            this.vencimientoBox.Location = new System.Drawing.Point(115, 319);
+            this.vencimientoBox.Name = "vencimientoBox";
+            this.vencimientoBox.Size = new System.Drawing.Size(350, 21);
+            this.vencimientoBox.TabIndex = 23;
+            this.vencimientoBox.Text = "7 Días";
             // 
             // PrecioTxt
             // 
@@ -195,30 +255,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 305);
+            this.label1.Location = new System.Drawing.Point(10, 322);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 25;
-            this.label1.Text = "Fecha Vencimiento";
-            // 
-            // FechaVencimientoDateTime
-            // 
-            this.FechaVencimientoDateTime.Location = new System.Drawing.Point(115, 299);
-            this.FechaVencimientoDateTime.Name = "FechaVencimientoDateTime";
-            this.FechaVencimientoDateTime.Size = new System.Drawing.Size(377, 20);
-            this.FechaVencimientoDateTime.TabIndex = 24;
+            this.label1.Text = "Vencimiento en";
             // 
             // FechaIncioDateTime
             // 
-            this.FechaIncioDateTime.Location = new System.Drawing.Point(115, 252);
+            this.FechaIncioDateTime.CustomFormat = "dd/MM/yyyy";
+            this.FechaIncioDateTime.Enabled = false;
+            this.FechaIncioDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.FechaIncioDateTime.Location = new System.Drawing.Point(115, 281);
             this.FechaIncioDateTime.Name = "FechaIncioDateTime";
-            this.FechaIncioDateTime.Size = new System.Drawing.Size(377, 20);
+            this.FechaIncioDateTime.Size = new System.Drawing.Size(350, 20);
             this.FechaIncioDateTime.TabIndex = 22;
+            this.FechaIncioDateTime.ValueChanged += new System.EventHandler(this.FechaIncioDateTime_ValueChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 255);
+            this.label7.Location = new System.Drawing.Point(10, 284);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 13);
             this.label7.TabIndex = 21;
@@ -317,8 +374,8 @@
             this.TipoPubliSelect.Size = new System.Drawing.Size(501, 21);
             this.TipoPubliSelect.TabIndex = 12;
             this.TipoPubliSelect.Text = "Compra Inmediata";
+            this.TipoPubliSelect.SelectedIndexChanged += new System.EventHandler(this.groupBox1_SelectedIndexChanged);
             this.TipoPubliSelect.Enter += new System.EventHandler(this.groupBox1_SelectedIndexChanged);
-			this.TipoPubliSelect.SelectedIndexChanged += new System.EventHandler(this.groupBox1_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -338,50 +395,6 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Publicar";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(48, 80);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "Costo Visibilidad:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(259, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 13);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "Comisión por Venta:";
-            // 
-            // costoValue
-            // 
-            this.costoValue.AutoSize = true;
-            this.costoValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costoValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.costoValue.Location = new System.Drawing.Point(130, 80);
-            this.costoValue.Name = "costoValue";
-            this.costoValue.Size = new System.Drawing.Size(14, 13);
-            this.costoValue.TabIndex = 25;
-            this.costoValue.Text = "$";
-            this.costoValue.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // porcentajeValue
-            // 
-            this.porcentajeValue.AutoSize = true;
-            this.porcentajeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.porcentajeValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.porcentajeValue.Location = new System.Drawing.Point(357, 80);
-            this.porcentajeValue.Name = "porcentajeValue";
-            this.porcentajeValue.Size = new System.Drawing.Size(16, 13);
-            this.porcentajeValue.TabIndex = 26;
-            this.porcentajeValue.Text = "%";
             // 
             // GenerarPublicacionPage
             // 
@@ -429,7 +442,6 @@
         private System.Windows.Forms.TextBox PrecioTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker FechaVencimientoDateTime;
         private System.Windows.Forms.DateTimePicker FechaIncioDateTime;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox4;
@@ -445,5 +457,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label costoValue;
         private System.Windows.Forms.Label porcentajeValue;
+        private System.Windows.Forms.ComboBox vencimientoBox;
     }
 }
