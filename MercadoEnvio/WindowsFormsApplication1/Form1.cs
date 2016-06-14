@@ -453,7 +453,10 @@ aBMMenu
 
         private void misDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ModificarUsuarioPage usuario = new ModificarUsuarioPage();
+            usuario.Text = "init";
+            usuario.MdiParent = this;
+            usuario.Show();
         }
     }
 }

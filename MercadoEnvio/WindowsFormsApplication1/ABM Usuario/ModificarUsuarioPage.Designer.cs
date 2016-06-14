@@ -32,6 +32,15 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.EmpresaGroup = new System.Windows.Forms.GroupBox();
+            this.EmpresaFechaCreacionDateTime = new System.Windows.Forms.DateTimePicker();
+            this.EmpresaNombreContactoTxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.EmpresaCuitTxt = new System.Windows.Forms.TextBox();
+            this.EmpresaRazonSocialTxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tipoDeUsuarioComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -59,15 +68,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ClienteGroup = new System.Windows.Forms.GroupBox();
-            this.EmpresaGroup = new System.Windows.Forms.GroupBox();
-            this.EmpresaFechaCreacionDateTime = new System.Windows.Forms.DateTimePicker();
-            this.EmpresaNombreContactoTxt = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.EmpresaCuitTxt = new System.Windows.Forms.TextBox();
-            this.EmpresaRazonSocialTxt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.ClienteApellidoTxt = new System.Windows.Forms.TextBox();
             this.ClienteNombreTxt = new System.Windows.Forms.TextBox();
             this.ClienteFechaNacDateTime = new System.Windows.Forms.DateTimePicker();
@@ -81,15 +81,16 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Grabar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.EmpresaGroup.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.ClienteGroup.SuspendLayout();
-            this.EmpresaGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.EmpresaGroup);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tipoDeUsuarioComboBox);
             this.groupBox1.Controls.Add(this.groupBox3);
@@ -104,6 +105,88 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alta de Usuario";
+            // 
+            // EmpresaGroup
+            // 
+            this.EmpresaGroup.Controls.Add(this.EmpresaFechaCreacionDateTime);
+            this.EmpresaGroup.Controls.Add(this.EmpresaNombreContactoTxt);
+            this.EmpresaGroup.Controls.Add(this.label7);
+            this.EmpresaGroup.Controls.Add(this.EmpresaCuitTxt);
+            this.EmpresaGroup.Controls.Add(this.EmpresaRazonSocialTxt);
+            this.EmpresaGroup.Controls.Add(this.label4);
+            this.EmpresaGroup.Controls.Add(this.label5);
+            this.EmpresaGroup.Controls.Add(this.label10);
+            this.EmpresaGroup.Location = new System.Drawing.Point(21, 153);
+            this.EmpresaGroup.Name = "EmpresaGroup";
+            this.EmpresaGroup.Size = new System.Drawing.Size(486, 303);
+            this.EmpresaGroup.TabIndex = 10;
+            this.EmpresaGroup.TabStop = false;
+            this.EmpresaGroup.Text = "Datos Tipo Usuario";
+            this.EmpresaGroup.Visible = false;
+            // 
+            // EmpresaFechaCreacionDateTime
+            // 
+            this.EmpresaFechaCreacionDateTime.Location = new System.Drawing.Point(124, 132);
+            this.EmpresaFechaCreacionDateTime.Name = "EmpresaFechaCreacionDateTime";
+            this.EmpresaFechaCreacionDateTime.Size = new System.Drawing.Size(200, 20);
+            this.EmpresaFechaCreacionDateTime.TabIndex = 53;
+            // 
+            // EmpresaNombreContactoTxt
+            // 
+            this.EmpresaNombreContactoTxt.Location = new System.Drawing.Point(124, 106);
+            this.EmpresaNombreContactoTxt.Name = "EmpresaNombreContactoTxt";
+            this.EmpresaNombreContactoTxt.Size = new System.Drawing.Size(126, 20);
+            this.EmpresaNombreContactoTxt.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 111);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Nombre Contacto";
+            // 
+            // EmpresaCuitTxt
+            // 
+            this.EmpresaCuitTxt.Location = new System.Drawing.Point(124, 82);
+            this.EmpresaCuitTxt.Name = "EmpresaCuitTxt";
+            this.EmpresaCuitTxt.Size = new System.Drawing.Size(126, 20);
+            this.EmpresaCuitTxt.TabIndex = 9;
+            // 
+            // EmpresaRazonSocialTxt
+            // 
+            this.EmpresaRazonSocialTxt.Location = new System.Drawing.Point(124, 58);
+            this.EmpresaRazonSocialTxt.Name = "EmpresaRazonSocialTxt";
+            this.EmpresaRazonSocialTxt.Size = new System.Drawing.Size(126, 20);
+            this.EmpresaRazonSocialTxt.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "CUIT";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Razon social";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 134);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Fecha de Creacion";
             // 
             // label3
             // 
@@ -342,7 +425,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             // ClienteGroup
             // 
-            this.ClienteGroup.Controls.Add(this.EmpresaGroup);
             this.ClienteGroup.Controls.Add(this.ClienteApellidoTxt);
             this.ClienteGroup.Controls.Add(this.ClienteNombreTxt);
             this.ClienteGroup.Controls.Add(this.ClienteFechaNacDateTime);
@@ -360,88 +442,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.ClienteGroup.TabStop = false;
             this.ClienteGroup.Text = "Datos Tipo Usuario";
             this.ClienteGroup.Visible = false;
-            // 
-            // EmpresaGroup
-            // 
-            this.EmpresaGroup.Controls.Add(this.EmpresaFechaCreacionDateTime);
-            this.EmpresaGroup.Controls.Add(this.EmpresaNombreContactoTxt);
-            this.EmpresaGroup.Controls.Add(this.label7);
-            this.EmpresaGroup.Controls.Add(this.EmpresaCuitTxt);
-            this.EmpresaGroup.Controls.Add(this.EmpresaRazonSocialTxt);
-            this.EmpresaGroup.Controls.Add(this.label4);
-            this.EmpresaGroup.Controls.Add(this.label5);
-            this.EmpresaGroup.Controls.Add(this.label10);
-            this.EmpresaGroup.Location = new System.Drawing.Point(0, 0);
-            this.EmpresaGroup.Name = "EmpresaGroup";
-            this.EmpresaGroup.Size = new System.Drawing.Size(484, 277);
-            this.EmpresaGroup.TabIndex = 10;
-            this.EmpresaGroup.TabStop = false;
-            this.EmpresaGroup.Text = "Datos Tipo Usuario";
-            this.EmpresaGroup.Visible = false;
-            // 
-            // EmpresaFechaCreacionDateTime
-            // 
-            this.EmpresaFechaCreacionDateTime.Location = new System.Drawing.Point(124, 132);
-            this.EmpresaFechaCreacionDateTime.Name = "EmpresaFechaCreacionDateTime";
-            this.EmpresaFechaCreacionDateTime.Size = new System.Drawing.Size(200, 20);
-            this.EmpresaFechaCreacionDateTime.TabIndex = 53;
-            // 
-            // EmpresaNombreContactoTxt
-            // 
-            this.EmpresaNombreContactoTxt.Location = new System.Drawing.Point(124, 106);
-            this.EmpresaNombreContactoTxt.Name = "EmpresaNombreContactoTxt";
-            this.EmpresaNombreContactoTxt.Size = new System.Drawing.Size(126, 20);
-            this.EmpresaNombreContactoTxt.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 111);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Nombre Contacto";
-            // 
-            // EmpresaCuitTxt
-            // 
-            this.EmpresaCuitTxt.Location = new System.Drawing.Point(124, 82);
-            this.EmpresaCuitTxt.Name = "EmpresaCuitTxt";
-            this.EmpresaCuitTxt.Size = new System.Drawing.Size(126, 20);
-            this.EmpresaCuitTxt.TabIndex = 9;
-            // 
-            // EmpresaRazonSocialTxt
-            // 
-            this.EmpresaRazonSocialTxt.Location = new System.Drawing.Point(124, 58);
-            this.EmpresaRazonSocialTxt.Name = "EmpresaRazonSocialTxt";
-            this.EmpresaRazonSocialTxt.Size = new System.Drawing.Size(126, 20);
-            this.EmpresaRazonSocialTxt.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "CUIT";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Razon social";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 134);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 13);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Fecha de Creacion";
             // 
             // ClienteApellidoTxt
             // 
@@ -556,13 +556,13 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.EmpresaGroup.ResumeLayout(false);
+            this.EmpresaGroup.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.ClienteGroup.ResumeLayout(false);
             this.ClienteGroup.PerformLayout();
-            this.EmpresaGroup.ResumeLayout(false);
-            this.EmpresaGroup.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 

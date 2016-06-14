@@ -78,6 +78,17 @@
             // FuncionalidadesChkLst
             // 
             this.FuncionalidadesChkLst.FormattingEnabled = true;
+            this.FuncionalidadesChkLst.Items.AddRange(new object[] {
+            "ABM Usuario",
+            "ABM Rol",
+            "ABM Visibilidad",
+            "Publicacion",
+            "Compra/Oferta",
+            "Historial Compra",
+            "Facturacion",
+            "Estadisticas",
+            "Modificar Mis Datos",
+            "Calificar"});
             this.FuncionalidadesChkLst.Location = new System.Drawing.Point(13, 21);
             this.FuncionalidadesChkLst.Name = "FuncionalidadesChkLst";
             this.FuncionalidadesChkLst.Size = new System.Drawing.Size(560, 424);
