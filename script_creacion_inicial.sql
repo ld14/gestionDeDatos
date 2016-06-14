@@ -741,6 +741,7 @@ INSERT INTO [LOPEZ_Y_CIA].[RolFunciones] VALUES
 	(1, 2),
 	(1, 3),
 	(1, 4),
+	(1, 5),
 	(1, 7),
 	(1, 8),
 	(2, 2),
