@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Entity.Utils;
 
 namespace WindowsFormsApplication1.Generar_Publicación
 {
@@ -35,8 +36,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             
 
             List<GrillaPublicacion> customerList = new List<GrillaPublicacion>();
-            ClienteDaoImpl usrImpl = new ClienteDaoImpl();
-            Cliente usr = usrImpl.GetUsuarioById(1);
+            //UsuarioDaoImpl usrImpl = new UsuarioDaoImpl();
+            Usuario usr = SessionAttribute.user;
 
             PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
             PublicacionNormalDaoImpl publicacionNormalDaoImpl = new PublicacionNormalDaoImpl();
@@ -46,11 +47,11 @@ namespace WindowsFormsApplication1.Generar_Publicación
             IList<PublicacionNormal> pubNorLts = publicacionNormalDaoImpl.GetPublicacionByUsuario(usr);
 
             foreach (PublicacionSubasta pubSubasta in pubSubLts) {
-                dt.Rows.Add("PublicacionSubasta", pubSubasta.idPublicacion, pubSubasta.codigoPublicacion, pubSubasta.descripcion, pubSubasta.valorInicialVenta, "", "", pubSubasta.fechaCreacion, pubSubasta.fechaVencimiento);
+                dt.Rows.Add("Subasta", pubSubasta.idPublicacion, pubSubasta.codigoPublicacion, pubSubasta.descripcion, pubSubasta.valorInicialVenta, pubSubasta.EstadoPublicacion.nombre, "", pubSubasta.fechaCreacion, pubSubasta.fechaVencimiento);
             }
             foreach (PublicacionNormal pubNormal in pubNorLts)
             {
-                dt.Rows.Add("PublicacionNormal", pubNormal.idPublicacion, pubNormal.codigoPublicacion, pubNormal.descripcion, pubNormal.precioPorUnidad, "", "", pubNormal.fechaCreacion, pubNormal.fechaVencimiento);
+                dt.Rows.Add("Compra Inmediata", pubNormal.idPublicacion, pubNormal.codigoPublicacion, pubNormal.descripcion, pubNormal.precioPorUnidad, pubNormal.EstadoPublicacion.nombre, "", pubNormal.fechaCreacion, pubNormal.fechaVencimiento);
             }
             
             dset.Tables.Add(dt);
@@ -70,12 +71,13 @@ namespace WindowsFormsApplication1.Generar_Publicación
             string tipoPublicacion = "";
             string idPublicacion = "";
 
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)            {
-                tipoPublicacion = row.Cells[0].Value.ToString();
-                idPublicacion = row.Cells[1].Value.ToString();
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                tipoPublicacion = row.Cells[2].Value.ToString();
+                idPublicacion = row.Cells[0].Value.ToString();
             }
 
-            if (tipoPublicacion.Equals("PublicacionSubasta")) {
+            if (tipoPublicacion.Equals("Subasta")) {
                 PublicacionSubastaDaoImpl pubDaoImpl = new PublicacionSubastaDaoImpl();
                 PublicacionSubasta publi = pubDaoImpl.GetById(Convert.ToInt32(idPublicacion));
                 modificarPublicacionPage.Text = Convert.ToString(publi.idPublicacion);

@@ -14,6 +14,6 @@ namespace WindowsFormsApplication1
         PublicacionSubasta GetByUsuario(string usuario);
         IList<PublicacionSubasta> GetPublicacionByUsuario(Usuario usuario);
         PublicacionSubasta GetPublicacionByCodigo(double? codigoPublicacion);
-        int getProfileIdSequence();
+        //int getProfileIdSequence();
     }
 }

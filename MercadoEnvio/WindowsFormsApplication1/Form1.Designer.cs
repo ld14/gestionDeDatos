@@ -47,7 +47,6 @@
             this.eliminarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.PublicacionMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprarOfertarMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -188,7 +187,6 @@
             // 
             this.PublicacionMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevaToolStripMenuItem1,
-            this.modificacionToolStripMenuItem,
             this.buscarToolStripMenuItem});
             this.PublicacionMenu.Name = "PublicacionMenu";
             resources.ApplyResources(this.PublicacionMenu, "PublicacionMenu");
@@ -198,12 +196,6 @@
             this.nuevaToolStripMenuItem1.Name = "nuevaToolStripMenuItem1";
             resources.ApplyResources(this.nuevaToolStripMenuItem1, "nuevaToolStripMenuItem1");
             this.nuevaToolStripMenuItem1.Click += new System.EventHandler(this.nuevaToolStripMenuItem1_Click);
-            // 
-            // modificacionToolStripMenuItem
-            // 
-            this.modificacionToolStripMenuItem.Name = "modificacionToolStripMenuItem";
-            resources.ApplyResources(this.modificacionToolStripMenuItem, "modificacionToolStripMenuItem");
-            this.modificacionToolStripMenuItem.Click += new System.EventHandler(this.modificacionToolStripMenuItem_Click);
             // 
             // buscarToolStripMenuItem
             // 
@@ -315,7 +307,6 @@
         private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PublicacionMenu;
         private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comprarOfertarMenu;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem1;

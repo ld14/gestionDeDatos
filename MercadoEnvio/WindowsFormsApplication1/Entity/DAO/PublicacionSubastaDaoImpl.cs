@@ -79,7 +79,7 @@ namespace WindowsFormsApplication1
                 return crit.UniqueResult<PublicacionSubasta>();
             }
         }
-
+/*
         public int getProfileIdSequence()
         {
             using (NHibernateManager manager = new NHibernateManager())
@@ -90,6 +90,9 @@ namespace WindowsFormsApplication1
                     return sequence;
                 }
             }
+  
+            return 0;
         }
+ */
     }
 }

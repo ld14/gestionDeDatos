@@ -56,6 +56,15 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public Rol getRolbyId(int id)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.Get<Rol>(id);
+            }
+        }
+
+        
         public IList<Funciones> obtenerFunciones()
         {
             using (NHibernateManager manager = new NHibernateManager())

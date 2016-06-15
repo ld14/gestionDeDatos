@@ -21,12 +21,13 @@ namespace WindowsFormsApplication1 {
                 //Random random = new Random();
                 //Double nroFactura = Convert.ToDouble(random.Next(190000, 400000));
                 //this.nroFactura = nroFactura;
-                FacturaDaoImpl factDaoImp = new FacturaDaoImpl();
-                this.nroFactura = factDaoImp.getProfileIdSequence();
+                //FacturaDaoImpl factDaoImp = new FacturaDaoImpl();
+                PublicacionNormalDaoImpl pDao = new PublicacionNormalDaoImpl();
+                //this.nroFactura = factDaoImp.getProfileIdSequence();
                 this.fecha = fecha;
                 this.montoTotal = montoTotal;
                 this.formaPagoDesc = formaPagoDesc;
-                this.Publicacion = Publicacion;
+                this.Publicacion = pDao.GetByCodigo(pDao.getSecuenciaPubli());
                 this.ItemFacturasLts = ItemFacturas;
         }
     }

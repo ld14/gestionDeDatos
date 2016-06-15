@@ -68,7 +68,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
             String RazonSocial = EmpresaRazonSocialTxt.Text;
             String Cuit = EmpresaCuitTxt.Text;
             String NombreContacto = EmpresaNombreContactoTxt.Text;
-           
+    
+            RolDaoImpl rolDao = new RolDaoImpl();
           
             if (tipoDeUsuarioComboBox.Text.Equals("Cliente"))
             {
@@ -84,9 +85,13 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 {
                     pass += String.Format("{0:x2}", x);
                 }
+
+
                 nuevoCliente.userName = nombreUsuario;
-                nuevoCliente.password = pass; 
-                
+                nuevoCliente.password = pass;
+                nuevoCliente.RolesLst = new List<Rol>();
+                nuevoCliente.RolesLst.Add(rolDao.getRolbyId(1));
+
                 nuevoCliente.dni = DNI;
                 nuevoCliente.tipoDocumento = tipoDocumento;
                 nuevoCliente.nombre = Nombre;
@@ -128,6 +133,9 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 }
                 nuevaEmpresa.userName = nombreUsuario;
                 nuevaEmpresa.password = pass;
+                nuevaEmpresa.RolesLst = new List<Rol>();
+                nuevaEmpresa.RolesLst.Add(rolDao.getRolbyId(2));
+
                 nuevaEmpresa.razonSocial = RazonSocial;
                 nuevaEmpresa.cuit = Cuit;
                 nuevaEmpresa.fechaCreacion = FechaCreacion;

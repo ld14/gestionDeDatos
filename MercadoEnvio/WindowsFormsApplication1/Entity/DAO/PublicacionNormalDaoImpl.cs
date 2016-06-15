@@ -81,18 +81,24 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public int getProfileIdSequence()
+        public int getSecuenciaPubli()
         {
             using (NHibernateManager manager = new NHibernateManager())
             {
                 using (ITransaction transaction = manager.Session.BeginTransaction())
                 {
-                    int sequence = (int)manager.Session.CreateSQLQuery("SELECT NEXT VALUE FOR [LOPEZ_Y_CIA].[secuenciaPubli] AS secuencia").AddScalar("secuencia", NHibernateUtil.Int32).UniqueResult();
+                    int sequence = (int)manager.Session.CreateSQLQuery("SELECT current_value FROM [LOPEZ_Y_CIA].[getCodigo]").AddScalar("current_value", NHibernateUtil.Int32).UniqueResult();
                     return sequence;
                 }
             }
         }
 
-
+        public Publicacion GetByCodigo(int codigo)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.QueryOver<Publicacion>().Where(x => x.codigoPublicacion == codigo).List().First();
+            }
+        }
     }
 }

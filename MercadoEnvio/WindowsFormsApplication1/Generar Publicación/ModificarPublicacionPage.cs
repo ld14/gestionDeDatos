@@ -41,10 +41,11 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 ICollection<Rubro> rubro = new List<Rubro>();
                 Visibilidad visbilidad = new Visibilidad();
 
-                if (this.Tag is PublicacionSubasta) {
+                if (this.Tag is PublicacionSubasta)
+                {
                     PublicacionSubasta publicacionSubasta = (PublicacionSubasta)this.Tag;
                     //Datos Basicos
-                    tipoPublicacion = "Publicación Subasta";
+                    tipoPublicacion = "Subasta";
                     codigo = publicacionSubasta.codigoPublicacion;
                     descripcion = publicacionSubasta.descripcion;
                     stock = publicacionSubasta.stock;
@@ -59,9 +60,12 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     rubroPub = publicacionSubasta.RubroLst.First();
                     visbilidad = publicacionSubasta.Visibilidad;
 
-                } if (this.Tag is PublicacionNormal) {
+                }
+
+                if (this.Tag is PublicacionNormal)
+                {
                     PublicacionNormal publicacionDirecta = (PublicacionNormal)this.Tag;
-                    tipoPublicacion = "Publicación Compra Inmediata";
+                    tipoPublicacion = "Compra Inmediata";
                     //Datos Basicos
                     codigo = publicacionDirecta.codigoPublicacion;
                     descripcion = publicacionDirecta.descripcion;
@@ -85,9 +89,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 EnvioCheckBox.Checked = Convert.ToBoolean(envioSN);
                 PreguntasCheckBox.Checked = Convert.ToBoolean(preguntasSN);
                 PrecioTxt.Text = Convert.ToString(precio);
-                UsuarioNombreTxt.Text = nombreUsuario;
-                fechaIncioDateTimeTxt.Value = fechaIncioDateTime.Value;
-                fechaVencimientoDateTimeTxt.Value = fechaVencimientoDateTime.Value;
+                //UsuarioNombreTxt.Text = nombreUsuario;
+                FechaIncioDateTimeTxt.Value = fechaIncioDateTime.Value;
+                FechaVencimientoDateTimeTxt.Value = fechaVencimientoDateTime.Value;
 
 
 
@@ -95,9 +99,33 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 WorkflowEstadosDaoImpl workflowEstadosDaoImpl = new WorkflowEstadosDaoImpl();
                 IList<Estadopublicacion> estadosPublicacionLts = workflowEstadosDaoImpl.darWorkflowEstadosActivoByEstadoActual(estadoPublicacion.idEstadoPublicacion);
 
+                /*
                 EstadoComboBox.DataSource = estadosPublicacionLts;
                 EstadoComboBox.DisplayMember = "nombre";
                 EstadoComboBox.ValueMember = "idEstadoPublicacion";
+                */
+
+                botonFinalizar.Visible = false;
+                botonGuardar.Visible = false;
+                botonPausar.Visible = false;
+                botonPublicarN.Visible = false;
+                botonPublicarP.Visible = false;
+
+                switch (estadoPublicacion.idEstadoPublicacion)
+                {
+                    case 1:
+                        botonGuardar.Visible = true;
+                        botonPublicarN.Visible = true;
+                        break;
+                    case 2:
+                        botonPausar.Visible = true;
+                        botonFinalizar.Visible = true;
+                        break;
+                    case 3:
+                        botonPublicarP.Visible = true;
+                        break;
+                }
+
 
                 //Coloco el Rubro persistido primero y luego los restantes valores disponibles para ser cambiados
                 RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
@@ -128,18 +156,21 @@ namespace WindowsFormsApplication1.Generar_Publicación
             }
         }
 
-        private void desahabilitarCamposPorEstado(Estadopublicacion estadoPublicacion) {
+        private void desahabilitarCamposPorEstado(Estadopublicacion estadoPublicacion)
+        {
+           /*
             if (!estadoPublicacion.nombre.Equals("Borrador")) {
                 DescripcionTxt.ReadOnly = true;
                 stockTxt.ReadOnly = true;
                 EnvioCheckBox.Enabled = false;
                 PreguntasCheckBox.Enabled = false;
                 PrecioTxt.ReadOnly = true;
-                fechaIncioDateTimeTxt.Enabled = false;
-                fechaVencimientoDateTimeTxt.Enabled = false;
+                FechaIncioDateTimeTxt.Enabled = false;
+                FechaVencimientoDateTimeTxt.Enabled = false;
                 visibilidadComboBox.Enabled = false;
                 RubroComboBox.Enabled = false;
             }
+            */
         }
 
         private void fechaIncioDateTime_ValueChanged(object sender, EventArgs e)
@@ -163,11 +194,11 @@ namespace WindowsFormsApplication1.Generar_Publicación
             string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
             DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
 
-            DateTime fechaIncioDateTime = DateUtils.convertirStringEnFecha(fechaIncioDateTimeTxt.Value.ToString("dd/MM/yyyy"));
-            DateTime fechaVencimientoDateTime = DateUtils.convertirStringEnFecha(fechaVencimientoDateTimeTxt.Value.ToString("dd/MM/yyyy"));
-            Estadopublicacion selectedEstadoBox = EstadoComboBox.SelectedItem as Estadopublicacion;
+            DateTime fechaIncioDateTime = DateUtils.convertirStringEnFecha(FechaIncioDateTimeTxt.Value.ToString("dd/MM/yyyy"));
+            DateTime fechaVencimientoDateTime = DateUtils.convertirStringEnFecha(FechaVencimientoDateTimeTxt.Value.ToString("dd/MM/yyyy"));
+            //Estadopublicacion selectedEstadoBox = EstadoComboBox.SelectedItem as Estadopublicacion;
             EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
-            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(selectedEstadoBox.idEstadoPublicacion);
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(1);
 
             Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
             Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
@@ -249,5 +280,33 @@ namespace WindowsFormsApplication1.Generar_Publicación
             modificarPublicacionPage.Show();
             this.Close();
         }
+
+
+        private void visibilidadChanged(object sender, EventArgs e)
+        {
+            var asd = (Visibilidad)visibilidadComboBox.SelectedItem;
+            costoValue.Text = "$" + Convert.ToString(asd.costo);
+            porcentajeValue.Text = Convert.ToString(asd.porcentaje * 100) + "%";
+        }
+
+        private void tipoPubliChanged(object sender, EventArgs e)
+        {
+            var asd = comboBox1.Text;
+            if (asd == "Compra Inmediata")
+            {
+                label2.Text = "Precio por Unidad";
+                label10.Visible = true;
+                stockTxt.Visible = true;
+            }
+            if (asd == "Subasta")
+            {
+                label2.Text = "Precio Inicial";
+                PrecioTxt.Enabled = false;
+                label10.Visible = false;
+                stockTxt.Visible = false;
+            }
+
+        }
     }
+
 }
