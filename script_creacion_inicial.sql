@@ -909,6 +909,13 @@ CREATE VIEW [LOPEZ_Y_CIA].[SubastaCompraDelSistema] AS
 	) x 
 GO
 
+CREATE VIEW [LOPEZ_Y_CIA].[getCodigo] AS
+	SELECT * FROM (
+		select current_value from sys.sequences
+		where [name] = 'secuenciaPubli'
+	) x
+GO
+
 CREATE VIEW [LOPEZ_Y_CIA].[EstadisticaCompradores] AS
 	SELECT ROW_NUMBER() OVER(ORDER BY fecha, idUsuario DESC) AS rowID, * 
 	FROM (
