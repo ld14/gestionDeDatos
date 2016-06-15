@@ -91,6 +91,13 @@ namespace WindowsFormsApplication1
                 return fin;
             }
         }
+        public IList<Rol> obtenerRoles()
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.QueryOver<Rol>().List();
+            }
+        }
 
     }
 }

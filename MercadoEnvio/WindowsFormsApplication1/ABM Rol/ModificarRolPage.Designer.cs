@@ -33,10 +33,10 @@
             this.FuncionalidadesChkLst = new System.Windows.Forms.CheckedListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.RolActivoChk = new System.Windows.Forms.CheckBox();
-            this.RolNombreTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.RolesCombobox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -85,8 +85,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.RolesCombobox);
             this.groupBox3.Controls.Add(this.RolActivoChk);
-            this.groupBox3.Controls.Add(this.RolNombreTxt);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(9, 21);
             this.groupBox3.Name = "groupBox3";
@@ -105,17 +105,10 @@
             this.RolActivoChk.Text = "Activo";
             this.RolActivoChk.UseVisualStyleBackColor = true;
             // 
-            // RolNombreTxt
-            // 
-            this.RolNombreTxt.Location = new System.Drawing.Point(78, 42);
-            this.RolNombreTxt.Name = "RolNombreTxt";
-            this.RolNombreTxt.Size = new System.Drawing.Size(173, 20);
-            this.RolNombreTxt.TabIndex = 5;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 42);
+            this.label1.Location = new System.Drawing.Point(16, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 4;
@@ -139,14 +132,24 @@
             this.button1.Text = "Modificar";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // ModificarUsuarioPage
+            // RolesCombobox
+            // 
+            this.RolesCombobox.FormattingEnabled = true;
+            this.RolesCombobox.Location = new System.Drawing.Point(66, 45);
+            this.RolesCombobox.Name = "RolesCombobox";
+            this.RolesCombobox.Size = new System.Drawing.Size(177, 21);
+            this.RolesCombobox.TabIndex = 7;
+            //this.RolesCombobox.Items.AddRange(new object[]{});
+            this.RolesCombobox.SelectedIndexChanged += new System.EventHandler(this.selecciondeRol);
+            // 
+            // ModificarRolPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 622);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
-            this.Name = "ModificarUsuarioPage";
+            this.Name = "ModificarRolPage";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -164,9 +167,9 @@
         private System.Windows.Forms.CheckedListBox FuncionalidadesChkLst;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox RolActivoChk;
-        private System.Windows.Forms.TextBox RolNombreTxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox RolesCombobox;
     }
 }
