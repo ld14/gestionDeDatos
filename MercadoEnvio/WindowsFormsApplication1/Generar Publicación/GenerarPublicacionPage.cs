@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void publicar_Click(object sender, EventArgs e)
         {
-            Double stock = 0;
+            Double stock = 1;
             String descripcion = DescripcionPublicacionTxt.Text;
             if (TipoPubliSelect.Text != "Subasta")
                 stock = Convert.ToDouble(StockTxt.Text);
@@ -103,13 +103,13 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 factDaoImpl.Add(nuevaFactura);
             }
 
-            MessageBox.Show("Publicación exitosa.\nSi desea modificarla ir a [Publicacion] -> [Modificar]");
+            MessageBox.Show("Publicación exitosa.");
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Double stock = 0;
+            Double stock = 1;
             String descripcion = DescripcionPublicacionTxt.Text;
             if (TipoPubliSelect.Text != "Subasta")
                 stock = Convert.ToDouble(StockTxt.Text);
@@ -139,8 +139,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
             Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
             Usuario usr = SessionAttribute.user;
-            Factura nuevaFactura = new Factura();
-            IList<ItemFactura> lst = new List<ItemFactura>();
+            //Factura nuevaFactura = new Factura();
+            //IList<ItemFactura> lst = new List<ItemFactura>();
 
             if(TipoPubliSelect.Text.Equals("Subasta"))
             {

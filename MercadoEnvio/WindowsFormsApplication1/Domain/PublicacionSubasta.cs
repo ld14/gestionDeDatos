@@ -35,10 +35,11 @@ namespace WindowsFormsApplication1 {
             this.RubroLst = rubroLts;
         }
 
-        public virtual void updatePublicacionSubasta(Estadopublicacion estadoPublicacion, Visibilidad visibilidad,
-                           string descripcion, DateTime fechaCreacion,
-                           DateTime fechaVencimiento, double stock, bool preguntasSN, bool envioSN, double valorInicialVenta, Rubro rubro)
+        public virtual void updatePublicacionSubasta(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
+                           string descripcion, DateTime fechaCreacion, DateTime fechaVencimiento, double stock,
+                           bool preguntasSN, bool envioSN, double valorInicialVenta, double valorActual, Rubro rubro, int codigo)
         {
+            PublicacionNormalDaoImpl pDao = new PublicacionNormalDaoImpl();
             this.EstadoPublicacion = estadoPublicacion;
             this.Visibilidad = visibilidad;
 
@@ -48,9 +49,11 @@ namespace WindowsFormsApplication1 {
             this.stock = stock;
             this.preguntasSN = preguntasSN;
             this.envioSN = envioSN;
-
+            this.codigoPublicacion = codigoPublicacion;
+            this.Usuario = usuario;
             this.valorInicialVenta = valorInicialVenta;
             this.valorActual = valorActual;
+            this.idPublicacion = pDao.GetByCodigo(codigo).idPublicacion;
 
             ICollection<Rubro> rubroLts = new List<Rubro>();
             rubroLts.Add(rubro);

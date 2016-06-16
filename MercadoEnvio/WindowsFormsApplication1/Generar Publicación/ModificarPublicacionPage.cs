@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Entity.Utils;
 
 namespace WindowsFormsApplication1.Generar_Publicación
 {
@@ -15,15 +16,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
         {
             InitializeComponent();
             
-
-
         }
 
         private void ModificarPublicacionPage_Load(object sender, EventArgs e)
         {
-            //PublicacionSubastaDaoImpl sub = new PublicacionSubastaDaoImpl();
-            //this.Tag = sub.GetById(352375);
-
             if (this.Tag != null)
             {
                 String tipoPublicacion = null;
@@ -40,6 +36,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 Rubro rubroPub = new Rubro();
                 ICollection<Rubro> rubro = new List<Rubro>();
                 Visibilidad visbilidad = new Visibilidad();
+
+                infoBox.Visible = false;
+                labelInfoA.Visible = false;
+                labelInfoB.Visible = false;
 
                 if (this.Tag is PublicacionSubasta)
                 {
@@ -59,6 +59,23 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     estadoPublicacion = publicacionSubasta.EstadoPublicacion;
                     rubroPub = publicacionSubasta.RubroLst.First();
                     visbilidad = publicacionSubasta.Visibilidad;
+
+                    if (publicacionSubasta.EstadoPublicacion.idEstadoPublicacion != 1)
+                    {
+                        OfertaSubastaDaoImpl oDao = new OfertaSubastaDaoImpl();
+                        IList<Ofertasubasta> ofertas = oDao.GetByPublicacion(publicacionSubasta.idPublicacion);
+                        infoBox.Visible = true;
+                        labelInfoB.Visible = true;
+
+                        if (ofertas.Count == 0)
+                        {
+                            labelInfoB.Text += " Ninguna";
+                        }
+                        else
+                        {
+                            labelInfoB.Text += " $" + Convert.ToString(publicacionSubasta.valorActual);
+                        }
+                    }
 
                 }
 
@@ -80,6 +97,15 @@ namespace WindowsFormsApplication1.Generar_Publicación
                     estadoPublicacion = publicacionDirecta.EstadoPublicacion;
                     rubroPub = publicacionDirecta.RubroLst.First();
                     visbilidad = publicacionDirecta.Visibilidad;
+
+                    if (publicacionDirecta.EstadoPublicacion.idEstadoPublicacion != 1)
+                    {
+                        CompraUsuarioDaoImpl cDao = new CompraUsuarioDaoImpl();
+                        IList<CompraUsuario> compras = cDao.GetByPublicacion(publicacionDirecta.idPublicacion);
+                        infoBox.Visible = true;
+                        labelInfoA.Visible = true;
+                        labelInfoA.Text += Convert.ToString(compras.Count);
+                    }
                 }
                 
                 comboBox1.Text=tipoPublicacion;
@@ -89,7 +115,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 EnvioCheckBox.Checked = Convert.ToBoolean(envioSN);
                 PreguntasCheckBox.Checked = Convert.ToBoolean(preguntasSN);
                 PrecioTxt.Text = Convert.ToString(precio);
-                //UsuarioNombreTxt.Text = nombreUsuario;
                 FechaIncioDateTimeTxt.Value = fechaIncioDateTime.Value;
                 FechaVencimientoDateTimeTxt.Value = fechaVencimientoDateTime.Value;
 
@@ -158,19 +183,16 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void desahabilitarCamposPorEstado(Estadopublicacion estadoPublicacion)
         {
-           /*
-            if (!estadoPublicacion.nombre.Equals("Borrador")) {
-                DescripcionTxt.ReadOnly = true;
-                stockTxt.ReadOnly = true;
+            if (!estadoPublicacion.nombre.Equals("Borrador"))
+            {
                 EnvioCheckBox.Enabled = false;
+                DescripcionTxt.Enabled = false;
                 PreguntasCheckBox.Enabled = false;
-                PrecioTxt.ReadOnly = true;
-                FechaIncioDateTimeTxt.Enabled = false;
-                FechaVencimientoDateTimeTxt.Enabled = false;
+                PrecioTxt.Enabled = false;
+                stockTxt.Enabled = false;
                 visibilidadComboBox.Enabled = false;
                 RubroComboBox.Enabled = false;
             }
-            */
         }
 
         private void fechaIncioDateTime_ValueChanged(object sender, EventArgs e)
@@ -183,103 +205,115 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void guardar_Click(object sender, EventArgs e)
         {
+            Double stock = 1;
             String descripcion = DescripcionTxt.Text;
-            Double stock = Convert.ToDouble(stockTxt.Text);
+            if (comboBox1.Text != "Subasta")
+                stock = Convert.ToDouble(stockTxt.Text);
             bool envioSN = EnvioCheckBox.Checked;
             bool preguntasSN = PreguntasCheckBox.Checked;
             Double precio = Convert.ToDouble(PrecioTxt.Text);
-
-            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
-            DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
-
-            DateTime fechaIncioDateTime = DateUtils.convertirStringEnFecha(FechaIncioDateTimeTxt.Value.ToString("dd/MM/yyyy"));
-            DateTime fechaVencimientoDateTime = DateUtils.convertirStringEnFecha(FechaVencimientoDateTimeTxt.Value.ToString("dd/MM/yyyy"));
-            //Estadopublicacion selectedEstadoBox = EstadoComboBox.SelectedItem as Estadopublicacion;
+            DateTime fechaIncioDateTime = FechaIncioDateTimeTxt.Value;
+            DateTime fechaVencimientoDateTime = FechaVencimientoDateTimeTxt.Value;
+            int codigo = Convert.ToInt32(CodigoPublicacionTxt.Text);
+            
             EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
             Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(1);
-
             Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
             Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
+            Usuario usr = SessionAttribute.user;
 
-            ModificarPublicacionPage modificarPublicacionPage = new ModificarPublicacionPage();
+            if (comboBox1.Text.Equals("Subasta"))
+            {
+                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+                PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
+                nuevaPublicacion.updatePublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock, preguntasSN, envioSN,
+                        precio, precio, selectedRubro, codigo);
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+            }
 
+            if (comboBox1.Text.Equals("Compra Inmediata"))
+            {
+                PublicacionNormalDaoImpl publicacionNormalDaoImpl = new PublicacionNormalDaoImpl();
+                PublicacionNormal nuevaPublicacion = new PublicacionNormal();
+                nuevaPublicacion.updatePublicacionNormal(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock,
+                        preguntasSN, envioSN, precio, selectedRubro, codigo);
+                publicacionNormalDaoImpl.Update(nuevaPublicacion);
+            }
+
+            MessageBox.Show("Se ha actualizado satisfactoriamente su publicación.");
+            this.Close();
+        }
+
+        private void publicar_Click(object sender, EventArgs e)
+        {
+            Double stock = 1;
+            String descripcion = DescripcionTxt.Text;
+            if (comboBox1.Text != "Subasta")
+                stock = Convert.ToDouble(stockTxt.Text);
+            bool envioSN = EnvioCheckBox.Checked;
+            bool preguntasSN = PreguntasCheckBox.Checked;
+            Double precio = Convert.ToDouble(PrecioTxt.Text);
+            DateTime fechaIncioDateTime = FechaIncioDateTimeTxt.Value;
+            DateTime fechaVencimientoDateTime = FechaVencimientoDateTimeTxt.Value;
+            int codigo = Convert.ToInt32(CodigoPublicacionTxt.Text);
+
+            EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(2);
+            Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
+            Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
+            Usuario usr = SessionAttribute.user;
+            
             Factura nuevaFactura = new Factura();
             IList<ItemFactura> lst = new List<ItemFactura>();
 
-            if (comboBox1.Text.Equals("Publicación Subasta"))
+            if (comboBox1.Text.Equals("Subasta"))
             {
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
-                PublicacionSubasta nuevaPublicacionTemp = (PublicacionSubasta)this.Tag;
-                PublicacionSubasta nuevaPublicacion = publicacionSubastaDaoImpl.GetPublicacionByCodigo(nuevaPublicacionTemp.codigoPublicacion);
-
-                if (selectedEstado.nombre.Equals("Activa"))
-                {
-                    ItemFactura nuevoItemFactura = new ItemFactura();
-                    nuevoItemFactura.cantidad = 1;
-                    nuevoItemFactura.Factura = nuevaFactura;
-                    nuevoItemFactura.monto = selectedVisibilidad.costo;
-                    lst.Add(nuevoItemFactura);
-
-
-                    nuevaFactura.setFacturaNueva(fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
-
-                    FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
-                    factDaoImpl.Add(nuevaFactura);
-                }
-                
-                nuevaPublicacion.updatePublicacionSubasta(selectedEstado, selectedVisibilidad, 
-                                                       descripcion, fechaIncioDateTime,
-                                                       fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
-
-                
+                PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
+                nuevaPublicacion.updatePublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock, preguntasSN, envioSN,
+                        precio, precio, selectedRubro, codigo);
                 publicacionSubastaDaoImpl.Update(nuevaPublicacion);
 
+                ItemFactura nuevoItemFactura = new ItemFactura();
+                nuevoItemFactura.cantidad = 1;
+                nuevoItemFactura.Factura = nuevaFactura;
+                nuevoItemFactura.monto = nuevaPublicacion.Visibilidad.costo;
+                lst.Add(nuevoItemFactura);
+                nuevaFactura.setFacturaNueva(fechaIncioDateTime, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
 
-
-                modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
-                modificarPublicacionPage.Tag = nuevaPublicacion;
-
+                FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                factDaoImpl.Add(nuevaFactura);
             }
-            else
+
+            if (comboBox1.Text.Equals("Compra Inmediata"))
             {
-                    PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
-                    PublicacionNormal nuevaPublicacionTemp = (PublicacionNormal)this.Tag;
-                    PublicacionNormal nuevaPublicacion = publicacionSubastaDaoImpl.GetPublicacionByCodigo(nuevaPublicacionTemp.codigoPublicacion);
-                    //Esto habria que pasarlo abajo
-                    if (selectedEstado.nombre.Equals("Activa"))
-                    {
-                        ItemFactura nuevoItemFactura = new ItemFactura();
-                        nuevoItemFactura.cantidad = 1;
-                        nuevoItemFactura.Factura = nuevaFactura;
-                        nuevoItemFactura.monto = selectedVisibilidad.costo;
-                        lst.Add(nuevoItemFactura);
-
-
-                        nuevaFactura.setFacturaNueva(fehaSistema, selectedVisibilidad.costo, "Efectivo", nuevaPublicacion, lst);
-                        FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
-                        factDaoImpl.Add(nuevaFactura);
-
-                    }
-
-                    nuevaPublicacion.updatePublicacionNormal(selectedEstado, selectedVisibilidad, 
-                                       descripcion, fechaIncioDateTime,
-                                       fechaVencimientoDateTime, stock, preguntasSN, envioSN, precio, selectedRubro);
-
-                
+                PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
+                PublicacionNormal nuevaPublicacion = new PublicacionNormal();
+                nuevaPublicacion.updatePublicacionNormal(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock,
+                        preguntasSN, envioSN, precio, selectedRubro, codigo);
                 publicacionSubastaDaoImpl.Update(nuevaPublicacion);
 
-                modificarPublicacionPage.Text = Convert.ToString(nuevaPublicacion.idPublicacion);
-                modificarPublicacionPage.Tag = nuevaPublicacion;
+                ItemFactura nuevoItemFactura = new ItemFactura();
+                nuevoItemFactura.cantidad = 1;
+                nuevoItemFactura.Factura = nuevaFactura;
+                nuevoItemFactura.monto = nuevaPublicacion.Visibilidad.costo;
+                lst.Add(nuevoItemFactura);
+                nuevaFactura.setFacturaNueva(fechaIncioDateTime, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+
+                FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                factDaoImpl.Add(nuevaFactura);
             }
 
-
-            modificarPublicacionPage.MdiParent = this.ParentForm;
-
-            modificarPublicacionPage.Show();
+            MessageBox.Show("Publicación exitosa.");
             this.Close();
         }
+
 
 
         private void visibilidadChanged(object sender, EventArgs e)
@@ -301,10 +335,14 @@ namespace WindowsFormsApplication1.Generar_Publicación
             if (asd == "Subasta")
             {
                 label2.Text = "Precio Inicial";
-                PrecioTxt.Enabled = false;
                 label10.Visible = false;
                 stockTxt.Visible = false;
             }
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
 
         }
     }

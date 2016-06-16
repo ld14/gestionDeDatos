@@ -32,10 +32,12 @@ namespace WindowsFormsApplication1 {
 
         }
 
-        public virtual void updatePublicacionNormal(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, 
-                   string descripcion, DateTime fechaCreacion,
-                   DateTime fechaVencimiento, double stock, bool preguntasSN, bool envioSN, double valorInicialVenta, Rubro rubro)
+        public virtual void updatePublicacionNormal(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
+                   string descripcion, DateTime fechaCreacion, DateTime fechaVencimiento, double stock, bool preguntasSN,
+                   bool envioSN, double valorInicialVenta, Rubro rubro, int codigo)
         {
+            PublicacionNormalDaoImpl pDao = new PublicacionNormalDaoImpl();
+
             this.EstadoPublicacion = estadoPublicacion;
             this.Visibilidad = visibilidad;
             
@@ -46,6 +48,9 @@ namespace WindowsFormsApplication1 {
             this.preguntasSN = preguntasSN;
             this.envioSN = envioSN;
             this.precioPorUnidad = valorInicialVenta;
+            this.codigoPublicacion = codigo;
+            this.Usuario = usuario;
+            this.idPublicacion = pDao.GetByCodigo(codigo).idPublicacion;
 
             ICollection<Rubro> rubroLts = new List<Rubro>();
             rubroLts.Add(rubro);

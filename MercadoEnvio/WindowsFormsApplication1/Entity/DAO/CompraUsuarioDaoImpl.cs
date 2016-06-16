@@ -63,6 +63,14 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public IList<CompraUsuario> GetByPublicacion(int id)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+                {
+                    return manager.Session.QueryOver<CompraUsuario>().Where(x => x.Publicacion.idPublicacion == id).List();
+                }
+        }
+
         public int getProfileIdSequenceByCodigoCalificacion()
         {
             using (NHibernateManager manager = new NHibernateManager())

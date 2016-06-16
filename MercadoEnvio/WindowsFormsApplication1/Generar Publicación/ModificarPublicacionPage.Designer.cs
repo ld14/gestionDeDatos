@@ -62,11 +62,16 @@
             this.botonPausar = new System.Windows.Forms.Button();
             this.botonPublicarN = new System.Windows.Forms.Button();
             this.botonGuardar = new System.Windows.Forms.Button();
+            this.infoBox = new System.Windows.Forms.GroupBox();
+            this.labelInfoA = new System.Windows.Forms.Label();
+            this.labelInfoB = new System.Windows.Forms.Label();
+            this.botonPreguntas = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.infoBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -90,6 +95,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.infoBox);
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox5);
@@ -170,7 +176,6 @@
             // 
             // visibilidadComboBox
             // 
-            this.visibilidadComboBox.Enabled = false;
             this.visibilidadComboBox.FormattingEnabled = true;
             this.visibilidadComboBox.Location = new System.Drawing.Point(65, 38);
             this.visibilidadComboBox.Name = "visibilidadComboBox";
@@ -285,7 +290,6 @@
             // EnvioCheckBox
             // 
             this.EnvioCheckBox.AutoSize = true;
-            this.EnvioCheckBox.Enabled = false;
             this.EnvioCheckBox.Location = new System.Drawing.Point(291, 214);
             this.EnvioCheckBox.Name = "EnvioCheckBox";
             this.EnvioCheckBox.Size = new System.Drawing.Size(56, 17);
@@ -331,7 +335,7 @@
             // 
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.RubroComboBox);
-            this.groupBox5.Location = new System.Drawing.Point(542, 134);
+            this.groupBox5.Location = new System.Drawing.Point(542, 154);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(435, 96);
             this.groupBox5.TabIndex = 28;
@@ -403,6 +407,7 @@
             this.botonPublicarN.TabIndex = 1;
             this.botonPublicarN.Text = "Publicar";
             this.botonPublicarN.UseVisualStyleBackColor = true;
+            this.botonPublicarN.Click += new System.EventHandler(this.publicar_Click);
             // 
             // botonGuardar
             // 
@@ -412,6 +417,49 @@
             this.botonGuardar.TabIndex = 0;
             this.botonGuardar.Text = "Guardar";
             this.botonGuardar.UseVisualStyleBackColor = true;
+            this.botonGuardar.Click += new System.EventHandler(this.guardar_Click);
+            // 
+            // infoBox
+            // 
+            this.infoBox.Controls.Add(this.botonPreguntas);
+            this.infoBox.Controls.Add(this.labelInfoB);
+            this.infoBox.Controls.Add(this.labelInfoA);
+            this.infoBox.Location = new System.Drawing.Point(644, 29);
+            this.infoBox.Name = "infoBox";
+            this.infoBox.Size = new System.Drawing.Size(242, 100);
+            this.infoBox.TabIndex = 30;
+            this.infoBox.TabStop = false;
+            this.infoBox.Text = "Información Básica";
+            // 
+            // labelInfoA
+            // 
+            this.labelInfoA.AutoSize = true;
+            this.labelInfoA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfoA.Location = new System.Drawing.Point(19, 26);
+            this.labelInfoA.Name = "labelInfoA";
+            this.labelInfoA.Size = new System.Drawing.Size(105, 13);
+            this.labelInfoA.TabIndex = 0;
+            this.labelInfoA.Text = "Unidades Vendidas: ";
+            this.labelInfoA.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // labelInfoB
+            // 
+            this.labelInfoB.AutoSize = true;
+            this.labelInfoB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfoB.Location = new System.Drawing.Point(19, 26);
+            this.labelInfoB.Name = "labelInfoB";
+            this.labelInfoB.Size = new System.Drawing.Size(72, 13);
+            this.labelInfoB.TabIndex = 1;
+            this.labelInfoB.Text = "Oferta Actual:";
+            // 
+            // botonPreguntas
+            // 
+            this.botonPreguntas.Location = new System.Drawing.Point(44, 59);
+            this.botonPreguntas.Name = "botonPreguntas";
+            this.botonPreguntas.Size = new System.Drawing.Size(159, 23);
+            this.botonPreguntas.TabIndex = 2;
+            this.botonPreguntas.Text = "Preguntas";
+            this.botonPreguntas.UseVisualStyleBackColor = true;
             // 
             // ModificarPublicacionPage
             // 
@@ -435,6 +483,8 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.infoBox.ResumeLayout(false);
+            this.infoBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -475,5 +525,9 @@
         private System.Windows.Forms.Button botonFinalizar;
         private System.Windows.Forms.Button botonPausar;
         private System.Windows.Forms.DateTimePicker FechaVencimientoDateTimeTxt;
+        private System.Windows.Forms.GroupBox infoBox;
+        private System.Windows.Forms.Label labelInfoA;
+        private System.Windows.Forms.Label labelInfoB;
+        private System.Windows.Forms.Button botonPreguntas;
     }
 }
