@@ -481,7 +481,7 @@ PRINT 'TABLA: Visibilidad'
 INSERT INTO [LOPEZ_Y_CIA].[Publicacion] (codigoPublicacion, idEstadoPublicacion, idVisibilidad, descripcion, fechaCreacion, fechaVencimiento, stock, idUsuario)
 SELECT
 	T1.Publicacion_Cod,
-	1 AS idEstadoPublicacion,
+	2 AS idEstadoPublicacion,
 	T3.idVisibilidad,
 	T1.Publicacion_Descripcion,
 	T1.Publicacion_Fecha,
@@ -512,7 +512,7 @@ INNER JOIN [LOPEZ_Y_CIA].[Visibilidad] AS T3 ON T3.codigoVisibilidad = T1.Public
 UNION
 SELECT
 	T1.Publicacion_Cod,
-	1 AS idEstadoPublicacion,
+	2 AS idEstadoPublicacion,
 	T3.idVisibilidad,
 	T1.Publicacion_Descripcion,
 	T1.Publicacion_Fecha,
