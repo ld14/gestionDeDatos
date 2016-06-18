@@ -39,12 +39,34 @@ namespace WindowsFormsApplication1.ABM_Rol
             String nombre = RolesCombobox.SelectedItem.ToString();
             Rol rol = roles.Single(x => x.nombre == nombre);
            
-            IList<Funciones> func = rolDao.obtenerFuncionesPorRol(rol.idRol);
+            IList<Funciones> funcPorRol = rolDao.obtenerFuncionesPorRol(rol.idRol);
+            //FuncionalidadesCompletas del sistema
+             IList<Funciones> func = rolDao.obtenerFunciones();
+             FuncionalidadesChkLst.DataSource = func;
+             FuncionalidadesChkLst.DisplayMember = "nombre";
+             FuncionalidadesChkLst.ValueMember = "idFunciones";
+             this.RolActivoChk.Checked = rol.activo;
 
-            FuncionalidadesChkLst.DataSource = func;
-            FuncionalidadesChkLst.DisplayMember = "nombre";
-            FuncionalidadesChkLst.ValueMember = "idFunciones"; 
-
+             for (int d = 0; d < FuncionalidadesChkLst.Items.Count;d++ )
+             {
+                 FuncionalidadesChkLst.SetItemChecked(d, false);
+             }
+          
+            int i = 0;
+            int j = 0;
+            foreach  (Funciones fun in func)
+            {
+                if (fun.nombre == funcPorRol[i].nombre)
+                {
+                    FuncionalidadesChkLst.SetItemChecked(j, true);
+                    i++;
+                }
+                j++;
+                if (i == funcPorRol.Count)
+                {
+                    break;
+                }
+            }
         }
     }
     
