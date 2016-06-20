@@ -100,6 +100,19 @@
     <Compile Include="ABM Usuario\AltaUsuarioPage.Designer.cs">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Usuario\ModificarUsuarioParaAdminPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Usuario\ModificarUsuarioParaAdminPage.Designer.cs">
+      <DependentUpon>ModificarUsuarioParaAdminPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Usuario\ModificarUsuarioPorAdminPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Usuario\ModificarUsuarioPorAdminPage.Designer.cs">
+      <DependentUpon>ModificarUsuarioPorAdminPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Usuario\GrillasUsuario.cs" />
     <Compile Include="ABM Usuario\EliminarUsuarioPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,8 +313,14 @@
     <EmbeddedResource Include="ABM Usuario\AltaUsuarioPage.resx">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM Usuario\ModificarUsuarioParaAdminPage.resx">
+      <DependentUpon>ModificarUsuarioParaAdminPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\EliminarUsuarioPage.resx">
       <DependentUpon>EliminarUsuarioPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Usuario\ModificarUsuarioPorAdminPage.resx">
+      <DependentUpon>ModificarUsuarioPorAdminPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\ModificarUsuarioPage.resx">
       <DependentUpon>ModificarUsuarioPage.cs</DependentUpon>

@@ -431,7 +431,7 @@ aBMMenu
 
         private void modificarToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ModificarUsuarioPage modificarUsuarionPage = new ModificarUsuarioPage();
+            ModificarUsuarioPorAdminPage modificarUsuarionPage = new ModificarUsuarioPorAdminPage();
             modificarUsuarionPage.MdiParent = this;
             modificarUsuarionPage.Show();
         }

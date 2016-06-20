@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WindowsFormsApplication1.ABM_Usuario
 {
-    partial class ModificarUsuarioPage
+    partial class ModificarUsuarioParaAdminPage
     {
         /// <summary>
         /// Required designer variable.
@@ -422,7 +422,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.DatosBasicosCiudad.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosCiudad.TabIndex = 50;
             this.DatosBasicosCiudad.Text = "System.CodeDom.CodePropertyReferenceExpression";
-            this.DatosBasicosCiudad.TextChanged += new System.EventHandler(this.DatosBasicosCiudad_TextChanged);
             // 
             // tipoDeUsuarioComboBox
             // 

@@ -32,11 +32,11 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.FuncionalidadesChkLst = new System.Windows.Forms.CheckedListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.RolesCombobox = new System.Windows.Forms.ComboBox();
             this.RolActivoChk = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.RolesCombobox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -95,6 +95,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Rol";
             // 
+            // RolesCombobox
+            // 
+            this.RolesCombobox.FormattingEnabled = true;
+            this.RolesCombobox.Location = new System.Drawing.Point(66, 45);
+            this.RolesCombobox.Name = "RolesCombobox";
+            this.RolesCombobox.Size = new System.Drawing.Size(177, 21);
+            this.RolesCombobox.TabIndex = 7;
+            this.RolesCombobox.SelectedIndexChanged += new System.EventHandler(this.selecciondeRol);
+            // 
             // RolActivoChk
             // 
             this.RolActivoChk.AutoSize = true;
@@ -131,16 +140,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Modificar";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // RolesCombobox
-            // 
-            this.RolesCombobox.FormattingEnabled = true;
-            this.RolesCombobox.Location = new System.Drawing.Point(66, 45);
-            this.RolesCombobox.Name = "RolesCombobox";
-            this.RolesCombobox.Size = new System.Drawing.Size(177, 21);
-            this.RolesCombobox.TabIndex = 7;
-            //this.RolesCombobox.Items.AddRange(new object[]{});
-            this.RolesCombobox.SelectedIndexChanged += new System.EventHandler(this.selecciondeRol);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ModificarRolPage
             // 
@@ -151,6 +151,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "ModificarRolPage";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.ModificarRolPage_Load_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

@@ -386,6 +386,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.groupBox2.Size = new System.Drawing.Size(984, 113);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button2
             // 

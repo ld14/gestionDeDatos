@@ -73,5 +73,33 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public IList<Cliente> darClientesFiltrados(String nombre, String apellido, String email, Double dni)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<Cliente>();
+
+                if (!nombre.Equals(""))
+                {
+                    crit.Add(Expression.Like("nombre", "%" + nombre + "%"));
+                }
+                if (!apellido.Equals(""))
+                {
+                    crit.Add(Expression.Like("apellido", "%" + apellido + "%"));
+                }
+                if (!email.Equals(""))
+                {
+                    crit.CreateAlias("DatosBasicos", "datoBasico");
+                    crit.Add(Expression.Like("datoBasico.email", "%" + email + "%"));
+                }
+
+                if (!dni.Equals(0))
+                {
+                    crit.Add(Expression.Eq("dni", dni));
+                }
+
+                return crit.List<Cliente>();
+            }
+        }
     }     
 }
