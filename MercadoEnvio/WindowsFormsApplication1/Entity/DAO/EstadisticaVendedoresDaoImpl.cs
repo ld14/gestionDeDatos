@@ -101,6 +101,42 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+        public IList<Estadisticamaximos> darMaximaCantidadFacturas(int ano, int mesInicio, int mesFin)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
+
+                    //Busqueda
+                    ICriteria crit = manager.Session.CreateCriteria<Estadisticamaximos>();
+                    crit.Add(Expression.Eq("ano", ano));
+                    crit.Add(Expression.Between("mes", mesInicio, mesFin));
+                    crit.AddOrder(Order.Desc("cantidadFacturado"));
+                    return crit.List<Estadisticamaximos>();
+
+                }
+            }
+        }
+
+        public IList<Estadisticamaximos> darMonToMaximoFacturas(int ano, int mesInicio, int mesFin)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
+
+                    //Busqueda
+                    ICriteria crit = manager.Session.CreateCriteria<Estadisticamaximos>();
+                    crit.Add(Expression.Eq("ano", ano));
+                    crit.Add(Expression.Between("mes", mesInicio, mesFin));
+                    crit.AddOrder(Order.Desc("montosFacturados"));
+                    return crit.List<Estadisticamaximos>();
+
+                }
+            }
+        }    
     }
 }
 

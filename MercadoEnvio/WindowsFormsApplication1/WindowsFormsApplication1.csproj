@@ -163,6 +163,7 @@
     </Compile>
     <Compile Include="Domain\BusquedaDePublicacion.cs" />
     <Compile Include="Domain\EstadisticaCompradores.cs" />
+    <Compile Include="Domain\Estadisticamaximos.cs" />
     <Compile Include="Domain\EstadisticaVendedores.cs" />
     <Compile Include="Domain\FacturasEmitidas.cs" />
     <Compile Include="Domain\Ofertasubasta.cs" />
@@ -452,8 +453,8 @@
     <EmbeddedResource Include="Maps\OfertaSubasta.hbm.xml" />
     <EmbeddedResource Include="Maps\SubastaCompraDelSistema.hbm.xml" />
     <EmbeddedResource Include="Maps\FacturasEmitidas.hbm.xml" />
-    <EmbeddedResource Include="Maps\EstadisticaVendedores.hbm.xml" />
     <EmbeddedResource Include="Maps\EstadisticaCompradores.hbm.xml" />
+    <EmbeddedResource Include="Maps\estadisticaMaximos.hbm.xml" />
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <ItemGroup />
