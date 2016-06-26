@@ -1021,6 +1021,29 @@ CREATE VIEW [LOPEZ_Y_CIA].[EstadisticaVendedores] AS
 	) x	
 GO
 
+CREATE VIEW [LOPEZ_Y_CIA].[estadisticaMaximos] AS  
+	SELECT
+		ROW_NUMBER() OVER(ORDER BY pub.idUsuario, YEAR(fa.fecha), MONTH(fa.fecha) DESC) AS rowID,
+		pub.idUsuario, (
+			CASE WHEN (SELECT COUNT(*) FROM [LOPEZ_Y_CIA].[Cliente] clie WHERE clie.idUsuario = pub.idUsuario) = 1
+				THEN (SELECT clie.apellido + ' ' + clie.nombre FROM [LOPEZ_Y_CIA].[Cliente] clie WHERE clie.idUsuario = pub.idUsuario)
+			WHEN (SELECT COUNT(*) FROM [LOPEZ_Y_CIA].[Empresa] clie WHERE clie.idUsuario = pub.idUsuario) = 1
+				THEN (SELECT emp.razonSocial FROM [LOPEZ_Y_CIA].[Empresa] emp WHERE emp.idUsuario = pub.idUsuario)
+			end
+		) AS detalle,
+		YEAR(fa.fecha) AS ano,
+		MONTH(fa.fecha) AS mes,
+		COUNT(fa.idFactura) AS cantidadFacturado,
+		SUM(fa.montoTotal) AS montosFacturados
+	FROM [LOPEZ_Y_CIA].[Factura] fa
+	JOIN [LOPEZ_Y_CIA].[Publicacion] pub ON fa.idPublicacion = pub.idPublicacion
+	GROUP BY
+		pub.idUsuario,
+		YEAR(fa.fecha),
+		MONTH(fa.fecha)
+GO  
+
+/*
 CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
 ON [LOPEZ_Y_CIA].[Rol] FOR UPDATE AS
 BEGIN TRAN
@@ -1036,4 +1059,5 @@ BEGIN TRAN
 COMMIT TRAN;
 
 GO
+*/
 /** FIN DEL SCRIPT **/
