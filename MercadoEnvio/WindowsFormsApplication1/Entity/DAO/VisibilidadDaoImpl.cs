@@ -57,6 +57,13 @@ namespace WindowsFormsApplication1
 
             }
         }
+        public IList<Visibilidad> obtenerVisibilidades()
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.QueryOver<Visibilidad>().List();
+            }
+        }
 
 
         public IList<Visibilidad> darVisibilidadDistintosA(Visibilidad visibilidad)
@@ -69,5 +76,22 @@ namespace WindowsFormsApplication1
                 return crit.List<Visibilidad>();
             }
         }
+        public Visibilidad getVisibilidadByName(string visibilidadName)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                var visibilidades = obtenerVisibilidades();
+
+                for (int i = 0; i < visibilidades.Count; i++)
+                {
+                    if (visibilidades[i].nombreVisibilidad == visibilidadName)
+                    {
+                        return visibilidades[i];
+                    }
+                }
+                return null;
+            }
+        }
     }
+
 }
