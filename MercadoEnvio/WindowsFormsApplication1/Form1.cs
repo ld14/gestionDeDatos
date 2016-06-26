@@ -55,7 +55,10 @@ namespace WindowsFormsApplication1
             //Asigno el Rol correspondiente al Usuario logeado
             IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
             rolUser.MoveNext();
-            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.idUsuario + "] [Rol: " + rolUser.Current.nombre + "]"; 
+
+            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
+
+            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.idUsuario + "] [Rol: " + rolUser.Current.nombre + "] [Fecha: " + System.Configuration.ConfigurationManager.AppSettings["fechaSistema"] + "]"; 
  
             //Obtener datos del Usuario
             if (rolUser.Current.idRol == 1)

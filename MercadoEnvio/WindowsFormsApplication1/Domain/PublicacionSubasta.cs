@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1 {
         public virtual double? valorActual { get; set; }
 
         public virtual void setPublicacionSubasta(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
-                           string descripcion, DateTime fechaCreacion, DateTime fechaVencimiento, double stock,
+                           string descripcion, DateTime fechaCreacion, DateTime fechaVencimiento, int stock,
                            bool preguntasSN, bool envioSN,double valorInicialVenta,double valorActual,Rubro rubro)
         {
             this.EstadoPublicacion = estadoPublicacion;
@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1 {
         }
 
         public virtual void updatePublicacionSubasta(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
-                           string descripcion, DateTime fechaCreacion, DateTime fechaVencimiento, double stock,
+                           string descripcion, DateTime fechaCreacion, DateTime fechaVencimiento, int stock,
                            bool preguntasSN, bool envioSN, double valorInicialVenta, double valorActual, Rubro rubro, int codigo)
         {
             PublicacionNormalDaoImpl pDao = new PublicacionNormalDaoImpl();

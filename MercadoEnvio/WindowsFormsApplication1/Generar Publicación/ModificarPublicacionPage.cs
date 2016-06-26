@@ -207,10 +207,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void guardar_Click(object sender, EventArgs e)
         {
-            Double stock = 1;
+            int stock = 1;
             String descripcion = DescripcionTxt.Text;
             if (comboBox1.Text != "Subasta")
-                stock = Convert.ToDouble(stockTxt.Text);
+                stock = Convert.ToInt32(stockTxt.Text);
             bool envioSN = EnvioCheckBox.Checked;
             bool preguntasSN = PreguntasCheckBox.Checked;
             Double precio = Convert.ToDouble(PrecioTxt.Text);
@@ -250,10 +250,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void publicar_Click(object sender, EventArgs e)
         {
-            Double stock = 1;
+            int stock = 1;
             String descripcion = DescripcionTxt.Text;
             if (comboBox1.Text != "Subasta")
-                stock = Convert.ToDouble(stockTxt.Text);
+                stock = Convert.ToInt32(stockTxt.Text);
             bool envioSN = EnvioCheckBox.Checked;
             bool preguntasSN = PreguntasCheckBox.Checked;
             Double precio = Convert.ToDouble(PrecioTxt.Text);

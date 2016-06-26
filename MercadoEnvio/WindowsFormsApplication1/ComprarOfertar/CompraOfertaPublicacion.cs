@@ -18,116 +18,62 @@ namespace WindowsFormsApplication1.ComprarOfertar
 
         private void CompraOfertaPublicacion_Load(object sender, EventArgs e)
         {
-            //PublicacionSubastaDaoImpl sub = new PublicacionSubastaDaoImpl();
-            //this.Tag = sub.GetById(352375);
-
-            if (this.Tag != null)
+            if (this.Tag is PublicacionSubasta)
             {
-                String tipoPublicacion = null;
-                Double? codigo = null;
-                String descripcion = null;
-                Double? stock = null;
-                bool? envioSN = null;
-                bool? preguntasSN = null;
-                Double precio = 0;
-                Double? valorActual = 0;
-                DateTime? fechaIncioDateTime = null;
-                DateTime? fechaVencimientoDateTime = null;
-                String nombreUsuario = null;
-                Estadopublicacion estadoPublicacion = new Estadopublicacion();
-                Rubro rubroPub = new Rubro();
-                ICollection<Rubro> rubro = new List<Rubro>();
-                Visibilidad visbilidad = new Visibilidad();
-
-                if (this.Tag is PublicacionSubasta)
-                {
                     PublicacionSubasta publicacionSubasta = (PublicacionSubasta)this.Tag;
-                    //Datos Basicos
-                    tipoPublicacion = "Publicación Subasta";
-                    codigo = publicacionSubasta.codigoPublicacion;
-                    descripcion = publicacionSubasta.descripcion;
-                    stock = publicacionSubasta.stock;
-                    envioSN = publicacionSubasta.envioSN;
-                    preguntasSN = publicacionSubasta.preguntasSN;
-                    precio = publicacionSubasta.valorInicialVenta;
-                    valorActual = publicacionSubasta.valorActual;
-                    fechaIncioDateTime = publicacionSubasta.fechaCreacion;
-                    fechaVencimientoDateTime = publicacionSubasta.fechaVencimiento;
-                    nombreUsuario = publicacionSubasta.Usuario.userName;
-                    //Combo values
-                    estadoPublicacion = publicacionSubasta.EstadoPublicacion;
-                    rubroPub = publicacionSubasta.RubroLst.First();
-                    visbilidad = publicacionSubasta.Visibilidad;
-                    CompraDatos.Visible = false;
+                    
+                    tipoPubBox.Text = "Subasta";
+                    codigoPubBox.Text = Convert.ToString(publicacionSubasta.codigoPublicacion);
+                    DescripcionTxt.Text = publicacionSubasta.descripcion;
+                    stockTxt.Text = Convert.ToString(publicacionSubasta.stock);
+                    envioCheck.Checked = publicacionSubasta.envioSN;
+                    PrecioTxt.Text = '$' + Convert.ToString(publicacionSubasta.valorInicialVenta);
+                    precioLabel.Text = "Precio Inicial:";
+                    ofertaValue.Visible = true;
+                    ofertaLabel.Visible = true;
+                    ofertaValue.Value = Convert.ToDecimal(publicacionSubasta.valorActual);
+                    ofertaValue.Minimum = ofertaValue.Value;
+                    //fechaIncioDateTime = publicacionSubasta.fechaCreacion;
+                    fechaVencimientoDateTimeTxt.Value = publicacionSubasta.fechaVencimiento;
+                    vendedorBox.Text = publicacionSubasta.Usuario.userName;
 
-                } if (this.Tag is PublicacionNormal)
-                {
-                    PublicacionNormal publicacionDirecta = (PublicacionNormal)this.Tag;
-                    tipoPublicacion = "Publicación Compra Inmediata";
-                    //Datos Basicos
-                    codigo = publicacionDirecta.codigoPublicacion;
-                    descripcion = publicacionDirecta.descripcion;
-                    stock = publicacionDirecta.stock;
-                    envioSN = publicacionDirecta.envioSN;
-                    preguntasSN = publicacionDirecta.preguntasSN;
-                    precio = publicacionDirecta.precioPorUnidad;                    
-                    fechaIncioDateTime = publicacionDirecta.fechaCreacion;
-                    fechaVencimientoDateTime = publicacionDirecta.fechaVencimiento;
-                    nombreUsuario = publicacionDirecta.Usuario.userName;
-                    //Combo values
-                    estadoPublicacion = publicacionDirecta.EstadoPublicacion;
-                    rubroPub = publicacionDirecta.RubroLst.First();
-                    visbilidad = publicacionDirecta.Visibilidad;
-
-                    SubastaOpciones.Visible = false;
-                }
-
-                comboBox1.Text = tipoPublicacion;
-                CodigoPublicacionTxt.Text = Convert.ToString(codigo);
-                DescripcionTxt.Text = descripcion;
-                stockTxt.Text = Convert.ToString(stock);
-                PrecioTxt.Text = Convert.ToString(precio);
-                fechaVencimientoDateTimeTxt.Value = fechaVencimientoDateTime.Value;
-
-                //Coloco el Rubro persistido primero y luego los restantes valores disponibles para ser cambiados
-                RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
-                rubro.Add(rubroPub);
-                IList<Rubro> rubroLts = rubroDaoImpli.darRubroDistintosA(rubro);
-                foreach (Rubro rubros in rubroLts)
-                {
-                    rubro.Add(rubros);
-                }
-
-                RubroComboBox.DataSource = rubro;
-                RubroComboBox.DisplayMember = "descripcion";
-                RubroComboBox.ValueMember = "idRubro";
-
-                //Compra para Stock de Compra Directa
-                List<int> cantidadCompra = new List<int>();
-                for (int i = 1; i <= stock; i++) {
-                    cantidadCompra.Add(i);
-                }
-                CantidadComprada.DataSource = cantidadCompra;
-
-                //Datos para Subasta - valorActual
-                PrecioActualTxt.Text = Convert.ToString(valorActual);
-
-                desahabilitarCamposPorEstado(estadoPublicacion);
+                    if (publicacionSubasta.EstadoPublicacion.nombre.Equals("Pausada"))
+                        estadoPausa.Visible = true;
+                    rubroBox.Text = publicacionSubasta.RubroLst.First().descripcion;
+                    //preguntarButton.Enabled = publicacionSubasta.preguntasSN;
+                    //visbilidad = publicacionSubasta.Visibilidad;
+                    //CompraDatos.Visible = false;
             }
+                
+            if (this.Tag is PublicacionNormal)
+            {
+                    PublicacionNormal publicacionDirecta = (PublicacionNormal)this.Tag;
+                    tipoPubBox.Text = "Compra Inmediata";
+                    codigoPubBox.Text = Convert.ToString(publicacionDirecta.codigoPublicacion);
+                    DescripcionTxt.Text = publicacionDirecta.descripcion;
+                    stockTxt.Text = Convert.ToString(publicacionDirecta.stock);
+                    envioCheck.Checked = publicacionDirecta.envioSN;
+                    PrecioTxt.Text = '$' + Convert.ToString(publicacionDirecta.precioPorUnidad);
+                    precioLabel.Text = "Precio Unidad:";
+                    compraLabel.Text = "Unidades";
+                    cant_oferta.Maximum = publicacionDirecta.stock;
+                    ofertaValue.Visible = false;
+                    ofertaLabel.Visible = false;
+                    fechaVencimientoDateTimeTxt.Value = publicacionDirecta.fechaVencimiento;
+                    vendedorBox.Text = publicacionDirecta.Usuario.userName;
 
+                    if (publicacionDirecta.EstadoPublicacion.nombre.Equals("Pausada"))
+                        estadoPausa.Visible = true;
+                    rubroBox.Text = publicacionDirecta.RubroLst.First().descripcion;
+                    //preguntarButton.Enabled = publicacionSubasta.preguntasSN;
+                    //visbilidad = publicacionSubasta.Visibilidad;
+                    //CompraDatos.Visible = false;
+            }
         }
 
         private void desahabilitarCamposPorEstado(Estadopublicacion estadoPublicacion)
         {
-            if (!estadoPublicacion.nombre.Equals("Borrador"))
-            {
-                DescripcionTxt.ReadOnly = true;
-                stockTxt.ReadOnly = true;
-                PrecioTxt.ReadOnly = true;
-                fechaVencimientoDateTimeTxt.Enabled = false;
-
-                RubroComboBox.Enabled = false;
-            }
+           
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -137,7 +83,7 @@ namespace WindowsFormsApplication1.ComprarOfertar
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+        /*
             string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
             DateTime fehaSistema = DateUtils.convertirStringEnFecha(fechaSistema);
 
@@ -244,6 +190,12 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 compUsrDaoImpl.Add(compUsuario);
             
             }
+         */
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

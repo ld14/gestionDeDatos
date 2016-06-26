@@ -14,11 +14,11 @@ namespace WindowsFormsApplication1 {
         public virtual Usuario Usuario { get; set; }
         public virtual int codigoPublicacion { get; set; }
         public virtual string descripcion { get; set; }
-        public virtual DateTime? fechaCreacion { get; set; }
-        public virtual DateTime? fechaVencimiento { get; set; }
-        public virtual double? stock { get; set; }
-        public virtual bool? preguntasSN { get; set; }
-        public virtual bool? envioSN { get; set; }
+        public virtual DateTime fechaCreacion { get; set; }
+        public virtual DateTime fechaVencimiento { get; set; }
+        public virtual int stock { get; set; }
+        public virtual bool preguntasSN { get; set; }
+        public virtual bool envioSN { get; set; }
         public virtual ISet<Preguntas> Preguntas { get; set; }
 
         public virtual ICollection<Rubro> RubroLst  {
@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1 {
 
         public virtual void setPublicacion(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
                                    int codigoPublicacion, string descripcion, DateTime fechaCreacion,
-                                   DateTime fechaVencimiento, double stock, bool preguntasSN, bool envioSN)
+                                   DateTime fechaVencimiento, int stock, bool preguntasSN, bool envioSN)
         {
             this.EstadoPublicacion = estadoPublicacion;
             this.Visibilidad = visibilidad;

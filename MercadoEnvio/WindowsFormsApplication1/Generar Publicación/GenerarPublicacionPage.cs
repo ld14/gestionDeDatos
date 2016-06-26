@@ -30,10 +30,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void publicar_Click(object sender, EventArgs e)
         {
-            Double stock = 1;
+            int stock = 1;
             String descripcion = DescripcionPublicacionTxt.Text;
             if (TipoPubliSelect.Text != "Subasta")
-                stock = Convert.ToDouble(StockTxt.Text);
+                stock = Convert.ToInt32(StockTxt.Text);
             bool envioSN = EnvioCheckBox.Checked;
             bool preguntasSN = PreguntasCheckBox.Checked;
             Double precio = Convert.ToDouble(PrecioTxt.Text);
@@ -109,10 +109,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Double stock = 1;
+            int stock = 1;
             String descripcion = DescripcionPublicacionTxt.Text;
             if (TipoPubliSelect.Text != "Subasta")
-                stock = Convert.ToDouble(StockTxt.Text);
+                stock = Convert.ToInt32(StockTxt.Text);
             bool envioSN = EnvioCheckBox.Checked;
             bool preguntasSN = PreguntasCheckBox.Checked;
             Double precio = Convert.ToDouble(PrecioTxt.Text);
