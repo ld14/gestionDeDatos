@@ -18,7 +18,11 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
             IList<Visibilidad> visibilidades = visibilidadDao.obtenerVisibilidades();
             foreach (Visibilidad visibilidad in visibilidades)
             {
-                VisibilidadesCombobox.Items.Add(visibilidad.nombreVisibilidad);
+                if (visibilidad.activo != false)
+                {
+                    VisibilidadesCombobox.Items.Add(visibilidad.nombreVisibilidad);
+                }
+                
             }
         }
 

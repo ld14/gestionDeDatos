@@ -18,6 +18,9 @@
     <property name="porcentaje">
       <column name="porcentaje" sql-type="numeric(5,4)" not-null="true" />
     </property>
+    <property name="activo">
+      <column name="activo" sql-type="bit" not-null="true" />
+    </property>
     <!--
     <bag name="Publicacion">
       <key column="idVisibilidad" />

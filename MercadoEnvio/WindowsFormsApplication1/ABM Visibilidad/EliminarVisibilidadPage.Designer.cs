@@ -28,19 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Eliminar = new System.Windows.Forms.Button();
+            this.VisibilidadesCombobox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // Form1
+            // Eliminar
+            // 
+            this.Eliminar.Location = new System.Drawing.Point(386, 237);
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Size = new System.Drawing.Size(75, 23);
+            this.Eliminar.TabIndex = 0;
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.UseVisualStyleBackColor = true;
+            this.Eliminar.Click += new System.EventHandler(this.Eliminar_Click);
+            // 
+            // VisibilidadesCombobox
+            // 
+            this.VisibilidadesCombobox.FormattingEnabled = true;
+            this.VisibilidadesCombobox.Location = new System.Drawing.Point(458, 138);
+            this.VisibilidadesCombobox.Name = "VisibilidadesCombobox";
+            this.VisibilidadesCombobox.Size = new System.Drawing.Size(202, 21);
+            this.VisibilidadesCombobox.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(287, 141);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Nombre Visibilidad";
+            // 
+            // EliminarVisibilidadPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 622);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.VisibilidadesCombobox);
+            this.Controls.Add(this.Eliminar);
+            this.Name = "EliminarVisibilidadPage";
+            this.Text = "Eliminar Visibilidad";
+            this.Load += new System.EventHandler(this.EliminarVisibilidadPage_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button Eliminar;
+        private System.Windows.Forms.ComboBox VisibilidadesCombobox;
+        private System.Windows.Forms.Label label2;
     }
 }
