@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Estadisticamaximos" table="estadisticaMaximos" lazy="true" >
+    <id name="rowID" column="rowID" />
+    
+    <property name="idUsuario">
+      <column name="idUsuario" sql-type="int" not-null="true" />
+    </property>
+    <property name="detalle">
+      <column name="detalle" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="ano">
+      <column name="ano" sql-type="int" not-null="false" />
+    </property>
+    <property name="mes">
+      <column name="mes" sql-type="int" not-null="false" />
+    </property>
+    <property name="cantidadFacturado">
+      <column name="cantidadFacturado" sql-type="int" not-null="false" />
+    </property>
+    <property name="montosFacturados">
+      <column name="montosFacturados" sql-type="numeric" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

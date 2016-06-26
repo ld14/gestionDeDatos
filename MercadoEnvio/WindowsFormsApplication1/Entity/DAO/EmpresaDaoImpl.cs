@@ -51,9 +51,7 @@ namespace WindowsFormsApplication1
         public Empresa GetEmpresaByRazonSocial(string razonSocial)    {
             using (NHibernateManager manager = new NHibernateManager())
             {
-
                 ICriteria crit = manager.Session.CreateCriteria<Empresa>();
-                //crit.CreateAlias("Usuario", "usr");
                 crit.Add(Expression.Eq("razonSocial", razonSocial));
                 return crit.UniqueResult<Empresa>();
             }
@@ -79,6 +77,31 @@ namespace WindowsFormsApplication1
                     crit.Add(Expression.Eq("perfilActivo", true));
                     return crit.List<Empresa>(); 
                 }
+            }
+        }
+
+        public IList<Empresa> darEmpresasFiltradas(String razonSocial, String cuit, String email)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<Empresa>();
+
+                if (!razonSocial.Equals(""))
+                {
+                    crit.Add(Expression.Like("razonSocial", "%" + razonSocial + "%"));
+                }
+                if (!email.Equals(""))
+                {
+                    crit.CreateAlias("DatosBasicos", "datoBasico");
+                    crit.Add(Expression.Like("datoBasico.email", "%" + email + "%"));
+                }
+
+                if (!cuit.Equals(""))
+                {
+                    crit.Add(Expression.Eq("cuit", cuit));
+                }
+
+                return crit.List<Empresa>();
             }
         }
 

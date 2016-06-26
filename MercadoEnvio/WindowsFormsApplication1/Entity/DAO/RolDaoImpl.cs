@@ -25,10 +25,12 @@ namespace WindowsFormsApplication1
 
         public void Update(Rol rol)
         {
-            using (NHibernateManager manager = new NHibernateManager()) {
-                using (ITransaction transaction = manager.Session.BeginTransaction()) {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
                     Rol newEntityRef = manager.Session.Merge(rol);
-                    manager.Session.Update(newEntityRef);
+                    manager.Session.SaveOrUpdate(newEntityRef);
                     transaction.Commit();
                 }
             }
@@ -99,5 +101,21 @@ namespace WindowsFormsApplication1
             }
         }
 
+
+        public Rol getRolByName(string rolName)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                var roles = obtenerRoles();
+
+                for (int i = 0; i < roles.Count; i++){
+                    if (roles[i].nombre == rolName)
+                    {
+                        return roles[i];
+                    }
+                }
+                return null;
+            }
+        }
     }
 }

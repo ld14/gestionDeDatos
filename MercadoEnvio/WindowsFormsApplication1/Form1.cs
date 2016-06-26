@@ -36,6 +36,8 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            
             //Oculto todas las funcionalidades
             aBMMenu.Visible = false;
             PublicacionMenu.Visible = false;
@@ -66,7 +68,7 @@ namespace WindowsFormsApplication1
                 EmpresaDaoImpl emp = new EmpresaDaoImpl();
                 SessionAttribute.empresaUser = emp.GetEmpresaByIdUsuario(SessionAttribute.user.idUsuario);
             }
-
+            
             //Habilito funcionalidades segun Usuario
             RolDaoImpl rl = new RolDaoImpl();
             IList<Funciones> func = rl.obtenerFuncionesPorRol(rolUser.Current.idRol);
@@ -100,7 +102,7 @@ namespace WindowsFormsApplication1
                         break;
                 }
             }
-
+            
 
             /*
              * FacturaDaoImpl factDaoImp = new FacturaDaoImpl();
@@ -431,7 +433,7 @@ aBMMenu
 
         private void modificarToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ModificarUsuarioPage modificarUsuarionPage = new ModificarUsuarioPage();
+            ModificarUsuarioPorAdminPage modificarUsuarionPage = new ModificarUsuarioPorAdminPage();
             modificarUsuarionPage.MdiParent = this;
             modificarUsuarionPage.Show();
         }

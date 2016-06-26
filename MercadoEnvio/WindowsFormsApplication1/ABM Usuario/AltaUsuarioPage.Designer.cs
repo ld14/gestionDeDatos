@@ -113,7 +113,7 @@
             this.EmpresaGroup.Controls.Add(this.label4);
             this.EmpresaGroup.Controls.Add(this.label5);
             this.EmpresaGroup.Controls.Add(this.label10);
-            this.EmpresaGroup.Location = new System.Drawing.Point(22, 159);
+            this.EmpresaGroup.Location = new System.Drawing.Point(17, 159);
             this.EmpresaGroup.Name = "EmpresaGroup";
             this.EmpresaGroup.Size = new System.Drawing.Size(484, 277);
             this.EmpresaGroup.TabIndex = 10;

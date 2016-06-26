@@ -11,14 +11,15 @@ using WindowsFormsApplication1.ABM_Usuario;
 
 namespace WindowsFormsApplication1.ABM_Usuario
 {
-    public partial class EliminarUsuarioPage : Form
+    public partial class ModificarUsuarioPorAdminPage : Form
     {
+       
         public static int totalRecords = 0;
         private const int pageSize = 10;
         List<GrillaUsuario> customerList = new List<GrillaUsuario>();
         Boolean esTipoRolEmpresa = false; //Booleano que indica si el rol seleccionado es una empresa o no (de no serlo es un cliente)
 
-        public EliminarUsuarioPage()
+        public ModificarUsuarioPorAdminPage()
         {
             InitializeComponent();
         }
@@ -27,8 +28,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
         {
 
         }
-
-        private void tipoDeUsuarioComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void tipoDeUsuarioComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             
                 if (tipoDeUsuarioComboBox.Text.Equals("Empresa"))
@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             set { totalRecords = value; }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             customerList = new List<GrillaUsuario>();
             Usuario usuario = new Usuario();
@@ -198,6 +198,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             dataGridView1.Columns[17].Visible = esTipoRolEmpresa;
 
             dataGridView1.Columns[18].Visible = false;
+
         }
 
         class PageOffsetList : System.ComponentModel.IListSource
@@ -216,28 +217,36 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Int32 idUsuario = -1;
+            //Int32 idUsuario = -1;
             UsuarioDaoImpl usuarioDaoImpl = new UsuarioDaoImpl();
-            Usuario usuario = new Usuario();
             if (dataGridView1.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Debe seleccionar al menos una fila para poder realizar la baja");
             }
             else
             {
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                Int32 idUsuario = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[18].Value.ToString());
+                ModificarUsuarioParaAdminPage modificarUsuarioParaAdminPage = new ModificarUsuarioParaAdminPage();
+                if (esTipoRolEmpresa == true)
                 {
-                    usuarioDaoImpl = new UsuarioDaoImpl();
-                    idUsuario = Convert.ToInt32(row.Cells[18].Value.ToString());
-                    usuario = usuarioDaoImpl.GetUsuarioById(idUsuario);
-                    usuario.activoUsuario = false;
-
-                    usuarioDaoImpl.Update(usuario);
+                    EmpresaDaoImpl empresaDaoImpl = new EmpresaDaoImpl();
+                    Empresa empresa = empresaDaoImpl.GetEmpresaByIdUsuario(idUsuario);
+                    modificarUsuarioParaAdminPage.setearEmpresa(empresa);
                 }
-                MessageBox.Show("Eliminación completada con exito");
-                MessageBox.Show("Actualizando resultado por favor espere", "Nueva búsqueda", MessageBoxButtons.OK);
-                button1_Click_1(sender, e);
+                else
+                {
+                    ClienteDaoImpl clienteDaoImpl = new ClienteDaoImpl();
+                    Cliente cliente = clienteDaoImpl.GetUsuarioById(idUsuario);
+                    modificarUsuarioParaAdminPage.setearCliente(cliente);
+                }
+
+                modificarUsuarioParaAdminPage.Text = "init";
+                modificarUsuarioParaAdminPage.MdiParent = this.MdiParent;
+                modificarUsuarioParaAdminPage.Show();
             }
         }
-    }
+    }     
 }
+        
+    
+

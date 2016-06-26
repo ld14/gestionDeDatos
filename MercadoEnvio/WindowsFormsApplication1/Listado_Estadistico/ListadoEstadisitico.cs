@@ -120,6 +120,24 @@ namespace WindowsFormsApplication1.Listado_Estadistico
                 bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChangedCompra);
                 bindingSource1.DataSource = new PageOffsetList();
             }
+            if (reporteSelect.Text.Equals("Vendedores con mayor cantidad de facturas"))
+            {
+                customerList = new List<Object>(estaVendImpl.darMaximaCantidadFacturas(anio, mesInicial, mesFinal));
+                TotalRecords = this.customerList.Count;
+                //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "idPublicacion" });
+                bindingNavigator1.BindingSource = bindingSource1;
+                bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChangedMaxCantidadVenta);
+                bindingSource1.DataSource = new PageOffsetList();
+            }
+            if (reporteSelect.Text.Equals("Vendedores con mayor monto facturado"))
+            {
+                customerList = new List<Object>(estaVendImpl.darMonToMaximoFacturas(anio, mesInicial, mesFinal));
+                TotalRecords = this.customerList.Count;
+                //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "idPublicacion" });
+                bindingNavigator1.BindingSource = bindingSource1;
+                bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChangedMontoMaximo);
+                bindingSource1.DataSource = new PageOffsetList();
+            }
             /*Vendedores con mayor cantidad de productos no vendidos
             Vendedores con mayor cantidad de facturas
             Vendedores con mayor monto facturado
@@ -127,7 +145,7 @@ namespace WindowsFormsApplication1.Listado_Estadistico
 
 
 
-            MessageBox.Show("casi estasmos");
+            
 
         }
 
@@ -184,6 +202,123 @@ namespace WindowsFormsApplication1.Listado_Estadistico
 
         }
 
+        private void bindingSource1_CurrentChangedMaxCantidadVenta(object sender, EventArgs e)
+        {
+            // The desired page has changed, so fetch the page of records using the "Current" offset 
+            var mesesDicionario = new Dictionary<int, string>();
+            mesesDicionario.Add(1, "enero");
+            mesesDicionario.Add(2, "febrero");
+            mesesDicionario.Add(3, "marzo");
+            mesesDicionario.Add(4, "abril");
+            mesesDicionario.Add(5, "mayo");
+            mesesDicionario.Add(6, "junio");
+            mesesDicionario.Add(7, "julio");
+            mesesDicionario.Add(8, "agosto");
+            mesesDicionario.Add(9, "septiembre");
+            mesesDicionario.Add(10, "octubre");
+            mesesDicionario.Add(11, "noviembre");
+            mesesDicionario.Add(12, "diciembre");
+
+
+            int offset = (int)bindingSource1.Current;
+            var records = new List<Object>();
+
+            for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
+            {
+                Estadisticamaximos nuevo = this.customerList[i] as Estadisticamaximos;
+                // nuevo.NombreMes = mesesDicionario[nuevo.mes];
+                records.Add(nuevo);
+            }
+
+
+            dataGridView1.DataSource = records;
+
+
+
+            dataGridView1.Columns[2].HeaderText = "Usuario";
+            dataGridView1.Columns[2].DisplayIndex = 1;
+            dataGridView1.Columns[2].Width = 200;
+
+            dataGridView1.Columns[3].HeaderText = "Año";
+            dataGridView1.Columns[3].DisplayIndex = 2;
+            dataGridView1.Columns[3].Width = 40;
+
+            dataGridView1.Columns[4].HeaderText = "Mes";
+            dataGridView1.Columns[4].DisplayIndex = 3;
+            dataGridView1.Columns[4].Width = 40;
+
+            dataGridView1.Columns[5].HeaderText = "Cantidad Facturado";
+            dataGridView1.Columns[5].DisplayIndex = 4;
+            dataGridView1.Columns[5].Width = 100;
+
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
+
+
+            //myGridView.Columns["mySecondCol"].DisplayIndex = 1; ARRREGALNDO ELBAROD
+
+
+        }
+
+        private void bindingSource1_CurrentChangedMontoMaximo(object sender, EventArgs e)
+        {
+            // The desired page has changed, so fetch the page of records using the "Current" offset 
+            var mesesDicionario = new Dictionary<int, string>();
+            mesesDicionario.Add(1, "enero");
+            mesesDicionario.Add(2, "febrero");
+            mesesDicionario.Add(3, "marzo");
+            mesesDicionario.Add(4, "abril");
+            mesesDicionario.Add(5, "mayo");
+            mesesDicionario.Add(6, "junio");
+            mesesDicionario.Add(7, "julio");
+            mesesDicionario.Add(8, "agosto");
+            mesesDicionario.Add(9, "septiembre");
+            mesesDicionario.Add(10, "octubre");
+            mesesDicionario.Add(11, "noviembre");
+            mesesDicionario.Add(12, "diciembre");
+
+
+            int offset = (int)bindingSource1.Current;
+            var records = new List<Object>();
+
+            for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
+            {
+                Estadisticamaximos nuevo = this.customerList[i] as Estadisticamaximos;
+                // nuevo.NombreMes = mesesDicionario[nuevo.mes];
+                records.Add(nuevo);
+            }
+
+
+            dataGridView1.DataSource = records;
+
+
+
+            dataGridView1.Columns[2].HeaderText = "Usuario";
+            dataGridView1.Columns[2].DisplayIndex = 1;
+            dataGridView1.Columns[2].Width = 200;
+
+            dataGridView1.Columns[3].HeaderText = "Año";
+            dataGridView1.Columns[3].DisplayIndex = 2;
+            dataGridView1.Columns[3].Width = 40;
+
+            dataGridView1.Columns[4].HeaderText = "Mes";
+            dataGridView1.Columns[4].DisplayIndex = 3;
+            dataGridView1.Columns[4].Width = 40;
+
+            dataGridView1.Columns[6].HeaderText = "Monto maximo Facturado";
+            dataGridView1.Columns[6].DisplayIndex = 4;
+            dataGridView1.Columns[6].Width = 100;
+
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+
+
+            //myGridView.Columns["mySecondCol"].DisplayIndex = 1; ARRREGALNDO ELBAROD
+
+
+        }
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
             // The desired page has changed, so fetch the page of records using the "Current" offset 
