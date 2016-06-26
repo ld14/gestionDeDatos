@@ -26,6 +26,7 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
             visibilidad.nombreVisibilidad=nombre;
             visibilidad.costo=costo;
             visibilidad.porcentaje=porcentaje;
+            visibilidad.activo = true;
             VisibilidadDaoImpl visibilidadDaoImp = new VisibilidadDaoImpl();
             visibilidadDaoImp.Add(visibilidad);
  

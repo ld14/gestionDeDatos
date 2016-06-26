@@ -12,5 +12,6 @@ namespace WindowsFormsApplication1 {
         public virtual double porcentaje { get; set; }
         public virtual double codigoVisibilidad { get; set; }
         public virtual string nombreVisibilidad { get; set; }
+        public virtual bool activo { get; set; }
     }
 }
