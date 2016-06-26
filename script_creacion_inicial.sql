@@ -462,7 +462,7 @@ PRINT 'TABLA: workflowEstados'
 
 --
 
-INSERT INTO [LOPEZ_Y_CIA].[Visibilidad] (nombreVisibilidad, costo, porcentaje)
+INSERT INTO [LOPEZ_Y_CIA].[Visibilidad] (nombreVisibilidad, costo, porcentaje, activo)
 SELECT
 	Publicacion_Visibilidad_Desc,
 	Publicacion_Visibilidad_Precio,
