@@ -58,7 +58,7 @@
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.bindingNavigator1);
-            this.groupBox2.Location = new System.Drawing.Point(21, 25);
+            this.groupBox2.Location = new System.Drawing.Point(30, 48);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(962, 314);
             this.groupBox2.TabIndex = 6;
@@ -172,7 +172,7 @@
             // CantidadDeEstrellasText
             // 
             this.CantidadDeEstrellasText.AutoSize = true;
-            this.CantidadDeEstrellasText.Location = new System.Drawing.Point(28, 366);
+            this.CantidadDeEstrellasText.Location = new System.Drawing.Point(115, 404);
             this.CantidadDeEstrellasText.Name = "CantidadDeEstrellasText";
             this.CantidadDeEstrellasText.Size = new System.Drawing.Size(108, 13);
             this.CantidadDeEstrellasText.TabIndex = 7;
@@ -181,7 +181,7 @@
             // ComentarioInput
             // 
             this.ComentarioInput.AutoSize = true;
-            this.ComentarioInput.Location = new System.Drawing.Point(463, 366);
+            this.ComentarioInput.Location = new System.Drawing.Point(549, 404);
             this.ComentarioInput.Name = "ComentarioInput";
             this.ComentarioInput.Size = new System.Drawing.Size(60, 13);
             this.ComentarioInput.TabIndex = 8;
@@ -189,34 +189,36 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.DecimalPlaces = 1;
             this.numericUpDown1.Increment = new decimal(new int[] {
             5,
             0,
             0,
             65536});
-            this.numericUpDown1.Location = new System.Drawing.Point(143, 366);
+            this.numericUpDown1.Location = new System.Drawing.Point(229, 401);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(58, 20);
             this.numericUpDown1.TabIndex = 9;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(530, 366);
+            this.textBox1.Location = new System.Drawing.Point(616, 400);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(312, 20);
+            this.textBox1.Size = new System.Drawing.Size(312, 80);
             this.textBox1.TabIndex = 10;
             // 
             // Calificar
             // 
-            this.Calificar.Location = new System.Drawing.Point(334, 423);
+            this.Calificar.Location = new System.Drawing.Point(424, 557);
             this.Calificar.Name = "Calificar";
-            this.Calificar.Size = new System.Drawing.Size(75, 23);
+            this.Calificar.Size = new System.Drawing.Size(182, 23);
             this.Calificar.TabIndex = 11;
             this.Calificar.Text = "Calificar";
             this.Calificar.UseVisualStyleBackColor = true;
@@ -225,13 +227,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 682);
+            this.ClientSize = new System.Drawing.Size(1024, 720);
             this.Controls.Add(this.Calificar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.ComentarioInput);
             this.Controls.Add(this.CantidadDeEstrellasText);
             this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CalificacionesPage";
             this.ShowIcon = false;
             this.Text = "Form1";
