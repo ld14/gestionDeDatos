@@ -30,10 +30,10 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.VisibilidadesCombobox = new System.Windows.Forms.ComboBox();
             this.VisibilidadPorcentajeTxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.VisibilidadCostoTxt = new System.Windows.Forms.TextBox();
-            this.VisibilidadNombreTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -55,10 +55,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.VisibilidadesCombobox);
             this.groupBox3.Controls.Add(this.VisibilidadPorcentajeTxt);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.VisibilidadCostoTxt);
-            this.groupBox3.Controls.Add(this.VisibilidadNombreTxt);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(9, 21);
@@ -67,6 +67,15 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Nueva Visibilidad";
+            // 
+            // VisibilidadesCombobox
+            // 
+            this.VisibilidadesCombobox.FormattingEnabled = true;
+            this.VisibilidadesCombobox.Location = new System.Drawing.Point(450, 169);
+            this.VisibilidadesCombobox.Name = "VisibilidadesCombobox";
+            this.VisibilidadesCombobox.Size = new System.Drawing.Size(240, 21);
+            this.VisibilidadesCombobox.TabIndex = 22;
+            this.VisibilidadesCombobox.SelectedIndexChanged += new System.EventHandler(this.VisibilidadesCombobox_SelectedIndexChanged);
             // 
             // VisibilidadPorcentajeTxt
             // 
@@ -92,14 +101,6 @@
             this.VisibilidadCostoTxt.Name = "VisibilidadCostoTxt";
             this.VisibilidadCostoTxt.Size = new System.Drawing.Size(240, 20);
             this.VisibilidadCostoTxt.TabIndex = 18;
-            // 
-            // VisibilidadNombreTxt
-            // 
-            this.VisibilidadNombreTxt.Location = new System.Drawing.Point(450, 171);
-            this.VisibilidadNombreTxt.MaxLength = 50;
-            this.VisibilidadNombreTxt.Name = "VisibilidadNombreTxt";
-            this.VisibilidadNombreTxt.Size = new System.Drawing.Size(240, 20);
-            this.VisibilidadNombreTxt.TabIndex = 16;
             // 
             // label4
             // 
@@ -137,6 +138,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Modificar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ModificarVisibilidadPage
             // 
@@ -162,10 +164,10 @@
         private System.Windows.Forms.TextBox VisibilidadPorcentajeTxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox VisibilidadCostoTxt;
-        private System.Windows.Forms.TextBox VisibilidadNombreTxt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox VisibilidadesCombobox;
     }
 }
