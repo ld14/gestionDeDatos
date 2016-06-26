@@ -65,7 +65,7 @@ namespace WindowsFormsApplication1
                 //desRubro descripcion
                 ICriteria crit = manager.Session.CreateCriteria<BusquedaDePublicacion>();
                 if (!descripcionTxt.Equals("")) {
-                    crit.Add(Expression.Eq("descripcion", descripcionTxt));  
+                    crit.Add(Expression.InsensitiveLike("descripcion", descripcionTxt, MatchMode.Anywhere ));  
                 }
                 if (selectedRubrosLst.Count > 0) {
                     crit.Add(Expression.In("desRubro", selectedRubrosLst));

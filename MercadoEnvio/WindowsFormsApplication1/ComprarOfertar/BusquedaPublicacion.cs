@@ -45,7 +45,8 @@ namespace WindowsFormsApplication1.ComprarOfertar
             customerList = new List<GrillaPublicacion>();
             List<string> selectedRubrosLst = new List<string>();
 
-            foreach(Rubro itemChecked in RubroCheckedList.CheckedItems){
+            foreach(Rubro itemChecked in RubroCheckedList.CheckedItems)
+            {
                 selectedRubrosLst.Add(itemChecked.descripcion);
             }
 
@@ -84,27 +85,35 @@ namespace WindowsFormsApplication1.ComprarOfertar
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
             // The desired page has changed, so fetch the page of records using the "Current" offset 
-            int offset = (int)bindingSource1.Current;
-            var records = new List<GrillaPublicacion>();
-            for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
-                records.Add(this.customerList[i]);
-            dataGridView1.DataSource = records;
-           
-            dataGridView1.Columns[0].Visible = false;
-            
-            dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
-            dataGridView1.Columns[9].Visible = false;
 
-            dataGridView1.Columns[1].HeaderText = "Codigo";
-            dataGridView1.Columns[2].HeaderText = "Tipo De Venta";
-            dataGridView1.Columns[3].HeaderText = "Descripcion Producto";
-            dataGridView1.Columns[3].Width = 200;
-            dataGridView1.Columns[4].HeaderText = "Rubro";
-            dataGridView1.Columns[4].Width = 200;
-            dataGridView1.Columns[5].HeaderText = "Precio";
-            dataGridView1.Columns[7].HeaderText = "Fin de Venta"; 
+            dataGridView1.DataSource = null;
+            if (bindingSource1.Count > 0)
+            {
+                int offset = (int)bindingSource1.Current;
+                var records = new List<GrillaPublicacion>();
+                for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
+                    records.Add(this.customerList[i]);
 
+                dataGridView1.DataSource = records;
+
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
+                dataGridView1.Columns[8].Visible = false;
+                dataGridView1.Columns[9].Visible = false;
+
+                dataGridView1.Columns[1].HeaderText = "Codigo";
+                dataGridView1.Columns[1].Width = 60;
+                dataGridView1.Columns[2].HeaderText = "Tipo De Venta";
+                dataGridView1.Columns[2].Width = 100;
+                dataGridView1.Columns[3].HeaderText = "Descripcion Producto";
+                dataGridView1.Columns[3].Width = 290;
+                dataGridView1.Columns[4].HeaderText = "Rubro";
+                dataGridView1.Columns[4].Width = 200;
+                dataGridView1.Columns[5].HeaderText = "Precio";
+                dataGridView1.Columns[5].Width = 70;
+                dataGridView1.Columns[7].HeaderText = "Finaliza el";
+                dataGridView1.Columns[7].Width = 80;
+            }
 
         }
 
