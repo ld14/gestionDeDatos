@@ -204,6 +204,7 @@ CREATE TABLE [LOPEZ_Y_CIA].[Visibilidad](
 	[nombreVisibilidad] [varchar](50) NULL,
 	[costo] [numeric](18, 2) NOT NULL,
 	[porcentaje] [numeric](5, 4) NOT NULL,
+	[activo] [bit] NULL,
 	CONSTRAINT [PK_Visibilidad] PRIMARY KEY CLUSTERED([idVisibilidad] ASC),
 	CONSTRAINT [Rango_Porcentaje] CHECK ([porcentaje] <= 1 AND [porcentaje] >= 0)
 ) ON [PRIMARY]
@@ -465,7 +466,8 @@ INSERT INTO [LOPEZ_Y_CIA].[Visibilidad] (nombreVisibilidad, costo, porcentaje)
 SELECT
 	Publicacion_Visibilidad_Desc,
 	Publicacion_Visibilidad_Precio,
-	Publicacion_Visibilidad_Porcentaje
+	Publicacion_Visibilidad_Porcentaje,
+	1 AS activo
 FROM [gd_esquema].[Maestra]
 GROUP BY
 	Publicacion_Visibilidad_Cod,
