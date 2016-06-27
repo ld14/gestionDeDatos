@@ -849,7 +849,7 @@ CREATE VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion] AS
 		JOIN [LOPEZ_Y_CIA].[Visibilidad] AS visb ON pub.idVisibilidad = visb.idVisibilidad 
 		JOIN [LOPEZ_Y_CIA].[RubroPublicacion] AS rubropublic ON rubropublic.idPublicacion = pub.idPublicacion
 		JOIN [LOPEZ_Y_CIA].[Rubro] AS rubro ON rubropublic.idRubro = rubro.idRubro
-		WHERE pub.idEstadoPublicacion = 2
+		WHERE (pub.idEstadoPublicacion = 2 or pub.idEstadoPublicacion = 3)
 		UNION ALL
 		SELECT
 			pub.idPublicacion,
@@ -867,7 +867,7 @@ CREATE VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion] AS
 		JOIN [LOPEZ_Y_CIA].[Visibilidad] AS visb ON pub.idVisibilidad = visb.idVisibilidad
 		JOIN [LOPEZ_Y_CIA].[RubroPublicacion] AS rubropublic ON rubropublic.idPublicacion = pub.idPublicacion
 		JOIN [LOPEZ_Y_CIA].[Rubro] AS rubro ON rubropublic.idRubro = rubro.idRubro
-		WHERE pub.idEstadoPublicacion = 2
+		WHERE (pub.idEstadoPublicacion = 2 or pub.idEstadoPublicacion = 3)
 	) x
 
 GO
@@ -1031,7 +1031,7 @@ CREATE VIEW [LOPEZ_Y_CIA].[estadisticaMaximos] AS
 				THEN (SELECT clie.apellido + ' ' + clie.nombre FROM [LOPEZ_Y_CIA].[Cliente] clie WHERE clie.idUsuario = pub.idUsuario)
 			WHEN (SELECT COUNT(*) FROM [LOPEZ_Y_CIA].[Empresa] clie WHERE clie.idUsuario = pub.idUsuario) = 1
 				THEN (SELECT emp.razonSocial FROM [LOPEZ_Y_CIA].[Empresa] emp WHERE emp.idUsuario = pub.idUsuario)
-			end
+			END
 		) AS detalle,
 		YEAR(fa.fecha) AS ano,
 		MONTH(fa.fecha) AS mes,
