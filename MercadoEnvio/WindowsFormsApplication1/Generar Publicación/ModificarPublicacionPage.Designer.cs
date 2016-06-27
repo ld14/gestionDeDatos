@@ -380,6 +380,7 @@
             this.botonPublicarP.TabIndex = 4;
             this.botonPublicarP.Text = "Publicar";
             this.botonPublicarP.UseVisualStyleBackColor = true;
+            this.botonPublicarP.Click += new System.EventHandler(this.publicarP_Click);
             // 
             // botonFinalizar
             // 
@@ -389,6 +390,7 @@
             this.botonFinalizar.TabIndex = 3;
             this.botonFinalizar.Text = "Finalizar";
             this.botonFinalizar.UseVisualStyleBackColor = true;
+            this.botonFinalizar.Click += new System.EventHandler(this.finalizar_Click);
             // 
             // botonPausar
             // 
@@ -398,6 +400,7 @@
             this.botonPausar.TabIndex = 2;
             this.botonPausar.Text = "Pausar";
             this.botonPausar.UseVisualStyleBackColor = true;
+            this.botonPausar.Click += new System.EventHandler(this.pausar_Click);
             // 
             // botonPublicarN
             // 

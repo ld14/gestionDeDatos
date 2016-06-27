@@ -50,11 +50,9 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 selectedRubrosLst.Add(itemChecked.descripcion);
             }
 
-            //TODO: CAMBIAR ESTO POR EL USUARIO LOGUEADO.
-            ClienteDaoImpl usrImpl = new ClienteDaoImpl();
-            Cliente usr = usrImpl.GetUsuarioById(1);
-
-
+            
+            Cliente usr = SessionAttribute.clienteUser;
+            
             BusquedaDePublicacionDaoImpl busquedaDePublicacionDaoImpl = new BusquedaDePublicacionDaoImpl();
             IList<BusquedaDePublicacion> busquedaDePublicacionLts = busquedaDePublicacionDaoImpl.darListaFiltradaPorRubroDescripcion(selectedRubrosLst, descripcionTxt.Text, usr.idUsuario);
 

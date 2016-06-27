@@ -449,7 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Maps\Visibilidad.hbm.xml" />
     <EmbeddedResource Include="Maps\WorkflowEstados.hbm.xml" />
-    <EmbeddedResource Include="Maps\BusquedaDePublicacion.hbm.xml" />
+    <EmbeddedResource Include="Maps\BusquedaDePublicacion.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Maps\OfertaSubasta.hbm.xml" />
     <EmbeddedResource Include="Maps\SubastaCompraDelSistema.hbm.xml" />
     <EmbeddedResource Include="Maps\FacturasEmitidas.hbm.xml" />

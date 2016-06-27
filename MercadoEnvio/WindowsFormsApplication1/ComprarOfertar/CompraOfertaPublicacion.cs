@@ -26,19 +26,25 @@ namespace WindowsFormsApplication1.ComprarOfertar
                     codigoPubBox.Text = Convert.ToString(publicacionSubasta.codigoPublicacion);
                     DescripcionTxt.Text = publicacionSubasta.descripcion;
                     stockTxt.Text = Convert.ToString(publicacionSubasta.stock);
-                    envioCheck.Checked = publicacionSubasta.envioSN;
+                    envioCheck.Enabled = publicacionSubasta.envioSN;
                     PrecioTxt.Text = '$' + Convert.ToString(publicacionSubasta.valorInicialVenta);
                     precioLabel.Text = "Precio Inicial:";
                     ofertaValue.Visible = true;
                     ofertaLabel.Visible = true;
-                    ofertaValue.Value = Convert.ToDecimal(publicacionSubasta.valorActual);
+                    cant_oferta.Enabled = false;
+                    ofertaValue.Value = Convert.ToDecimal(publicacionSubasta.valorActual) + 1;
                     ofertaValue.Minimum = ofertaValue.Value;
-                    //fechaIncioDateTime = publicacionSubasta.fechaCreacion;
                     fechaVencimientoDateTimeTxt.Value = publicacionSubasta.fechaVencimiento;
                     vendedorBox.Text = publicacionSubasta.Usuario.userName;
 
                     if (publicacionSubasta.EstadoPublicacion.nombre.Equals("Pausada"))
+                    {
                         estadoPausa.Visible = true;
+                        cant_oferta.Enabled = false;
+                        ofertaValue.Enabled = false;
+                        envioCheck.Enabled = false;
+                        comprarButton.Enabled = false;
+                    }
                     rubroBox.Text = publicacionSubasta.RubroLst.First().descripcion;
                     //preguntarButton.Enabled = publicacionSubasta.preguntasSN;
                     //visbilidad = publicacionSubasta.Visibilidad;
@@ -52,7 +58,7 @@ namespace WindowsFormsApplication1.ComprarOfertar
                     codigoPubBox.Text = Convert.ToString(publicacionDirecta.codigoPublicacion);
                     DescripcionTxt.Text = publicacionDirecta.descripcion;
                     stockTxt.Text = Convert.ToString(publicacionDirecta.stock);
-                    envioCheck.Checked = publicacionDirecta.envioSN;
+                    envioCheck.Enabled = publicacionDirecta.envioSN;
                     PrecioTxt.Text = '$' + Convert.ToString(publicacionDirecta.precioPorUnidad);
                     precioLabel.Text = "Precio Unidad:";
                     compraLabel.Text = "Unidades";
@@ -63,7 +69,12 @@ namespace WindowsFormsApplication1.ComprarOfertar
                     vendedorBox.Text = publicacionDirecta.Usuario.userName;
 
                     if (publicacionDirecta.EstadoPublicacion.nombre.Equals("Pausada"))
+                    {
                         estadoPausa.Visible = true;
+                        cant_oferta.Enabled = false;
+                        envioCheck.Enabled = false;
+                        comprarButton.Enabled = false;
+                    }
                     rubroBox.Text = publicacionDirecta.RubroLst.First().descripcion;
                     //preguntarButton.Enabled = publicacionSubasta.preguntasSN;
                     //visbilidad = publicacionSubasta.Visibilidad;

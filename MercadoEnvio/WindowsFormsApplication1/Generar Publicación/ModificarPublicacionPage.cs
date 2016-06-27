@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Entity.Utils;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsApplication1.Generar_Publicación
 {
@@ -314,6 +315,171 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.Close();
         }
 
+        private void pausar_Click(object sender, EventArgs e)
+        {
+            int stock = 1;
+            String descripcion = DescripcionTxt.Text;
+            if (comboBox1.Text != "Subasta")
+                stock = Convert.ToInt32(stockTxt.Text);
+            bool envioSN = EnvioCheckBox.Checked;
+            bool preguntasSN = PreguntasCheckBox.Checked;
+            Double precio = Convert.ToDouble(PrecioTxt.Text);
+            DateTime fechaIncioDateTime = FechaIncioDateTimeTxt.Value;
+            DateTime fechaVencimientoDateTime = FechaVencimientoDateTimeTxt.Value;
+            int codigo = Convert.ToInt32(CodigoPublicacionTxt.Text);
+
+            EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(3);
+            Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
+            Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
+            Usuario usr = SessionAttribute.user;
+
+            if (comboBox1.Text.Equals("Subasta"))
+            {
+                string actual = Regex.Match(labelInfoB.Text, @"(\d)+(,(\d)+)?").Value;
+                Double oferta;
+
+                if (actual.Equals(""))
+                    oferta = precio;
+                else
+                    oferta = Convert.ToDouble(actual); 
+
+                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+                PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
+                nuevaPublicacion.updatePublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock, preguntasSN, envioSN,
+                        precio, oferta, selectedRubro, codigo);
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+            }
+
+            if (comboBox1.Text.Equals("Compra Inmediata"))
+            {
+                PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
+                PublicacionNormal nuevaPublicacion = new PublicacionNormal();
+                nuevaPublicacion.updatePublicacionNormal(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock,
+                        preguntasSN, envioSN, precio, selectedRubro, codigo);
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+            }
+
+            MessageBox.Show("Se ha pausado su publicación.\nSi desea seguir vendiendo deberá activar nuevamente la publicación.");
+            this.Close();
+        }
+
+        private void finalizar_Click(object sender, EventArgs e)
+        {
+            int stock = 1;
+            String descripcion = DescripcionTxt.Text;
+            if (comboBox1.Text != "Subasta")
+                stock = Convert.ToInt32(stockTxt.Text);
+            bool envioSN = EnvioCheckBox.Checked;
+            bool preguntasSN = PreguntasCheckBox.Checked;
+            Double precio = Convert.ToDouble(PrecioTxt.Text);
+            DateTime fechaIncioDateTime = FechaIncioDateTimeTxt.Value;
+            DateTime fechaVencimientoDateTime = FechaVencimientoDateTimeTxt.Value;
+            int codigo = Convert.ToInt32(CodigoPublicacionTxt.Text);
+
+            EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(4);
+            Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
+            Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
+            Usuario usr = SessionAttribute.user;
+
+            if (comboBox1.Text.Equals("Subasta"))
+            {
+                string actual = Regex.Match(labelInfoB.Text, @"(\d)+(,(\d)+)?").Value;
+                Double oferta;
+
+                if (actual.Equals(""))
+                    oferta = precio;
+                else
+                    oferta = Convert.ToDouble(actual); 
+
+                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+                PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
+                nuevaPublicacion.updatePublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock, preguntasSN, envioSN,
+                        precio, oferta, selectedRubro, codigo);
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+
+                /*
+                ItemFactura nuevoItemFactura = new ItemFactura();
+                nuevoItemFactura.cantidad = 1;
+                nuevoItemFactura.monto = nuevaPublicacion.Visibilidad.porcentaje * oferta; //si hubo oferta
+                 
+                 
+                FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                //get idPublicacion
+                nuevoItemFactura.Factura = getFacturaByPublicacion(idPublicacion);
+                
+                //add to factura(ItemFactura)
+                */
+            }
+
+            if (comboBox1.Text.Equals("Compra Inmediata"))
+            {
+                PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
+                PublicacionNormal nuevaPublicacion = new PublicacionNormal();
+                nuevaPublicacion.updatePublicacionNormal(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock,
+                        preguntasSN, envioSN, precio, selectedRubro, codigo);
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+            }
+
+            MessageBox.Show("Su publicación ha finalizado.");
+            this.Close();
+        }
+
+        private void publicarP_Click(object sender, EventArgs e)
+        {
+            int stock = 1;
+            String descripcion = DescripcionTxt.Text;
+            if (comboBox1.Text != "Subasta")
+                stock = Convert.ToInt32(stockTxt.Text);
+            bool envioSN = EnvioCheckBox.Checked;
+            bool preguntasSN = PreguntasCheckBox.Checked;
+            Double precio = Convert.ToDouble(PrecioTxt.Text);
+            DateTime fechaIncioDateTime = FechaIncioDateTimeTxt.Value;
+            DateTime fechaVencimientoDateTime = FechaVencimientoDateTimeTxt.Value;
+            int codigo = Convert.ToInt32(CodigoPublicacionTxt.Text);
+
+            EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(2);
+            Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
+            Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
+            Usuario usr = SessionAttribute.user;
+
+            if (comboBox1.Text.Equals("Subasta"))
+            {
+                string actual = Regex.Match(labelInfoB.Text, @"(\d)+(,(\d)+)?").Value;
+                Double oferta;
+
+                if (actual.Equals(""))
+                    oferta = precio;
+                else
+                    oferta = Convert.ToDouble(actual);
+
+                PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+                PublicacionSubasta nuevaPublicacion = new PublicacionSubasta();
+                nuevaPublicacion.updatePublicacionSubasta(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock, preguntasSN, envioSN,
+                        precio, oferta, selectedRubro, codigo);
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+            }
+
+            if (comboBox1.Text.Equals("Compra Inmediata"))
+            {
+                PublicacionNormalDaoImpl publicacionSubastaDaoImpl = new PublicacionNormalDaoImpl();
+                PublicacionNormal nuevaPublicacion = new PublicacionNormal();
+                nuevaPublicacion.updatePublicacionNormal(selectedEstado, selectedVisibilidad, usr,
+                        descripcion, fechaIncioDateTime, fechaVencimientoDateTime, stock,
+                        preguntasSN, envioSN, precio, selectedRubro, codigo);
+                publicacionSubastaDaoImpl.Update(nuevaPublicacion);
+            }
+
+            MessageBox.Show("Su publicación se encuentra activa nuevamente.");
+            this.Close();
+        }
 
 
         private void visibilidadChanged(object sender, EventArgs e)

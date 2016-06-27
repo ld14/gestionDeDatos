@@ -54,7 +54,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.DescripcionTxt = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.comprarButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.preguntarButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -97,7 +97,6 @@
             // envioCheck
             // 
             this.envioCheck.AutoSize = true;
-            this.envioCheck.Enabled = false;
             this.envioCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.envioCheck.Location = new System.Drawing.Point(118, 191);
             this.envioCheck.Name = "envioCheck";
@@ -295,10 +294,10 @@
             this.label1.Text = "Fecha Vencimiento:";
             // 
             // fechaVencimientoDateTimeTxt
-            //
+            // 
             this.fechaVencimientoDateTimeTxt.CustomFormat = "dd/MM/yyyy";
-            this.fechaVencimientoDateTimeTxt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fechaVencimientoDateTimeTxt.Enabled = false;
+            this.fechaVencimientoDateTimeTxt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fechaVencimientoDateTimeTxt.Location = new System.Drawing.Point(223, 208);
             this.fechaVencimientoDateTimeTxt.Name = "fechaVencimientoDateTimeTxt";
             this.fechaVencimientoDateTimeTxt.Size = new System.Drawing.Size(247, 20);
@@ -341,21 +340,20 @@
             this.label11.TabIndex = 11;
             this.label11.Text = "Descripción";
             // 
-            // button1
+            // comprarButton
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(267, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(222, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Efectuar Operación";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.comprarButton.Location = new System.Drawing.Point(256, 47);
+            this.comprarButton.Name = "comprarButton";
+            this.comprarButton.Size = new System.Drawing.Size(222, 23);
+            this.comprarButton.TabIndex = 0;
+            this.comprarButton.Text = "Efectuar Operación";
+            this.comprarButton.UseVisualStyleBackColor = true;
+            this.comprarButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.preguntarButton);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.comprarButton);
             this.groupBox2.Location = new System.Drawing.Point(18, 472);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(984, 113);
@@ -364,8 +362,7 @@
             // 
             // preguntarButton
             // 
-            this.preguntarButton.Enabled = false;
-            this.preguntarButton.Location = new System.Drawing.Point(555, 47);
+            this.preguntarButton.Location = new System.Drawing.Point(549, 47);
             this.preguntarButton.Name = "preguntarButton";
             this.preguntarButton.Size = new System.Drawing.Size(222, 23);
             this.preguntarButton.TabIndex = 1;
@@ -419,7 +416,7 @@
         private System.Windows.Forms.TextBox DescripcionTxt;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button comprarButton;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox CompraDatos;
         private System.Windows.Forms.Label compraLabel;
