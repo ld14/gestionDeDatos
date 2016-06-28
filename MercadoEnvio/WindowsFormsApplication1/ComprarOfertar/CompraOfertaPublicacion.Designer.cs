@@ -146,7 +146,13 @@
             // 
             // cant_oferta
             // 
+            this.cant_oferta.DecimalPlaces = 2;
             this.cant_oferta.Location = new System.Drawing.Point(156, 99);
+            this.cant_oferta.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.cant_oferta.Name = "cant_oferta";
             this.cant_oferta.Size = new System.Drawing.Size(130, 20);
             this.cant_oferta.TabIndex = 2;

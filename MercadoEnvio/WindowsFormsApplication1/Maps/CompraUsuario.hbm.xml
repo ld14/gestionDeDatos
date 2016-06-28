@@ -12,5 +12,8 @@
     <property name="compraCantidad">
       <column name="compraCantidad" sql-type="int" not-null="true" />
     </property>
+    <property name="fecha">
+      <column name="fecha" sql-type="datetime" not-null="false" />
+    </property>
   </class>
 </hibernate-mapping>

@@ -12,6 +12,7 @@ namespace WindowsFormsApplication1 {
         public virtual Usuario Usuario { get; set; }
         public virtual Calificacion Calificacion { get; set; }
         public virtual int compraCantidad { get; set; }
+        public virtual DateTime fecha { get; set; }
 
         public virtual void constructorCompraUsuario(Publicacion Publicacion, Usuario UsuarioNuevo, int compraCantidad, int codigoCalificacion)
         {
