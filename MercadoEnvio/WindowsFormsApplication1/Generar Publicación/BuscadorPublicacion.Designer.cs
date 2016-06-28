@@ -171,15 +171,15 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idPublicacionDataGridViewTextBoxColumn,
-            this.codigoDataGridViewTextBoxColumn,
-            this.tipoPublicacion,
-            this.descProductoDataGridViewTextBoxColumn,
-            this.precioDataGridViewTextBoxColumn,
-            this.rubroDataGridViewTextBoxColumn,
-            this.fechaInicioDataGridViewTextBoxColumn,
-            this.fechaVencimientoDataGridViewTextBoxColumn,
-            this.estadoDataGridViewTextBoxColumn});
+                this.idPublicacionDataGridViewTextBoxColumn,
+                this.codigoDataGridViewTextBoxColumn,
+                this.tipoPublicacion,
+                this.descProductoDataGridViewTextBoxColumn,
+                this.precioDataGridViewTextBoxColumn,
+                this.rubroDataGridViewTextBoxColumn,
+                this.fechaInicioDataGridViewTextBoxColumn,
+                this.fechaVencimientoDataGridViewTextBoxColumn,
+                this.estadoDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.grillaPublicacionBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(16, 69);
             this.dataGridView1.MultiSelect = false;

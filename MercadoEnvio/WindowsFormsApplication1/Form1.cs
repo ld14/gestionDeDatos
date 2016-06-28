@@ -404,7 +404,14 @@ aBMMenu
         {
             BusquedaPublicacion busquedaPublicacion = new BusquedaPublicacion();
             busquedaPublicacion.MdiParent = this;
-            busquedaPublicacion.Show();
+
+            Cliente usr = SessionAttribute.clienteUser;
+            if (usr.comprasEfectuadas > usr.comprasCalificadas + 3)
+            {
+                MessageBox.Show("Deberá calificar sus ultimas operaciones antes de seguir comprando");
+                busquedaPublicacion.Close();
+            }
+            else busquedaPublicacion.Show();
         }
 
         private void comprarOfertarToolStripMenuItem_Click(object sender, EventArgs e)

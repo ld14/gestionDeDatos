@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Entity.Utils;
 using System.Text.RegularExpressions;
+using WindowsFormsApplication1.Entity.DAO;
 
 namespace WindowsFormsApplication1.Generar_Publicación
 {

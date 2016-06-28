@@ -8,7 +8,7 @@ using WindowsFormsApplication1;
 using WindowsFormsApplication1.Entity.DAO;
 
 
-namespace WindowsFormsApplication1
+namespace WindowsFormsApplication1.Entity.DAO
 {
     class CompraUsuarioDaoImpl : CompraUsuarioDao
     {

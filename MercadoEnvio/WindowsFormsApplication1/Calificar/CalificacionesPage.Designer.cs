@@ -42,16 +42,26 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.idPublicacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoPublicacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadDeEstrellasText = new System.Windows.Forms.Label();
             this.ComentarioInput = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Calificar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
+            this.grillaPublicacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaPublicacionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -63,18 +73,94 @@
             this.groupBox2.Size = new System.Drawing.Size(962, 314);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Resultado";
+            this.groupBox2.Text = "Operaciones sin calificar";
             // 
             // dataGridView1
-            // 
+            //
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+                this.idPublicacionDataGridViewTextBoxColumn,
+                this.codigoDataGridViewTextBoxColumn,
+                this.tipoPublicacionDataGridViewTextBoxColumn,
+                this.descProductoDataGridViewTextBoxColumn,
+                this.cantidadDataGridViewTextBoxColumn,
+                this.precioDataGridViewTextBoxColumn,
+                this.fechaCompraDataGridViewTextBoxColumn,
+                this.vendedorDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.grillaPublicacionBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(7, 45);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(949, 255);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.TabIndex = 0;
+            //this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            // 
+            // idPublicacionDataGridViewTextBoxColumn
+            // 
+            this.idPublicacionDataGridViewTextBoxColumn.DataPropertyName = "idPublicacion";
+            this.idPublicacionDataGridViewTextBoxColumn.HeaderText = "idPublicacion";
+            this.idPublicacionDataGridViewTextBoxColumn.Name = "idPublicacionDataGridViewTextBoxColumn";
+            this.idPublicacionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idPublicacionDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Código";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codigoDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // tipoPublicacionDataGridViewTextBoxColumn
+            // 
+            this.tipoPublicacionDataGridViewTextBoxColumn.DataPropertyName = "tipoPublicacion";
+            this.tipoPublicacionDataGridViewTextBoxColumn.HeaderText = "Tipo Publicación";
+            this.tipoPublicacionDataGridViewTextBoxColumn.Name = "tipoPublicacionDataGridViewTextBoxColumn";
+            this.tipoPublicacionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tipoPublicacionDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // descProductoDataGridViewTextBoxColumn
+            // 
+            this.descProductoDataGridViewTextBoxColumn.DataPropertyName = "descProducto";
+            this.descProductoDataGridViewTextBoxColumn.HeaderText = "Descripción";
+            this.descProductoDataGridViewTextBoxColumn.Name = "descProductoDataGridViewTextBoxColumn";
+            this.descProductoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descProductoDataGridViewTextBoxColumn.Width = 250;
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            this.precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            this.precioDataGridViewTextBoxColumn.HeaderText = "Precio";
+            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            this.precioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.precioDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // cantidadDataGridViewTextBoxColumn
+            // 
+            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "cantidad";
+            this.cantidadDataGridViewTextBoxColumn.HeaderText = "Unidades Compradas";
+            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
+            this.cantidadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaCompraDataGridViewTextBoxColumn
+            // 
+            this.fechaCompraDataGridViewTextBoxColumn.DataPropertyName = "fechaCompra";
+            this.fechaCompraDataGridViewTextBoxColumn.HeaderText = "Fecha de Compra";
+            this.fechaCompraDataGridViewTextBoxColumn.Name = "fechaCompraDataGridViewTextBoxColumn";
+            this.fechaCompraDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fechaCompraDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // vendedorDataGridViewTextBoxColumn
+            // 
+            this.vendedorDataGridViewTextBoxColumn.DataPropertyName = "vendedor";
+            this.vendedorDataGridViewTextBoxColumn.HeaderText = "Vendedor";
+            this.vendedorDataGridViewTextBoxColumn.Name = "vendedorDataGridViewTextBoxColumn";
+            this.vendedorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bindingNavigator1
             // 
@@ -172,16 +258,17 @@
             // CantidadDeEstrellasText
             // 
             this.CantidadDeEstrellasText.AutoSize = true;
-            this.CantidadDeEstrellasText.Location = new System.Drawing.Point(115, 404);
+            this.CantidadDeEstrellasText.Location = new System.Drawing.Point(197, 426);
             this.CantidadDeEstrellasText.Name = "CantidadDeEstrellasText";
-            this.CantidadDeEstrellasText.Size = new System.Drawing.Size(108, 13);
+            this.CantidadDeEstrellasText.Size = new System.Drawing.Size(106, 13);
             this.CantidadDeEstrellasText.TabIndex = 7;
-            this.CantidadDeEstrellasText.Text = "Cantidad De Estrellas";
+            this.CantidadDeEstrellasText.Text = "Cantidad de Estrellas";
+            this.CantidadDeEstrellasText.Click += new System.EventHandler(this.CantidadDeEstrellasText_Click);
             // 
             // ComentarioInput
             // 
             this.ComentarioInput.AutoSize = true;
-            this.ComentarioInput.Location = new System.Drawing.Point(549, 404);
+            this.ComentarioInput.Location = new System.Drawing.Point(521, 402);
             this.ComentarioInput.Name = "ComentarioInput";
             this.ComentarioInput.Size = new System.Drawing.Size(60, 13);
             this.ComentarioInput.TabIndex = 8;
@@ -195,7 +282,7 @@
             0,
             0,
             65536});
-            this.numericUpDown1.Location = new System.Drawing.Point(229, 401);
+            this.numericUpDown1.Location = new System.Drawing.Point(311, 423);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             5,
             0,
@@ -208,7 +295,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(616, 400);
+            this.textBox1.Location = new System.Drawing.Point(588, 398);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(312, 80);
@@ -216,12 +303,17 @@
             // 
             // Calificar
             // 
-            this.Calificar.Location = new System.Drawing.Point(424, 557);
+            this.Calificar.Location = new System.Drawing.Point(418, 547);
             this.Calificar.Name = "Calificar";
-            this.Calificar.Size = new System.Drawing.Size(182, 23);
+            this.Calificar.Size = new System.Drawing.Size(205, 23);
             this.Calificar.TabIndex = 11;
             this.Calificar.Text = "Calificar";
             this.Calificar.UseVisualStyleBackColor = true;
+            // 
+            // grillaPublicacionBindingSource
+            // 
+            this.grillaPublicacionBindingSource.DataSource = typeof(WindowsFormsApplication1.SinCalificar);
+
             // 
             // CalificacionesPage
             // 
@@ -238,6 +330,7 @@
             this.Name = "CalificacionesPage";
             this.ShowIcon = false;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.BuscadorPublicacion_Load);
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -253,6 +346,7 @@
 
         #endregion
 
+        private System.Windows.Forms.BindingSource grillaPublicacionBindingSource;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
@@ -270,5 +364,13 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button Calificar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPublicacionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descProductoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendedorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaCompraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoPublicacionDataGridViewTextBoxColumn;
     }
 }
