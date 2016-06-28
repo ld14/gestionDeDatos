@@ -1043,7 +1043,31 @@ CREATE VIEW [LOPEZ_Y_CIA].[estadisticaMaximos] AS
 		pub.idUsuario,
 		YEAR(fa.fecha),
 		MONTH(fa.fecha)
-GO  
+GO  ç
+
+CREATE VIEW [LOPEZ_Y_CIA].[SinCalificar] AS
+	SELECT
+		ROW_NUMBER() OVER(ORDER BY A.idPublicacion ASC) AS rowID,
+		A.idPublicacion,
+		( CASE WHEN (B.idPublicacion = A.idPublicacion) THEN 'Subasta'
+		WHEN (C.idPublicacion = A.idPublicacion) THEN 'Compra Inmediata'
+		END ) AS tipoPublicacion,
+		A.codigoPublicacion AS codigo,
+		E.userName AS vendedor,
+		D.idUsuario AS idUsuario,
+		A.descripcion AS descProducto,
+		( CASE WHEN (B.idPublicacion = A.idPublicacion) THEN B.valorActual
+		WHEN (C.idPublicacion = A.idPublicacion) THEN C.precioPorUnidad
+		END ) AS precio,
+		D.fecha AS fechaCompra,
+		D.compraCantidad AS cantidad
+	FROM [LOPEZ_Y_CIA].[Publicacion] AS A
+	LEFT JOIN [LOPEZ_Y_CIA].[PublicacionSubasta] AS B ON A.idPublicacion = B.idPublicacion
+	LEFT JOIN [LOPEZ_Y_CIA].[PublicacionNormal] AS C ON A.idPublicacion = C.idPublicacion
+	JOIN [LOPEZ_Y_CIA].[CompraUsuario] AS D ON A.idPublicacion = D.idPublicacion
+	JOIN [LOPEZ_Y_CIA].[Usuario] AS E ON A.idUsuario = E.idUsuario
+	WHERE D.idCalificacion IS NULL
+GO
 
 /*
 CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
