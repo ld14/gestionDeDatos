@@ -1043,7 +1043,7 @@ CREATE VIEW [LOPEZ_Y_CIA].[estadisticaMaximos] AS
 		pub.idUsuario,
 		YEAR(fa.fecha),
 		MONTH(fa.fecha)
-GO  ç
+GO
 
 CREATE VIEW [LOPEZ_Y_CIA].[SinCalificar] AS
 	SELECT
