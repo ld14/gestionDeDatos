@@ -26,7 +26,9 @@ DROP VIEW [LOPEZ_Y_CIA].[EstadisticaVendedores];
 DROP VIEW [LOPEZ_Y_CIA].[EstadisticaCompradores];
 DROP VIEW [LOPEZ_Y_CIA].[SubastaCompraDelSistema];
 DROP VIEW [LOPEZ_Y_CIA].[getCodigo];
+DROP VIEW [LOPEZ_Y_CIA].[getCodigoCalif];
 DROP VIEW [LOPEZ_Y_CIA].[estadisticaMaximos];
+DROP VIEW [LOPEZ_Y_CIA].[SinCalificar];
 
 DROP SCHEMA [LOPEZ_Y_CIA];'
 
