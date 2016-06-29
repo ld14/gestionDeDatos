@@ -1048,7 +1048,7 @@ GO
 CREATE VIEW [LOPEZ_Y_CIA].[SinCalificar] AS
 	SELECT
 		ROW_NUMBER() OVER(ORDER BY A.idPublicacion ASC) AS rowID,
-		A.idPublicacion,
+		D.idCompraUsuario,
 		( CASE WHEN (B.idPublicacion = A.idPublicacion) THEN 'Subasta'
 		WHEN (C.idPublicacion = A.idPublicacion) THEN 'Compra Inmediata'
 		END ) AS tipoPublicacion,
@@ -1067,6 +1067,13 @@ CREATE VIEW [LOPEZ_Y_CIA].[SinCalificar] AS
 	JOIN [LOPEZ_Y_CIA].[CompraUsuario] AS D ON A.idPublicacion = D.idPublicacion
 	JOIN [LOPEZ_Y_CIA].[Usuario] AS E ON A.idUsuario = E.idUsuario
 	WHERE D.idCalificacion IS NULL
+GO
+
+CREATE VIEW [LOPEZ_Y_CIA].[getCodigoCalif] AS
+	SELECT * FROM (
+		select current_value from sys.sequences
+		where [name] = 'secuenciaCalif'
+	) x
 GO
 
 /*
