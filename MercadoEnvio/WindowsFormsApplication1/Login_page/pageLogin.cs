@@ -34,8 +34,8 @@ namespace WindowsFormsApplication1.Login_page
 
             UsuarioDaoImpl usuario = new UsuarioDaoImpl();
             Usuario usr = usuario.Acceder(userName.Text);
-
-            if (usr != null)
+            
+            if ((usr != null) && (usr.intentosFallidos<3) && (usr.activoUsuario = true) )
             {
                 var psw = Encoding.UTF8.GetBytes(password.Text);
                 SHA256Managed hashString = new SHA256Managed();
@@ -48,17 +48,25 @@ namespace WindowsFormsApplication1.Login_page
 
                 if (usr.password == hashedPass)
                 {
+                    usr.intentosFallidos = 0;
+                    usuario.Update(usr);
                     SessionAttribute.user = usr;
                     this.Close();
                 }
                 else
                 {
                      pswError.SetError(this.password, "Contraseña incorrecta");
+                     usr.intentosFallidos++;
+                     usuario.Update(usr);
                 }
             }
             else
             {
                 pswError.SetError(this.password, "Verificar Datos Ingresados");
+                usr.activoUsuario = false;
+                usuario.Update(usr);
+                MessageBox.Show("Contactese con el administrador");
+                
             }
         }
     }
