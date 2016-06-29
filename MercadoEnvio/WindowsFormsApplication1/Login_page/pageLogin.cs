@@ -66,7 +66,7 @@ namespace WindowsFormsApplication1.Login_page
                 usr.activoUsuario = false;
                 usuario.Update(usr);
                 MessageBox.Show("Contactese con el administrador");
-                
+                Application.Exit();
             }
         }
     }
