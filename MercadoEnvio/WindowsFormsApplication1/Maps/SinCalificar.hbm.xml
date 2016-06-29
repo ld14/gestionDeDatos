@@ -4,8 +4,8 @@
 
     <id name="rowID" column="rowID" />
 
-    <property name="idPublicacion">
-      <column name="idPublicacion" sql-type="int" not-null="true" />
+    <property name="idCompraUsuario">
+      <column name="idCompraUsuario" sql-type="int" not-null="true" />
     </property>
     <property name="tipoPublicacion">
       <column name="tipoPublicacion" sql-type="varchar" not-null="true" />

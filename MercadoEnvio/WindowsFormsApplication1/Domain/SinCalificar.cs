@@ -8,7 +8,7 @@ namespace WindowsFormsApplication1
     public class SinCalificar
     {
         public virtual int rowID { get; set; }
-        public virtual int idPublicacion { get; set; }
+        public virtual int idCompraUsuario { get; set; }
         public virtual String tipoPublicacion { get; set; }
         public virtual int codigo { get; set; }
         public virtual string vendedor { get; set; }

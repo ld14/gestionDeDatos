@@ -48,7 +48,7 @@ namespace WindowsFormsApplication1.Calificar
 
             foreach (SinCalificar publ in pubList)
             {
-                dt.Rows.Add(publ.tipoPublicacion, publ.idPublicacion, publ.codigo, publ.descProducto, publ.precio, publ.cantidad, publ.vendedor, publ.fechaCompra, publ.idUsuario);
+                dt.Rows.Add(publ.tipoPublicacion, publ.idCompraUsuario, publ.codigo, publ.descProducto, publ.precio, publ.cantidad, publ.vendedor, publ.fechaCompra, publ.idUsuario);
             }
 
             dset.Tables.Add(dt);
@@ -64,6 +64,33 @@ namespace WindowsFormsApplication1.Calificar
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void calificar(object sender, EventArgs e)
+        {
+            int idCompra = 0;
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                idCompra = Convert.ToInt32(row.Cells[0].Value.ToString());
+                dataGridView1.Rows.RemoveAt(row.Index);
+            }
+            
+
+            CalificacionDaoImpl califDao = new CalificacionDaoImpl();
+            Calificacion calif = new Calificacion();
+            calif.cantEstrellas = Convert.ToInt32(numericUpDown1.Value * 2);
+            calif.descripcion = textBox1.Text;
+            calif.codigo = califDao.getSecuenciaPubli() + 1;
+
+            califDao.Add(calif);
+
+            CompraUsuarioDaoImpl compraDao = new CompraUsuarioDaoImpl();
+            CompraUsuario compra = compraDao.GetByID(idCompra);
+            compra.Calificacion = califDao.GetByCodigo(calif.codigo);
+
+            compraDao.Add(compra);
+
+            MessageBox.Show("Calificacion exitosa.\nGracias por utilizar nuestra aplicación de *MercadoEnvio*");
         }
 
         private void CantidadDeEstrellasText_Click(object sender, EventArgs e)

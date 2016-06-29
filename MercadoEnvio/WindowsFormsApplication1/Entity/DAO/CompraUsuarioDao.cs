@@ -9,7 +9,7 @@ namespace WindowsFormsApplication1.Entity.DAO
         void Add(CompraUsuario usuario);
         void Update(CompraUsuario usuario);
         void Remove(CompraUsuario usuario);
-        CompraUsuario GetUsuarioById(int id);
+        CompraUsuario GetByID(int id);
         int getProfileIdSequenceByCodigoCalificacion();
     }
 }

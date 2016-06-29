@@ -177,6 +177,8 @@
     <Compile Include="Entity\DAO\ComisionesParametrizablesDaoImpl.cs" />
     <Compile Include="Entity\DAO\CompraUsuarioDaoImpl.cs" />
     <Compile Include="Entity\DAO\CompraUsuarioDao.cs" />
+    <Compile Include="Entity\DAO\CalificacionDao.cs" />
+    <Compile Include="Entity\DAO\CalificacionDaoImpl.cs" />
     <Compile Include="Entity\DAO\EstadisticaVendedoresDaoImpl.cs" />
     <Compile Include="Entity\DAO\EstadisticaVendedoresDao.cs" />
     <Compile Include="Entity\DAO\FacturasEmitidasDaoImpl.cs" />
@@ -460,7 +462,9 @@
     <EmbeddedResource Include="Maps\FacturasEmitidas.hbm.xml" />
     <EmbeddedResource Include="Maps\EstadisticaCompradores.hbm.xml" />
     <EmbeddedResource Include="Maps\estadisticaMaximos.hbm.xml" />
-    <EmbeddedResource Include="Maps\SinCalificar.hbm.xml" />
+    <EmbeddedResource Include="Maps\SinCalificar.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <ItemGroup />
