@@ -41,6 +41,19 @@ namespace WindowsFormsApplication1.Historial_Cliente
                 montoTotal.Text += Convert.ToString(user.montoComprado);
                 estrellasDadas.Text += Convert.ToString(user.estrellasDadas);
 
+                OfertaSubastaDaoImpl ofertDao = new OfertaSubastaDaoImpl();
+                IList<Ofertasubasta> ofertas = ofertDao.GetByUsuario(user.idUsuario);
+
+                subParticipadas.Text += Convert.ToString(ofertas.Count);
+
+                int cant = 0;
+                foreach (Ofertasubasta ofert in ofertas)
+                {
+                    if (ofert.adjudicada == true) cant++;
+                }
+
+                subGanadas.Text += Convert.ToString(cant); 
+
                 SubastaCompraDelSistemaDaoImpl subastaCompraDelSistemaDaoImpl = new SubastaCompraDelSistemaDaoImpl();
                 customerList = subastaCompraDelSistemaDaoImpl.darSubastaCompra(user.idUsuario);
 
@@ -67,18 +80,18 @@ namespace WindowsFormsApplication1.Historial_Cliente
             dataGridView1.Columns[1].Visible = false;
 
             dataGridView1.Columns[2].HeaderText = "Tipo de Compra";
-            dataGridView1.Columns[2].Width = 100;
-            dataGridView1.Columns[3].HeaderText = "Fecha";
-            dataGridView1.Columns[3].Width = 100;
+            dataGridView1.Columns[2].Width = 125;
+            dataGridView1.Columns[3].HeaderText = "Fecha Compra";
+            dataGridView1.Columns[3].Width = 80;
             dataGridView1.Columns[4].HeaderText = "Cantidad Comprada";
             dataGridView1.Columns[4].Width = 80;
-            dataGridView1.Columns[5].HeaderText = "Codigo de Publicacion";
-            dataGridView1.Columns[5].Width = 80;
-            dataGridView1.Columns[6].HeaderText = "Descripcion";
-            dataGridView1.Columns[6].Width = 200;
-            dataGridView1.Columns[7].HeaderText = "Cantiadad Estrella";
-            dataGridView1.Columns[7].Width = 80;
-            dataGridView1.Columns[8].HeaderText = "Descripcion Calificacion";
+            dataGridView1.Columns[5].HeaderText = "Código Publicación";
+            dataGridView1.Columns[5].Width = 86;
+            dataGridView1.Columns[6].HeaderText = "Descripción";
+            dataGridView1.Columns[6].Width = 255;
+            dataGridView1.Columns[7].HeaderText = "Calificación dada";
+            dataGridView1.Columns[7].Width = 83;
+            dataGridView1.Columns[8].HeaderText = "Comentario Calificación";
             dataGridView1.Columns[8].Width = 200;
 
 

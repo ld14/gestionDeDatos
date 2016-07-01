@@ -54,6 +54,13 @@ namespace WindowsFormsApplication1
         }
 
 
+        public IList<Ofertasubasta> GetByUsuario(int id)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.QueryOver<Ofertasubasta>().Where(x => x.Usuario.idUsuario == id).List();
+            }
+        }
     }
 
     

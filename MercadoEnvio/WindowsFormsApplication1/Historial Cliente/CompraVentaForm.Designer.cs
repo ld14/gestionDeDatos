@@ -46,11 +46,11 @@
             this.compSinCalificar = new System.Windows.Forms.Label();
             this.compEfectuadas = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.subGanadas = new System.Windows.Forms.Label();
+            this.subParticipadas = new System.Windows.Forms.Label();
+            this.montoTotal = new System.Windows.Forms.Label();
             this.nombreUsuario = new System.Windows.Forms.TextBox();
             this.estrellasDadas = new System.Windows.Forms.Label();
-            this.montoTotal = new System.Windows.Forms.Label();
-            this.subParticipadas = new System.Windows.Forms.Label();
-            this.subGanadas = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -134,7 +134,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(6, 54);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(960, 318);
+            this.dataGridView1.Size = new System.Drawing.Size(960, 274);
             this.dataGridView1.TabIndex = 1;
             // 
             // bindingNavigator1
@@ -169,7 +169,7 @@
             this.groupBox2.Controls.Add(this.bindingNavigator1);
             this.groupBox2.Location = new System.Drawing.Point(26, 268);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(972, 384);
+            this.groupBox2.Size = new System.Drawing.Size(972, 338);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Historial";
@@ -210,6 +210,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Historial de Compras y Estadisticas";
             // 
+            // subGanadas
+            // 
+            this.subGanadas.AutoSize = true;
+            this.subGanadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subGanadas.Location = new System.Drawing.Point(695, 72);
+            this.subGanadas.Name = "subGanadas";
+            this.subGanadas.Size = new System.Drawing.Size(128, 16);
+            this.subGanadas.TabIndex = 14;
+            this.subGanadas.Text = "Subastas ganadas: ";
+            // 
+            // subParticipadas
+            // 
+            this.subParticipadas.AutoSize = true;
+            this.subParticipadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subParticipadas.Location = new System.Drawing.Point(695, 39);
+            this.subParticipadas.Name = "subParticipadas";
+            this.subParticipadas.Size = new System.Drawing.Size(149, 16);
+            this.subParticipadas.TabIndex = 13;
+            this.subParticipadas.Text = "Subastas participadas: ";
+            // 
+            // montoTotal
+            // 
+            this.montoTotal.AutoSize = true;
+            this.montoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.montoTotal.Location = new System.Drawing.Point(99, 145);
+            this.montoTotal.Name = "montoTotal";
+            this.montoTotal.Size = new System.Drawing.Size(174, 16);
+            this.montoTotal.TabIndex = 12;
+            this.montoTotal.Text = "Monto total comprado: $";
+            // 
             // nombreUsuario
             // 
             this.nombreUsuario.Location = new System.Drawing.Point(47, 51);
@@ -228,36 +258,6 @@
             this.estrellasDadas.Size = new System.Drawing.Size(125, 16);
             this.estrellasDadas.TabIndex = 6;
             this.estrellasDadas.Text = "Estrellas dadas: ";
-            // 
-            // montoTotal
-            // 
-            this.montoTotal.AutoSize = true;
-            this.montoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoTotal.Location = new System.Drawing.Point(99, 145);
-            this.montoTotal.Name = "montoTotal";
-            this.montoTotal.Size = new System.Drawing.Size(174, 16);
-            this.montoTotal.TabIndex = 12;
-            this.montoTotal.Text = "Monto total comprado: $";
-            // 
-            // subParticipadas
-            // 
-            this.subParticipadas.AutoSize = true;
-            this.subParticipadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subParticipadas.Location = new System.Drawing.Point(695, 39);
-            this.subParticipadas.Name = "subParticipadas";
-            this.subParticipadas.Size = new System.Drawing.Size(149, 16);
-            this.subParticipadas.TabIndex = 13;
-            this.subParticipadas.Text = "Subastas participadas: ";
-            // 
-            // subGanadas
-            // 
-            this.subGanadas.AutoSize = true;
-            this.subGanadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subGanadas.Location = new System.Drawing.Point(695, 72);
-            this.subGanadas.Name = "subGanadas";
-            this.subGanadas.Size = new System.Drawing.Size(128, 16);
-            this.subGanadas.TabIndex = 14;
-            this.subGanadas.Text = "Subastas ganadas: ";
             // 
             // CompraVentaForm
             // 
