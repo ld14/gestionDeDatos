@@ -68,6 +68,12 @@
         <property name="comprasCalificadas">
           <column name="comprasCalificadas" sql-type="int" not-null="false" />
         </property>
+        <property name="montoComprado">
+          <column name="montoComprado" sql-type="numeric" not-null="false" />
+        </property>
+        <property name="estrellasDadas">
+          <column name="estrellasDadas" sql-type="int" not-null="false" />
+        </property>
     </joined-subclass>
     
     <joined-subclass name="Empresa" table="Empresa" extends="Usuario">

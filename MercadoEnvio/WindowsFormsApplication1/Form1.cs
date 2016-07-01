@@ -58,7 +58,7 @@ namespace WindowsFormsApplication1
 
             string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
 
-            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.idUsuario + "] [Rol: " + rolUser.Current.nombre + "] [Fecha: " + System.Configuration.ConfigurationManager.AppSettings["fechaSistema"] + "]"; 
+            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.userName + "] [Rol: " + rolUser.Current.nombre + "] [Fecha: " + System.Configuration.ConfigurationManager.AppSettings["fechaSistema"] + "]"; 
  
             //Obtener datos del Usuario
             if (rolUser.Current.idRol == 1)

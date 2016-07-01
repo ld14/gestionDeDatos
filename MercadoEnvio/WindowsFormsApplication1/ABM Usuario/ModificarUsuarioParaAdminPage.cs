@@ -99,7 +99,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
             if (esTipoRolEmpresa == false)
             {
-                Double DNI = Convert.ToDouble(ClienteDNITxt.Text);
+                int DNI = Convert.ToInt32(ClienteDNITxt.Text);
                 ClienteDaoImpl clienteDaoImpl = new ClienteDaoImpl();
                 Cliente nuevoCliente = clienteDaoImpl.GetUsuarioById(idUsuario);
                 

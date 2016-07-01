@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Entity.Utils;
+using WindowsFormsApplication1.Entity.DAO;
 
 namespace WindowsFormsApplication1.Historial_Cliente
 {
@@ -29,50 +30,21 @@ namespace WindowsFormsApplication1.Historial_Cliente
 
         private void CompraVentaForm_Load(object sender, EventArgs e)
         {
-            string DatosUsuarioText="";
-            string CantidadComprasText = "";
-            string CantSinCalifText = "";
-            string CantCalifText = "";
-            string CantidadEstrellasText = "";
             customerList = new List<SubastaCompraDelSistema>();  
 
             if (SessionAttribute.user is Cliente)
             {
-                Cliente user = (Cliente)SessionAttribute.user;
-                DatosUsuarioText = user.nombre + " " + user.apellido;
-                CantidadComprasText = Convert.ToString(user.comprasEfectuadas);
-                CantSinCalifText =  Convert.ToString(user.comprasEfectuadas - user.comprasCalificadas);
-                CantCalifText = Convert.ToString(user.comprasCalificadas);
-                CantidadEstrellasText = Convert.ToString(user.cantidadEstrellas);
+                Cliente user = SessionAttribute.clienteUser;
+                nombreUsuario.Text = user.nombre + " " + user.apellido;
+                compEfectuadas.Text += Convert.ToString(user.comprasEfectuadas);
+                compSinCalificar.Text +=  Convert.ToString(user.comprasEfectuadas - user.comprasCalificadas);
+                montoTotal.Text += Convert.ToString(user.montoComprado);
+                estrellasDadas.Text += Convert.ToString(user.estrellasDadas);
 
                 SubastaCompraDelSistemaDaoImpl subastaCompraDelSistemaDaoImpl = new SubastaCompraDelSistemaDaoImpl();
                 customerList = subastaCompraDelSistemaDaoImpl.darSubastaCompra(user.idUsuario);
 
             }
-            if (SessionAttribute.user is Empresa)
-            {
-                Empresa user = (Empresa)SessionAttribute.user;
-                DatosUsuarioText = user.razonSocial;
-
-                labelCantCompras.Text = "Cantidad de Ventas";
-                CantidadComprasText = Convert.ToString(user.cantidadVentas);
-
-                CantSinCalif.Visible = false;
-                cantSCalifLabel.Visible = false;
-                CantSinCalifText = "0";
-
-                CantCalif.Visible = false;
-                canCaliLabel.Visible = false;
-                CantCalifText = "0";
-
-                CantEstrellasLabel.Text = "Cantidad de Estrellas Recibidas";
-                CantidadEstrellasText = Convert.ToString(user.cantidadEstrellas);
-
-                SubastaCompraDelSistemaDaoImpl subastaCompraDelSistemaDaoImpl = new SubastaCompraDelSistemaDaoImpl();
-                customerList = subastaCompraDelSistemaDaoImpl.darSubastaCompra(user.idUsuario);
-            }
-
-            this.setValoresFormulario(DatosUsuarioText, CantidadComprasText, CantSinCalifText, CantCalifText, CantidadEstrellasText);
 
             TotalRecords = this.customerList.Count;
             //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "idPublicacion" });
@@ -126,11 +98,11 @@ namespace WindowsFormsApplication1.Historial_Cliente
             }
         }
 
-
+/*
         private void setValoresFormulario   (string DatosUsuarioText,string CantidadComprasText,string 
                                              CantSinCalifText,string CantCalifText,string CantidadEstrellasText) { 
-            DatosUsuario.Text = DatosUsuarioText;
-            DatosUsuario.Enabled = false;
+            nombreUsuario.Text = DatosUsuarioText;
+            nombreUsuario.Enabled = false;
             CantidadCompras.Text = CantidadComprasText;
             CantidadCompras.Enabled = false;
             CantSinCalif.Text = CantSinCalifText;
@@ -140,5 +112,6 @@ namespace WindowsFormsApplication1.Historial_Cliente
             CantidadEstrellas.Text = CantidadEstrellasText;
             CantidadEstrellas.Enabled = false;
         }
+ */
     }
 }
