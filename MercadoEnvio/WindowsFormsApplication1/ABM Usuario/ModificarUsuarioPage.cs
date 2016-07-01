@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             rolUser.MoveNext();
 
             this.userNameInput.Text = SessionAttribute.user.userName;
-            //this.userPasswordImput.Text = SessionAttribute.user.password;
+            this.userPasswordImput.Text = "************";
             this.tipoDeUsuarioComboBox.Text = rolUser.Current.nombre;
             if (rolUser.Current.nombre.Equals("Empresa"))
             {
