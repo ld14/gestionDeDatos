@@ -11,15 +11,15 @@ namespace WindowsFormsApplication1 {
         public virtual string email { get; set; }
         public virtual string telefono { get; set; }
         public virtual string domCalle { get; set; }
-        public virtual double nroCalle { get; set; }
-        public virtual double? piso { get; set; }
+        public virtual int nroCalle { get; set; }
+        public virtual int piso { get; set; }
         public virtual string depto { get; set; }
         public virtual string codPostal { get; set; }
         public virtual string localidad { get; set; }
         public virtual string ciudad { get; set; }
 
 
-        public virtual void setDatosBasicos(string email, string domCalle, double nroCalle, double piso, string depto, 
+        public virtual void setDatosBasicos(string email, string domCalle, int nroCalle, int piso, string depto, 
                                     string codPostal, string localidad, string ciudad)        {
 
             this.email = email;

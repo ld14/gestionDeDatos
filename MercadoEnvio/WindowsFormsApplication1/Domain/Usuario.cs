@@ -13,10 +13,10 @@ namespace WindowsFormsApplication1 {
         public virtual string userName { get; set; }
         public virtual string password { get; set; }
         public virtual bool activoUsuario { get; set; }
-        public virtual double intentosFallidos { get; set; }
-        public virtual bool? publicacionGratis { get; set; }
-        public virtual int? cantidadEstrellas { get; set; }
-        public virtual int? cantidadVentas { get; set; }
+        public virtual int intentosFallidos { get; set; }
+        public virtual bool publicacionGratis { get; set; }
+        public virtual int cantidadEstrellas { get; set; }
+        public virtual int cantidadVentas { get; set; }
 
         public virtual DatosBasicos DatosBasicos
         {

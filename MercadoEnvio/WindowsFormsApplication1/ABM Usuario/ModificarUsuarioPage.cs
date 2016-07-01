@@ -86,8 +86,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
             String Mail = DatosBasicosEmailTxt.Text;
             String Telefono = DatosBasicosTelefono.Text;
             String DomicilioCalle = DatosBasicosDomicilioCalle.Text;
-            Double nroCalle = Convert.ToDouble(DatosBasicosNroCalle.Text);
-            Double piso = Convert.ToDouble(DatosBasicosPiso.Text);
+            int nroCalle = Convert.ToInt32(DatosBasicosNroCalle.Text);
+            int piso = Convert.ToInt32(DatosBasicosPiso.Text);
             String depto = DatosBasicosDepto.Text;
             String localidad = DatosBasicosLocalidad.Text;
             String ciudad = DatosBasicosCiudad.Text;

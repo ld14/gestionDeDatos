@@ -34,48 +34,42 @@ namespace WindowsFormsApplication1.Login_page
 
             UsuarioDaoImpl usuario = new UsuarioDaoImpl();
             Usuario usr = usuario.Acceder(userName.Text);
-           
-            if ((usr != null))
+
+            if (usr != null)
             {
-                if ((usr.intentosFallidos < 3) && (usr.activoUsuario = true))
+                var psw = Encoding.UTF8.GetBytes(password.Text);
+                SHA256Managed hashString = new SHA256Managed();
+                String hashedPass = "";
+                var hashValue = hashString.ComputeHash(psw);
+                foreach (byte x in hashValue)
                 {
-                    var psw = Encoding.UTF8.GetBytes(password.Text);
-                    SHA256Managed hashString = new SHA256Managed();
-                    String hashedPass = "";
-                    var hashValue = hashString.ComputeHash(psw);
-                    foreach (byte x in hashValue)
-                    {
-                        hashedPass += String.Format("{0:x2}", x);
-                    }
-
-                    if (usr.password == hashedPass)
-                    {
-                        usr.intentosFallidos = 0;
-                        usuario.Update(usr);
-                        SessionAttribute.user = usr;
-                        this.Close();
-                    }
-                    else
-                    {
-                        pswError.SetError(this.password, "Contraseña incorrecta");
-                        usr.intentosFallidos++;
-                        usuario.Update(usr);
-
-                    }
+                    hashedPass += String.Format("{0:x2}", x);
                 }
-                else {
-                    pswError.SetError(this.password, "Verificar Datos Ingresados");
-                    usr.activoUsuario = false;
-                    usuario.Update(usr);
-                    MessageBox.Show("Contactese con el administrador");
+
+                if (usr.password == hashedPass && usr.activoUsuario == true)
+                {
+                    SessionAttribute.user = usr;
+                    usr.intentosFallidos = 0;
                     this.Close();
-                    Application.Exit();
-                    
                 }
+                else
+                {
+                    pswError.SetError(this.password, "Contraseña incorrecta");
+                    usr.intentosFallidos++;
+
+                    if (usr.intentosFallidos == 3)
+                    {
+                        MessageBox.Show("Ha ingresado mal su contraseña 3 veces. Para su seguridad hemos bloqueado su cuenta. Por favor, Contactese con el administrador");
+                        usr.activoUsuario = false;
+                        usuario.Update(usr);
+                        Application.Exit();
+                    }
+                }
+                usuario.Update(usr);
             }
             else
             {
-                MessageBox.Show("Usuario incorrecto, Intente nuevamente");
+                pswError.SetError(this.password, "Verificar Datos Ingresados");
             }
         }
     }

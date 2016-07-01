@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1 {
         public virtual string apellido { get; set; }
         public virtual DateTime fechaNacimiento { get; set; }
         public virtual bool perfilActivo { get; set; }
-        public virtual DateTime fechaCreacion { get; set; }
+        public virtual DateTime? fechaCreacion { get; set; }
         public virtual int comprasEfectuadas { get; set; }
         public virtual int comprasCalificadas { get; set; }
         public virtual double montoComprado { get; set; }
