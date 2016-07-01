@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using WindowsFormsApplication1.Entity.Utils;
+using System.Threading;
 
 namespace WindowsFormsApplication1.Login_page
 {

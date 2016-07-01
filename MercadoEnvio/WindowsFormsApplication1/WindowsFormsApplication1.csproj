@@ -263,6 +263,12 @@
     <Compile Include="Listado_Estadistico\ListadoEstadisticoForm.Designer.cs">
       <DependentUpon>ListadoEstadisticoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login_page\loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login_page\loading.Designer.cs">
+      <DependentUpon>loading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login_page\pageLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -369,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Listado_Estadistico\ListadoEstadisitico.resx">
       <DependentUpon>ListadoEstadisitico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login_page\loading.resx">
+      <DependentUpon>loading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login_page\pageLogin.resx">
       <DependentUpon>pageLogin.cs</DependentUpon>

@@ -3,6 +3,7 @@ using NHibernate.Cfg;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.ABM_Rol;
 using WindowsFormsApplication1.ABM_Rubro;
@@ -49,8 +50,12 @@ namespace WindowsFormsApplication1
             misDatosToolStripMenuItem.Visible = false;
 
             //Abro la pagina de Logueo
-            pageLogin nuevaPagina = new pageLogin();
+            loading nuevaPagina = new loading();
             nuevaPagina.ShowDialog();
+
+            pageLogin form2 = new pageLogin();
+            form2.ShowDialog();
+
 
             //Asigno el Rol correspondiente al Usuario logeado
             IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
