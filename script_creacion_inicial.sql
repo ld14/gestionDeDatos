@@ -26,6 +26,8 @@ CREATE TABLE [LOPEZ_Y_CIA].[Cliente](
 	[fechaCreacion] [date] NULL,
 	[comprasEfectuadas] [int] NULL,
 	[comprasCalificadas] [int] NULL,
+	[montoComprado] [numeric](18,2) NULL,
+	[estrellasDadas] [int] NULL,
 	CONSTRAINT [PK_Cliente_1] PRIMARY KEY CLUSTERED([idUsuario] ASC),
 	CONSTRAINT [UK_Documento] UNIQUE ([dni],[tipoDocumento])
 ) ON [PRIMARY]
@@ -794,15 +796,23 @@ BEGIN TRAN;
 MERGE [LOPEZ_Y_CIA].[Cliente] AS T1
 USING (
 	SELECT
-		idUsuario,
-		COUNT(idUsuario) [compras]
-	FROM [LOPEZ_Y_CIA].[CompraUsuario]
+		A.idUsuario,
+		COUNT(A.idUsuario) [compras],
+		SUM(B.cantEstrellas) [estrellas],
+		SUM(CASE WHEN A.idPublicacion = C.idPublicacion THEN C.precioPorUnidad * A.compraCantidad
+		WHEN A.idPublicacion = D.idPublicacion THEN D.valorActual END) [monto]
+	FROM [LOPEZ_Y_CIA].[CompraUsuario] AS A
+	JOIN [LOPEZ_Y_CIA].[Calificacion] AS B ON A.idCalificacion = B.idCalificacion
+	LEFT JOIN [LOPEZ_Y_CIA].[PublicacionNormal] AS C ON C.idPublicacion = A.idPublicacion
+	LEFT JOIN [LOPEZ_Y_CIA].[PublicacionSubasta] AS D ON D.idPublicacion = A.idPublicacion
 	GROUP BY idUsuario
 ) T2
 ON (T1.idUsuario = T2.idUsuario) 
 WHEN MATCHED THEN UPDATE SET
 	T1.comprasEfectuadas = T2.compras,
-	T1.comprasCalificadas = T2.compras;
+	T1.comprasCalificadas = T2.compras,
+	T1.estrellasDadas = T2.estrellas,
+	T1.montoComprado = T2.monto;
 COMMIT TRAN;
 
 PRINT 'UPDATE A TABLA: Cliente'
