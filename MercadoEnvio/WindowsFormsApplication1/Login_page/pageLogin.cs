@@ -75,8 +75,7 @@ namespace WindowsFormsApplication1.Login_page
             }
             else
             {
-               
-                Application.Exit();
+                MessageBox.Show("Usuario incorrecto, Intente nuevamente");
             }
         }
     }
