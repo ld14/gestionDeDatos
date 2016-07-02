@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
         {
             this.Grabar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.ClienteGroup = new System.Windows.Forms.GroupBox();
             this.ClienteApellidoTxt = new System.Windows.Forms.TextBox();
             this.ClienteNombreTxt = new System.Windows.Forms.TextBox();
@@ -41,7 +41,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.ClienteTipoDocComboBox = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.ClienteDNITxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -68,7 +67,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.tipoDeUsuarioComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.EmpresaGroup = new System.Windows.Forms.GroupBox();
             this.EmpresaFechaCreacionDateTime = new System.Windows.Forms.DateTimePicker();
@@ -80,10 +78,10 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label5 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tipoDeusuario = new System.Windows.Forms.TextBox();
             this.UsuarioActivo = new System.Windows.Forms.CheckBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.tipoDocumento = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.ClienteGroup.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.EmpresaGroup.SuspendLayout();
@@ -111,29 +109,29 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Opciones";
             // 
-            // groupBox4
+            // button3
             // 
-            this.groupBox4.Controls.Add(this.ClienteGroup);
-            this.groupBox4.Location = new System.Drawing.Point(23, 165);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(484, 277);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Datos Tipo Usuario";
+            this.button3.Location = new System.Drawing.Point(523, 49);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(236, 23);
+            this.button3.TabIndex = 52;
+            this.button3.Text = "Volver";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // ClienteGroup
             // 
+            this.ClienteGroup.Controls.Add(this.tipoDocumento);
             this.ClienteGroup.Controls.Add(this.ClienteApellidoTxt);
             this.ClienteGroup.Controls.Add(this.ClienteNombreTxt);
             this.ClienteGroup.Controls.Add(this.ClienteFechaNacDateTime);
             this.ClienteGroup.Controls.Add(this.label23);
             this.ClienteGroup.Controls.Add(this.label22);
             this.ClienteGroup.Controls.Add(this.label21);
-            this.ClienteGroup.Controls.Add(this.ClienteTipoDocComboBox);
             this.ClienteGroup.Controls.Add(this.label20);
             this.ClienteGroup.Controls.Add(this.ClienteDNITxt);
             this.ClienteGroup.Controls.Add(this.label6);
-            this.ClienteGroup.Location = new System.Drawing.Point(0, 0);
+            this.ClienteGroup.Location = new System.Drawing.Point(23, 177);
             this.ClienteGroup.Name = "ClienteGroup";
             this.ClienteGroup.Size = new System.Drawing.Size(484, 277);
             this.ClienteGroup.TabIndex = 11;
@@ -189,14 +187,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label21.TabIndex = 36;
             this.label21.Text = "Nombre";
             // 
-            // ClienteTipoDocComboBox
-            // 
-            this.ClienteTipoDocComboBox.FormattingEnabled = true;
-            this.ClienteTipoDocComboBox.Location = new System.Drawing.Point(122, 61);
-            this.ClienteTipoDocComboBox.Name = "ClienteTipoDocComboBox";
-            this.ClienteTipoDocComboBox.Size = new System.Drawing.Size(126, 21);
-            this.ClienteTipoDocComboBox.TabIndex = 35;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -208,6 +198,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             // ClienteDNITxt
             // 
+            this.ClienteDNITxt.Enabled = false;
             this.ClienteDNITxt.Location = new System.Drawing.Point(322, 66);
             this.ClienteDNITxt.Name = "ClienteDNITxt";
             this.ClienteDNITxt.Size = new System.Drawing.Size(126, 20);
@@ -428,18 +419,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label18.TabIndex = 29;
             this.label18.Text = "Mail";
             // 
-            // tipoDeUsuarioComboBox
-            // 
-            this.tipoDeUsuarioComboBox.Enabled = false;
-            this.tipoDeUsuarioComboBox.FormattingEnabled = true;
-            this.tipoDeUsuarioComboBox.Items.AddRange(new object[] {
-            "Empresa",
-            "Cliente"});
-            this.tipoDeUsuarioComboBox.Location = new System.Drawing.Point(22, 110);
-            this.tipoDeUsuarioComboBox.Name = "tipoDeUsuarioComboBox";
-            this.tipoDeUsuarioComboBox.Size = new System.Drawing.Size(485, 21);
-            this.tipoDeUsuarioComboBox.TabIndex = 12;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -459,7 +438,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.EmpresaGroup.Controls.Add(this.label4);
             this.EmpresaGroup.Controls.Add(this.label5);
             this.EmpresaGroup.Controls.Add(this.label10);
-            this.EmpresaGroup.Location = new System.Drawing.Point(22, 152);
+            this.EmpresaGroup.Location = new System.Drawing.Point(22, 169);
             this.EmpresaGroup.Name = "EmpresaGroup";
             this.EmpresaGroup.Size = new System.Drawing.Size(486, 303);
             this.EmpresaGroup.TabIndex = 10;
@@ -492,6 +471,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             // EmpresaCuitTxt
             // 
+            this.EmpresaCuitTxt.Enabled = false;
             this.EmpresaCuitTxt.Location = new System.Drawing.Point(124, 82);
             this.EmpresaCuitTxt.Name = "EmpresaCuitTxt";
             this.EmpresaCuitTxt.Size = new System.Drawing.Size(126, 20);
@@ -499,6 +479,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             // EmpresaRazonSocialTxt
             // 
+            this.EmpresaRazonSocialTxt.Enabled = false;
             this.EmpresaRazonSocialTxt.Location = new System.Drawing.Point(124, 58);
             this.EmpresaRazonSocialTxt.Name = "EmpresaRazonSocialTxt";
             this.EmpresaRazonSocialTxt.Size = new System.Drawing.Size(126, 20);
@@ -533,16 +514,16 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ClienteGroup);
+            this.groupBox1.Controls.Add(this.tipoDeusuario);
             this.groupBox1.Controls.Add(this.UsuarioActivo);
             this.groupBox1.Controls.Add(this.EmpresaGroup);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.tipoDeUsuarioComboBox);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.userPasswordImput);
             this.groupBox1.Controls.Add(this.userNameInput);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Location = new System.Drawing.Point(8, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(984, 493);
@@ -550,25 +531,32 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alta de Usuario";
             // 
+            // tipoDeusuario
+            // 
+            this.tipoDeusuario.Enabled = false;
+            this.tipoDeusuario.Location = new System.Drawing.Point(27, 107);
+            this.tipoDeusuario.Name = "tipoDeusuario";
+            this.tipoDeusuario.Size = new System.Drawing.Size(480, 20);
+            this.tipoDeusuario.TabIndex = 17;
+            // 
             // UsuarioActivo
             // 
             this.UsuarioActivo.AutoSize = true;
-            this.UsuarioActivo.Location = new System.Drawing.Point(22, 137);
+            this.UsuarioActivo.Location = new System.Drawing.Point(214, 138);
             this.UsuarioActivo.Name = "UsuarioActivo";
             this.UsuarioActivo.Size = new System.Drawing.Size(95, 17);
             this.UsuarioActivo.TabIndex = 16;
             this.UsuarioActivo.Text = "Usuario Activo";
             this.UsuarioActivo.UseVisualStyleBackColor = true;
+            this.UsuarioActivo.CheckedChanged += new System.EventHandler(this.UsuarioActivo_CheckedChanged);
             // 
-            // button3
+            // tipoDocumento
             // 
-            this.button3.Location = new System.Drawing.Point(523, 49);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(236, 23);
-            this.button3.TabIndex = 52;
-            this.button3.Text = "Volver";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.tipoDocumento.Enabled = false;
+            this.tipoDocumento.Location = new System.Drawing.Point(122, 61);
+            this.tipoDocumento.Name = "tipoDocumento";
+            this.tipoDocumento.Size = new System.Drawing.Size(126, 20);
+            this.tipoDocumento.TabIndex = 42;
             // 
             // ModificarUsuarioParaAdminPage
             // 
@@ -581,7 +569,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox2.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
             this.ClienteGroup.ResumeLayout(false);
             this.ClienteGroup.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -598,7 +585,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
         private System.Windows.Forms.Button Grabar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox ClienteGroup;
         private System.Windows.Forms.TextBox ClienteApellidoTxt;
         private System.Windows.Forms.TextBox ClienteNombreTxt;
@@ -606,7 +592,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.ComboBox ClienteTipoDocComboBox;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox ClienteDNITxt;
         private System.Windows.Forms.Label label6;
@@ -633,7 +618,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox tipoDeUsuarioComboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox EmpresaGroup;
         private System.Windows.Forms.DateTimePicker EmpresaFechaCreacionDateTime;
@@ -647,5 +631,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox UsuarioActivo;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox tipoDeusuario;
+        private System.Windows.Forms.TextBox tipoDocumento;
     }
 }

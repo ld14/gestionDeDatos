@@ -121,8 +121,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 foreach (Empresa empresa in empresaLts)
                 {
                     usuario = usuarioDaoImpl.GetUsuarioById(empresa.idUsuario);
-                    if (usuario.activoUsuario == true)
-                    {
+                    
                         cantRegistros++;
                         GrillaUsuario nuevaGrilla = new GrillaUsuario();
                         nuevaGrilla.nombreUsuario = empresa.userName;
@@ -141,7 +140,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                         nuevaGrilla.Cuit = empresa.cuit;
                         nuevaGrilla.idUsuario = empresa.idUsuario;
                         this.customerList.Add(nuevaGrilla);
-                    }
+                    
                 }
             }
 

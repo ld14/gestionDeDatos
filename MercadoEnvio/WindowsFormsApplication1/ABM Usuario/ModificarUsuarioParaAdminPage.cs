@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             Usuario usu = ClienteDaoImpl.GetUsuarioById(cliente.idUsuario);
 
             userNameInput.Text = cliente.userName;
-            tipoDeUsuarioComboBox.Text = usu.RolesLst.First().nombre;
+            tipoDeusuario.Text = usu.RolesLst.First().nombre;
             userPasswordImput.Text = "************";
             ClienteGroup.Visible = true;
             EmpresaGroup.Visible = false;
@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             ClienteApellidoTxt.Text = cliente.apellido;
             ClienteNombreTxt.Text = cliente.nombre;
             ClienteDNITxt.Text = cliente.dni.ToString();
-            ClienteTipoDocComboBox.Text = Convert.ToString(cliente.tipoDocumento);
+            tipoDocumento.Text = Convert.ToString(cliente.tipoDocumento);
             if (cliente.activoUsuario == true)
             {
                 UsuarioActivo.Checked = true;
@@ -68,9 +68,10 @@ namespace WindowsFormsApplication1.ABM_Usuario
             ClienteGroup.Visible = false;
             EmpresaDaoImpl EmpresaDaoImpl = new EmpresaDaoImpl();
             Usuario usu = EmpresaDaoImpl.GetEmpresaByIdUsuario(empresa.idUsuario);
-            tipoDeUsuarioComboBox.Text = usu.RolesLst.First().nombre;
+            tipoDeusuario.Text = usu.RolesLst.First().nombre;
 
             userPasswordImput.Text = "************";
+            userNameInput.Text = empresa.userName;
             EmpresaNombreContactoTxt.Text = empresa.nombreContacto;
             EmpresaCuitTxt.Text = empresa.cuit;
             EmpresaRazonSocialTxt.Text = empresa.razonSocial;
@@ -98,7 +99,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
         {
             String nombreUsuario = userNameInput.Text;
             String password = SessionAttribute.user.password;
-            String TipoDeUsuario = tipoDeUsuarioComboBox.Text;
+            String TipoDeUsuario = tipoDeusuario.Text;
             String Mail = DatosBasicosEmailTxt.Text;
             String Telefono = DatosBasicosTelefono.Text;
             String DomicilioCalle = DatosBasicosDomicilioCalle.Text;
@@ -181,6 +182,11 @@ namespace WindowsFormsApplication1.ABM_Usuario
         {
             this.Close();
           
+        }
+
+        private void UsuarioActivo_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
