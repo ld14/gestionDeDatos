@@ -81,6 +81,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.UsuarioActivo = new System.Windows.Forms.CheckBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.ClienteGroup.SuspendLayout();
@@ -91,7 +92,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             // Grabar
             // 
-            this.Grabar.Location = new System.Drawing.Point(410, 50);
+            this.Grabar.Location = new System.Drawing.Point(221, 49);
             this.Grabar.Name = "Grabar";
             this.Grabar.Size = new System.Drawing.Size(222, 23);
             this.Grabar.TabIndex = 0;
@@ -101,6 +102,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.Grabar);
             this.groupBox2.Location = new System.Drawing.Point(8, 511);
             this.groupBox2.Name = "groupBox2";
@@ -558,6 +560,16 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.UsuarioActivo.Text = "Usuario Activo";
             this.UsuarioActivo.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(523, 49);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(236, 23);
+            this.button3.TabIndex = 52;
+            this.button3.Text = "Volver";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // ModificarUsuarioParaAdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,5 +646,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox UsuarioActivo;
+        private System.Windows.Forms.Button button3;
     }
 }
