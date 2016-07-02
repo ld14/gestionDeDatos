@@ -67,6 +67,28 @@ namespace WindowsFormsApplication1.Historial_Cliente
 
         }
 
+        private void compraClick(object sender, EventArgs e)
+        {
+            if (compraL.Font.Underline == false)
+            {
+                compraL.Font = new Font(compraL.Font, FontStyle.Underline);
+                subastaL.Font = new Font(subastaL.Font, FontStyle.Regular);
+                splitCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                splitSubasta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            }
+        }
+
+        private void subastaClick(object sender, EventArgs e)
+        {
+            if (subastaL.Font.Underline == false)
+            {
+                compraL.Font = new Font(compraL.Font, FontStyle.Regular);
+                subastaL.Font = new Font(subastaL.Font, FontStyle.Underline);
+                splitSubasta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                splitCompra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            }
+        }
+
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
             // The desired page has changed, so fetch the page of records using the "Current" offset 

@@ -43,6 +43,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.subastaL = new System.Windows.Forms.Label();
+            this.compraL = new System.Windows.Forms.Label();
+            this.splitCompra = new System.Windows.Forms.Splitter();
+            this.splitSubasta = new System.Windows.Forms.Splitter();
             this.compSinCalificar = new System.Windows.Forms.Label();
             this.compEfectuadas = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,8 +146,10 @@
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = null;
+            this.bindingNavigator1.AutoSize = false;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = null;
+            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.None;
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -159,12 +167,13 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(966, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(221, 25);
             this.bindingNavigator1.TabIndex = 0;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.bindingNavigator1);
             this.groupBox2.Location = new System.Drawing.Point(26, 268);
@@ -173,6 +182,58 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Historial";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.subastaL);
+            this.panel1.Controls.Add(this.compraL);
+            this.panel1.Controls.Add(this.splitCompra);
+            this.panel1.Controls.Add(this.splitSubasta);
+            this.panel1.Location = new System.Drawing.Point(788, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(178, 38);
+            this.panel1.TabIndex = 4;
+            // 
+            // subastaL
+            // 
+            this.subastaL.AutoSize = true;
+            this.subastaL.Location = new System.Drawing.Point(4, 10);
+            this.subastaL.Name = "subastaL";
+            this.subastaL.Size = new System.Drawing.Size(65, 16);
+            this.subastaL.TabIndex = 3;
+            this.subastaL.Text = "Subastas";
+            this.subastaL.Click += new System.EventHandler(this.subastaClick);
+            // 
+            // compraL
+            // 
+            this.compraL.AutoSize = true;
+            this.compraL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compraL.Location = new System.Drawing.Point(109, 10);
+            this.compraL.Name = "compraL";
+            this.compraL.Size = new System.Drawing.Size(63, 16);
+            this.compraL.TabIndex = 2;
+            this.compraL.Text = "Compras";
+            this.compraL.Click += new System.EventHandler(this.compraClick);
+            // 
+            // splitCompra
+            // 
+            this.splitCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitCompra.Enabled = false;
+            this.splitCompra.Location = new System.Drawing.Point(88, 0);
+            this.splitCompra.Name = "splitCompra";
+            this.splitCompra.Size = new System.Drawing.Size(88, 36);
+            this.splitCompra.TabIndex = 4;
+            this.splitCompra.TabStop = false;
+            // 
+            // splitSubasta
+            // 
+            this.splitSubasta.Enabled = false;
+            this.splitSubasta.Location = new System.Drawing.Point(0, 0);
+            this.splitSubasta.Name = "splitSubasta";
+            this.splitSubasta.Size = new System.Drawing.Size(88, 36);
+            this.splitSubasta.TabIndex = 5;
+            this.splitSubasta.TabStop = false;
             // 
             // compSinCalificar
             // 
@@ -280,7 +341,8 @@
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -310,5 +372,10 @@
         private System.Windows.Forms.Label subGanadas;
         private System.Windows.Forms.Label subParticipadas;
         private System.Windows.Forms.Label montoTotal;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label subastaL;
+        private System.Windows.Forms.Splitter splitCompra;
+        private System.Windows.Forms.Label compraL;
+        private System.Windows.Forms.Splitter splitSubasta;
     }
 }
