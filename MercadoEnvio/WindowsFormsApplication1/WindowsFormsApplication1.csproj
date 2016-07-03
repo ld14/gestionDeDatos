@@ -149,6 +149,7 @@
     <Compile Include="Calificar\CalificacionesPage.Designer.cs">
       <DependentUpon>CalificacionesPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Domain\SoloSubasta.cs" />
     <Compile Include="Domain\SinCalificar.cs" />
     <Compile Include="ComprarOfertar\BusquedaPublicacion.cs">
       <SubType>Form</SubType>
@@ -179,6 +180,8 @@
     <Compile Include="Entity\DAO\CompraUsuarioDao.cs" />
     <Compile Include="Entity\DAO\CalificacionDao.cs" />
     <Compile Include="Entity\DAO\CalificacionDaoImpl.cs" />
+    <Compile Include="Entity\DAO\SoloSubastaDaoImpl.cs" />
+    <Compile Include="Entity\DAO\SoloSubastaDao.cs" />
     <Compile Include="Entity\DAO\EstadisticaVendedoresDaoImpl.cs" />
     <Compile Include="Entity\DAO\EstadisticaVendedoresDao.cs" />
     <Compile Include="Entity\DAO\FacturasEmitidasDaoImpl.cs" />
@@ -474,6 +477,7 @@
     <EmbeddedResource Include="Maps\SinCalificar.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Maps\SoloSubasta.hbm.xml" />
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <ItemGroup />
