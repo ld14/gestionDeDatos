@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ListadosEstadisticos_vendedoresMayorCantidadFacturas" table="vista_ListadoEstadistica_vendedorMayorCantFacturas" lazy="true" >
+    <id name="rowID" column="rowID">
+      <generator class="identity" />
+    </id>
+    
+    <property name="nombreUsuario">
+      <column name="nombreUsuario" sql-type="int" not-null="true" />
+    </property>
+    <property name="cantidad">
+      <column name="cantidad" sql-type="numeric" not-null="false" />
+    </property>
+    <property name="anio">
+      <column name="anio" sql-type="int" not-null="false" />
+    </property>
+    <property name="mes">
+      <column name="mes" sql-type="int" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

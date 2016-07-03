@@ -12,8 +12,6 @@ namespace WindowsFormsApplication1.Entity.Utils
     {
         public class ComboboxData
         {
-            string TotalData;
-
             private bool _checked;
             public bool Checked
             {

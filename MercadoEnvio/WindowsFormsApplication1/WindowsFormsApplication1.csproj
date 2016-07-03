@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -149,6 +150,10 @@
     <Compile Include="Calificar\CalificacionesPage.Designer.cs">
       <DependentUpon>CalificacionesPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorCantidadProdNoVendidos.cs" />
+    <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorMontoFacturado.cs" />
+    <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorCantidadFacturas.cs" />
+    <Compile Include="Domain\ListadosEstadisticos_clientesMayorCantidadProdComprados.cs" />
     <Compile Include="Domain\SinCalificar.cs" />
     <Compile Include="ComprarOfertar\BusquedaPublicacion.cs">
       <SubType>Form</SubType>
@@ -163,9 +168,6 @@
       <DependentUpon>CompraOfertaPublicacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Domain\BusquedaDePublicacion.cs" />
-    <Compile Include="Domain\EstadisticaCompradores.cs" />
-    <Compile Include="Domain\Estadisticamaximos.cs" />
-    <Compile Include="Domain\EstadisticaVendedores.cs" />
     <Compile Include="Domain\FacturasEmitidas.cs" />
     <Compile Include="Domain\Ofertasubasta.cs" />
     <Compile Include="Domain\SubastaCompraDelSistema.cs" />
@@ -179,10 +181,10 @@
     <Compile Include="Entity\DAO\CompraUsuarioDao.cs" />
     <Compile Include="Entity\DAO\CalificacionDao.cs" />
     <Compile Include="Entity\DAO\CalificacionDaoImpl.cs" />
-    <Compile Include="Entity\DAO\EstadisticaVendedoresDaoImpl.cs" />
-    <Compile Include="Entity\DAO\EstadisticaVendedoresDao.cs" />
     <Compile Include="Entity\DAO\FacturasEmitidasDaoImpl.cs" />
     <Compile Include="Entity\DAO\FacturasEmitidasDao.cs" />
+    <Compile Include="Entity\DAO\ListadoEstadisticasDao.cs" />
+    <Compile Include="Entity\DAO\ListadoEstadisticasDaoImpl.cs" />
     <Compile Include="Entity\DAO\SinCalificarDao.cs" />
     <Compile Include="Entity\DAO\SinCalificarDaoImpl.cs" />
     <Compile Include="Entity\DAO\SubastaCompraDelSistemaDaoDaoImpl.cs" />
@@ -249,20 +251,13 @@
       <DependentUpon>CompraVentaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Historial Cliente\GrillaCompraVenta.cs" />
-    <Compile Include="Listado_Estadistico\EstadisticaCompradoresGrilla.cs" />
-    <Compile Include="Listado_Estadistico\EstadisticasVendedoresGrilla.cs" />
     <Compile Include="Listado_Estadistico\ListadoEstadisitico.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Listado_Estadistico\ListadoEstadisitico.Designer.cs">
       <DependentUpon>ListadoEstadisitico.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listado_Estadistico\ListadoEstadisticoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Listado_Estadistico\ListadoEstadisticoForm.Designer.cs">
-      <DependentUpon>ListadoEstadisticoForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Listado_Estadistico\ListadosEstadisticoGrilla.cs" />
     <Compile Include="Login_page\loading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -469,11 +464,13 @@
     <EmbeddedResource Include="Maps\OfertaSubasta.hbm.xml" />
     <EmbeddedResource Include="Maps\SubastaCompraDelSistema.hbm.xml" />
     <EmbeddedResource Include="Maps\FacturasEmitidas.hbm.xml" />
-    <EmbeddedResource Include="Maps\EstadisticaCompradores.hbm.xml" />
-    <EmbeddedResource Include="Maps\estadisticaMaximos.hbm.xml" />
+    <EmbeddedResource Include="Maps\ListadosEstadisticos_vendedoresMayorCantidadProdNoVendidos.hbm.xml" />
     <EmbeddedResource Include="Maps\SinCalificar.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Maps\ListadosEstadisticos_vendedoresMayorMontoFacturado.hbm.xml" />
+    <EmbeddedResource Include="Maps\ListadosEstadisticos_clientesMayorCantidadProdComprados.hbm.xml" />
+    <EmbeddedResource Include="Maps\ListadosEstadisticos_vendedoresMayorCantidadFacturas.hbm.xml" />
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <ItemGroup />

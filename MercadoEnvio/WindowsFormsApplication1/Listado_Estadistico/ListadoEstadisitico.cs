@@ -13,10 +13,13 @@ namespace WindowsFormsApplication1.Listado_Estadistico
 {
     public partial class ListadoEstadisitico : Form
     {
-
         public static int totalRecords = 0;
         private const int pageSize = 10;
         List<Object> customerList = new List<Object>();
+        enum TiposListado { vendedoresMayorCantidadProdNoVendidos, clientesMayorCantidadProdComprados, vendedoresMayorCantidadFacturas, vendedoresMayorMontoFacturado };
+        int listadoSeleccionado = -1;
+        string visibilidadSeleccionada = "-1";
+        string rubroSeleccionado = "-1";
 
         public static int TotalRecords
         {
@@ -31,8 +34,7 @@ namespace WindowsFormsApplication1.Listado_Estadistico
 
         private void ListadoEstadisitico_Load(object sender, EventArgs e)
         {
-            string[] monthNames = (new System.Globalization.CultureInfo("es-AR")).DateTimeFormat.MonthNames;
-
+            //-----------------Combo Años------------------------
             List<labelValue> lstAnio = new List<labelValue>();
             for (int i = 2010; i <= 2016; i++)
             {
@@ -42,31 +44,31 @@ namespace WindowsFormsApplication1.Listado_Estadistico
                 lstAnio.Add(lb);
             }
 
-            int count = 1;
-            List<labelValue> mesesInicialLts = new List<labelValue>();
-            List<labelValue> mesesFinalLts = new List<labelValue>();
-            foreach (string mes in monthNames)
-            {
-                labelValue lb = new labelValue();
-                lb.value = Convert.ToString(count);
-                lb.label = mes;
-                count++;
-                mesesInicialLts.Add(lb);
-                mesesFinalLts.Add(lb);
-            }
-
             anioSelect.DataSource = lstAnio;
             anioSelect.DisplayMember = "label";
             anioSelect.ValueMember = "value";
 
-            MesInitCombo.DataSource = mesesInicialLts;
-              MesInitCombo.DisplayMember = "label";
-              MesInitCombo.ValueMember = "value";
+            //----------------------Combo Rubros-------------------------------------------//
+            RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
+            IList<Rubro> rubroLts = rubroDaoImpli.darRubroActivo();
+            Rubro rubroAux = new Rubro();
+            rubroAux.descripcion = "Seleccione un rubro";
+            rubroLts.Insert(0, rubroAux);
 
-              mesFinSelect.DataSource = mesesFinalLts;
-            mesFinSelect.DisplayMember = "label";
-            mesFinSelect.ValueMember = "value";
+            RubroComboBox.DataSource = rubroLts;
+            RubroComboBox.DisplayMember = "descripcion";
+            RubroComboBox.ValueMember = "descripcion";
 
+            //----------------------Combo visibilidad--------------------------------------//
+            VisibilidadDaoImpl visibilidadDao = new VisibilidadDaoImpl();
+            IList<Visibilidad> VisibilidadLts = visibilidadDao.darVisibilidad();
+            Visibilidad visibilidadAux = new Visibilidad();
+            visibilidadAux.nombreVisibilidad = "Seleccione una visibilidad";
+            VisibilidadLts.Insert(0, visibilidadAux);
+
+            visibilidadComboBox.DataSource = VisibilidadLts;
+            visibilidadComboBox.DisplayMember = "nombreVisibilidad";
+            visibilidadComboBox.ValueMember = "nombreVisibilidad";
         }
 
         private class labelValue
@@ -78,273 +80,83 @@ namespace WindowsFormsApplication1.Listado_Estadistico
         private void button1_Click(object sender, EventArgs e)
         {
             int anio = Convert.ToInt32((anioSelect.SelectedItem as labelValue).value);
-            int mesInicial = Convert.ToInt32((MesInitCombo.SelectedItem as labelValue).value);
-            int mesFinal = Convert.ToInt32((mesFinSelect.SelectedItem as labelValue).value);
-            
+            int trimestreSeleccionado = Convert.ToInt32(TrimestreCombo.SelectedIndex + 1);
 
-            if (mesInicial > mesFinal)
+            ListadoEstadisticasDaoImpl estaVendImpl = new ListadoEstadisticasDaoImpl();
+
+            switch (reporteSelect.Text)
             {
-                MessageBox.Show("No puede elegir un mes final mayor a un mes inicial");
-                return;
+                case "Vendedores con mayor cantidad de productos no vendidos":
+                    Visibilidad objVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
+                    visibilidadSeleccionada = objVisibilidad.nombreVisibilidad;
+                    listadoSeleccionado = (int)TiposListado.vendedoresMayorCantidadProdNoVendidos;
+                    break;
+                case "Clientes con mayor cantidad de productos comprados":
+                    Rubro objRubro = RubroComboBox.SelectedItem as Rubro;
+                    rubroSeleccionado = objRubro.descripcion;
+                    listadoSeleccionado = (int)TiposListado.clientesMayorCantidadProdComprados;
+                    break;
+                case "Vendedores con mayor cantidad de facturas":
+                    listadoSeleccionado = (int)TiposListado.vendedoresMayorCantidadFacturas;
+                    break;
+                case "Vendedores con mayor monto facturado":
+                    listadoSeleccionado = (int)TiposListado.vendedoresMayorMontoFacturado;
+                    break;
+                default:
+                    MessageBox.Show("Tipo de listado seleccionado no reconocido");
+                    break;
             }
 
-            if ((mesFinal - mesInicial) != 2)
+            customerList = new List<Object>(estaVendImpl.darInformacionListado(listadoSeleccionado, anio, trimestreSeleccionado, visibilidadSeleccionada, rubroSeleccionado));
+            TotalRecords = this.customerList.Count;
+            if (TotalRecords == 0)
             {
-                MessageBox.Show("No puede elegir un periodo menor o mayor a tres meses");
-                return;
+                MessageBox.Show("No se encontraron resultados");
             }
-            
-            string fechaInicial = generarFecha(mesInicial,anio,true);
-            string fechaFinal = generarFecha(mesFinal, anio, true);
-
-            DateTime dateFechaInicial =   DateUtils.convertirStringEnFecha(fechaInicial);
-            DateTime dateFechaFin = DateUtils.convertirStringEnFecha(fechaFinal);
-            EstadisticaVendedoresDaoImpl estaVendImpl = new EstadisticaVendedoresDaoImpl();
-
-            if (reporteSelect.Text.Equals("Vendedores con mayor cantidad de productos no vendidos")) {
-                
-                customerList = new List<Object>(estaVendImpl.darEstadisticasVendedores(dateFechaInicial, dateFechaFin, 1));
-                TotalRecords = this.customerList.Count;
-                //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "idPublicacion" });
+            else
+            {
                 bindingNavigator1.BindingSource = bindingSource1;
                 bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChanged);
                 bindingSource1.DataSource = new PageOffsetList();
+                MessageBox.Show("Búsqueda finalizada. Registros encontrados: " + TotalRecords);
             }
-
-            if (reporteSelect.Text.Equals("Clientes con mayor cantidad de productos comprados"))
-            {
-                customerList = new List<Object>(estaVendImpl.darEstadisticasCompradores(dateFechaInicial, dateFechaFin, 1));
-                TotalRecords = this.customerList.Count;
-                //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "idPublicacion" });
-                bindingNavigator1.BindingSource = bindingSource1;
-                bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChangedCompra);
-                bindingSource1.DataSource = new PageOffsetList();
-            }
-            if (reporteSelect.Text.Equals("Vendedores con mayor cantidad de facturas"))
-            {
-                customerList = new List<Object>(estaVendImpl.darMaximaCantidadFacturas(anio, mesInicial, mesFinal));
-                TotalRecords = this.customerList.Count;
-                //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "idPublicacion" });
-                bindingNavigator1.BindingSource = bindingSource1;
-                bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChangedMaxCantidadVenta);
-                bindingSource1.DataSource = new PageOffsetList();
-            }
-            if (reporteSelect.Text.Equals("Vendedores con mayor monto facturado"))
-            {
-                customerList = new List<Object>(estaVendImpl.darMonToMaximoFacturas(anio, mesInicial, mesFinal));
-                TotalRecords = this.customerList.Count;
-                //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "idPublicacion" });
-                bindingNavigator1.BindingSource = bindingSource1;
-                bindingSource1.CurrentChanged += new System.EventHandler(bindingSource1_CurrentChangedMontoMaximo);
-                bindingSource1.DataSource = new PageOffsetList();
-            }
-            /*Vendedores con mayor cantidad de productos no vendidos
-            Vendedores con mayor cantidad de facturas
-            Vendedores con mayor monto facturado
-            Clientes con mayor cantidad de productos comprados*/
-
-
-
-            
-
         }
 
-        private void reporteSelect_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bindingSource1_CurrentChangedCompra(object sender, EventArgs e)
-        {
-            // The desired page has changed, so fetch the page of records using the "Current" offset 
-            var mesesDicionario = new Dictionary<int, string>();
-                mesesDicionario.Add(1,"enero");
-                mesesDicionario.Add(2,"febrero");
-                mesesDicionario.Add(3,"marzo");
-                mesesDicionario.Add(4,"abril");
-                mesesDicionario.Add(5,"mayo");
-                mesesDicionario.Add(6,"junio");
-                mesesDicionario.Add(7,"julio"); 
-                mesesDicionario.Add(8,"agosto");
-                mesesDicionario.Add(9,"septiembre");
-                mesesDicionario.Add(10,"octubre");
-                mesesDicionario.Add(11,"noviembre");
-                mesesDicionario.Add(12,"diciembre");
-                
-
-            int offset = (int)bindingSource1.Current;
-            var records = new List<Object>();
-
-            for (int i = offset; i < offset + pageSize && i < totalRecords; i++) {
-                EstadisticaCompradoresGrilla nuevo = this.customerList[i] as EstadisticaCompradoresGrilla;
-               // nuevo.NombreMes = mesesDicionario[nuevo.mes];
-                records.Add(nuevo);
-            }
-            
-
-            dataGridView1.DataSource = records;
-
-            
-            
-            dataGridView1.Columns[3].HeaderText = "Mes";
-            dataGridView1.Columns[3].DisplayIndex = 1;
-            dataGridView1.Columns[2].HeaderText = "Usuario";
-            dataGridView1.Columns[2].DisplayIndex = 2;
-            dataGridView1.Columns[2].Width = 200;
-            dataGridView1.Columns[1].HeaderText = "Cantidad Comprada";
-            dataGridView1.Columns[1].DisplayIndex = 3;
-
-            dataGridView1.Columns[0].Visible = false;
-            
-
-            //myGridView.Columns["mySecondCol"].DisplayIndex = 1; ARRREGALNDO ELBAROD
-
-
-        }
-
-        private void bindingSource1_CurrentChangedMaxCantidadVenta(object sender, EventArgs e)
-        {
-            // The desired page has changed, so fetch the page of records using the "Current" offset 
-            var mesesDicionario = new Dictionary<int, string>();
-            mesesDicionario.Add(1, "enero");
-            mesesDicionario.Add(2, "febrero");
-            mesesDicionario.Add(3, "marzo");
-            mesesDicionario.Add(4, "abril");
-            mesesDicionario.Add(5, "mayo");
-            mesesDicionario.Add(6, "junio");
-            mesesDicionario.Add(7, "julio");
-            mesesDicionario.Add(8, "agosto");
-            mesesDicionario.Add(9, "septiembre");
-            mesesDicionario.Add(10, "octubre");
-            mesesDicionario.Add(11, "noviembre");
-            mesesDicionario.Add(12, "diciembre");
-
-
-            int offset = (int)bindingSource1.Current;
-            var records = new List<Object>();
-
-            for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
-            {
-                Estadisticamaximos nuevo = this.customerList[i] as Estadisticamaximos;
-                // nuevo.NombreMes = mesesDicionario[nuevo.mes];
-                records.Add(nuevo);
-            }
-
-
-            dataGridView1.DataSource = records;
-
-
-
-            dataGridView1.Columns[2].HeaderText = "Usuario";
-            dataGridView1.Columns[2].DisplayIndex = 1;
-            dataGridView1.Columns[2].Width = 200;
-
-            dataGridView1.Columns[3].HeaderText = "Año";
-            dataGridView1.Columns[3].DisplayIndex = 2;
-            dataGridView1.Columns[3].Width = 40;
-
-            dataGridView1.Columns[4].HeaderText = "Mes";
-            dataGridView1.Columns[4].DisplayIndex = 3;
-            dataGridView1.Columns[4].Width = 40;
-
-            dataGridView1.Columns[5].HeaderText = "Cantidad Facturado";
-            dataGridView1.Columns[5].DisplayIndex = 4;
-            dataGridView1.Columns[5].Width = 100;
-
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
-
-
-            //myGridView.Columns["mySecondCol"].DisplayIndex = 1; ARRREGALNDO ELBAROD
-
-
-        }
-
-        private void bindingSource1_CurrentChangedMontoMaximo(object sender, EventArgs e)
-        {
-            // The desired page has changed, so fetch the page of records using the "Current" offset 
-            var mesesDicionario = new Dictionary<int, string>();
-            mesesDicionario.Add(1, "enero");
-            mesesDicionario.Add(2, "febrero");
-            mesesDicionario.Add(3, "marzo");
-            mesesDicionario.Add(4, "abril");
-            mesesDicionario.Add(5, "mayo");
-            mesesDicionario.Add(6, "junio");
-            mesesDicionario.Add(7, "julio");
-            mesesDicionario.Add(8, "agosto");
-            mesesDicionario.Add(9, "septiembre");
-            mesesDicionario.Add(10, "octubre");
-            mesesDicionario.Add(11, "noviembre");
-            mesesDicionario.Add(12, "diciembre");
-
-
-            int offset = (int)bindingSource1.Current;
-            var records = new List<Object>();
-
-            for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
-            {
-                Estadisticamaximos nuevo = this.customerList[i] as Estadisticamaximos;
-                // nuevo.NombreMes = mesesDicionario[nuevo.mes];
-                records.Add(nuevo);
-            }
-
-
-            dataGridView1.DataSource = records;
-
-
-
-            dataGridView1.Columns[2].HeaderText = "Usuario";
-            dataGridView1.Columns[2].DisplayIndex = 1;
-            dataGridView1.Columns[2].Width = 200;
-
-            dataGridView1.Columns[3].HeaderText = "Año";
-            dataGridView1.Columns[3].DisplayIndex = 2;
-            dataGridView1.Columns[3].Width = 40;
-
-            dataGridView1.Columns[4].HeaderText = "Mes";
-            dataGridView1.Columns[4].DisplayIndex = 3;
-            dataGridView1.Columns[4].Width = 40;
-
-            dataGridView1.Columns[6].HeaderText = "Monto maximo Facturado";
-            dataGridView1.Columns[6].DisplayIndex = 4;
-            dataGridView1.Columns[6].Width = 100;
-
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-
-
-            //myGridView.Columns["mySecondCol"].DisplayIndex = 1; ARRREGALNDO ELBAROD
-
-
-        }
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
-            // The desired page has changed, so fetch the page of records using the "Current" offset 
             int offset = (int)bindingSource1.Current;
             var records = new List<Object>();
+
             for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
-                records.Add(this.customerList[i]);
+            {
+                ListadosEstadisticoGrilla nuevo = new ListadosEstadisticoGrilla();
+                Object customer = this.customerList[i];
+                nuevo.nombreUsuario = (string)customer.GetType().GetProperty("nombreUsuario").GetValue(customer, null);
+                nuevo.anio = (int)customer.GetType().GetProperty("anio").GetValue(customer, null);
+                nuevo.mes = (int)customer.GetType().GetProperty("mes").GetValue(customer, null);
+                nuevo.cantidad = (int)customer.GetType().GetProperty("cantidad").GetValue(customer, null);
+                if (listadoSeleccionado == (int)TiposListado.vendedoresMayorCantidadProdNoVendidos)
+                {
+                    nuevo.visibilidad = (string)customer.GetType().GetProperty("visibilidad").GetValue(customer, null);
+                }
+                if (listadoSeleccionado == (int)TiposListado.clientesMayorCantidadProdComprados)
+                {
+                    nuevo.rubro = (string)customer.GetType().GetProperty("rubro").GetValue(customer, null);
+                }
+                records.Add(nuevo);
+            }
+
             dataGridView1.DataSource = records;
 
-            /*
-            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[0].HeaderText = "Usuario";
+            dataGridView1.Columns[1].HeaderText = "Año";
+            dataGridView1.Columns[2].HeaderText = "Mes";
+            dataGridView1.Columns[3].HeaderText = "Cantidad";
+            dataGridView1.Columns[4].HeaderText = "Visibilidad";
+            dataGridView1.Columns[5].HeaderText = "Rubro";
 
-            dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
-            dataGridView1.Columns[9].Visible = false;
-
-            dataGridView1.Columns[1].HeaderText = "Codigo";
-            dataGridView1.Columns[2].HeaderText = "Tipo De Venta";
-            dataGridView1.Columns[3].HeaderText = "Descripcion Producto";
-            dataGridView1.Columns[3].Width = 200;
-            dataGridView1.Columns[4].HeaderText = "Rubro";
-            dataGridView1.Columns[4].Width = 200;
-            dataGridView1.Columns[5].HeaderText = "Precio";
-            dataGridView1.Columns[7].HeaderText = "Fin de Venta";*/
-
-
+            dataGridView1.Columns[4].Visible = (listadoSeleccionado == (int)TiposListado.vendedoresMayorCantidadProdNoVendidos);
+            dataGridView1.Columns[5].Visible = (listadoSeleccionado == (int)TiposListado.clientesMayorCantidadProdComprados);
         }
 
         class PageOffsetList : System.ComponentModel.IListSource
@@ -361,29 +173,11 @@ namespace WindowsFormsApplication1.Listado_Estadistico
             }
         }
 
-
-        private string generarFecha(int mesInicial,int anio,bool inical){
-            string diaInicial = "01";
-            
-            string mes = "";
-            if (mesInicial < 10)
-            {
-                mes = "0" + mesInicial;
-            }
-            else {
-                mes = Convert.ToString(mesInicial);
-                if (mesInicial == 12 && !inical) {
-                    anio=anio + 1;
-                }
-            }
-
-            string fechaArmada = diaInicial + "/" + mes + "/" + anio;
-
-            return fechaArmada;
+        private void reporteSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int reporteSeleccionado = Convert.ToInt32(reporteSelect.SelectedIndex);
+            grupoVisibilidad.Visible = (reporteSeleccionado == (int)TiposListado.vendedoresMayorCantidadProdNoVendidos);
+            grupoRubros.Visible = (reporteSeleccionado == (int)TiposListado.clientesMayorCantidadProdComprados);
         }
-            
-
-        }
-
-    
+    }
 }

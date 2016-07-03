@@ -32,8 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListadoEstadisitico));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.mesFinSelect = new System.Windows.Forms.ComboBox();
-            this.MesInitCombo = new System.Windows.Forms.ComboBox();
+            this.TrimestreCombo = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.reporteSelect = new System.Windows.Forms.ComboBox();
             this.anioSelect = new System.Windows.Forms.ComboBox();
@@ -52,6 +51,12 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.grupoRubros = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.RubroComboBox = new System.Windows.Forms.ComboBox();
+            this.grupoVisibilidad = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.visibilidadComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -59,6 +64,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.grupoRubros.SuspendLayout();
+            this.grupoVisibilidad.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -78,8 +85,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.mesFinSelect);
-            this.groupBox3.Controls.Add(this.MesInitCombo);
+            this.groupBox3.Controls.Add(this.TrimestreCombo);
             this.groupBox3.Location = new System.Drawing.Point(314, 29);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(491, 67);
@@ -87,21 +93,20 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Trimestre Comprendido entre";
             // 
-            // mesFinSelect
+            // TrimestreCombo
             // 
-            this.mesFinSelect.FormattingEnabled = true;
-            this.mesFinSelect.Location = new System.Drawing.Point(251, 29);
-            this.mesFinSelect.Name = "mesFinSelect";
-            this.mesFinSelect.Size = new System.Drawing.Size(219, 21);
-            this.mesFinSelect.TabIndex = 9;
-            // 
-            // MesInitCombo
-            // 
-            this.MesInitCombo.FormattingEnabled = true;
-            this.MesInitCombo.Location = new System.Drawing.Point(22, 29);
-            this.MesInitCombo.Name = "MesInitCombo";
-            this.MesInitCombo.Size = new System.Drawing.Size(223, 21);
-            this.MesInitCombo.TabIndex = 12;
+            this.TrimestreCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TrimestreCombo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.TrimestreCombo.FormattingEnabled = true;
+            this.TrimestreCombo.Items.AddRange(new object[] {
+            "Primer trimestre (enero - marzo)",
+            "Segundo trimestre (abril - junio)",
+            "Tercer trimestre (julio - septiembre)",
+            "Cuarto trimestre (octubre - diciembre)"});
+            this.TrimestreCombo.Location = new System.Drawing.Point(22, 29);
+            this.TrimestreCombo.Name = "TrimestreCombo";
+            this.TrimestreCombo.Size = new System.Drawing.Size(223, 21);
+            this.TrimestreCombo.TabIndex = 12;
             // 
             // button1
             // 
@@ -115,12 +120,14 @@
             // 
             // reporteSelect
             // 
+            this.reporteSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.reporteSelect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.reporteSelect.FormattingEnabled = true;
             this.reporteSelect.Items.AddRange(new object[] {
             "Vendedores con mayor cantidad de productos no vendidos",
+            "Clientes con mayor cantidad de productos comprados",
             "Vendedores con mayor cantidad de facturas",
-            "Vendedores con mayor monto facturado",
-            "Clientes con mayor cantidad de productos comprados"});
+            "Vendedores con mayor monto facturado"});
             this.reporteSelect.Location = new System.Drawing.Point(83, 115);
             this.reporteSelect.Name = "reporteSelect";
             this.reporteSelect.Size = new System.Drawing.Size(722, 21);
@@ -129,6 +136,8 @@
             // 
             // anioSelect
             // 
+            this.anioSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.anioSelect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.anioSelect.FormattingEnabled = true;
             this.anioSelect.Location = new System.Drawing.Point(83, 55);
             this.anioSelect.Name = "anioSelect";
@@ -157,7 +166,7 @@
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.bindingNavigator1);
-            this.groupBox2.Location = new System.Drawing.Point(23, 248);
+            this.groupBox2.Location = new System.Drawing.Point(23, 401);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(962, 325);
             this.groupBox2.TabIndex = 5;
@@ -268,11 +277,75 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // grupoRubros
+            // 
+            this.grupoRubros.Controls.Add(this.label9);
+            this.grupoRubros.Controls.Add(this.RubroComboBox);
+            this.grupoRubros.Location = new System.Drawing.Point(30, 272);
+            this.grupoRubros.Name = "grupoRubros";
+            this.grupoRubros.Size = new System.Drawing.Size(435, 96);
+            this.grupoRubros.TabIndex = 17;
+            this.grupoRubros.TabStop = false;
+            this.grupoRubros.Text = "Rubros";
+            this.grupoRubros.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(19, 41);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Rubro";
+            // 
+            // RubroComboBox
+            // 
+            this.RubroComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RubroComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.RubroComboBox.FormattingEnabled = true;
+            this.RubroComboBox.Location = new System.Drawing.Point(65, 38);
+            this.RubroComboBox.Name = "RubroComboBox";
+            this.RubroComboBox.Size = new System.Drawing.Size(350, 21);
+            this.RubroComboBox.TabIndex = 21;
+            // 
+            // grupoVisibilidad
+            // 
+            this.grupoVisibilidad.Controls.Add(this.label12);
+            this.grupoVisibilidad.Controls.Add(this.visibilidadComboBox);
+            this.grupoVisibilidad.Location = new System.Drawing.Point(502, 272);
+            this.grupoVisibilidad.Name = "grupoVisibilidad";
+            this.grupoVisibilidad.Size = new System.Drawing.Size(435, 115);
+            this.grupoVisibilidad.TabIndex = 18;
+            this.grupoVisibilidad.TabStop = false;
+            this.grupoVisibilidad.Text = "Visibilidad";
+            this.grupoVisibilidad.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(8, 41);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 13);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Visibilidad";
+            // 
+            // visibilidadComboBox
+            // 
+            this.visibilidadComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.visibilidadComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.visibilidadComboBox.FormattingEnabled = true;
+            this.visibilidadComboBox.Location = new System.Drawing.Point(65, 38);
+            this.visibilidadComboBox.Name = "visibilidadComboBox";
+            this.visibilidadComboBox.Size = new System.Drawing.Size(350, 21);
+            this.visibilidadComboBox.TabIndex = 21;
+            // 
             // ListadoEstadisitico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 622);
+            this.Controls.Add(this.grupoVisibilidad);
+            this.Controls.Add(this.grupoRubros);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -292,6 +365,10 @@
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.grupoRubros.ResumeLayout(false);
+            this.grupoRubros.PerformLayout();
+            this.grupoVisibilidad.ResumeLayout(false);
+            this.grupoVisibilidad.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -300,7 +377,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox reporteSelect;
-        private System.Windows.Forms.ComboBox mesFinSelect;
         private System.Windows.Forms.ComboBox anioSelect;
         private System.Windows.Forms.Label CantEstrellasLabel;
         private System.Windows.Forms.Label labelCantCompras;
@@ -318,7 +394,13 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox MesInitCombo;
+        private System.Windows.Forms.ComboBox TrimestreCombo;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grupoRubros;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox RubroComboBox;
+        private System.Windows.Forms.GroupBox grupoVisibilidad;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox visibilidadComboBox;
     }
 }

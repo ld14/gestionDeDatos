@@ -75,7 +75,6 @@
             this.misDatosToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // aBMMenu
             // 
@@ -95,7 +94,6 @@
             this.elimiarToolStripMenuItem});
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
             resources.ApplyResources(this.usuarioToolStripMenuItem, "usuarioToolStripMenuItem");
-            this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
             // altaToolStripMenuItem
             // 
@@ -163,7 +161,6 @@
             this.eliminarToolStripMenuItem1});
             this.visibToolStripMenuItem.Name = "visibToolStripMenuItem";
             resources.ApplyResources(this.visibToolStripMenuItem, "visibToolStripMenuItem");
-            this.visibToolStripMenuItem.Click += new System.EventHandler(this.visibToolStripMenuItem_Click);
             // 
             // nuevaToolStripMenuItem
             // 
@@ -209,7 +206,6 @@
             this.buscarToolStripMenuItem1});
             this.comprarOfertarMenu.Name = "comprarOfertarMenu";
             resources.ApplyResources(this.comprarOfertarMenu, "comprarOfertarMenu");
-            this.comprarOfertarMenu.Click += new System.EventHandler(this.comprarOfertarToolStripMenuItem_Click);
             // 
             // buscarToolStripMenuItem1
             // 
@@ -262,7 +258,6 @@
             this.calificarToolStripMenuItem});
             this.calificacionesToolStripMenuItem.Name = "calificacionesToolStripMenuItem";
             resources.ApplyResources(this.calificacionesToolStripMenuItem, "calificacionesToolStripMenuItem");
-            this.calificacionesToolStripMenuItem.Click += new System.EventHandler(this.calificacionesToolStripMenuItem_Click);
             // 
             // calificarToolStripMenuItem
             // 
