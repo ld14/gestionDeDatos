@@ -887,7 +887,7 @@ CREATE VIEW [LOPEZ_Y_CIA].[SubastaCompraDelSistema] AS
 	FROM (
 		SELECT
 			cp1.idUsuario,
-			'Compras' AS tipoCompra,
+			'Compra Inmediata' AS tipoCompra,
 			cp1.fecha,
 			cp1.compraCantidad, 
 			pub1.codigoPublicacion,
@@ -898,28 +898,28 @@ CREATE VIEW [LOPEZ_Y_CIA].[SubastaCompraDelSistema] AS
 		LEFT JOIN [LOPEZ_Y_CIA].[Usuario] usr1 ON cp1.idUsuario = usr1.idUsuario 
 		JOIN [LOPEZ_Y_CIA].[Publicacion] pub1 ON cp1.idPublicacion = pub1.idPublicacion 
 		LEFT JOIN [LOPEZ_Y_CIA].[Calificacion] cal1 ON cal1.idCalificacion = cp1.idCalificacion
-		UNION ALL
-		SELECT
-			sb1.idUsuario,
-			'Oferta Subasta' AS tipoCompra,
-			sb1.fecha,
-			0 AS compraCantidad, 
-			pub1.codigoPublicacion,
-			pub1.descripcion,
-			'' AS cantEstrellas,
-			'' AS descripcionCalificacion
-		FROM [LOPEZ_Y_CIA].[OfertaSubasta] sb1
-		LEFT JOIN [LOPEZ_Y_CIA].[Usuario] usr1 ON sb1.idUsuario = usr1.idUsuario 
-		JOIN [LOPEZ_Y_CIA].[Publicacion] pub1 ON sb1.idPublicacion = pub1.idPublicacion
-		WHERE sb1.idOfertaSubasta NOT IN (
-			SELECT sb2.idOfertaSubasta
-			FROM
-				[LOPEZ_Y_CIA].[OfertaSubasta] sb2,
-				[LOPEZ_Y_CIA].[CompraUsuario] cp2
-			WHERE sb2.idPublicacion = cp2.idPublicacion AND sb2.idUsuario = cp2.idUsuario				
-		)
-	) x 
+	) x
 GO
+
+CREATE VIEW [LOPEZ_Y_CIA].[SoloSubastas] AS
+	SELECT ROW_NUMBER() OVER(ORDER BY codigoPublicacion DESC) AS rowID, * 
+	FROM (
+		SELECT
+			cp1.idUsuario,
+			'Subasta' AS tipoCompra,
+			cp1.fecha,
+			pub1.valorInicialVenta,
+			cp1.monto AS montoOferta,
+			cp1.adjudicada, 
+			P.codigoPublicacion,
+			P.descripcion
+		FROM [LOPEZ_Y_CIA].[OfertaSubasta] cp1
+		LEFT JOIN [LOPEZ_Y_CIA].[Usuario] usr1 ON cp1.idUsuario = usr1.idUsuario 
+		JOIN [LOPEZ_Y_CIA].[PublicacionSubasta] pub1 ON cp1.idPublicacion = pub1.idPublicacion 
+		JOIN [LOPEZ_Y_CIA].[Publicacion] P ON P.idPublicacion = pub1.idPublicacion
+	) x
+GO
+
 
 CREATE VIEW [LOPEZ_Y_CIA].[getCodigo] AS
 	SELECT * FROM (
