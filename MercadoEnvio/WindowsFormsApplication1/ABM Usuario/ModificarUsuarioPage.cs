@@ -25,6 +25,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.userNameInput.Text = SessionAttribute.user.userName;
             this.userPasswordImput.Text = "************";
             this.tipoDeUsuarioComboBox.Text = rolUser.Current.nombre;
+           
             if (rolUser.Current.nombre.Equals("Empresa"))
             {
                 EmpresaGroup.Visible = true;

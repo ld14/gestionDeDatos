@@ -27,15 +27,27 @@ namespace WindowsFormsApplication1.ABM_Usuario
         {
             esTipoRolEmpresa = false;
             idUsuario = cliente.idUsuario;
+            ClienteDaoImpl ClienteDaoImpl = new ClienteDaoImpl();
+            Usuario usu = ClienteDaoImpl.GetUsuarioById(cliente.idUsuario);
+
             userNameInput.Text = cliente.userName;
-            tipoDeUsuarioComboBox.Text = cliente.nombre;
+            tipoDeusuario.Text = usu.RolesLst.First().nombre;
+            userPasswordImput.Text = "************";
             ClienteGroup.Visible = true;
             EmpresaGroup.Visible = false;
 
             ClienteApellidoTxt.Text = cliente.apellido;
             ClienteNombreTxt.Text = cliente.nombre;
             ClienteDNITxt.Text = cliente.dni.ToString();
-            ClienteTipoDocComboBox.Text = Convert.ToString(cliente.tipoDocumento);
+            tipoDocumento.Text = Convert.ToString(cliente.tipoDocumento);
+            if (cliente.activoUsuario == true)
+            {
+                UsuarioActivo.Checked = true;
+            }
+            else
+            {
+                UsuarioActivo.Checked = false;
+            }
 
             DatosBasicosEmailTxt.Text = cliente.DatosBasicos.email;
             DatosBasicosTelefono.Text = cliente.DatosBasicos.telefono;
@@ -54,10 +66,23 @@ namespace WindowsFormsApplication1.ABM_Usuario
             idUsuario = empresa.idUsuario;
             EmpresaGroup.Visible = true;
             ClienteGroup.Visible = false;
+            EmpresaDaoImpl EmpresaDaoImpl = new EmpresaDaoImpl();
+            Usuario usu = EmpresaDaoImpl.GetEmpresaByIdUsuario(empresa.idUsuario);
+            tipoDeusuario.Text = usu.RolesLst.First().nombre;
 
+            userPasswordImput.Text = "************";
+            userNameInput.Text = empresa.userName;
             EmpresaNombreContactoTxt.Text = empresa.nombreContacto;
             EmpresaCuitTxt.Text = empresa.cuit;
             EmpresaRazonSocialTxt.Text = empresa.razonSocial;
+            if (empresa.activoUsuario == true)
+            {
+                UsuarioActivo.Checked = true;
+            }
+            else
+            {
+                UsuarioActivo.Checked = false;
+            }
 
             DatosBasicosEmailTxt.Text = empresa.DatosBasicos.email;
             DatosBasicosTelefono.Text = empresa.DatosBasicos.telefono;
@@ -73,8 +98,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private void Grabar_Click(object sender, EventArgs e)
         {
             String nombreUsuario = userNameInput.Text;
-            String password = userPasswordImput.Text;
-            String TipoDeUsuario = tipoDeUsuarioComboBox.Text;
+            String password = SessionAttribute.user.password;
+            String TipoDeUsuario = tipoDeusuario.Text;
             String Mail = DatosBasicosEmailTxt.Text;
             String Telefono = DatosBasicosTelefono.Text;
             String DomicilioCalle = DatosBasicosDomicilioCalle.Text;
@@ -110,7 +135,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevoCliente.nombre = Nombre;
                 nuevoCliente.apellido = Apellido;
                 nuevoCliente.fechaNacimiento = FechaNacimiento;
-               
+                nuevoCliente.activoUsuario = UsuarioActivo.Checked;
+
                 nuevoCliente.DatosBasicos.email = Mail;
                 nuevoCliente.DatosBasicos.telefono = Telefono;
                 nuevoCliente.DatosBasicos.domCalle = DomicilioCalle;
@@ -129,6 +155,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 Empresa nuevaEmpresa = empresaDaoImpl.GetEmpresaByIdUsuario(idUsuario);
 
                 nuevaEmpresa.password = password;
+                nuevaEmpresa.activoUsuario = UsuarioActivo.Checked;
 
                 nuevaEmpresa.razonSocial = RazonSocial;
                 nuevaEmpresa.cuit = Cuit;
@@ -149,6 +176,17 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 empresaDaoImpl.Update(nuevaEmpresa);
             }
             MessageBox.Show("Datos modificados con éxito");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+          
+        }
+
+        private void UsuarioActivo_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
