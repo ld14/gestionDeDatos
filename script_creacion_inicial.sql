@@ -1086,6 +1086,49 @@ CREATE VIEW [LOPEZ_Y_CIA].[getCodigoCalif] AS
 	) x
 GO
 
+create view [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorCantProdNoVendidos] as
+--Vendedores con mayor cantidad de productos no vendidos
+	select ROW_NUMBER() OVER(ORDER BY sum(stock) desc) AS rowID,
+		usu.userName as nombreUsuario, sum(stock) as cantidad, YEAR(fechaCreacion) AS anio, MONTH(fechaCreacion) AS mes, 
+		visi.nombreVisibilidad as visibilidad
+	from LOPEZ_Y_CIA.Publicacion as pub
+	inner join LOPEZ_Y_CIA.Usuario as usu on usu.idUsuario = pub.idUsuario
+	inner join LOPEZ_Y_CIA.Visibilidad as visi on visi.idVisibilidad = pub.idVisibilidad
+	group by usu.userName,YEAR(fechaCreacion), MONTH(fechaCreacion), visi.nombreVisibilidad
+GO
+	
+create view [LOPEZ_Y_CIA].[vista_ListadoEstadistica_clientesMayorCantProdComprados] as
+	--Clientes con mayor cantidad de productos comprados
+	select ROW_NUMBER() OVER(ORDER BY sum(compraCantidad) desc) AS rowID,
+		usu.userName as nombreUsuario, sum(compraCantidad) as cantidad,YEAR(fecha) AS anio, MONTH(fecha) AS mes, rubro.descripcion as rubro
+	from LOPEZ_Y_CIA.CompraUsuario as compUsu
+	inner join LOPEZ_Y_CIA.Usuario as usu on usu.idUsuario = compUsu.idUsuario
+	inner join LOPEZ_Y_CIA.Publicacion as pub on pub.idPublicacion = compUsu.idPublicacion
+	inner join LOPEZ_Y_CIA.RubroPublicacion as rubroPub on rubroPub.idPublicacion = pub.idPublicacion
+	inner join LOPEZ_Y_CIA.Rubro as rubro on rubro.idRubro = rubroPub.idRubro
+	group by usu.userName, YEAR(fecha), MONTH(fecha), rubro.descripcion
+GO
+
+create view [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorCantFacturas] as
+	--Vendedores con mayor cantidad de facturas dentro de un mes y año particular
+	SELECT ROW_NUMBER() OVER(ORDER BY sum(fa.idFactura) desc) AS rowID,
+		usu.userName as nombreUsuario, COUNT(fa.idFactura) AS cantidad, YEAR(fa.fecha) AS anio, MONTH(fa.fecha) AS mes
+	FROM [LOPEZ_Y_CIA].[Factura] as fa
+	inner join LOPEZ_Y_CIA.Publicacion as pub on pub.idPublicacion = fa.idPublicacion
+	inner join LOPEZ_Y_CIA.Usuario as usu on usu.idUsuario = pub.idUsuario
+	GROUP BY usu.userName, YEAR(fa.fecha), MONTH(fa.fecha)
+GO
+
+create view [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorMontoFacturado] as
+	--Vendedores con mayor monto facturado dentro de un mes y año particular.
+	SELECT ROW_NUMBER() OVER(ORDER BY sum(fa.montoTotal) desc) AS rowID,
+		usu.userName as nombreUsuario, SUM(fa.montoTotal) AS cantidad, YEAR(fa.fecha) AS anio, MONTH(fa.fecha) AS mes
+	FROM [LOPEZ_Y_CIA].[Factura] fa
+	INNER JOIN [LOPEZ_Y_CIA].[Publicacion] pub ON fa.idPublicacion = pub.idPublicacion
+	inner join LOPEZ_Y_CIA.Usuario as usu on usu.idUsuario = pub.idUsuario
+	GROUP BY usu.userName, YEAR(fa.fecha), MONTH(fa.fecha)
+GO
+
 /*
 CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
 ON [LOPEZ_Y_CIA].[Rol] FOR UPDATE AS
