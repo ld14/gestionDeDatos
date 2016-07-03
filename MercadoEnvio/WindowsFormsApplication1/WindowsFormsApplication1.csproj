@@ -150,9 +150,10 @@
     <Compile Include="Calificar\CalificacionesPage.Designer.cs">
       <DependentUpon>CalificacionesPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorCantidadProdNoVendidos.cs" />
-    <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorMontoFacturado.cs" />
+    <Compile Include="Domain\SoloSubasta.cs" />
     <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorCantidadFacturas.cs" />
+    <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorMontoFacturado.cs" />
+    <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorCantidadProdNoVendidos.cs" />
     <Compile Include="Domain\ListadosEstadisticos_clientesMayorCantidadProdComprados.cs" />
     <Compile Include="Domain\SinCalificar.cs" />
     <Compile Include="ComprarOfertar\BusquedaPublicacion.cs">
@@ -181,6 +182,8 @@
     <Compile Include="Entity\DAO\CompraUsuarioDao.cs" />
     <Compile Include="Entity\DAO\CalificacionDao.cs" />
     <Compile Include="Entity\DAO\CalificacionDaoImpl.cs" />
+    <Compile Include="Entity\DAO\SoloSubastaDaoImpl.cs" />
+    <Compile Include="Entity\DAO\SoloSubastaDao.cs" />
     <Compile Include="Entity\DAO\FacturasEmitidasDaoImpl.cs" />
     <Compile Include="Entity\DAO\FacturasEmitidasDao.cs" />
     <Compile Include="Entity\DAO\ListadoEstadisticasDao.cs" />
@@ -468,6 +471,7 @@
     <EmbeddedResource Include="Maps\SinCalificar.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Maps\SoloSubasta.hbm.xml" />
     <EmbeddedResource Include="Maps\ListadosEstadisticos_vendedoresMayorMontoFacturado.hbm.xml" />
     <EmbeddedResource Include="Maps\ListadosEstadisticos_clientesMayorCantidadProdComprados.hbm.xml" />
     <EmbeddedResource Include="Maps\ListadosEstadisticos_vendedoresMayorCantidadFacturas.hbm.xml" />
