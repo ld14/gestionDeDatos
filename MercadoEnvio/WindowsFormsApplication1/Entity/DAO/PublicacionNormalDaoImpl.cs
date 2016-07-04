@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace WindowsFormsApplication1
 {
     class PublicacionNormalDaoImpl : PublicacionNormalDao
@@ -42,9 +41,18 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public PublicacionNormal GetById(int id)        {
-            using (NHibernateManager manager = new NHibernateManager())  {
+        public PublicacionNormal GetById(int id)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
                 return manager.Session.Get<PublicacionNormal>(id);
+            }
+        }
+        public IList<PublicacionNormal> GetAll()
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.QueryOver<PublicacionNormal>().Where(x => x.EstadoPublicacion.idEstadoPublicacion != 4).List();
             }
         }
 

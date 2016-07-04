@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.ABM_Rol;
 using WindowsFormsApplication1.ABM_Rubro;
@@ -28,6 +29,25 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+        int length = 0;
+        loading nuevaPagina;
+
+        public async void funcionAsync()
+        {
+            length = await ExampleMethodAsync();
+            nuevaPagina.timer1_Tick();
+        }
+
+        public async Task<int> ExampleMethodAsync()
+        {
+            int hours = 1;
+            await Task.Run(() =>
+            {
+                PublicacionNormalDaoImpl DAO = new PublicacionNormalDaoImpl();
+                IList<PublicacionNormal> tareaASync = DAO.GetAll();
+            });
+            return hours;
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -43,8 +63,10 @@ namespace WindowsFormsApplication1
 
             SessionAttribute.fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
 
+            funcionAsync();
+
             //Abro la pagina de Logueo
-            loading nuevaPagina = new loading();
+            nuevaPagina = new loading();
             nuevaPagina.ShowDialog();
 
             pageLogin form2 = new pageLogin();
