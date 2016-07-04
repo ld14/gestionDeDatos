@@ -326,8 +326,10 @@ ALTER TABLE [LOPEZ_Y_CIA].[workflowEstados] CHECK CONSTRAINT [FK_workflowEstados
 GO
 /** MIGRACION **/
 
-INSERT INTO [LOPEZ_Y_CIA].[DatosBasicos] (email, domCalle, nroCalle, piso, depto, codPostal)
+SET IDENTITY_INSERT [LOPEZ_Y_CIA].[DatosBasicos] ON
+INSERT INTO [LOPEZ_Y_CIA].[DatosBasicos] (idDatosBasicos, email, domCalle, nroCalle, piso, depto, codPostal)
 SELECT
+	ROW_NUMBER() OVER (ORDER BY Cli_Dni) AS ID,
 	Cli_Mail,
 	Cli_Dom_Calle,
 	Cli_Nro_Calle,
@@ -346,6 +348,7 @@ GROUP BY
 	Cli_Cod_Postal
 UNION
 SELECT
+	ROW_NUMBER() OVER (ORDER BY Publ_Empresa_Cuit) + 28 AS ID,
 	Publ_Empresa_Mail,
 	Publ_Empresa_Dom_Calle,
 	Publ_Empresa_Nro_Calle,
@@ -362,6 +365,7 @@ GROUP BY
 	Publ_Empresa_Piso,
 	Publ_Empresa_Depto,
 	Publ_Empresa_Cod_Postal
+SET IDENTITY_INSERT [LOPEZ_Y_CIA].[DatosBasicos] OFF
 
 PRINT 'TABLA: DatosBasicos'
 
