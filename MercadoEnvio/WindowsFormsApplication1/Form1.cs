@@ -44,7 +44,21 @@ namespace WindowsFormsApplication1
             await Task.Run(() =>
             {
                 PublicacionNormalDaoImpl DAO = new PublicacionNormalDaoImpl();
-                IList<PublicacionNormal> tareaASync = DAO.GetAll();
+                IList<PublicacionNormal> normales = DAO.GetAll();
+
+                PublicacionSubastaDaoImpl DAO2 = new PublicacionSubastaDaoImpl();
+                IList<PublicacionSubasta> subs = DAO2.GetAll();
+
+                foreach (PublicacionNormal pubNormal in normales)
+                {
+                    if (pubNormal.fechaVencimiento < DateTime.ParseExact(SessionAttribute.fechaSistema, "dd/MM/yyyy", CultureInfo.InvariantCulture))
+                    {
+                        pubNormal.EstadoPublicacion.idEstadoPublicacion = 4;
+                        DAO.Update(pubNormal);
+                    }
+                }
+
+                //Idem anterior para Subastas pero se debe facturar
             });
             return hours;
         }
@@ -61,7 +75,7 @@ namespace WindowsFormsApplication1
             facturacionToolStripMenuItem.Visible = false;
             misDatosToolStripMenuItem.Visible = false;
 
-            SessionAttribute.fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
+            SessionAttribute.fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"]; 
 
             funcionAsync();
 

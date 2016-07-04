@@ -47,6 +47,14 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public IList<PublicacionSubasta> GetAll()
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.QueryOver<PublicacionSubasta>().Where(x => x.EstadoPublicacion.idEstadoPublicacion != 4).List();
+            }
+        }
+
         public PublicacionSubasta GetByUsuario(string usuario)        {
             using (NHibernateManager manager = new NHibernateManager()) {
 
@@ -65,7 +73,7 @@ namespace WindowsFormsApplication1
                 ICriteria crit = manager.Session.CreateCriteria<PublicacionSubasta>();
                 crit.Add(Expression.Eq("Usuario", usuario));
                 crit.CreateAlias("EstadoPublicacion", "estado");
-                crit.Add(Expression.Not(Expression.Eq("estado.nombre", "Finalizada")));
+                crit.Add(Expression.Not(Expression.Eq("estado.idEstadoPublicacion", 4)));
                 return crit.List<PublicacionSubasta>();
             }
         }

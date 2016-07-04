@@ -74,7 +74,7 @@ namespace WindowsFormsApplication1
                 //crit.CreateAlias("Usuario", "usr");
                 crit.Add(Expression.Eq("Usuario", usuario));
                 crit.CreateAlias("EstadoPublicacion", "estado");
-                crit.Add(Expression.Not(Expression.Eq("estado.nombre", "Finalizada")));
+                crit.Add(Expression.Not(Expression.Eq("estado.idEstadoPublicacion", 4)));
                 return crit.List<PublicacionNormal>();
             }
          }
