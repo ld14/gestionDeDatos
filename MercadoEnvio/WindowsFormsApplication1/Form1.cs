@@ -41,6 +41,8 @@ namespace WindowsFormsApplication1
             facturacionToolStripMenuItem.Visible = false;
             misDatosToolStripMenuItem.Visible = false;
 
+            SessionAttribute.fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
+
             //Abro la pagina de Logueo
             loading nuevaPagina = new loading();
             nuevaPagina.ShowDialog();
@@ -53,9 +55,7 @@ namespace WindowsFormsApplication1
             IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
             rolUser.MoveNext();
 
-            string fechaSistema = System.Configuration.ConfigurationManager.AppSettings["fechaSistema"];
-
-            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.userName + "] [Rol: " + rolUser.Current.nombre + "] [Fecha: " + System.Configuration.ConfigurationManager.AppSettings["fechaSistema"] + "]"; 
+            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.userName + "] [Rol: " + rolUser.Current.nombre + "] [Fecha: " + SessionAttribute.fechaSistema + "]"; 
  
             //Obtener datos del Usuario
             if (rolUser.Current.idRol == 1)

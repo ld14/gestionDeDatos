@@ -357,7 +357,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 622);
+            this.ClientSize = new System.Drawing.Size(1024, 720);
             this.Controls.Add(this.EmpresaGroup);
             this.Controls.Add(this.ClienteGroup);
             this.Controls.Add(this.label3);
@@ -367,8 +367,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EliminarUsuarioPage";
             this.Text = "Eliminar Usuario";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

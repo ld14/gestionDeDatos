@@ -45,7 +45,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(397, 37);
+            this.button1.Location = new System.Drawing.Point(394, 37);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(222, 23);
             this.button1.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Location = new System.Drawing.Point(16, 48);
+            this.groupBox1.Location = new System.Drawing.Point(20, 48);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(984, 474);
             this.groupBox1.TabIndex = 2;
@@ -68,9 +68,9 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.FuncionalidadesChkLst);
-            this.groupBox4.Location = new System.Drawing.Point(397, 21);
+            this.groupBox4.Location = new System.Drawing.Point(396, 21);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(579, 453);
+            this.groupBox4.Size = new System.Drawing.Size(579, 431);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Funcionalidades";
@@ -79,19 +79,17 @@
             // 
             this.FuncionalidadesChkLst.FormattingEnabled = true;
             this.FuncionalidadesChkLst.Items.AddRange(new object[] {
-            "ABM Usuario",
-            "ABM Rol",
-            "ABM Visibilidad",
+            "ABMs",
             "Publicacion",
             "Compra/Oferta",
             "Historial Compra",
             "Facturacion",
             "Estadisticas",
-            "Modificar Mis Datos",
+            "Mostrar Mis Datos",
             "Calificar"});
             this.FuncionalidadesChkLst.Location = new System.Drawing.Point(13, 21);
             this.FuncionalidadesChkLst.Name = "FuncionalidadesChkLst";
-            this.FuncionalidadesChkLst.Size = new System.Drawing.Size(560, 424);
+            this.FuncionalidadesChkLst.Size = new System.Drawing.Size(560, 394);
             this.FuncionalidadesChkLst.TabIndex = 0;
             this.FuncionalidadesChkLst.SelectedIndexChanged += new System.EventHandler(this.FuncionalidadesChkLst_SelectedIndexChanged);
             // 
@@ -102,7 +100,7 @@
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(9, 21);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(381, 453);
+            this.groupBox3.Size = new System.Drawing.Size(381, 431);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Rol";
@@ -110,7 +108,7 @@
             // RolActivoChk
             // 
             this.RolActivoChk.AutoSize = true;
-            this.RolActivoChk.Location = new System.Drawing.Point(268, 45);
+            this.RolActivoChk.Location = new System.Drawing.Point(292, 44);
             this.RolActivoChk.Name = "RolActivoChk";
             this.RolActivoChk.Size = new System.Drawing.Size(56, 17);
             this.RolActivoChk.TabIndex = 6;
@@ -121,13 +119,13 @@
             // 
             this.RolNombreTxt.Location = new System.Drawing.Point(78, 42);
             this.RolNombreTxt.Name = "RolNombreTxt";
-            this.RolNombreTxt.Size = new System.Drawing.Size(173, 20);
+            this.RolNombreTxt.Size = new System.Drawing.Size(181, 20);
             this.RolNombreTxt.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 42);
+            this.label1.Location = new System.Drawing.Point(27, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 4;
@@ -136,7 +134,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(16, 530);
+            this.groupBox2.Location = new System.Drawing.Point(20, 531);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(984, 94);
             this.groupBox2.TabIndex = 3;

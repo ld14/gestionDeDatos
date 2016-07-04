@@ -35,6 +35,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.ClienteGroup = new System.Windows.Forms.GroupBox();
+            this.tipoDocumento = new System.Windows.Forms.TextBox();
             this.ClienteApellidoTxt = new System.Windows.Forms.TextBox();
             this.ClienteNombreTxt = new System.Windows.Forms.TextBox();
             this.ClienteFechaNacDateTime = new System.Windows.Forms.DateTimePicker();
@@ -80,7 +81,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tipoDeusuario = new System.Windows.Forms.TextBox();
             this.UsuarioActivo = new System.Windows.Forms.CheckBox();
-            this.tipoDocumento = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.ClienteGroup.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -138,6 +138,14 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.ClienteGroup.TabStop = false;
             this.ClienteGroup.Text = "Datos Tipo Usuario";
             this.ClienteGroup.Visible = false;
+            // 
+            // tipoDocumento
+            // 
+            this.tipoDocumento.Enabled = false;
+            this.tipoDocumento.Location = new System.Drawing.Point(122, 61);
+            this.tipoDocumento.Name = "tipoDocumento";
+            this.tipoDocumento.Size = new System.Drawing.Size(126, 20);
+            this.tipoDocumento.TabIndex = 42;
             // 
             // ClienteApellidoTxt
             // 
@@ -550,21 +558,14 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.UsuarioActivo.UseVisualStyleBackColor = true;
             this.UsuarioActivo.CheckedChanged += new System.EventHandler(this.UsuarioActivo_CheckedChanged);
             // 
-            // tipoDocumento
-            // 
-            this.tipoDocumento.Enabled = false;
-            this.tipoDocumento.Location = new System.Drawing.Point(122, 61);
-            this.tipoDocumento.Name = "tipoDocumento";
-            this.tipoDocumento.Size = new System.Drawing.Size(126, 20);
-            this.tipoDocumento.TabIndex = 42;
-            // 
             // ModificarUsuarioParaAdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 622);
+            this.ClientSize = new System.Drawing.Size(1024, 720);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModificarUsuarioParaAdminPage";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

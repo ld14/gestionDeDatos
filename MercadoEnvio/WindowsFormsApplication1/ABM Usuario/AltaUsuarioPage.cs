@@ -34,11 +34,14 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tipoDeUsuarioComboBox.Text.Equals("Empresa")){
+            if (tipoDeUsuarioComboBox.Text.Equals("Empresa"))
+            {
                 EmpresaGroup.Visible = true;
+                EmpresaGroup.BringToFront();
                 ClienteGroup.Visible = false;
             }
-            else {
+            else
+            {
                 ClienteGroup.Visible = true;
                 EmpresaGroup.Visible = false;
             }

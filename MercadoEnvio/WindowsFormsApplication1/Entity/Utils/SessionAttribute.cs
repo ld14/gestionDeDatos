@@ -10,6 +10,6 @@ namespace WindowsFormsApplication1.Entity.Utils
         public static Cliente clienteUser { get; set; }
         public static Empresa empresaUser { get; set; }
         public static int perfiles { get; set; }
-
+        public static string fechaSistema { get; set; }
     }
 }
