@@ -1133,6 +1133,47 @@ create view [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorMontoFacturado]
 	GROUP BY usu.userName, YEAR(fa.fecha), MONTH(fa.fecha)
 GO
 
+CREATE VIEW [LOPEZ_Y_CIA].[FacturasEmitidas] AS
+	SELECT ROW_NUMBER() OVER(ORDER BY nroFactura DESC) AS rowID, * 
+	FROM (
+		SELECT
+			pub1.idUsuario,
+			fa1.nroFactura,
+			fa1.fecha,
+			fa1.montoTotal,
+			pub1.codigoPublicacion,
+			pub1.descripcion
+		FROM [LOPEZ_Y_CIA].[Factura] fa1
+		JOIN [LOPEZ_Y_CIA].[Publicacion] pub1 ON fa1.idPublicacion = pub1.idPublicacion
+		GROUP BY
+			pub1.idUsuario,
+			fa1.nroFactura,
+			fa1.fecha,
+			fa1.montoTotal,
+			pub1.codigoPublicacion,
+			pub1.descripcion
+	) x
+GO
+
+CREATE TRIGGER [LOPEZ_Y_CIA].[restriccionWF]
+ON [LOPEZ_Y_CIA].[Publicacion] INSTEAD OF UPDATE AS
+BEGIN TRAN
+	DECLARE @permitido bit = 0
+	DECLARE @nuevoEstado int
+	DECLARE @idPublicacion int
+	SELECT @permitido = 1, @nuevoEstado = A.idEstadoPublicacion, @idPublicacion = A.idPublicacion
+	FROM inserted A, deleted B, workflowEstados C
+	WHERE A.idEstadoPublicacion = C.idEstadoFinal AND B.idEstadoPublicacion = C.idEstadoInicial
+
+	IF (@permitido = 1)
+	BEGIN
+		UPDATE Publicacion
+		SET idEstadoPublicacion = @nuevoEstado
+		WHERE idPublicacion = @idPublicacion;
+	END
+	ELSE PRINT 'ERROR'
+COMMIT TRAN;
+
 /*
 CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
 ON [LOPEZ_Y_CIA].[Rol] FOR UPDATE AS
