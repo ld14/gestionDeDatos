@@ -345,6 +345,5 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
             return estadoPublicacion;
         }
-
     }
 }

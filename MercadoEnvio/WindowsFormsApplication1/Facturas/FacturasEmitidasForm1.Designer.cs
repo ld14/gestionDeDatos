@@ -195,7 +195,7 @@
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.bindingNavigator1);
-            this.groupBox2.Location = new System.Drawing.Point(21, 279);
+            this.groupBox2.Location = new System.Drawing.Point(30, 278);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(962, 325);
             this.groupBox2.TabIndex = 3;
@@ -227,7 +227,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.BuscarBtn);
-            this.groupBox1.Location = new System.Drawing.Point(21, 49);
+            this.groupBox1.Location = new System.Drawing.Point(30, 48);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(962, 210);
             this.groupBox1.TabIndex = 2;
@@ -340,7 +340,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 660);
+            this.ClientSize = new System.Drawing.Size(1024, 720);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
