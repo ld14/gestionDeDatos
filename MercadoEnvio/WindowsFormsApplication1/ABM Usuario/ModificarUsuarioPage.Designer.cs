@@ -80,6 +80,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label5 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.ClienteGroup.SuspendLayout();
@@ -531,6 +532,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.EmpresaGroup);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tipoDeUsuarioComboBox);
@@ -546,6 +548,18 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alta de Usuario";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label9.Location = new System.Drawing.Point(394, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(114, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "¿Cambiar Contraseña?";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // ModificarUsuarioPage
             // 
@@ -623,5 +637,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label9;
     }
 }

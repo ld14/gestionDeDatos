@@ -201,6 +201,7 @@
             // 
             // tipoDeUsuarioComboBox
             // 
+            this.tipoDeUsuarioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDeUsuarioComboBox.FormattingEnabled = true;
             this.tipoDeUsuarioComboBox.Items.AddRange(new object[] {
             "Empresa",

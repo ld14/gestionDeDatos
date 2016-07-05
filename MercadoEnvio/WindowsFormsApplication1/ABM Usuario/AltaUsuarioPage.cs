@@ -105,6 +105,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevoCliente.comprasEfectuadas = 0;
                 nuevoCliente.comprasCalificadas = 0;
                 nuevoCliente.publicacionGratis = true;
+                nuevoCliente.activoUsuario = true;
 
                 DatosBasicos nuevoDatoBasico = new DatosBasicos();
                 nuevoCliente.DatosBasicos = nuevoDatoBasico;

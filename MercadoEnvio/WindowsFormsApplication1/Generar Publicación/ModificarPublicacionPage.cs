@@ -286,7 +286,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 nuevoItemFactura.Factura = nuevaFactura;
                 nuevoItemFactura.monto = nuevaPublicacion.Visibilidad.costo;
                 lst.Add(nuevoItemFactura);
-                nuevaFactura.setFacturaNueva(fechaIncioDateTime, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                //nuevaFactura.setFacturaNueva(fechaIncioDateTime, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
 
                 FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                 factDaoImpl.Add(nuevaFactura);
@@ -306,7 +306,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 nuevoItemFactura.Factura = nuevaFactura;
                 nuevoItemFactura.monto = nuevaPublicacion.Visibilidad.costo;
                 lst.Add(nuevoItemFactura);
-                nuevaFactura.setFacturaNueva(fechaIncioDateTime, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
+                //nuevaFactura.setFacturaNueva(fechaIncioDateTime, nuevaPublicacion.Visibilidad.costo, "Efectivo", nuevaPublicacion, lst);
 
                 FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                 factDaoImpl.Add(nuevaFactura);

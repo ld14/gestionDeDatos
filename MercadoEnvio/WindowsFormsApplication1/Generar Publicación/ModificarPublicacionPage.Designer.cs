@@ -31,6 +31,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.infoBox = new System.Windows.Forms.GroupBox();
+            this.botonPreguntas = new System.Windows.Forms.Button();
+            this.labelInfoB = new System.Windows.Forms.Label();
+            this.labelInfoA = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.porcentajeValue = new System.Windows.Forms.Label();
             this.costoValue = new System.Windows.Forms.Label();
@@ -62,16 +66,12 @@
             this.botonPausar = new System.Windows.Forms.Button();
             this.botonPublicarN = new System.Windows.Forms.Button();
             this.botonGuardar = new System.Windows.Forms.Button();
-            this.infoBox = new System.Windows.Forms.GroupBox();
-            this.labelInfoA = new System.Windows.Forms.Label();
-            this.labelInfoB = new System.Windows.Forms.Label();
-            this.botonPreguntas = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.infoBox.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.infoBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -85,6 +85,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Enabled = false;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(18, 49);
@@ -107,6 +108,48 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modificar Publicación";
+            // 
+            // infoBox
+            // 
+            this.infoBox.Controls.Add(this.botonPreguntas);
+            this.infoBox.Controls.Add(this.labelInfoB);
+            this.infoBox.Controls.Add(this.labelInfoA);
+            this.infoBox.Location = new System.Drawing.Point(644, 29);
+            this.infoBox.Name = "infoBox";
+            this.infoBox.Size = new System.Drawing.Size(242, 100);
+            this.infoBox.TabIndex = 30;
+            this.infoBox.TabStop = false;
+            this.infoBox.Text = "Información Básica";
+            // 
+            // botonPreguntas
+            // 
+            this.botonPreguntas.Location = new System.Drawing.Point(44, 59);
+            this.botonPreguntas.Name = "botonPreguntas";
+            this.botonPreguntas.Size = new System.Drawing.Size(159, 23);
+            this.botonPreguntas.TabIndex = 2;
+            this.botonPreguntas.Text = "Preguntas";
+            this.botonPreguntas.UseVisualStyleBackColor = true;
+            // 
+            // labelInfoB
+            // 
+            this.labelInfoB.AutoSize = true;
+            this.labelInfoB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfoB.Location = new System.Drawing.Point(19, 26);
+            this.labelInfoB.Name = "labelInfoB";
+            this.labelInfoB.Size = new System.Drawing.Size(72, 13);
+            this.labelInfoB.TabIndex = 1;
+            this.labelInfoB.Text = "Oferta Actual:";
+            // 
+            // labelInfoA
+            // 
+            this.labelInfoA.AutoSize = true;
+            this.labelInfoA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfoA.Location = new System.Drawing.Point(19, 26);
+            this.labelInfoA.Name = "labelInfoA";
+            this.labelInfoA.Size = new System.Drawing.Size(105, 13);
+            this.labelInfoA.TabIndex = 0;
+            this.labelInfoA.Text = "Unidades Vendidas: ";
+            this.labelInfoA.Click += new System.EventHandler(this.label6_Click);
             // 
             // groupBox6
             // 
@@ -176,6 +219,7 @@
             // 
             // visibilidadComboBox
             // 
+            this.visibilidadComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.visibilidadComboBox.FormattingEnabled = true;
             this.visibilidadComboBox.Location = new System.Drawing.Point(65, 38);
             this.visibilidadComboBox.Name = "visibilidadComboBox";
@@ -353,6 +397,7 @@
             // 
             // RubroComboBox
             // 
+            this.RubroComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RubroComboBox.FormattingEnabled = true;
             this.RubroComboBox.Location = new System.Drawing.Point(65, 38);
             this.RubroComboBox.Name = "RubroComboBox";
@@ -422,48 +467,6 @@
             this.botonGuardar.UseVisualStyleBackColor = true;
             this.botonGuardar.Click += new System.EventHandler(this.guardar_Click);
             // 
-            // infoBox
-            // 
-            this.infoBox.Controls.Add(this.botonPreguntas);
-            this.infoBox.Controls.Add(this.labelInfoB);
-            this.infoBox.Controls.Add(this.labelInfoA);
-            this.infoBox.Location = new System.Drawing.Point(644, 29);
-            this.infoBox.Name = "infoBox";
-            this.infoBox.Size = new System.Drawing.Size(242, 100);
-            this.infoBox.TabIndex = 30;
-            this.infoBox.TabStop = false;
-            this.infoBox.Text = "Información Básica";
-            // 
-            // labelInfoA
-            // 
-            this.labelInfoA.AutoSize = true;
-            this.labelInfoA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfoA.Location = new System.Drawing.Point(19, 26);
-            this.labelInfoA.Name = "labelInfoA";
-            this.labelInfoA.Size = new System.Drawing.Size(105, 13);
-            this.labelInfoA.TabIndex = 0;
-            this.labelInfoA.Text = "Unidades Vendidas: ";
-            this.labelInfoA.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // labelInfoB
-            // 
-            this.labelInfoB.AutoSize = true;
-            this.labelInfoB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfoB.Location = new System.Drawing.Point(19, 26);
-            this.labelInfoB.Name = "labelInfoB";
-            this.labelInfoB.Size = new System.Drawing.Size(72, 13);
-            this.labelInfoB.TabIndex = 1;
-            this.labelInfoB.Text = "Oferta Actual:";
-            // 
-            // botonPreguntas
-            // 
-            this.botonPreguntas.Location = new System.Drawing.Point(44, 59);
-            this.botonPreguntas.Name = "botonPreguntas";
-            this.botonPreguntas.Size = new System.Drawing.Size(159, 23);
-            this.botonPreguntas.TabIndex = 2;
-            this.botonPreguntas.Text = "Preguntas";
-            this.botonPreguntas.UseVisualStyleBackColor = true;
-            // 
             // ModificarPublicacionPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -479,6 +482,8 @@
             this.Load += new System.EventHandler(this.ModificarPublicacionPage_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.infoBox.ResumeLayout(false);
+            this.infoBox.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -486,8 +491,6 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.infoBox.ResumeLayout(false);
-            this.infoBox.PerformLayout();
             this.ResumeLayout(false);
 
         }

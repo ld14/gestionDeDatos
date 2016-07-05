@@ -32,6 +32,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Gratis = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.porcentajeValue = new System.Windows.Forms.Label();
             this.costoValue = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.label9 = new System.Windows.Forms.Label();
             this.RubroComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.vencimientoBox = new System.Windows.Forms.ComboBox();
             this.PrecioTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +55,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.label8 = new System.Windows.Forms.Label();
             this.PreguntasCheckBox = new System.Windows.Forms.CheckBox();
             this.EnvioCheckBox = new System.Windows.Forms.CheckBox();
-            this.StockTxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.DescripcionPublicacionTxt = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -61,11 +62,14 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.TipoPubliSelect = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.stock = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stock)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -76,10 +80,11 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.button1.TabIndex = 0;
             this.button1.Text = "Guardar";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.guardar_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Gratis);
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox4);
@@ -91,7 +96,18 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nueva Publicación";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Gratis
+            // 
+            this.Gratis.AutoSize = true;
+            this.Gratis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gratis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Gratis.Location = new System.Drawing.Point(536, 67);
+            this.Gratis.Name = "Gratis";
+            this.Gratis.Size = new System.Drawing.Size(438, 16);
+            this.Gratis.TabIndex = 18;
+            this.Gratis.Text = "Usted posee una publicación libre de comisiones por ser usuario nuevo.";
+            this.Gratis.Visible = false;
             // 
             // groupBox6
             // 
@@ -101,7 +117,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.label12);
             this.groupBox6.Controls.Add(this.visibilidadComboBox);
-            this.groupBox6.Location = new System.Drawing.Point(543, 322);
+            this.groupBox6.Location = new System.Drawing.Point(536, 318);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(435, 115);
             this.groupBox6.TabIndex = 17;
@@ -115,9 +131,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.porcentajeValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.porcentajeValue.Location = new System.Drawing.Point(357, 80);
             this.porcentajeValue.Name = "porcentajeValue";
-            this.porcentajeValue.Size = new System.Drawing.Size(16, 13);
+            this.porcentajeValue.Size = new System.Drawing.Size(23, 13);
             this.porcentajeValue.TabIndex = 26;
-            this.porcentajeValue.Text = "%";
+            this.porcentajeValue.Text = "0%";
             // 
             // costoValue
             // 
@@ -126,10 +142,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.costoValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.costoValue.Location = new System.Drawing.Point(130, 80);
             this.costoValue.Name = "costoValue";
-            this.costoValue.Size = new System.Drawing.Size(14, 13);
+            this.costoValue.Size = new System.Drawing.Size(21, 13);
             this.costoValue.TabIndex = 25;
-            this.costoValue.Text = "$";
-            this.costoValue.Click += new System.EventHandler(this.label6_Click);
+            this.costoValue.Text = "$0";
             // 
             // label5
             // 
@@ -150,7 +165,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 23;
             this.label4.Text = "Costo Visibilidad:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label12
             // 
@@ -163,18 +177,19 @@ namespace WindowsFormsApplication1.Generar_Publicación
             // 
             // visibilidadComboBox
             // 
+            this.visibilidadComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.visibilidadComboBox.FormattingEnabled = true;
             this.visibilidadComboBox.Location = new System.Drawing.Point(65, 38);
             this.visibilidadComboBox.Name = "visibilidadComboBox";
             this.visibilidadComboBox.Size = new System.Drawing.Size(350, 21);
             this.visibilidadComboBox.TabIndex = 21;
-            this.visibilidadComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            this.visibilidadComboBox.SelectedIndexChanged += new System.EventHandler(this.visibilidad_SelectedIndexChanged);
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.RubroComboBox);
-            this.groupBox5.Location = new System.Drawing.Point(543, 135);
+            this.groupBox5.Location = new System.Drawing.Point(536, 137);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(435, 96);
             this.groupBox5.TabIndex = 16;
@@ -192,15 +207,18 @@ namespace WindowsFormsApplication1.Generar_Publicación
             // 
             // RubroComboBox
             // 
+            this.RubroComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RubroComboBox.FormattingEnabled = true;
             this.RubroComboBox.Location = new System.Drawing.Point(65, 38);
             this.RubroComboBox.Name = "RubroComboBox";
             this.RubroComboBox.Size = new System.Drawing.Size(350, 21);
             this.RubroComboBox.TabIndex = 21;
-            this.RubroComboBox.SelectedIndexChanged += new System.EventHandler(this.RubroComboBox_SelectedIndexChanged);
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.stock);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.vencimientoBox);
             this.groupBox4.Controls.Add(this.PrecioTxt);
             this.groupBox4.Controls.Add(this.label2);
@@ -211,7 +229,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.PreguntasCheckBox);
             this.groupBox4.Controls.Add(this.EnvioCheckBox);
-            this.groupBox4.Controls.Add(this.StockTxt);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.DescripcionPublicacionTxt);
             this.groupBox4.Controls.Add(this.label11);
@@ -222,8 +239,20 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Publicación";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(72, 37);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 18);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "*";
+            // 
             // vencimientoBox
             // 
+            this.vencimientoBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.vencimientoBox.FormattingEnabled = true;
             this.vencimientoBox.Items.AddRange(new object[] {
             "7 Días",
@@ -234,7 +263,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.vencimientoBox.Name = "vencimientoBox";
             this.vencimientoBox.Size = new System.Drawing.Size(350, 21);
             this.vencimientoBox.TabIndex = 23;
-            this.vencimientoBox.Text = "7 Días";
             // 
             // PrecioTxt
             // 
@@ -270,7 +298,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.FechaIncioDateTime.Name = "FechaIncioDateTime";
             this.FechaIncioDateTime.Size = new System.Drawing.Size(350, 20);
             this.FechaIncioDateTime.TabIndex = 22;
-            this.FechaIncioDateTime.ValueChanged += new System.EventHandler(this.FechaIncioDateTime_ValueChanged);
             // 
             // label7
             // 
@@ -297,7 +324,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.label8.Size = new System.Drawing.Size(98, 13);
             this.label8.TabIndex = 19;
             this.label8.Text = "Código Publicación";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // PreguntasCheckBox
             // 
@@ -318,14 +344,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.EnvioCheckBox.TabIndex = 15;
             this.EnvioCheckBox.Text = "Envio ";
             this.EnvioCheckBox.UseVisualStyleBackColor = true;
-            this.EnvioCheckBox.CheckedChanged += new System.EventHandler(this.EnvioCheckBox_CheckedChanged);
-            // 
-            // StockTxt
-            // 
-            this.StockTxt.Location = new System.Drawing.Point(115, 212);
-            this.StockTxt.Name = "StockTxt";
-            this.StockTxt.Size = new System.Drawing.Size(97, 20);
-            this.StockTxt.TabIndex = 14;
             // 
             // label10
             // 
@@ -365,6 +383,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             // 
             // TipoPubliSelect
             // 
+            this.TipoPubliSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TipoPubliSelect.FormattingEnabled = true;
             this.TipoPubliSelect.Items.AddRange(new object[] {
             "Compra Inmediata",
@@ -373,9 +392,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.TipoPubliSelect.Name = "TipoPubliSelect";
             this.TipoPubliSelect.Size = new System.Drawing.Size(501, 21);
             this.TipoPubliSelect.TabIndex = 12;
-            this.TipoPubliSelect.Text = "Compra Inmediata";
-            this.TipoPubliSelect.SelectedIndexChanged += new System.EventHandler(this.groupBox1_SelectedIndexChanged);
-            this.TipoPubliSelect.Enter += new System.EventHandler(this.groupBox1_SelectedIndexChanged);
+            this.TipoPubliSelect.SelectedIndexChanged += new System.EventHandler(this.tipoPublicacion_SelectedIndexChanged);
+            this.TipoPubliSelect.Enter += new System.EventHandler(this.tipoPublicacion_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -386,7 +404,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.groupBox2.Size = new System.Drawing.Size(984, 113);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button2
             // 
@@ -397,6 +414,39 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.button2.Text = "Publicar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.publicar_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(235, 174);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 18);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "*";
+            // 
+            // stock
+            // 
+            this.stock.Location = new System.Drawing.Point(115, 212);
+            this.stock.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.stock.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.stock.Name = "stock";
+            this.stock.Size = new System.Drawing.Size(97, 20);
+            this.stock.TabIndex = 30;
+            this.stock.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // GenerarPublicacionPage
             // 
@@ -423,6 +473,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.stock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -450,7 +501,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox PreguntasCheckBox;
         private System.Windows.Forms.CheckBox EnvioCheckBox;
-        private System.Windows.Forms.TextBox StockTxt;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox DescripcionPublicacionTxt;
         private System.Windows.Forms.Label label11;
@@ -460,5 +510,9 @@ namespace WindowsFormsApplication1.Generar_Publicación
         private System.Windows.Forms.Label costoValue;
         private System.Windows.Forms.Label porcentajeValue;
         private System.Windows.Forms.ComboBox vencimientoBox;
+        private Label Gratis;
+        private Label label6;
+        private NumericUpDown stock;
+        private Label label13;
     }
 }

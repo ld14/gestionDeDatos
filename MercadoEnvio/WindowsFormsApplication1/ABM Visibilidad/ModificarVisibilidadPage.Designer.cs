@@ -70,6 +70,7 @@
             // 
             // VisibilidadesCombobox
             // 
+            this.VisibilidadesCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.VisibilidadesCombobox.FormattingEnabled = true;
             this.VisibilidadesCombobox.Location = new System.Drawing.Point(450, 169);
             this.VisibilidadesCombobox.Name = "VisibilidadesCombobox";

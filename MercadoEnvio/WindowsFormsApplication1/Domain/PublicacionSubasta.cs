@@ -9,7 +9,7 @@ namespace WindowsFormsApplication1 {
 
         public PublicacionSubasta() { }
         public virtual double valorInicialVenta { get; set; }
-        public virtual double? valorActual { get; set; }
+        public virtual double valorActual { get; set; }
 
         public virtual void setPublicacionSubasta(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
                            string descripcion, DateTime fechaCreacion, DateTime fechaVencimiento, int stock,

@@ -231,12 +231,6 @@
     <Compile Include="Generar Publicación\BuscadorPublicacion.Designer.cs">
       <DependentUpon>BuscadorPublicacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Publicación\Form12.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Generar Publicación\Form12.Designer.cs">
-      <DependentUpon>Form12.cs</DependentUpon>
-    </Compile>
     <Compile Include="Generar Publicación\GenerarPublicacionPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,9 +355,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicación\BuscadorPublicacion.resx">
       <DependentUpon>BuscadorPublicacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generar Publicación\Form12.resx">
-      <DependentUpon>Form12.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicación\GenerarPublicacionPage.resx">
       <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
