@@ -53,6 +53,14 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public Ofertasubasta GetMaxByPublicacion(int id)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.QueryOver<Ofertasubasta>().Where(x => x.PublicacionSubasta.idPublicacion == id).
+                    Select(Projections.Max<Ofertasubasta>(x => x.monto)).SingleOrDefault();
+            }
+        }
 
         public IList<Ofertasubasta> GetByUsuario(int id)
         {

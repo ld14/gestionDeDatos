@@ -12,6 +12,7 @@ using WindowsFormsApplication1.ABM_Usuario;
 using WindowsFormsApplication1.ABM_Visibilidad;
 using WindowsFormsApplication1.Calificar;
 using WindowsFormsApplication1.ComprarOfertar;
+using WindowsFormsApplication1.Entity.DAO;
 using WindowsFormsApplication1.Entity.Utils;
 using WindowsFormsApplication1.Facturas;
 using WindowsFormsApplication1.Generar_Publicación;
@@ -58,7 +59,31 @@ namespace WindowsFormsApplication1
                     }
                 }
 
-                //Idem anterior para Subastas pero se debe facturar
+                OfertaSubastaDaoImpl ofertaDao = new OfertaSubastaDaoImpl();
+                foreach (PublicacionSubasta pubSubasta in subs)
+                {
+                    if (pubSubasta.fechaVencimiento < DateTime.ParseExact(SessionAttribute.fechaSistema, "dd/MM/yyyy", CultureInfo.InvariantCulture))
+                    {
+                        pubSubasta.EstadoPublicacion.idEstadoPublicacion = 4;
+                        DAO2.Update(pubSubasta);
+
+                        //Todo esto va a estar en un TRIGGER
+                        Ofertasubasta oferta = ofertaDao.GetMaxByPublicacion(pubSubasta.idPublicacion);
+                        if (oferta != null)
+                        {
+                            oferta.adjudicada = true;
+                            CompraUsuario nuevaCompra = new CompraUsuario();
+                            nuevaCompra.compraCantidad = 1;
+                            nuevaCompra.fecha = DateTime.ParseExact(SessionAttribute.fechaSistema, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            nuevaCompra.Publicacion = pubSubasta;
+                            nuevaCompra.Usuario = SessionAttribute.user;
+
+                            ofertaDao.Update(oferta);
+                            CompraUsuarioDaoImpl compraDao = new CompraUsuarioDaoImpl();
+                            compraDao.Add(nuevaCompra);
+                        }
+                    }
+                }
             });
             return hours;
         }
@@ -85,7 +110,6 @@ namespace WindowsFormsApplication1
 
             pageLogin form2 = new pageLogin();
             form2.ShowDialog();
-
 
             //Asigno el Rol correspondiente al Usuario logeado
             IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
