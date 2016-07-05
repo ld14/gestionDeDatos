@@ -30,10 +30,11 @@ DROP VIEW [LOPEZ_Y_CIA].[getCodigoCalif];
 DROP VIEW [LOPEZ_Y_CIA].[estadisticaMaximos];
 DROP VIEW [LOPEZ_Y_CIA].[SinCalificar];
 DROP VIEW [LOPEZ_Y_CIA].[SoloSubastas];
-DROP view [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorCantProdNoVendidos];
-DROP view [LOPEZ_Y_CIA].[vista_ListadoEstadistica_clientesMayorCantProdComprados];
-DROP view [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorCantFacturas];
-DROP view [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorMontoFacturado];
+DROP VIEW [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorCantProdNoVendidos];
+DROP VIEW [LOPEZ_Y_CIA].[vista_ListadoEstadistica_clientesMayorCantProdComprados];
+DROP VIEW [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorCantFacturas];
+DROP VIEW [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorMontoFacturado];
+DROP VIEW [LOPEZ_Y_CIA].[FacturasEmitidas];
 
 DROP SCHEMA [LOPEZ_Y_CIA];'
 
