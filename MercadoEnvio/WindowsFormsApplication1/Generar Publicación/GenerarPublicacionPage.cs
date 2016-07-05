@@ -8,12 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using WindowsFormsApplication1.Entity.Utils;
+using WindowsFormsApplication1.Entity.DAO;
+using System.Globalization;
 
 namespace WindowsFormsApplication1.Generar_Publicación
 {
     public partial class GenerarPublicacionPage : Form
     {
-
         public GenerarPublicacionPage()
         {
             InitializeComponent();
@@ -22,31 +23,65 @@ namespace WindowsFormsApplication1.Generar_Publicación
         private void GenerarPublicacionPage_Load(object sender, EventArgs e)
         {
             Usuario user = SessionAttribute.user;
+
             if (user.publicacionGratis)
             {
                 Gratis.Visible = true;
             }
 
-            FechaIncioDateTime.Value = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
+            PublicacionNormalDaoImpl publicacionDaoImpl = new PublicacionNormalDaoImpl();
+            textBox4.Text = Convert.ToString(publicacionDaoImpl.getSecuenciaPubli() + 1);
 
-            //----------------------ComboBox Rubro -------------------------------------------//
             RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
             IList<Rubro> rubroLts = rubroDaoImpli.darRubroActivo();
-
             RubroComboBox.DataSource = rubroLts;
             RubroComboBox.DisplayMember = "descripcion";
             RubroComboBox.ValueMember = "idRubro";
 
-            PublicacionNormalDaoImpl publicacionDaoImpl = new PublicacionNormalDaoImpl();
-            textBox4.Text = Convert.ToString(publicacionDaoImpl.getSecuenciaPubli() + 1);
-
-            //----------------------ComboBox Visibilidad --------------------------------------//
             VisibilidadDaoImpl visibilidadDao = new VisibilidadDaoImpl();
             IList<Visibilidad> VisibilidadLts = visibilidadDao.darVisibilidad();
-
             visibilidadComboBox.DataSource = VisibilidadLts;
             visibilidadComboBox.DisplayMember = "nombreVisibilidad";
             visibilidadComboBox.ValueMember = "idVisibilidad";
+
+            TipoPubliSelect.Text = "Compra Inmediata";
+            vencimientoBox.Text = "7 Días";
+
+            Estadopublicacion estadoPublicacion = null;
+
+            if (this.Tag != null) //Si queremos modificar una publicacion existente
+                estadoPublicacion = cargar_formulario();
+
+            FechaIncioDateTime.Value = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
+            desabilitar_campos_por_estado(estadoPublicacion);
+        }
+
+        public void desabilitar_campos_por_estado(Estadopublicacion estado)
+        {
+            if (estado.idEstadoPublicacion > 1)
+            {
+                DescripcionPublicacionTxt.Enabled = false;
+                PrecioTxt.Enabled = false;
+                stock.Enabled = false;
+                EnvioCheckBox.Enabled = false;
+                PreguntasCheckBox.Enabled = false;
+                vencimientoBox.Enabled = false;
+                RubroComboBox.Enabled = false;
+                visibilidadComboBox.Enabled = false;
+            }
+
+            if (estado.idEstadoPublicacion == 2)
+            {
+                button1.Text = "Pausar";
+                button2.Text = "Finalizar";
+            }
+
+            if (estado.idEstadoPublicacion == 3)
+            {
+                button1.Visible = false;
+                button2.Text = "Activar";
+                button2.Left -= 141;
+            }
         }
 
         private void visibilidad_SelectedIndexChanged(object sender, EventArgs e)
@@ -245,5 +280,71 @@ namespace WindowsFormsApplication1.Generar_Publicación
             
             publicacionSubastaDaoImpl.Add(nuevaPublSub);
         }
+
+        public Estadopublicacion cargar_formulario()
+        {
+            Estadopublicacion estadoPublicacion = null;
+            string vencimiento = "";
+            if (this.Tag is PublicacionSubasta)
+            {
+                PublicacionSubasta tag = (PublicacionSubasta)this.Tag;
+                TipoPubliSelect.Text = "Subasta";
+                estadoPublicacion = tag.EstadoPublicacion;
+
+                textBox4.Text = Convert.ToString(tag.codigoPublicacion);
+                DescripcionPublicacionTxt.Text = tag.descripcion;
+                EnvioCheckBox.Checked = tag.envioSN;
+                PreguntasCheckBox.Checked = tag.preguntasSN;
+                PrecioTxt.Text = Convert.ToString(tag.valorInicialVenta);
+                RubroComboBox.Text = tag.RubroLst.First().descripcion;
+                visibilidadComboBox.Text = tag.Visibilidad.nombreVisibilidad;
+                vencimiento = tag.fechaVencimiento.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                OfertaSubastaDaoImpl oDao = new OfertaSubastaDaoImpl();
+                IList<Ofertasubasta> ofertas = oDao.GetByPublicacion(tag.idPublicacion);
+
+                if (ofertas.Count == 0)
+                    labelInfo.Text = "Mejor Oferta: (Ninguna)";
+                else
+                    labelInfo.Text += "Mejor Oferta: $" + Convert.ToString(tag.valorActual);
+            }
+
+            if (this.Tag is PublicacionNormal)
+            {
+                PublicacionNormal tag = (PublicacionNormal)this.Tag;
+                TipoPubliSelect.Text = "Compra Inmediata";
+                estadoPublicacion = tag.EstadoPublicacion;
+
+                textBox4.Text = Convert.ToString(tag.codigoPublicacion);
+                DescripcionPublicacionTxt.Text = tag.descripcion;
+                EnvioCheckBox.Checked = tag.envioSN;
+                PreguntasCheckBox.Checked = tag.preguntasSN;
+                PrecioTxt.Text = Convert.ToString(tag.precioPorUnidad);
+                RubroComboBox.Text = tag.RubroLst.First().descripcion;
+                visibilidadComboBox.Text = tag.Visibilidad.nombreVisibilidad;
+                stock.Value = tag.stock;
+                vencimiento = tag.fechaVencimiento.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                CompraUsuarioDaoImpl cDao = new CompraUsuarioDaoImpl();
+                IList<CompraUsuario> compras = cDao.GetByPublicacion(tag.idPublicacion);
+                labelInfo.Text = "Unidades vendidas: " + Convert.ToString(compras.Count);
+            }
+
+            TipoPubliSelect.Enabled = false;
+            estado.Text += estadoPublicacion.nombre;
+            groupBoxEstado.Visible = true;
+            if (estadoPublicacion.idEstadoPublicacion > 1)
+            {
+                infoBox.Visible = true;
+                List<string> venc = new List<string>();
+                venc.Add(vencimiento);
+                vencimientoBox.DataSource = venc;
+                vencimientoBox.Text = vencimiento;
+                label1.Text = "Fecha Vencimiento";
+            }
+
+            return estadoPublicacion;
+        }
+
     }
 }

@@ -220,7 +220,7 @@
             this.descProductoDataGridViewTextBoxColumn.HeaderText = "Descripción";
             this.descProductoDataGridViewTextBoxColumn.Name = "descProductoDataGridViewTextBoxColumn";
             this.descProductoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descProductoDataGridViewTextBoxColumn.Width = 200;
+            this.descProductoDataGridViewTextBoxColumn.Width = 240;
             // 
             // precioDataGridViewTextBoxColumn
             // 

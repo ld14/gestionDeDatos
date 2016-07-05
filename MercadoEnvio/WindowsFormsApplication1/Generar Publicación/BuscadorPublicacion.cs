@@ -20,7 +20,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
         DataSet dset;
         BindingSource bs;
 
-        private void BuscadorPublicacion_Load(object sender, EventArgs e)        {
+        private void BuscadorPublicacion_Load(object sender, EventArgs e)
+        {
             dset = new DataSet();
             
             DataTable dt = new DataTable();
@@ -34,24 +35,40 @@ namespace WindowsFormsApplication1.Generar_Publicación
             dt.Columns.Add("fechaInicio", typeof(DateTime));
             dt.Columns.Add("fechaVencimiento", typeof(DateTime));
             
-
             List<GrillaPublicacion> customerList = new List<GrillaPublicacion>();
-            //UsuarioDaoImpl usrImpl = new UsuarioDaoImpl();
             Usuario usr = SessionAttribute.user;
 
             PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
             PublicacionNormalDaoImpl publicacionNormalDaoImpl = new PublicacionNormalDaoImpl();
 
             IList<PublicacionSubasta> pubSubLts = publicacionSubastaDaoImpl.GetPublicacionByUsuario(usr);
-            //pubSubLts.OrderBy(x => x.idPublicacion).ToList(); para ordenar.
             IList<PublicacionNormal> pubNorLts = publicacionNormalDaoImpl.GetPublicacionByUsuario(usr);
 
-            foreach (PublicacionSubasta pubSubasta in pubSubLts) {
-                dt.Rows.Add("Subasta", pubSubasta.idPublicacion, pubSubasta.codigoPublicacion, pubSubasta.descripcion, pubSubasta.valorInicialVenta, pubSubasta.EstadoPublicacion.nombre, "", pubSubasta.fechaCreacion, pubSubasta.fechaVencimiento);
+            foreach (PublicacionSubasta pubSubasta in pubSubLts)
+            {
+                dt.Rows.Add(
+                    "Subasta",
+                    pubSubasta.idPublicacion,
+                    pubSubasta.codigoPublicacion,
+                    pubSubasta.descripcion,
+                    pubSubasta.valorInicialVenta,
+                    pubSubasta.EstadoPublicacion.nombre,
+                    "",
+                    pubSubasta.fechaCreacion,
+                    pubSubasta.fechaVencimiento);
             }
             foreach (PublicacionNormal pubNormal in pubNorLts)
             {
-                dt.Rows.Add("Compra Inmediata", pubNormal.idPublicacion, pubNormal.codigoPublicacion, pubNormal.descripcion, pubNormal.precioPorUnidad, pubNormal.EstadoPublicacion.nombre, "", pubNormal.fechaCreacion, pubNormal.fechaVencimiento);
+                dt.Rows.Add(
+                    "Compra Inmediata",
+                    pubNormal.idPublicacion,
+                    pubNormal.codigoPublicacion,
+                    pubNormal.descripcion,
+                    pubNormal.precioPorUnidad
+                    , pubNormal.EstadoPublicacion.nombre,
+                    "",
+                    pubNormal.fechaCreacion,
+                    pubNormal.fechaVencimiento);
             }
             
             dset.Tables.Add(dt);
@@ -66,7 +83,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ModificarPublicacionPage modificarPublicacionPage = new ModificarPublicacionPage();
+            GenerarPublicacionPage publicacionPage = new GenerarPublicacionPage();
 
             string tipoPublicacion = "";
             string idPublicacion = "";
@@ -77,21 +94,23 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 idPublicacion = row.Cells[0].Value.ToString();
             }
 
-            if (tipoPublicacion.Equals("Subasta")) {
+            if (tipoPublicacion.Equals("Subasta"))
+            {
                 PublicacionSubastaDaoImpl pubDaoImpl = new PublicacionSubastaDaoImpl();
-                PublicacionSubasta publi = pubDaoImpl.GetById(Convert.ToInt32(idPublicacion));
-                modificarPublicacionPage.Text = Convert.ToString(publi.idPublicacion);
-                modificarPublicacionPage.Tag = publi;
-            } else {
+                PublicacionSubasta publSubasta = pubDaoImpl.GetById(Convert.ToInt32(idPublicacion));
+                publicacionPage.Text = Convert.ToString(publSubasta.idPublicacion);
+                publicacionPage.Tag = publSubasta;
+            }
+            else
+            {
                 PublicacionNormalDaoImpl pubDaoImpl = new PublicacionNormalDaoImpl();
-                PublicacionNormal publi = pubDaoImpl.GetById(Convert.ToInt32(idPublicacion));
-                modificarPublicacionPage.Text = Convert.ToString(publi.idPublicacion);
-                modificarPublicacionPage.Tag = publi;
+                PublicacionNormal publNormal = pubDaoImpl.GetById(Convert.ToInt32(idPublicacion));
+                publicacionPage.Text = Convert.ToString(publNormal.idPublicacion);
+                publicacionPage.Tag = publNormal;
             }
 
-            modificarPublicacionPage.MdiParent = this.ParentForm;
-
-            modificarPublicacionPage.Show();
+            publicacionPage.MdiParent = this.ParentForm;
+            publicacionPage.Show();
             this.Close();
         }
 

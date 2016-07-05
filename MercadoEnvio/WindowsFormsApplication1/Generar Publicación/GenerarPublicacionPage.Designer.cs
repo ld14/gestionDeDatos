@@ -32,6 +32,11 @@ namespace WindowsFormsApplication1.Generar_Publicación
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxEstado = new System.Windows.Forms.GroupBox();
+            this.estado = new System.Windows.Forms.Label();
+            this.infoBox = new System.Windows.Forms.GroupBox();
+            this.botonPreguntas = new System.Windows.Forms.Button();
+            this.labelInfo = new System.Windows.Forms.Label();
             this.Gratis = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.porcentajeValue = new System.Windows.Forms.Label();
@@ -44,6 +49,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.label9 = new System.Windows.Forms.Label();
             this.RubroComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.stock = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.vencimientoBox = new System.Windows.Forms.ComboBox();
             this.PrecioTxt = new System.Windows.Forms.TextBox();
@@ -62,14 +69,14 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.TipoPubliSelect = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.stock = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
+            this.groupBoxEstado.SuspendLayout();
+            this.infoBox.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stock)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -84,6 +91,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBoxEstado);
+            this.groupBox1.Controls.Add(this.infoBox);
             this.groupBox1.Controls.Add(this.Gratis);
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.groupBox5);
@@ -96,6 +105,58 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nueva Publicación";
+            // 
+            // groupBoxEstado
+            // 
+            this.groupBoxEstado.Controls.Add(this.estado);
+            this.groupBoxEstado.Location = new System.Drawing.Point(648, 247);
+            this.groupBoxEstado.Name = "groupBoxEstado";
+            this.groupBoxEstado.Size = new System.Drawing.Size(219, 61);
+            this.groupBoxEstado.TabIndex = 33;
+            this.groupBoxEstado.TabStop = false;
+            this.groupBoxEstado.Visible = false;
+            // 
+            // estado
+            // 
+            this.estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estado.ForeColor = System.Drawing.Color.Teal;
+            this.estado.Location = new System.Drawing.Point(3, 11);
+            this.estado.Name = "estado";
+            this.estado.Size = new System.Drawing.Size(212, 45);
+            this.estado.TabIndex = 32;
+            this.estado.Text = "Estado Actual: ";
+            this.estado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // infoBox
+            // 
+            this.infoBox.Controls.Add(this.botonPreguntas);
+            this.infoBox.Controls.Add(this.labelInfo);
+            this.infoBox.Location = new System.Drawing.Point(637, 25);
+            this.infoBox.Name = "infoBox";
+            this.infoBox.Size = new System.Drawing.Size(242, 100);
+            this.infoBox.TabIndex = 31;
+            this.infoBox.TabStop = false;
+            this.infoBox.Text = "Información Básica";
+            this.infoBox.Visible = false;
+            // 
+            // botonPreguntas
+            // 
+            this.botonPreguntas.Location = new System.Drawing.Point(43, 59);
+            this.botonPreguntas.Name = "botonPreguntas";
+            this.botonPreguntas.Size = new System.Drawing.Size(159, 23);
+            this.botonPreguntas.TabIndex = 2;
+            this.botonPreguntas.Text = "Preguntas";
+            this.botonPreguntas.UseVisualStyleBackColor = true;
+            // 
+            // labelInfo
+            // 
+            this.labelInfo.AutoSize = true;
+            this.labelInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfo.Location = new System.Drawing.Point(19, 26);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(35, 13);
+            this.labelInfo.TabIndex = 1;
+            this.labelInfo.Text = "INFO:";
             // 
             // Gratis
             // 
@@ -169,7 +230,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(8, 41);
+            this.label12.Location = new System.Drawing.Point(9, 42);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(53, 13);
             this.label12.TabIndex = 22;
@@ -179,7 +240,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             // 
             this.visibilidadComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.visibilidadComboBox.FormattingEnabled = true;
-            this.visibilidadComboBox.Location = new System.Drawing.Point(65, 38);
+            this.visibilidadComboBox.Location = new System.Drawing.Point(68, 38);
             this.visibilidadComboBox.Name = "visibilidadComboBox";
             this.visibilidadComboBox.Size = new System.Drawing.Size(350, 21);
             this.visibilidadComboBox.TabIndex = 21;
@@ -189,7 +250,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             // 
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.RubroComboBox);
-            this.groupBox5.Location = new System.Drawing.Point(536, 137);
+            this.groupBox5.Location = new System.Drawing.Point(536, 140);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(435, 96);
             this.groupBox5.TabIndex = 16;
@@ -199,7 +260,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(19, 41);
+            this.label9.Location = new System.Drawing.Point(18, 41);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
             this.label9.TabIndex = 22;
@@ -238,6 +299,39 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Publicación";
+            // 
+            // stock
+            // 
+            this.stock.Location = new System.Drawing.Point(115, 212);
+            this.stock.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.stock.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.stock.Name = "stock";
+            this.stock.Size = new System.Drawing.Size(97, 20);
+            this.stock.TabIndex = 30;
+            this.stock.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(235, 174);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 18);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "*";
             // 
             // label6
             // 
@@ -283,7 +377,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 322);
+            this.label1.Location = new System.Drawing.Point(10, 323);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 25;
@@ -415,39 +509,6 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.publicar_Click);
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(235, 174);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(18, 18);
-            this.label13.TabIndex = 29;
-            this.label13.Text = "*";
-            // 
-            // stock
-            // 
-            this.stock.Location = new System.Drawing.Point(115, 212);
-            this.stock.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.stock.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.stock.Name = "stock";
-            this.stock.Size = new System.Drawing.Size(97, 20);
-            this.stock.TabIndex = 30;
-            this.stock.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // GenerarPublicacionPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,14 +527,17 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.Load += new System.EventHandler(this.GenerarPublicacionPage_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBoxEstado.ResumeLayout(false);
+            this.infoBox.ResumeLayout(false);
+            this.infoBox.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.stock)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -514,5 +578,10 @@ namespace WindowsFormsApplication1.Generar_Publicación
         private Label label6;
         private NumericUpDown stock;
         private Label label13;
+        private Label estado;
+        private GroupBox infoBox;
+        private Button botonPreguntas;
+        private Label labelInfo;
+        private GroupBox groupBoxEstado;
     }
 }
