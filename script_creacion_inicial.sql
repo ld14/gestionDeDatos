@@ -446,23 +446,23 @@ INSERT INTO [LOPEZ_Y_CIA].[EstadoPublicacion] (nombre, nombreCorto) VALUES
 	('Borrador', NULL),
 	('Activa', NULL),
 	('Pausada', NULL),
-	('Finalizada', NULL),
-	('Inicial', 'init')
+	('Finalizada', NULL)
 
 PRINT 'TABLA: EstadoPublicacion'
 
 --
 
 INSERT INTO [LOPEZ_Y_CIA].[workflowEstados] (idEstadoInicial, idEstadoFinal, activo) VALUES
-	(5,1,1),
-	(5,2,1),
 	(1,1,1),
 	(1,2,1),
+	(1,4,1),
 	(2,2,1),
 	(2,3,1),
 	(2,4,1),
 	(3,3,1),
-	(3,2,1)
+	(3,2,1),
+	(3,4,1),
+	(4,4,1)
 
 PRINT 'TABLA: workflowEstados'
 
@@ -1157,7 +1157,8 @@ GO
 
 CREATE TRIGGER [LOPEZ_Y_CIA].[restriccionWF]
 ON [LOPEZ_Y_CIA].[Publicacion] INSTEAD OF UPDATE AS
-BEGIN TRAN
+SET NOCOUNT ON
+BEGIN
 	DECLARE @permitido bit = 0
 	DECLARE @nuevoEstado int
 	DECLARE @idPublicacion int
@@ -1172,8 +1173,10 @@ BEGIN TRAN
 		WHERE idPublicacion = @idPublicacion;
 	END
 	ELSE PRINT 'ERROR'
-COMMIT TRAN;
+END;
+SET NOCOUNT OFF
 
+GO
 /*
 CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
 ON [LOPEZ_Y_CIA].[Rol] FOR UPDATE AS
