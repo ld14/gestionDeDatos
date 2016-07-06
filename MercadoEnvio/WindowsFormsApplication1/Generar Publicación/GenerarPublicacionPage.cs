@@ -20,6 +20,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             InitializeComponent();
         }
 
+        public int idPub;
+
         private void GenerarPublicacionPage_Load(object sender, EventArgs e)
         {
             Usuario user = SessionAttribute.user;
@@ -111,78 +113,110 @@ namespace WindowsFormsApplication1.Generar_Publicación
             }
         }
 
-        private void guardar_Click(object sender, EventArgs e)
+        private void boton1_Click(object sender, EventArgs e)
         {
-            if (DescripcionPublicacionTxt.Text == "" || PrecioTxt.Text == "")
+            if (validar_formulario() == true) return; //Sale de la función si no pasa la validación
+
+            if (button1.Text.Equals("Guardar")) //Estado Borrador
             {
-                MessageBox.Show("Debe de completar todos los campos obligatorios");
-                return;
+                if (groupBoxEstado.Visible == false) //Se trata de una publicacion nueva
+                {
+                    if (TipoPubliSelect.Text.Equals("Subasta"))
+                        alta_publicacion_subasta(1);
+                    else
+                        alta_publicacion_normal(1);
+                }
+                else //Una publicacion que ya existe
+                {
+                    if (TipoPubliSelect.Text.Equals("Subasta"))
+                        modif_publicacion_subasta(1);
+                    else
+                        modif_publicacion_normal(1);
+                }
+
+                MessageBox.Show("Se ha guardado Satisfactoriamente su publicación.\nSi desea publicarla ir a [Publicacion] -> [Modificar]");
             }
 
-            if (!Regex.IsMatch(PrecioTxt.Text, @"(^(\d)+(,(\d)+)?)$"))
+            if (button1.Text.Equals("Pausar")) //Estado Pausado
             {
-                MessageBox.Show("El campo Precio solo admite un numero decimal");
-                return;
+                if (TipoPubliSelect.Text.Equals("Subasta"))
+                    modif_publicacion_subasta(3);
+                else
+                    modif_publicacion_normal(3);
+
+                MessageBox.Show("Se ha pausado su publicación.\nSi desea seguir vendiendo deberá activar nuevamente la publicación.");
             }
-
-            if (TipoPubliSelect.Text.Equals("Subasta"))
-                alta_publicacion_subasta(1);
-            else
-                alta_publicacion_normal(1);
-
-            MessageBox.Show("Se ha guardado Satisfactoriamente su publicación.\nSi desea publicarla ir a [Publicacion] -> [Modificar]");
+                
             this.Close();
         }
 
-        private void publicar_Click(object sender, EventArgs e)
+        private void boton2_Click(object sender, EventArgs e)
         {
-            if (DescripcionPublicacionTxt.Text == "" || PrecioTxt.Text == "")
-            {
-                MessageBox.Show("Debe de completar todos los campos obligatorios");
-                return;
-            }
-
-            if (!Regex.IsMatch(PrecioTxt.Text, @"(^(\d)+(,(\d)+)?)$"))
-            {
-                MessageBox.Show("El campo Precio solo admite un numero decimal");
-                return;
-            }
+            if (validar_formulario() == true) return; //Sale de la función si no pasa la validación
             
-            if (DescripcionPublicacionTxt.Text == "" || PrecioTxt.Text == "")
+            if (button2.Text.Equals("Publicar")) //Estado Activo
             {
-                MessageBox.Show("Debe de completar todos los campos obligatorios");
-                return;
+                if (groupBoxEstado.Visible == false) //Se trata de una publicacion nueva
+                {
+                    if (TipoPubliSelect.Text.Equals("Subasta"))
+                        alta_publicacion_subasta(2);
+                    else
+                        alta_publicacion_normal(2);
+                }
+                else //Una publicacion que ya existe
+                {
+                    if (TipoPubliSelect.Text.Equals("Subasta"))
+                        modif_publicacion_subasta(2);
+                    else
+                        modif_publicacion_normal(2);
+                }
+
+                //Se procede a facturar comisiones al vendedor por publicar
+                FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
+                Factura nuevaFactura = new Factura();
+                ItemFactura nuevoItemFactura = new ItemFactura();
+
+                nuevoItemFactura.cantidad = 1;
+                if (Gratis.Visible)
+                {
+                    nuevoItemFactura.monto = 0;
+                    UsuarioDaoImpl userDao = new UsuarioDaoImpl();
+                    SessionAttribute.user.publicacionGratis = false;
+
+                    userDao.Update(SessionAttribute.user);
+                }
+                else
+                {
+                    nuevoItemFactura.monto = ((Visibilidad)visibilidadComboBox.SelectedItem).costo;
+                }
+                nuevoItemFactura.Factura = nuevaFactura;
+
+                nuevaFactura.setFacturaNueva(DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema), "Efectivo", nuevoItemFactura, Convert.ToInt32(textBox4.Text));
+                factDaoImpl.Add(nuevaFactura);
+
+                MessageBox.Show("Publicación exitosa.");
             }
 
-            if (TipoPubliSelect.Text.Equals("Subasta"))
-                alta_publicacion_subasta(2);
-            else
-                alta_publicacion_normal(2);
-
-            // Se genera la facturación correspondiente por publicar
-            FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
-            Factura nuevaFactura = new Factura();
-            ItemFactura nuevoItemFactura = new ItemFactura();
-
-            nuevoItemFactura.cantidad = 1;
-            if (Gratis.Visible)
+            if (button2.Text.Equals("Finalizar")) //Estado Finalizado
             {
-                nuevoItemFactura.monto = 0;
-                UsuarioDaoImpl userDao = new UsuarioDaoImpl();
-                SessionAttribute.user.publicacionGratis = false;
+                if (TipoPubliSelect.Text.Equals("Subasta"))
+                    modif_publicacion_subasta(4);
+                else
+                    modif_publicacion_normal(4);
 
-                userDao.Update(SessionAttribute.user);
+                MessageBox.Show("Su publicación ha finalizado.");
             }
-            else
+
+            if (button2.Text.Equals("Activar")) //Estado Activo (Desde pausado)
             {
-                nuevoItemFactura.monto = ((Visibilidad)visibilidadComboBox.SelectedItem).costo;
-            }
-            nuevoItemFactura.Factura = nuevaFactura;
-            
-            nuevaFactura.setFacturaNueva(DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema), "Efectivo", nuevoItemFactura);
-            factDaoImpl.Add(nuevaFactura);
+                if (TipoPubliSelect.Text.Equals("Subasta"))
+                    modif_publicacion_subasta(2);
+                else
+                    modif_publicacion_normal(2);
 
-            MessageBox.Show("Publicación exitosa.");
+                MessageBox.Show("Su publicación se encuentra activa nuevamente.");
+            }
+
             this.Close();
         }
 
@@ -281,6 +315,101 @@ namespace WindowsFormsApplication1.Generar_Publicación
             publicacionSubastaDaoImpl.Add(nuevaPublSub);
         }
 
+        public void modif_publicacion_normal(int idEstado)
+        {
+            EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(idEstado);
+            Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
+            Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
+            Usuario usr = SessionAttribute.user;
+
+            DateTime fechaIncioDateTime = FechaIncioDateTime.Value;
+            DateTime fechaVencimientoDateTime = FechaIncioDateTime.Value;
+
+            switch (vencimientoBox.Text)
+            {
+                case "7 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(7);
+                    break;
+                case "14 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(14);
+                    break;
+                case "21 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(21);
+                    break;
+                case "28 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(28);
+                    break;
+            }
+
+            PublicacionNormalDaoImpl publicacionNormalDaoImpl = new PublicacionNormalDaoImpl();
+            PublicacionNormal nuevaPublNormal = publicacionNormalDaoImpl.GetById(idPub);
+
+            //nuevaPublNormal.codigoPublicacion = Convert.ToInt32(textBox4.Text);
+            nuevaPublNormal.descripcion = DescripcionPublicacionTxt.Text;
+            nuevaPublNormal.envioSN = EnvioCheckBox.Checked;
+            nuevaPublNormal.EstadoPublicacion = selectedEstado;
+            nuevaPublNormal.fechaCreacion = fechaIncioDateTime;
+            nuevaPublNormal.fechaVencimiento = fechaVencimientoDateTime;
+            nuevaPublNormal.precioPorUnidad = Convert.ToDouble(PrecioTxt.Text);
+            nuevaPublNormal.preguntasSN = PreguntasCheckBox.Checked;
+            nuevaPublNormal.RubroLst = new List<Rubro>();
+            nuevaPublNormal.RubroLst.Add(selectedRubro);
+            nuevaPublNormal.stock = Convert.ToInt32(stock.Value);
+            nuevaPublNormal.Usuario = usr;
+            nuevaPublNormal.Visibilidad = selectedVisibilidad;
+
+            publicacionNormalDaoImpl.Update(nuevaPublNormal);
+        }
+
+        public void modif_publicacion_subasta(int idEstado)
+        {
+            EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
+            Estadopublicacion selectedEstado = buscarEstado.darEstadoByID(idEstado);
+            Rubro selectedRubro = RubroComboBox.SelectedItem as Rubro;
+            Visibilidad selectedVisibilidad = visibilidadComboBox.SelectedItem as Visibilidad;
+            Usuario usr = SessionAttribute.user;
+
+            DateTime fechaIncioDateTime = FechaIncioDateTime.Value;
+            DateTime fechaVencimientoDateTime = FechaIncioDateTime.Value;
+
+            switch (vencimientoBox.Text)
+            {
+                case "7 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(7);
+                    break;
+                case "14 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(14);
+                    break;
+                case "21 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(21);
+                    break;
+                case "28 Días":
+                    fechaVencimientoDateTime = fechaVencimientoDateTime.AddDays(28);
+                    break;
+            }
+
+            PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
+            PublicacionSubasta nuevaPublSub = publicacionSubastaDaoImpl.GetById(idPub);
+
+            //nuevaPublSub.codigoPublicacion = Convert.ToInt32(textBox4.Text);
+            nuevaPublSub.descripcion = DescripcionPublicacionTxt.Text;
+            nuevaPublSub.envioSN = EnvioCheckBox.Checked;
+            nuevaPublSub.EstadoPublicacion = selectedEstado;
+            nuevaPublSub.fechaCreacion = fechaIncioDateTime;
+            nuevaPublSub.fechaVencimiento = fechaVencimientoDateTime;
+            nuevaPublSub.preguntasSN = PreguntasCheckBox.Checked;
+            nuevaPublSub.RubroLst = new List<Rubro>();
+            nuevaPublSub.RubroLst.Add(selectedRubro);
+            nuevaPublSub.stock = 1;
+            nuevaPublSub.Usuario = usr;
+            nuevaPublSub.valorActual = Convert.ToDouble(PrecioTxt.Text);
+            nuevaPublSub.valorInicialVenta = nuevaPublSub.valorActual;
+            nuevaPublSub.Visibilidad = selectedVisibilidad;
+
+            publicacionSubastaDaoImpl.Update(nuevaPublSub);
+        }
+
         public Estadopublicacion cargar_formulario()
         {
             Estadopublicacion estadoPublicacion = null;
@@ -290,14 +419,15 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 PublicacionSubasta tag = (PublicacionSubasta)this.Tag;
                 TipoPubliSelect.Text = "Subasta";
                 estadoPublicacion = tag.EstadoPublicacion;
+                idPub = tag.idPublicacion;
 
                 textBox4.Text = Convert.ToString(tag.codigoPublicacion);
                 DescripcionPublicacionTxt.Text = tag.descripcion;
                 EnvioCheckBox.Checked = tag.envioSN;
                 PreguntasCheckBox.Checked = tag.preguntasSN;
                 PrecioTxt.Text = Convert.ToString(tag.valorInicialVenta);
-                RubroComboBox.Text = tag.RubroLst.First().descripcion;
-                visibilidadComboBox.Text = tag.Visibilidad.nombreVisibilidad;
+                RubroComboBox.SelectedIndex = tag.RubroLst.First().idRubro - 1;
+                visibilidadComboBox.SelectedIndex = tag.Visibilidad.idVisibilidad - 1;
                 vencimiento = tag.fechaVencimiento.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                 OfertaSubastaDaoImpl oDao = new OfertaSubastaDaoImpl();
@@ -314,6 +444,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 PublicacionNormal tag = (PublicacionNormal)this.Tag;
                 TipoPubliSelect.Text = "Compra Inmediata";
                 estadoPublicacion = tag.EstadoPublicacion;
+                idPub = tag.idPublicacion;
 
                 textBox4.Text = Convert.ToString(tag.codigoPublicacion);
                 DescripcionPublicacionTxt.Text = tag.descripcion;
@@ -344,6 +475,21 @@ namespace WindowsFormsApplication1.Generar_Publicación
             }
 
             return estadoPublicacion;
+        }
+
+        public bool validar_formulario()
+        {
+            if (DescripcionPublicacionTxt.Text == "" || PrecioTxt.Text == "")
+            {
+                MessageBox.Show("Debe de completar todos los campos obligatorios");
+                return true;
+            }
+            if (!Regex.IsMatch(PrecioTxt.Text, @"(^(\d)+(,(\d)+)?)$"))
+            {
+                MessageBox.Show("El campo Precio solo admite un numero decimal");
+                return true;
+            }
+            return false;
         }
     }
 }

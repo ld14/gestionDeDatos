@@ -101,6 +101,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+
         public Publicacion GetByCodigo(int codigo)
         {
             using (NHibernateManager manager = new NHibernateManager())

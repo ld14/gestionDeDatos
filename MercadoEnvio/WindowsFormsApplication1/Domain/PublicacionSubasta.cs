@@ -11,6 +11,7 @@ namespace WindowsFormsApplication1 {
         public virtual double valorInicialVenta { get; set; }
         public virtual double valorActual { get; set; }
 
+        /*
         public virtual void setPublicacionSubasta(Estadopublicacion estadoPublicacion, Visibilidad visibilidad, Usuario usuario,
                            string descripcion, DateTime fechaCreacion, DateTime fechaVencimiento, int stock,
                            bool preguntasSN, bool envioSN,double valorInicialVenta,double valorActual,Rubro rubro)
@@ -59,5 +60,6 @@ namespace WindowsFormsApplication1 {
             rubroLts.Add(rubro);
             this.RubroLst = rubroLts;
         }
+        */
     }
 }

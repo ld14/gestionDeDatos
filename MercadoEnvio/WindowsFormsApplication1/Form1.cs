@@ -59,7 +59,6 @@ namespace WindowsFormsApplication1
                     }
                 }
 
-                OfertaSubastaDaoImpl ofertaDao = new OfertaSubastaDaoImpl();
                 foreach (PublicacionSubasta pubSubasta in subs)
                 {
                     if (pubSubasta.fechaVencimiento < DateTime.ParseExact(SessionAttribute.fechaSistema, "dd/MM/yyyy", CultureInfo.InvariantCulture))
@@ -182,13 +181,6 @@ namespace WindowsFormsApplication1
             generarPublicacionPage.Text = "init";
             generarPublicacionPage.MdiParent = this;
             generarPublicacionPage.Show();
-        }
-
-        private void modificacionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ModificarPublicacionPage modificarPublicacionPage = new ModificarPublicacionPage();
-            modificarPublicacionPage.MdiParent = this;
-            modificarPublicacionPage.Show();
         }
 
         private void buscarToolStripMenuItem_Click(object sender, EventArgs e)

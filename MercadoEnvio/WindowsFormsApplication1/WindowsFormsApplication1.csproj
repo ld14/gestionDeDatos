@@ -238,12 +238,6 @@
       <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Publicación\GrillaPublicacion.cs" />
-    <Compile Include="Generar Publicación\ModificarPublicacionPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Generar Publicación\ModificarPublicacionPage.Designer.cs">
-      <DependentUpon>ModificarPublicacionPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Historial Cliente\CompraVentaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,9 +352,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicación\GenerarPublicacionPage.resx">
       <DependentUpon>GenerarPublicacionPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generar Publicación\ModificarPublicacionPage.resx">
-      <DependentUpon>ModificarPublicacionPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial Cliente\CompraVentaForm.resx">
       <DependentUpon>CompraVentaForm.cs</DependentUpon>

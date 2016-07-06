@@ -15,14 +15,14 @@ namespace WindowsFormsApplication1 {
         public virtual Publicacion Publicacion { get; set; }
         public virtual IList<ItemFactura> ItemFacturasLts { get; set; }
 
-        public virtual void setFacturaNueva(DateTime fecha, string formaPagoDesc, ItemFactura itemFactura)
+        public virtual void setFacturaNueva(DateTime fecha, string formaPagoDesc, ItemFactura itemFactura, int codigo)
         {
             PublicacionNormalDaoImpl pDao = new PublicacionNormalDaoImpl();
 
             this.fecha = fecha;
             this.montoTotal = itemFactura.monto;
             this.formaPagoDesc = formaPagoDesc;
-            this.Publicacion = pDao.GetByCodigo(pDao.getSecuenciaPubli());
+            this.Publicacion = pDao.GetByCodigo(codigo);
             
             this.ItemFacturasLts = new List<ItemFactura>();
             this.ItemFacturasLts.Add(itemFactura);
