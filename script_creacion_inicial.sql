@@ -1177,6 +1177,75 @@ END;
 SET NOCOUNT OFF
 
 GO
+
+CREATE TRIGGER [LOPEZ_Y_CIA].[facturarSubastasVencidas]
+ON [LOPEZ_Y_CIA].[Publicacion] FOR UPDATE AS
+SET NOCOUNT ON
+BEGIN
+	DECLARE @idPublicacion int
+	DECLARE @facturar numeric(16,2) = -1
+	DECLARE @idUsuario int
+	DECLARE @fecha datetime
+	DECLARE @visibilidadPorciento numeric(5,4)
+
+	SELECT TOP 1
+		@idPublicacion = A.idPublicacion,
+		@facturar = B.monto,
+		@idUsuario = B.idUsuario,
+		@fecha = A.fechaVencimiento,
+		@visibilidadPorciento = C.porcentaje
+	FROM inserted A
+	JOIN [LOPEZ_Y_CIA].[OfertaSubasta] B ON A.idPublicacion = B.idPublicacion
+	JOIN [LOPEZ_Y_CIA].[Visibilidad] C ON C.idVisibilidad = A.idVisibilidad
+	WHERE A.idEstadoPublicacion = 4
+	GROUP BY
+		A.idPublicacion,
+		B.monto,
+		B.idUsuario,
+		A.fechaVencimiento,
+		C.porcentaje
+	ORDER BY monto DESC
+
+	IF (@facturar > -1)
+	BEGIN
+		UPDATE OfertaSubasta
+		SET adjudicada = 1
+		WHERE idPublicacion = @idPublicacion AND monto = @facturar
+
+		INSERT INTO [LOPEZ_Y_CIA].[CompraUsuario] (idPublicacion, idUsuario, fecha, compraCantidad) VALUES
+			(@idPublicacion, @idUsuario, @fecha, 1)
+
+		INSERT INTO [LOPEZ_Y_CIA].[ItemFactura] (idFactura, cantidad, monto) VALUES
+			(@idPublicacion, 1, @facturar * @visibilidadPorciento)
+
+		UPDATE Factura
+		SET montoTotal = montoTotal + @facturar * @visibilidadPorciento
+		WHERE idPublicacion = @idPublicacion
+	END
+END;
+SET NOCOUNT OFF
+
+GO
+/*
+CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
+ON [LOPEZ_Y_CIA].[Rol] FOR UPDATE AS
+BEGIN TRAN
+	MERGE [LOPEZ_Y_CIA].[RolUsuario] AS T1
+	USING (
+		SELECT *
+		FROM [LOPEZ_Y_CIA].[Rol]
+		WHERE activo = 0
+	) T2
+	ON (T1.idRol = T2.idRol) 
+	WHEN MATCHED THEN UPDATE SET
+		T1.activo = 0;
+COMMIT TRAN;
+
+GO
+*/
+/** FIN DEL SCRIPT **/
+
+
 /*
 CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
 ON [LOPEZ_Y_CIA].[Rol] FOR UPDATE AS
