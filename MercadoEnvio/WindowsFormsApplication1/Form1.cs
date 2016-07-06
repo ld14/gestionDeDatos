@@ -66,22 +66,6 @@ namespace WindowsFormsApplication1
                     {
                         pubSubasta.EstadoPublicacion.idEstadoPublicacion = 4;
                         DAO2.Update(pubSubasta);
-
-                        //Todo esto va a estar en un TRIGGER
-                        Ofertasubasta oferta = ofertaDao.GetMaxByPublicacion(pubSubasta.idPublicacion);
-                        if (oferta != null)
-                        {
-                            oferta.adjudicada = true;
-                            CompraUsuario nuevaCompra = new CompraUsuario();
-                            nuevaCompra.compraCantidad = 1;
-                            nuevaCompra.fecha = DateTime.ParseExact(SessionAttribute.fechaSistema, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            nuevaCompra.Publicacion = pubSubasta;
-                            nuevaCompra.Usuario = SessionAttribute.user;
-
-                            ofertaDao.Update(oferta);
-                            CompraUsuarioDaoImpl compraDao = new CompraUsuarioDaoImpl();
-                            compraDao.Add(nuevaCompra);
-                        }
                     }
                 }
             });
