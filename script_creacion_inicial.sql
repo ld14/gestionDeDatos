@@ -1221,31 +1221,15 @@ BEGIN
 		UPDATE Factura
 		SET montoTotal = montoTotal + @facturar * @visibilidadPorciento
 		WHERE idPublicacion = @idPublicacion
+		
+		UPDATE Cliente
+		SET comprasEfectuadas = comprasEfectuadas + 1
+		WHERE idUsuario = @idUsuario 
 	END
 END;
 SET NOCOUNT OFF
 
 GO
-/*
-CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
-ON [LOPEZ_Y_CIA].[Rol] FOR UPDATE AS
-BEGIN TRAN
-	MERGE [LOPEZ_Y_CIA].[RolUsuario] AS T1
-	USING (
-		SELECT *
-		FROM [LOPEZ_Y_CIA].[Rol]
-		WHERE activo = 0
-	) T2
-	ON (T1.idRol = T2.idRol) 
-	WHEN MATCHED THEN UPDATE SET
-		T1.activo = 0;
-COMMIT TRAN;
-
-GO
-*/
-/** FIN DEL SCRIPT **/
-
-
 /*
 CREATE TRIGGER [LOPEZ_Y_CIA].[TriggerBajaRol]
 ON [LOPEZ_Y_CIA].[Rol] FOR UPDATE AS
