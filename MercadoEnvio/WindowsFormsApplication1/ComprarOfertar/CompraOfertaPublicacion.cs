@@ -20,86 +20,74 @@ namespace WindowsFormsApplication1.ComprarOfertar
 
         private void CompraOfertaPublicacion_Load(object sender, EventArgs e)
         {
-            if (this.Tag is PublicacionSubasta)
+            Estadopublicacion estado = null;
+
+            if (this.Tag is PublicacionSubasta) //Cargar formulario para subasta
             {
-                    PublicacionSubasta publicacionSubasta = (PublicacionSubasta)this.Tag;
-                    
-                    tipoPubBox.Text = "Subasta";
-                    codigoPubBox.Text = Convert.ToString(publicacionSubasta.codigoPublicacion);
-                    DescripcionTxt.Text = publicacionSubasta.descripcion;
-                    stockTxt.Text = Convert.ToString(publicacionSubasta.stock);
-                    envioCheck.Enabled = publicacionSubasta.envioSN;
-                    PrecioTxt.Text = '$' + Convert.ToString(publicacionSubasta.valorInicialVenta);
-                    precioLabel.Text = "Precio Inicial:";
-                    ofertaValue.Visible = true;
-                    ofertaLabel.Visible = true;
-                    cant_oferta.Enabled = false;
+                PublicacionSubasta publicacionSubasta = (PublicacionSubasta)this.Tag;
+                estado = publicacionSubasta.EstadoPublicacion;
+    
+                tipoTextBox.Text = "Subasta";
+                codigoTextBox.Text = Convert.ToString(publicacionSubasta.codigoPublicacion);
+                descripcionTextBox.Text = publicacionSubasta.descripcion;
+                stockTextBox.Text = Convert.ToString(publicacionSubasta.stock);
+                envioCheckBox.Enabled = publicacionSubasta.envioSN;
+                precioTextBox.Text = '$' + Convert.ToString(publicacionSubasta.valorInicialVenta);
+                precioLabel.Text = "Precio Inicial:";
+                ofertarNumeric.Visible = true;
+                ofertaLabel.Visible = true;
+                cant_ofertaNumeric.Enabled = false;
+                vencimientoDateTime.Value = publicacionSubasta.fechaVencimiento;
+                vendedorTextBox.Text = publicacionSubasta.Usuario.userName;
+                ofertarNumeric.Value = Convert.ToDecimal(publicacionSubasta.valorActual);
+                ofertarNumeric.Minimum = ofertarNumeric.Value;
+                rubroTextBox.Text = publicacionSubasta.RubroLst.First().descripcion;
 
-                    OfertaSubastaDaoImpl ofertaDao = new OfertaSubastaDaoImpl();
-                    IList<Ofertasubasta> ofertas = ofertaDao.GetByPublicacion(publicacionSubasta.idPublicacion);
-                    if (ofertas.Count > 0)
-                    {
-                        cant_oferta.Value = Convert.ToDecimal(publicacionSubasta.valorActual);
-                    }
+                //Si hay alguna oferta te obligo a que ofertes como minimo un peso mas que la mejor oferta
+                OfertaSubastaDaoImpl ofertaDao = new OfertaSubastaDaoImpl();
+                IList<Ofertasubasta> ofertas = ofertaDao.GetByPublicacion(publicacionSubasta.idPublicacion);
+                if (ofertas.Count > 0)
+                {
+                    cant_ofertaNumeric.Value = Convert.ToDecimal(publicacionSubasta.valorActual);
+                    ofertarNumeric.Value++;
+                    ofertarNumeric.Minimum++;
+                }
+            }  
 
-                    ofertaValue.Value = Convert.ToDecimal(publicacionSubasta.valorActual) + 1;
-                    ofertaValue.Minimum = ofertaValue.Value;
-                    fechaVencimientoDateTimeTxt.Value = publicacionSubasta.fechaVencimiento;
-                    vendedorBox.Text = publicacionSubasta.Usuario.userName;
-
-                    if (publicacionSubasta.EstadoPublicacion.nombre.Equals("Pausada"))
-                    {
-                        estadoPausa.Visible = true;
-                        cant_oferta.Enabled = false;
-                        ofertaValue.Enabled = false;
-                        envioCheck.Enabled = false;
-                        comprarButton.Enabled = false;
-                    }
-                    rubroBox.Text = publicacionSubasta.RubroLst.First().descripcion;
-                    //preguntarButton.Enabled = publicacionSubasta.preguntasSN;
-                    //visbilidad = publicacionSubasta.Visibilidad;
-                    //CompraDatos.Visible = false;
-            }
+            if (this.Tag is PublicacionNormal) //Cargar formulario para compra inmediata
+            {
+                PublicacionNormal publicacionDirecta = (PublicacionNormal)this.Tag;
+                estado = publicacionDirecta.EstadoPublicacion;
                 
-            if (this.Tag is PublicacionNormal)
-            {
-                    PublicacionNormal publicacionDirecta = (PublicacionNormal)this.Tag;
-                    tipoPubBox.Text = "Compra Inmediata";
-                    codigoPubBox.Text = Convert.ToString(publicacionDirecta.codigoPublicacion);
-                    DescripcionTxt.Text = publicacionDirecta.descripcion;
-                    stockTxt.Text = Convert.ToString(publicacionDirecta.stock);
-                    envioCheck.Enabled = publicacionDirecta.envioSN;
-                    PrecioTxt.Text = '$' + Convert.ToString(publicacionDirecta.precioPorUnidad);
-                    precioLabel.Text = "Precio Unidad:";
-                    compraLabel.Text = "Unidades";
-                    cant_oferta.Maximum = publicacionDirecta.stock;
-                    ofertaValue.Visible = false;
-                    ofertaLabel.Visible = false;
-                    fechaVencimientoDateTimeTxt.Value = publicacionDirecta.fechaVencimiento;
-                    vendedorBox.Text = publicacionDirecta.Usuario.userName;
-
-                    if (publicacionDirecta.EstadoPublicacion.nombre.Equals("Pausada"))
-                    {
-                        estadoPausa.Visible = true;
-                        cant_oferta.Enabled = false;
-                        envioCheck.Enabled = false;
-                        comprarButton.Enabled = false;
-                    }
-                    rubroBox.Text = publicacionDirecta.RubroLst.First().descripcion;
-                    //preguntarButton.Enabled = publicacionSubasta.preguntasSN;
-                    //visbilidad = publicacionSubasta.Visibilidad;
-                    //CompraDatos.Visible = false;
+                tipoTextBox.Text = "Compra Inmediata";
+                codigoTextBox.Text = Convert.ToString(publicacionDirecta.codigoPublicacion);
+                descripcionTextBox.Text = publicacionDirecta.descripcion;
+                stockTextBox.Text = Convert.ToString(publicacionDirecta.stock);
+                envioCheckBox.Enabled = publicacionDirecta.envioSN;
+                precioTextBox.Text = '$' + Convert.ToString(publicacionDirecta.precioPorUnidad);
+                precioLabel.Text = "Precio Unidad:";
+                compraLabel.Text = "Unidades";
+                cant_ofertaNumeric.Maximum = publicacionDirecta.stock;
+                ofertarNumeric.Visible = false;
+                ofertaLabel.Visible = false;
+                vencimientoDateTime.Value = publicacionDirecta.fechaVencimiento;
+                vendedorTextBox.Text = publicacionDirecta.Usuario.userName;
+                rubroTextBox.Text = publicacionDirecta.RubroLst.First().descripcion;
             }
+
+            deshabilitar_campos_por_estado(estado);
         }
 
-        private void desahabilitarCamposPorEstado(Estadopublicacion estadoPublicacion)
+        public void deshabilitar_campos_por_estado(Estadopublicacion estado)
         {
-           
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            if (estado.nombre.Equals("Pausada"))
+            {
+                estadoPausadoLabel.Visible = true;
+                cant_ofertaNumeric.Enabled = false;
+                ofertarNumeric.Enabled = false;
+                envioCheckBox.Enabled = false;
+                comprarButton.Enabled = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -109,25 +97,18 @@ namespace WindowsFormsApplication1.ComprarOfertar
             DateTime hoy = DateUtils.convertirStringEnFecha(fechaSistema);
 
             
-            if (tipoPubBox.Text.Equals("Subasta"))
+            if (tipoTextBox.Text.Equals("Subasta"))
             {
-                /*
-                if (Convert.ToDouble(ValorOferta.Text) < Convert.ToDouble(PrecioActualTxt.Text))  {
-                    MessageBox.Show("No puede ofertar un valor menor al Actual");
-                    return;
-                }
-                */
-            
                 Cliente usr = SessionAttribute.clienteUser;
 
                 PublicacionSubasta nuevaOfertaPublicacion = (PublicacionSubasta)this.Tag;
-                nuevaOfertaPublicacion.valorActual = Convert.ToDouble(ofertaValue.Value);
+                nuevaOfertaPublicacion.valorActual = Convert.ToDouble(ofertarNumeric.Value);
 
                 PublicacionSubastaDaoImpl publicacionSubastaDaoImpl = new PublicacionSubastaDaoImpl();
                 publicacionSubastaDaoImpl.Update(nuevaOfertaPublicacion);
 
                 Ofertasubasta nuevaOferta = new Ofertasubasta();
-                nuevaOferta.monto = Convert.ToDouble(ofertaValue.Value) - nuevaOfertaPublicacion.valorInicialVenta;
+                nuevaOferta.monto = Convert.ToDouble(ofertarNumeric.Value) - nuevaOfertaPublicacion.valorInicialVenta;
                 nuevaOferta.PublicacionSubasta = nuevaOfertaPublicacion;
                 nuevaOferta.Usuario = usr;
 
@@ -146,7 +127,7 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 PublicacionNormalDaoImpl actualizarPublicImpl = new PublicacionNormalDaoImpl();
                 PublicacionNormal nuevaCompraPublicacion = (PublicacionNormal)this.Tag;
                 ComisionesParametrizablesDaoImpl cparImpl = new ComisionesParametrizablesDaoImpl();
-                int cantidadVendida = Convert.ToInt32(cant_oferta.Value);
+                int cantidadVendida = Convert.ToInt32(cant_ofertaNumeric.Value);
 
                 if (cantidadVendida == 0)
                 {
@@ -223,13 +204,6 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 MessageBox.Show("Se ha efectuado la compra con exito.\nPor favor, contactese con el vendedor para concretar y obtener su producto.");
                 this.Close();
             }
-
         }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

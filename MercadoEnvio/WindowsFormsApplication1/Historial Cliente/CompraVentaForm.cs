@@ -113,6 +113,13 @@ namespace WindowsFormsApplication1.Historial_Cliente
                 records.Add(this.customerList[i]);
             dataGridView1.DataSource = records;
 
+            //Chequeo si alguna calificacion esta pendiente
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if (dataGridView1.Rows[i].Cells[7].Value == null)
+                    dataGridView1.Rows[i].Cells[7].Value = "(Pendiente)";
+            }
+                
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].Visible = false;
 
@@ -130,8 +137,6 @@ namespace WindowsFormsApplication1.Historial_Cliente
             dataGridView1.Columns[7].Width = 83;
             dataGridView1.Columns[8].HeaderText = "Comentario Calificación";
             dataGridView1.Columns[8].Width = 200;
-
-
         }
 
         private void bindingSource1_CurrentChanged2(object sender, EventArgs e)

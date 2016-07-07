@@ -28,82 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CompraDatos = new System.Windows.Forms.GroupBox();
-            this.envioCheck = new System.Windows.Forms.CheckBox();
+            this.ComprarOfertar = new System.Windows.Forms.GroupBox();
+            this.compraGroupBox = new System.Windows.Forms.GroupBox();
+            this.envioCheckBox = new System.Windows.Forms.CheckBox();
             this.ofertaLabel = new System.Windows.Forms.Label();
-            this.ofertaValue = new System.Windows.Forms.NumericUpDown();
-            this.estadoPausa = new System.Windows.Forms.Label();
-            this.cant_oferta = new System.Windows.Forms.NumericUpDown();
+            this.ofertarNumeric = new System.Windows.Forms.NumericUpDown();
+            this.estadoPausadoLabel = new System.Windows.Forms.Label();
+            this.cant_ofertaNumeric = new System.Windows.Forms.NumericUpDown();
             this.compraLabel = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.vendedorBox = new System.Windows.Forms.TextBox();
-            this.tipoPubBox = new System.Windows.Forms.TextBox();
-            this.rubroBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.codigoPubBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.PrecioTxt = new System.Windows.Forms.TextBox();
+            this.detallesGroupBox = new System.Windows.Forms.GroupBox();
+            this.vendedorLabel = new System.Windows.Forms.Label();
+            this.vendedorTextBox = new System.Windows.Forms.TextBox();
+            this.tipoTextBox = new System.Windows.Forms.TextBox();
+            this.rubroTextBox = new System.Windows.Forms.TextBox();
+            this.rubroLabel = new System.Windows.Forms.Label();
+            this.tipoLabel = new System.Windows.Forms.Label();
+            this.codigoTextBox = new System.Windows.Forms.TextBox();
+            this.codigoLabel = new System.Windows.Forms.Label();
+            this.infoPublicacionGroupBox = new System.Windows.Forms.GroupBox();
+            this.precioTextBox = new System.Windows.Forms.TextBox();
             this.precioLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.fechaVencimientoDateTimeTxt = new System.Windows.Forms.DateTimePicker();
-            this.stockTxt = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.DescripcionTxt = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.vencimientoLabel = new System.Windows.Forms.Label();
+            this.vencimientoDateTime = new System.Windows.Forms.DateTimePicker();
+            this.stockTextBox = new System.Windows.Forms.TextBox();
+            this.stockLabel = new System.Windows.Forms.Label();
+            this.descripcionTextBox = new System.Windows.Forms.TextBox();
+            this.descripcionLabel = new System.Windows.Forms.Label();
             this.comprarButton = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.opcionesGroupBox = new System.Windows.Forms.GroupBox();
             this.preguntarButton = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.CompraDatos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ofertaValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cant_oferta)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.ComprarOfertar.SuspendLayout();
+            this.compraGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ofertarNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cant_ofertaNumeric)).BeginInit();
+            this.detallesGroupBox.SuspendLayout();
+            this.infoPublicacionGroupBox.SuspendLayout();
+            this.opcionesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // ComprarOfertar
             // 
-            this.groupBox1.Controls.Add(this.CompraDatos);
-            this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Location = new System.Drawing.Point(18, 48);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(984, 408);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Compra Seleccionada";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.ComprarOfertar.Controls.Add(this.compraGroupBox);
+            this.ComprarOfertar.Controls.Add(this.detallesGroupBox);
+            this.ComprarOfertar.Controls.Add(this.infoPublicacionGroupBox);
+            this.ComprarOfertar.Location = new System.Drawing.Point(18, 48);
+            this.ComprarOfertar.Name = "ComprarOfertar";
+            this.ComprarOfertar.Size = new System.Drawing.Size(984, 408);
+            this.ComprarOfertar.TabIndex = 6;
+            this.ComprarOfertar.TabStop = false;
+            this.ComprarOfertar.Text = "Comprar/Ofertar Publicación";
             // 
-            // CompraDatos
+            // compraGroupBox
             // 
-            this.CompraDatos.Controls.Add(this.envioCheck);
-            this.CompraDatos.Controls.Add(this.ofertaLabel);
-            this.CompraDatos.Controls.Add(this.ofertaValue);
-            this.CompraDatos.Controls.Add(this.estadoPausa);
-            this.CompraDatos.Controls.Add(this.cant_oferta);
-            this.CompraDatos.Controls.Add(this.compraLabel);
-            this.CompraDatos.Location = new System.Drawing.Point(598, 136);
-            this.CompraDatos.Name = "CompraDatos";
-            this.CompraDatos.Size = new System.Drawing.Size(379, 255);
-            this.CompraDatos.TabIndex = 20;
-            this.CompraDatos.TabStop = false;
-            this.CompraDatos.Text = "Compra";
+            this.compraGroupBox.Controls.Add(this.envioCheckBox);
+            this.compraGroupBox.Controls.Add(this.ofertaLabel);
+            this.compraGroupBox.Controls.Add(this.ofertarNumeric);
+            this.compraGroupBox.Controls.Add(this.estadoPausadoLabel);
+            this.compraGroupBox.Controls.Add(this.cant_ofertaNumeric);
+            this.compraGroupBox.Controls.Add(this.compraLabel);
+            this.compraGroupBox.Location = new System.Drawing.Point(598, 136);
+            this.compraGroupBox.Name = "compraGroupBox";
+            this.compraGroupBox.Size = new System.Drawing.Size(379, 255);
+            this.compraGroupBox.TabIndex = 20;
+            this.compraGroupBox.TabStop = false;
+            this.compraGroupBox.Text = "Compra";
             // 
-            // envioCheck
+            // envioCheckBox
             // 
-            this.envioCheck.AutoSize = true;
-            this.envioCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.envioCheck.Location = new System.Drawing.Point(118, 191);
-            this.envioCheck.Name = "envioCheck";
-            this.envioCheck.Size = new System.Drawing.Size(138, 17);
-            this.envioCheck.TabIndex = 6;
-            this.envioCheck.Text = "Enviar a mi Domicio";
-            this.envioCheck.UseVisualStyleBackColor = true;
+            this.envioCheckBox.AutoSize = true;
+            this.envioCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.envioCheckBox.Location = new System.Drawing.Point(118, 191);
+            this.envioCheckBox.Name = "envioCheckBox";
+            this.envioCheckBox.Size = new System.Drawing.Size(138, 17);
+            this.envioCheckBox.TabIndex = 6;
+            this.envioCheckBox.Text = "Enviar a mi Domicio";
+            this.envioCheckBox.UseVisualStyleBackColor = true;
             // 
             // ofertaLabel
             // 
@@ -114,48 +113,48 @@
             this.ofertaLabel.TabIndex = 5;
             this.ofertaLabel.Text = "Ofertar";
             // 
-            // ofertaValue
+            // ofertarNumeric
             // 
-            this.ofertaValue.DecimalPlaces = 2;
-            this.ofertaValue.Increment = new decimal(new int[] {
+            this.ofertarNumeric.DecimalPlaces = 2;
+            this.ofertarNumeric.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.ofertaValue.Location = new System.Drawing.Point(156, 136);
-            this.ofertaValue.Maximum = new decimal(new int[] {
+            this.ofertarNumeric.Location = new System.Drawing.Point(156, 136);
+            this.ofertarNumeric.Maximum = new decimal(new int[] {
             99999999,
             0,
             0,
             0});
-            this.ofertaValue.Name = "ofertaValue";
-            this.ofertaValue.Size = new System.Drawing.Size(130, 20);
-            this.ofertaValue.TabIndex = 4;
+            this.ofertarNumeric.Name = "ofertarNumeric";
+            this.ofertarNumeric.Size = new System.Drawing.Size(130, 20);
+            this.ofertarNumeric.TabIndex = 4;
             // 
-            // estadoPausa
+            // estadoPausadoLabel
             // 
-            this.estadoPausa.AutoSize = true;
-            this.estadoPausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estadoPausa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.estadoPausa.Location = new System.Drawing.Point(57, 45);
-            this.estadoPausa.Name = "estadoPausa";
-            this.estadoPausa.Size = new System.Drawing.Size(268, 16);
-            this.estadoPausa.TabIndex = 3;
-            this.estadoPausa.Text = "La publicación se encuentra Pausada";
-            this.estadoPausa.Visible = false;
+            this.estadoPausadoLabel.AutoSize = true;
+            this.estadoPausadoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estadoPausadoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.estadoPausadoLabel.Location = new System.Drawing.Point(57, 45);
+            this.estadoPausadoLabel.Name = "estadoPausadoLabel";
+            this.estadoPausadoLabel.Size = new System.Drawing.Size(268, 16);
+            this.estadoPausadoLabel.TabIndex = 3;
+            this.estadoPausadoLabel.Text = "La publicación se encuentra Pausada";
+            this.estadoPausadoLabel.Visible = false;
             // 
-            // cant_oferta
+            // cant_ofertaNumeric
             // 
-            this.cant_oferta.DecimalPlaces = 2;
-            this.cant_oferta.Location = new System.Drawing.Point(156, 99);
-            this.cant_oferta.Maximum = new decimal(new int[] {
+            this.cant_ofertaNumeric.DecimalPlaces = 2;
+            this.cant_ofertaNumeric.Location = new System.Drawing.Point(156, 99);
+            this.cant_ofertaNumeric.Maximum = new decimal(new int[] {
             999999,
             0,
             0,
             0});
-            this.cant_oferta.Name = "cant_oferta";
-            this.cant_oferta.Size = new System.Drawing.Size(130, 20);
-            this.cant_oferta.TabIndex = 2;
+            this.cant_ofertaNumeric.Name = "cant_ofertaNumeric";
+            this.cant_ofertaNumeric.Size = new System.Drawing.Size(130, 20);
+            this.cant_ofertaNumeric.TabIndex = 2;
             // 
             // compraLabel
             // 
@@ -167,119 +166,119 @@
             this.compraLabel.Text = "Mejor Oferta";
             this.compraLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // groupBox5
+            // detallesGroupBox
             // 
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.vendedorBox);
-            this.groupBox5.Controls.Add(this.tipoPubBox);
-            this.groupBox5.Controls.Add(this.rubroBox);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.label3);
-            this.groupBox5.Controls.Add(this.codigoPubBox);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Location = new System.Drawing.Point(7, 21);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(970, 89);
-            this.groupBox5.TabIndex = 16;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Detalles";
+            this.detallesGroupBox.Controls.Add(this.vendedorLabel);
+            this.detallesGroupBox.Controls.Add(this.vendedorTextBox);
+            this.detallesGroupBox.Controls.Add(this.tipoTextBox);
+            this.detallesGroupBox.Controls.Add(this.rubroTextBox);
+            this.detallesGroupBox.Controls.Add(this.rubroLabel);
+            this.detallesGroupBox.Controls.Add(this.tipoLabel);
+            this.detallesGroupBox.Controls.Add(this.codigoTextBox);
+            this.detallesGroupBox.Controls.Add(this.codigoLabel);
+            this.detallesGroupBox.Location = new System.Drawing.Point(7, 21);
+            this.detallesGroupBox.Name = "detallesGroupBox";
+            this.detallesGroupBox.Size = new System.Drawing.Size(970, 89);
+            this.detallesGroupBox.TabIndex = 16;
+            this.detallesGroupBox.TabStop = false;
+            this.detallesGroupBox.Text = "Detalles";
             // 
-            // label2
+            // vendedorLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Vendedor";
+            this.vendedorLabel.AutoSize = true;
+            this.vendedorLabel.Location = new System.Drawing.Point(19, 22);
+            this.vendedorLabel.Name = "vendedorLabel";
+            this.vendedorLabel.Size = new System.Drawing.Size(53, 13);
+            this.vendedorLabel.TabIndex = 26;
+            this.vendedorLabel.Text = "Vendedor";
             // 
-            // vendedorBox
+            // vendedorTextBox
             // 
-            this.vendedorBox.Enabled = false;
-            this.vendedorBox.Location = new System.Drawing.Point(22, 38);
-            this.vendedorBox.Multiline = true;
-            this.vendedorBox.Name = "vendedorBox";
-            this.vendedorBox.Size = new System.Drawing.Size(190, 21);
-            this.vendedorBox.TabIndex = 25;
+            this.vendedorTextBox.Enabled = false;
+            this.vendedorTextBox.Location = new System.Drawing.Point(22, 38);
+            this.vendedorTextBox.Multiline = true;
+            this.vendedorTextBox.Name = "vendedorTextBox";
+            this.vendedorTextBox.Size = new System.Drawing.Size(190, 21);
+            this.vendedorTextBox.TabIndex = 25;
             // 
-            // tipoPubBox
+            // tipoTextBox
             // 
-            this.tipoPubBox.Enabled = false;
-            this.tipoPubBox.Location = new System.Drawing.Point(237, 38);
-            this.tipoPubBox.Multiline = true;
-            this.tipoPubBox.Name = "tipoPubBox";
-            this.tipoPubBox.Size = new System.Drawing.Size(224, 21);
-            this.tipoPubBox.TabIndex = 24;
+            this.tipoTextBox.Enabled = false;
+            this.tipoTextBox.Location = new System.Drawing.Point(237, 38);
+            this.tipoTextBox.Multiline = true;
+            this.tipoTextBox.Name = "tipoTextBox";
+            this.tipoTextBox.Size = new System.Drawing.Size(224, 21);
+            this.tipoTextBox.TabIndex = 24;
             // 
-            // rubroBox
+            // rubroTextBox
             // 
-            this.rubroBox.Enabled = false;
-            this.rubroBox.Location = new System.Drawing.Point(485, 38);
-            this.rubroBox.Multiline = true;
-            this.rubroBox.Name = "rubroBox";
-            this.rubroBox.Size = new System.Drawing.Size(312, 21);
-            this.rubroBox.TabIndex = 23;
+            this.rubroTextBox.Enabled = false;
+            this.rubroTextBox.Location = new System.Drawing.Point(485, 38);
+            this.rubroTextBox.Multiline = true;
+            this.rubroTextBox.Name = "rubroTextBox";
+            this.rubroTextBox.Size = new System.Drawing.Size(312, 21);
+            this.rubroTextBox.TabIndex = 23;
             // 
-            // label9
+            // rubroLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(482, 22);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(36, 13);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Rubro";
+            this.rubroLabel.AutoSize = true;
+            this.rubroLabel.Location = new System.Drawing.Point(482, 22);
+            this.rubroLabel.Name = "rubroLabel";
+            this.rubroLabel.Size = new System.Drawing.Size(36, 13);
+            this.rubroLabel.TabIndex = 22;
+            this.rubroLabel.Text = "Rubro";
             // 
-            // label3
+            // tipoLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(234, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Tipo Publicación";
+            this.tipoLabel.AutoSize = true;
+            this.tipoLabel.Location = new System.Drawing.Point(234, 22);
+            this.tipoLabel.Name = "tipoLabel";
+            this.tipoLabel.Size = new System.Drawing.Size(86, 13);
+            this.tipoLabel.TabIndex = 13;
+            this.tipoLabel.Text = "Tipo Publicación";
             // 
-            // codigoPubBox
+            // codigoTextBox
             // 
-            this.codigoPubBox.Enabled = false;
-            this.codigoPubBox.Location = new System.Drawing.Point(819, 38);
-            this.codigoPubBox.Multiline = true;
-            this.codigoPubBox.Name = "codigoPubBox";
-            this.codigoPubBox.Size = new System.Drawing.Size(128, 21);
-            this.codigoPubBox.TabIndex = 20;
+            this.codigoTextBox.Enabled = false;
+            this.codigoTextBox.Location = new System.Drawing.Point(819, 38);
+            this.codigoTextBox.Multiline = true;
+            this.codigoTextBox.Name = "codigoTextBox";
+            this.codigoTextBox.Size = new System.Drawing.Size(128, 21);
+            this.codigoTextBox.TabIndex = 20;
             // 
-            // label8
+            // codigoLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(816, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Código Publicación";
+            this.codigoLabel.AutoSize = true;
+            this.codigoLabel.Location = new System.Drawing.Point(816, 22);
+            this.codigoLabel.Name = "codigoLabel";
+            this.codigoLabel.Size = new System.Drawing.Size(98, 13);
+            this.codigoLabel.TabIndex = 19;
+            this.codigoLabel.Text = "Código Publicación";
             // 
-            // groupBox4
+            // infoPublicacionGroupBox
             // 
-            this.groupBox4.Controls.Add(this.PrecioTxt);
-            this.groupBox4.Controls.Add(this.precioLabel);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.fechaVencimientoDateTimeTxt);
-            this.groupBox4.Controls.Add(this.stockTxt);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.DescripcionTxt);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Location = new System.Drawing.Point(7, 136);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(572, 255);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Datos Publicación";
+            this.infoPublicacionGroupBox.Controls.Add(this.precioTextBox);
+            this.infoPublicacionGroupBox.Controls.Add(this.precioLabel);
+            this.infoPublicacionGroupBox.Controls.Add(this.vencimientoLabel);
+            this.infoPublicacionGroupBox.Controls.Add(this.vencimientoDateTime);
+            this.infoPublicacionGroupBox.Controls.Add(this.stockTextBox);
+            this.infoPublicacionGroupBox.Controls.Add(this.stockLabel);
+            this.infoPublicacionGroupBox.Controls.Add(this.descripcionTextBox);
+            this.infoPublicacionGroupBox.Controls.Add(this.descripcionLabel);
+            this.infoPublicacionGroupBox.Location = new System.Drawing.Point(7, 136);
+            this.infoPublicacionGroupBox.Name = "infoPublicacionGroupBox";
+            this.infoPublicacionGroupBox.Size = new System.Drawing.Size(572, 255);
+            this.infoPublicacionGroupBox.TabIndex = 14;
+            this.infoPublicacionGroupBox.TabStop = false;
+            this.infoPublicacionGroupBox.Text = "Datos Publicación";
             // 
-            // PrecioTxt
+            // precioTextBox
             // 
-            this.PrecioTxt.Location = new System.Drawing.Point(414, 167);
-            this.PrecioTxt.Name = "PrecioTxt";
-            this.PrecioTxt.ReadOnly = true;
-            this.PrecioTxt.Size = new System.Drawing.Size(114, 20);
-            this.PrecioTxt.TabIndex = 27;
+            this.precioTextBox.Location = new System.Drawing.Point(414, 167);
+            this.precioTextBox.Name = "precioTextBox";
+            this.precioTextBox.ReadOnly = true;
+            this.precioTextBox.Size = new System.Drawing.Size(114, 20);
+            this.precioTextBox.TabIndex = 27;
             // 
             // precioLabel
             // 
@@ -290,61 +289,60 @@
             this.precioLabel.TabIndex = 26;
             this.precioLabel.Text = "Precio Inicial:";
             // 
-            // label1
+            // vencimientoLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 211);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Fecha Vencimiento:";
+            this.vencimientoLabel.AutoSize = true;
+            this.vencimientoLabel.Location = new System.Drawing.Point(110, 211);
+            this.vencimientoLabel.Name = "vencimientoLabel";
+            this.vencimientoLabel.Size = new System.Drawing.Size(101, 13);
+            this.vencimientoLabel.TabIndex = 25;
+            this.vencimientoLabel.Text = "Fecha Vencimiento:";
             // 
-            // fechaVencimientoDateTimeTxt
+            // vencimientoDateTime
             // 
-            this.fechaVencimientoDateTimeTxt.CustomFormat = "dd/MM/yyyy";
-            this.fechaVencimientoDateTimeTxt.Enabled = false;
-            this.fechaVencimientoDateTimeTxt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.fechaVencimientoDateTimeTxt.Location = new System.Drawing.Point(223, 208);
-            this.fechaVencimientoDateTimeTxt.Name = "fechaVencimientoDateTimeTxt";
-            this.fechaVencimientoDateTimeTxt.Size = new System.Drawing.Size(247, 20);
-            this.fechaVencimientoDateTimeTxt.TabIndex = 24;
+            this.vencimientoDateTime.CustomFormat = "dd/MM/yyyy";
+            this.vencimientoDateTime.Enabled = false;
+            this.vencimientoDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.vencimientoDateTime.Location = new System.Drawing.Point(223, 208);
+            this.vencimientoDateTime.Name = "vencimientoDateTime";
+            this.vencimientoDateTime.Size = new System.Drawing.Size(247, 20);
+            this.vencimientoDateTime.TabIndex = 24;
             // 
-            // stockTxt
+            // stockTextBox
             // 
-            this.stockTxt.Location = new System.Drawing.Point(91, 168);
-            this.stockTxt.Name = "stockTxt";
-            this.stockTxt.ReadOnly = true;
-            this.stockTxt.Size = new System.Drawing.Size(114, 20);
-            this.stockTxt.TabIndex = 14;
+            this.stockTextBox.Location = new System.Drawing.Point(91, 168);
+            this.stockTextBox.Name = "stockTextBox";
+            this.stockTextBox.ReadOnly = true;
+            this.stockTextBox.Size = new System.Drawing.Size(114, 20);
+            this.stockTextBox.TabIndex = 14;
             // 
-            // label10
+            // stockLabel
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(42, 171);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Stock:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
+            this.stockLabel.AutoSize = true;
+            this.stockLabel.Location = new System.Drawing.Point(42, 171);
+            this.stockLabel.Name = "stockLabel";
+            this.stockLabel.Size = new System.Drawing.Size(38, 13);
+            this.stockLabel.TabIndex = 13;
+            this.stockLabel.Text = "Stock:";
             // 
-            // DescripcionTxt
+            // descripcionTextBox
             // 
-            this.DescripcionTxt.Location = new System.Drawing.Point(15, 42);
-            this.DescripcionTxt.MaxLength = 255;
-            this.DescripcionTxt.Multiline = true;
-            this.DescripcionTxt.Name = "DescripcionTxt";
-            this.DescripcionTxt.ReadOnly = true;
-            this.DescripcionTxt.Size = new System.Drawing.Size(540, 102);
-            this.DescripcionTxt.TabIndex = 12;
+            this.descripcionTextBox.Location = new System.Drawing.Point(15, 42);
+            this.descripcionTextBox.MaxLength = 255;
+            this.descripcionTextBox.Multiline = true;
+            this.descripcionTextBox.Name = "descripcionTextBox";
+            this.descripcionTextBox.ReadOnly = true;
+            this.descripcionTextBox.Size = new System.Drawing.Size(540, 102);
+            this.descripcionTextBox.TabIndex = 12;
             // 
-            // label11
+            // descripcionLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 13);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Descripción";
+            this.descripcionLabel.AutoSize = true;
+            this.descripcionLabel.Location = new System.Drawing.Point(16, 26);
+            this.descripcionLabel.Name = "descripcionLabel";
+            this.descripcionLabel.Size = new System.Drawing.Size(63, 13);
+            this.descripcionLabel.TabIndex = 11;
+            this.descripcionLabel.Text = "Descripción";
             // 
             // comprarButton
             // 
@@ -356,15 +354,15 @@
             this.comprarButton.UseVisualStyleBackColor = true;
             this.comprarButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // groupBox2
+            // opcionesGroupBox
             // 
-            this.groupBox2.Controls.Add(this.preguntarButton);
-            this.groupBox2.Controls.Add(this.comprarButton);
-            this.groupBox2.Location = new System.Drawing.Point(18, 472);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(984, 113);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
+            this.opcionesGroupBox.Controls.Add(this.preguntarButton);
+            this.opcionesGroupBox.Controls.Add(this.comprarButton);
+            this.opcionesGroupBox.Location = new System.Drawing.Point(18, 472);
+            this.opcionesGroupBox.Name = "opcionesGroupBox";
+            this.opcionesGroupBox.Size = new System.Drawing.Size(984, 113);
+            this.opcionesGroupBox.TabIndex = 7;
+            this.opcionesGroupBox.TabStop = false;
             // 
             // preguntarButton
             // 
@@ -380,8 +378,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 660);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.ComprarOfertar);
+            this.Controls.Add(this.opcionesGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -391,50 +389,50 @@
             this.Text = "CompraOfertaPublicacion";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CompraOfertaPublicacion_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.CompraDatos.ResumeLayout(false);
-            this.CompraDatos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ofertaValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cant_oferta)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.ComprarOfertar.ResumeLayout(false);
+            this.compraGroupBox.ResumeLayout(false);
+            this.compraGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ofertarNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cant_ofertaNumeric)).EndInit();
+            this.detallesGroupBox.ResumeLayout(false);
+            this.detallesGroupBox.PerformLayout();
+            this.infoPublicacionGroupBox.ResumeLayout(false);
+            this.infoPublicacionGroupBox.PerformLayout();
+            this.opcionesGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox PrecioTxt;
+        private System.Windows.Forms.GroupBox ComprarOfertar;
+        private System.Windows.Forms.GroupBox detallesGroupBox;
+        private System.Windows.Forms.Label rubroLabel;
+        private System.Windows.Forms.GroupBox infoPublicacionGroupBox;
+        private System.Windows.Forms.TextBox precioTextBox;
         private System.Windows.Forms.Label precioLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker fechaVencimientoDateTimeTxt;
-        private System.Windows.Forms.TextBox codigoPubBox;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox stockTxt;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox DescripcionTxt;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label vencimientoLabel;
+        private System.Windows.Forms.DateTimePicker vencimientoDateTime;
+        private System.Windows.Forms.TextBox codigoTextBox;
+        private System.Windows.Forms.Label codigoLabel;
+        private System.Windows.Forms.TextBox stockTextBox;
+        private System.Windows.Forms.Label stockLabel;
+        private System.Windows.Forms.TextBox descripcionTextBox;
+        private System.Windows.Forms.Label descripcionLabel;
+        private System.Windows.Forms.Label tipoLabel;
         private System.Windows.Forms.Button comprarButton;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox CompraDatos;
+        private System.Windows.Forms.GroupBox opcionesGroupBox;
+        private System.Windows.Forms.GroupBox compraGroupBox;
         private System.Windows.Forms.Label compraLabel;
-        private System.Windows.Forms.TextBox tipoPubBox;
-        private System.Windows.Forms.TextBox rubroBox;
-        private System.Windows.Forms.NumericUpDown cant_oferta;
+        private System.Windows.Forms.TextBox tipoTextBox;
+        private System.Windows.Forms.TextBox rubroTextBox;
+        private System.Windows.Forms.NumericUpDown cant_ofertaNumeric;
         private System.Windows.Forms.Label ofertaLabel;
-        private System.Windows.Forms.NumericUpDown ofertaValue;
-        private System.Windows.Forms.Label estadoPausa;
-        private System.Windows.Forms.CheckBox envioCheck;
+        private System.Windows.Forms.NumericUpDown ofertarNumeric;
+        private System.Windows.Forms.Label estadoPausadoLabel;
+        private System.Windows.Forms.CheckBox envioCheckBox;
         private System.Windows.Forms.Button preguntarButton;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox vendedorBox;
+        private System.Windows.Forms.Label vendedorLabel;
+        private System.Windows.Forms.TextBox vendedorTextBox;
     }
 }

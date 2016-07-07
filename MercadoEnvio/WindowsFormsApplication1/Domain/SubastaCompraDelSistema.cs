@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1{
         public virtual int compraCantidad { get; set; }
         public virtual int? codigoPublicacion { get; set; }
         public virtual string descripcion { get; set; }
-        public virtual int? cantEstrellas { get; set; }
+        public virtual string cantEstrellas { get; set; }
         public virtual string descripcionCalificacion { get; set; }
     }
 }
