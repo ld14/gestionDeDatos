@@ -2,8 +2,6 @@
 using NHibernate.Criterion;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using WindowsFormsApplication1.Entity.DAO;
 
 
@@ -64,7 +62,7 @@ namespace WindowsFormsApplication1
 
             }
         }
-        public IList<FacturasEmitidas> darFacturasEmitidas(int idUsuario, DateTime fechaDesde, DateTime fechaHasta, double? montoTotalini, double? montoTotalfin, string descripcion)
+        public IList<FacturasEmitidas> darFacturasEmitidas(int idUsuario, DateTime fechaDesde, DateTime fechaHasta, string descripcion)
         {
             using (NHibernateManager manager = new NHibernateManager())
             {
@@ -78,19 +76,6 @@ namespace WindowsFormsApplication1
 
                     crit.Add(Expression.Between("fecha", fechaDesde, fechaHasta));
 
-                    if (montoTotalini != null && montoTotalfin!=null) {
-                        // Valores entre dos fechas
-                        crit.Add(Expression.Between("montoTotal", montoTotalini, montoTotalfin));
-                    }
-                    if (montoTotalini != null) {
-                        // Valores mayores
-                        crit.Add(Expression.Ge("montoTotal", montoTotalini));
-                    }
-                    if (montoTotalfin != null)
-                    {
-                        // Valores menores
-                        crit.Add(Expression.Le("montoTotal", montoTotalfin));
-                    }
                     if(!descripcion.Equals("")){
                         crit.Add(Expression.Eq("descripcion", descripcion));  
                     }

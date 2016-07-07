@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1.Entity.DAO
         void Add(FacturasEmitidas rol);
         void Update(FacturasEmitidas rol);
         void Remove(FacturasEmitidas rol);
-        IList<FacturasEmitidas> darFacturasEmitidas(int idUsuario, DateTime fechaDesde, DateTime fechaHasta, double? montoTotalini, double? montoTotalfin, string descripcion);
+        IList<FacturasEmitidas> darFacturasEmitidas(int idUsuario, DateTime fechaDesde, DateTime fechaHasta, string descripcion);
     }
 }
 

@@ -148,7 +148,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 45);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 48);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(949, 255);
@@ -197,16 +197,16 @@
             this.groupBox2.Controls.Add(this.bindingNavigator1);
             this.groupBox2.Location = new System.Drawing.Point(30, 278);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(962, 325);
+            this.groupBox2.Size = new System.Drawing.Size(962, 318);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultado";
             // 
             // BuscarBtn
             // 
-            this.BuscarBtn.Location = new System.Drawing.Point(347, 175);
+            this.BuscarBtn.Location = new System.Drawing.Point(359, 167);
             this.BuscarBtn.Name = "BuscarBtn";
-            this.BuscarBtn.Size = new System.Drawing.Size(268, 23);
+            this.BuscarBtn.Size = new System.Drawing.Size(237, 23);
             this.BuscarBtn.TabIndex = 4;
             this.BuscarBtn.Text = "Buscar";
             this.BuscarBtn.UseVisualStyleBackColor = true;
@@ -232,8 +232,7 @@
             this.groupBox1.Size = new System.Drawing.Size(962, 210);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Campos de Busqueda";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBox1.Text = "Filtros de Busqueda";
             // 
             // destinatarioSelect
             // 
@@ -284,25 +283,25 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(521, 91);
+            this.label6.Location = new System.Drawing.Point(521, 95);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Destinatario";
+            this.label6.Text = "Vendedor";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(34, 91);
+            this.label5.Location = new System.Drawing.Point(35, 95);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 13);
+            this.label5.Size = new System.Drawing.Size(121, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Detalle Pubicacion";
+            this.label5.Text = "Descripción Publicación";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(753, 30);
+            this.label4.Location = new System.Drawing.Point(753, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 8;
@@ -311,17 +310,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(521, 30);
+            this.label3.Location = new System.Drawing.Point(521, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Importe desde";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label3.Text = "Importe Desde";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(286, 30);
+            this.label2.Location = new System.Drawing.Point(286, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 6;
@@ -330,7 +328,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 30);
+            this.label1.Location = new System.Drawing.Point(35, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 5;

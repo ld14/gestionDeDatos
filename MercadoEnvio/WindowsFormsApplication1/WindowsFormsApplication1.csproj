@@ -219,11 +219,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Entity\Utils\SessionAttribute.cs" />
-    <Compile Include="Facturas\FacturasEmitidasForm1.cs">
+    <Compile Include="Facturas\FacturasEmitidasPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Facturas\FacturasEmitidasForm1.Designer.cs">
-      <DependentUpon>FacturasEmitidasForm1.cs</DependentUpon>
+    <Compile Include="Facturas\FacturasEmitidasPage.Designer.cs">
+      <DependentUpon>FacturasEmitidasPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Publicación\BuscadorPublicacion.cs">
       <SubType>Form</SubType>
@@ -344,8 +344,8 @@
     <EmbeddedResource Include="ComprarOfertar\CompraOfertaPublicacion.resx">
       <DependentUpon>CompraOfertaPublicacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Facturas\FacturasEmitidasForm1.resx">
-      <DependentUpon>FacturasEmitidasForm1.cs</DependentUpon>
+    <EmbeddedResource Include="Facturas\FacturasEmitidasPage.resx">
+      <DependentUpon>FacturasEmitidasPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicación\BuscadorPublicacion.resx">
       <DependentUpon>BuscadorPublicacion.cs</DependentUpon>

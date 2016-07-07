@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalificacionesPage));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idPublicacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoPublicacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descProductoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,7 +81,6 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idPublicacionDataGridViewTextBoxColumn,
             this.codigoDataGridViewTextBoxColumn,
             this.tipoPublicacionDataGridViewTextBoxColumn,
             this.descProductoDataGridViewTextBoxColumn,
@@ -99,21 +97,13 @@
             this.dataGridView1.Size = new System.Drawing.Size(949, 255);
             this.dataGridView1.TabIndex = 0;
             // 
-            // idPublicacionDataGridViewTextBoxColumn
-            // 
-            this.idPublicacionDataGridViewTextBoxColumn.DataPropertyName = "idPublicacion";
-            this.idPublicacionDataGridViewTextBoxColumn.HeaderText = "idPublicacion";
-            this.idPublicacionDataGridViewTextBoxColumn.Name = "idPublicacionDataGridViewTextBoxColumn";
-            this.idPublicacionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idPublicacionDataGridViewTextBoxColumn.Visible = false;
-            // 
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
             this.codigoDataGridViewTextBoxColumn.HeaderText = "Código";
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn.Width = 70;
+            this.codigoDataGridViewTextBoxColumn.Width = 73;
             // 
             // tipoPublicacionDataGridViewTextBoxColumn
             // 
@@ -129,7 +119,7 @@
             this.descProductoDataGridViewTextBoxColumn.HeaderText = "Descripción";
             this.descProductoDataGridViewTextBoxColumn.Name = "descProductoDataGridViewTextBoxColumn";
             this.descProductoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descProductoDataGridViewTextBoxColumn.Width = 250;
+            this.descProductoDataGridViewTextBoxColumn.Width = 275;
             // 
             // cantidadDataGridViewTextBoxColumn
             // 
@@ -144,7 +134,7 @@
             this.precioDataGridViewTextBoxColumn.HeaderText = "Precio";
             this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
             this.precioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.precioDataGridViewTextBoxColumn.Width = 80;
+            this.precioDataGridViewTextBoxColumn.Width = 84;
             // 
             // fechaCompraDataGridViewTextBoxColumn
             // 
@@ -160,6 +150,7 @@
             this.vendedorDataGridViewTextBoxColumn.HeaderText = "Vendedor";
             this.vendedorDataGridViewTextBoxColumn.Name = "vendedorDataGridViewTextBoxColumn";
             this.vendedorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.vendedorDataGridViewTextBoxColumn.Width = 115;
             // 
             // grillaPublicacionBindingSource
             // 
@@ -271,7 +262,7 @@
             // ComentarioInput
             // 
             this.ComentarioInput.AutoSize = true;
-            this.ComentarioInput.Location = new System.Drawing.Point(521, 402);
+            this.ComentarioInput.Location = new System.Drawing.Point(518, 402);
             this.ComentarioInput.Name = "ComentarioInput";
             this.ComentarioInput.Size = new System.Drawing.Size(60, 13);
             this.ComentarioInput.TabIndex = 8;
@@ -298,7 +289,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(588, 398);
+            this.textBox1.Location = new System.Drawing.Point(585, 398);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(312, 80);
