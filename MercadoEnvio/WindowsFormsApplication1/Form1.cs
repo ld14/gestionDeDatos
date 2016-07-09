@@ -156,21 +156,21 @@ namespace WindowsFormsApplication1
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RolUsuarioPage rolUsuarioPage = new RolUsuarioPage();
+            AltaRolUsuarioPage rolUsuarioPage = new AltaRolUsuarioPage();
             rolUsuarioPage.MdiParent = this;
             rolUsuarioPage.Show();
         }
 
         private void nuevoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            RubroPage rubroPage = new RubroPage();
+            AltaRubroPage rubroPage = new AltaRubroPage();
             rubroPage.MdiParent = this;
             rubroPage.Show();
         }
 
         private void nuevaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VisibilidadPage visibilidadPage = new VisibilidadPage();
+            AltaVisibilidadPage visibilidadPage = new AltaVisibilidadPage();
             visibilidadPage.MdiParent = this;
             visibilidadPage.Show();
         }

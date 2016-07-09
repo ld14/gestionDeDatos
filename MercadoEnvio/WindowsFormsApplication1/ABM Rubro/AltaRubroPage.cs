@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1.ABM_Rubro
 {
-    public partial class RubroPage : Form
+    public partial class AltaRubroPage : Form
     {
-        public RubroPage()
+        public AltaRubroPage()
         {
             InitializeComponent();
         }

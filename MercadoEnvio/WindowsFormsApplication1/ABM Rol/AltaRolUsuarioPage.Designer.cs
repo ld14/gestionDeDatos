@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1.ABM_Rol
 {
-    partial class RolUsuarioPage
+    partial class AltaRolUsuarioPage
     {
         /// <summary>
         /// Required designer variable.

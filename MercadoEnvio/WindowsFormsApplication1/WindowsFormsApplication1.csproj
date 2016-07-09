@@ -86,17 +86,17 @@
     <Compile Include="ABM Rol\ModificarRolPage.Designer.cs">
       <DependentUpon>ModificarRolPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Rol\RolUsuarioPage.cs">
+    <Compile Include="ABM Rol\AltaRolUsuarioPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Rol\RolUsuarioPage.Designer.cs">
-      <DependentUpon>RolUsuarioPage.cs</DependentUpon>
+    <Compile Include="ABM Rol\AltaRolUsuarioPage.Designer.cs">
+      <DependentUpon>AltaRolUsuarioPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Rubro\RubroPage.cs">
+    <Compile Include="ABM Rubro\AltaRubroPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Rubro\RubroPage.Designer.cs">
-      <DependentUpon>RubroPage.cs</DependentUpon>
+    <Compile Include="ABM Rubro\AltaRubroPage.Designer.cs">
+      <DependentUpon>AltaRubroPage.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM Usuario\AltaUsuarioPage.cs">
       <SubType>Form</SubType>
@@ -141,11 +141,11 @@
     <Compile Include="ABM Visibilidad\ModificarVisibilidadPage.Designer.cs">
       <DependentUpon>ModificarVisibilidadPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Visibilidad\VisibilidadPage.cs">
+    <Compile Include="ABM Visibilidad\AltaVisibilidadPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Visibilidad\VisibilidadPage.Designer.cs">
-      <DependentUpon>VisibilidadPage.cs</DependentUpon>
+    <Compile Include="ABM Visibilidad\AltaVisibilidadPage.Designer.cs">
+      <DependentUpon>AltaVisibilidadPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Calificar\CalificacionesPage.cs">
       <SubType>Form</SubType>
@@ -305,11 +305,11 @@
     <EmbeddedResource Include="ABM Rol\ModificarRolPage.resx">
       <DependentUpon>ModificarRolPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM Rol\RolUsuarioPage.resx">
-      <DependentUpon>RolUsuarioPage.cs</DependentUpon>
+    <EmbeddedResource Include="ABM Rol\AltaRolUsuarioPage.resx">
+      <DependentUpon>AltaRolUsuarioPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM Rubro\RubroPage.resx">
-      <DependentUpon>RubroPage.cs</DependentUpon>
+    <EmbeddedResource Include="ABM Rubro\AltaRubroPage.resx">
+      <DependentUpon>AltaRubroPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\AltaUsuarioPage.resx">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
@@ -332,8 +332,8 @@
     <EmbeddedResource Include="ABM Visibilidad\ModificarVisibilidadPage.resx">
       <DependentUpon>ModificarVisibilidadPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM Visibilidad\VisibilidadPage.resx">
-      <DependentUpon>VisibilidadPage.cs</DependentUpon>
+    <EmbeddedResource Include="ABM Visibilidad\AltaVisibilidadPage.resx">
+      <DependentUpon>AltaVisibilidadPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calificar\CalificacionesPage.resx">
       <DependentUpon>CalificacionesPage.cs</DependentUpon>
