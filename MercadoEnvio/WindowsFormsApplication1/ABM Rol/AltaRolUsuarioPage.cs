@@ -65,30 +65,33 @@ namespace WindowsFormsApplication1.ABM_Rol
                 }
             }
 
-            if (RolNombreTxt.Text == "" )
+            if (RolNombreTxt.Text == "")
             {
                 MessageBox.Show("Se debe ingresar un nombre de rol");
             }
-            if (rolExistente) {
-                MessageBox.Show("Rol existente, debe ingresar un nombre nuevo");
-            }
             else
             {
-                rol.nombre = RolNombreTxt.Text;
-                rol.FuncionesLst = new List<Funciones>();
-
-                var funciones = FuncionalidadesChkLst.CheckedItems.Cast<Funciones>();
-                foreach (Funciones func in funciones)
+                if (rolExistente)
                 {
-                    rol.FuncionesLst.Add(func);
+                    MessageBox.Show("Rol existente, debe ingresar un nombre nuevo");
+                }
+                else
+                {
+                    rol.nombre = RolNombreTxt.Text;
+                    rol.FuncionesLst = new List<Funciones>();
+
+                    var funciones = FuncionalidadesChkLst.CheckedItems.Cast<Funciones>();
+                    foreach (Funciones func in funciones)
+                    {
+                        rol.FuncionesLst.Add(func);
+                    }
+
+                    rolDao.Add(rol);
+                    MessageBox.Show("Creacion de Rol exitosa");
                 }
 
-                rolDao.Add(rol);
-                MessageBox.Show("Creacion de Rol exitosa");
+
             }
-            
-            
-            
         }
 
     }
