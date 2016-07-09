@@ -49,7 +49,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             TipoPubliSelect.Text = "Compra Inmediata";
             vencimientoBox.Text = "7 Días";
 
-            Estadopublicacion estadoPublicacion = null;
+            EstadoPublicacionDaoDaoImpl buscarEstado = new EstadoPublicacionDaoDaoImpl();
+            Estadopublicacion estadoPublicacion = buscarEstado.darEstadoByID(1);
 
             if (this.Tag != null) //Si queremos modificar una publicacion existente
                 estadoPublicacion = cargar_formulario();
