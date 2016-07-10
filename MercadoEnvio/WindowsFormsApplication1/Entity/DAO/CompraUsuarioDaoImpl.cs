@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1.Entity.DAO
                 using (ITransaction transaction = manager.Session.BeginTransaction())
                 {
                     CompraUsuario newEntityRef = manager.Session.Merge(compraUsuario);
-                    manager.Session.Update(newEntityRef);
+                    manager.Session.SaveOrUpdate(newEntityRef);
                     transaction.Commit();
                 }
             }

@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1.Calificar
 
             DataTable dt = new DataTable();
             dt.Columns.Add("tipoPublicacion", typeof(string));
-            dt.Columns.Add("idPublicacion", typeof(int));
+            dt.Columns.Add("idCompraUsuario", typeof(int));
             dt.Columns.Add("codigo", typeof(double));
             dt.Columns.Add("descProducto", typeof(string));
             dt.Columns.Add("precio", typeof(double));
@@ -37,14 +37,12 @@ namespace WindowsFormsApplication1.Calificar
             dt.Columns.Add("fechaCompra", typeof(DateTime));
             dt.Columns.Add("idUsuario", typeof(int));
 
-
             IList<SinCalificar> pubList = new List<SinCalificar>();
             Usuario usr = SessionAttribute.user;
 
             SinCalificarDaoImpl pubDao = new SinCalificarDaoImpl();
 
             pubList = pubDao.darLista(usr.idUsuario);
-            //pubSubLts.OrderBy(x => x.idPublicacion).ToList(); para ordenar.
 
             foreach (SinCalificar publ in pubList)
             {
@@ -57,8 +55,6 @@ namespace WindowsFormsApplication1.Calificar
             bs.Sort = "codigo";
             bindingNavigator1.BindingSource = bs;
             dataGridView1.DataSource = bs;
-
-
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -68,10 +64,12 @@ namespace WindowsFormsApplication1.Calificar
 
         private void calificar(object sender, EventArgs e)
         {
-            int idCompra = 0;
+            int idPublicacion = 0;
+            int idCompraUsuario = 0;
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                idCompra = Convert.ToInt32(row.Cells[0].Value.ToString());
+                idPublicacion = Convert.ToInt32(row.Cells[0].Value.ToString());
+                idCompraUsuario = Convert.ToInt32(row.Cells[1].Value.ToString());
                 dataGridView1.Rows.RemoveAt(row.Index);
             }
             
@@ -85,10 +83,11 @@ namespace WindowsFormsApplication1.Calificar
             califDao.Add(calif);
 
             CompraUsuarioDaoImpl compraDao = new CompraUsuarioDaoImpl();
-            CompraUsuario compra = compraDao.GetByID(idCompra);
-            compra.Calificacion = califDao.GetByCodigo(calif.codigo);
+            CompraUsuario compra = compraDao.GetByID(idCompraUsuario);
 
-            compraDao.Add(compra);
+            compra.Calificacion = calif;
+
+            compraDao.Update(compra);
 
             MessageBox.Show("Calificacion exitosa.\nGracias por utilizar nuestra aplicación de *MercadoEnvio*");
         }
