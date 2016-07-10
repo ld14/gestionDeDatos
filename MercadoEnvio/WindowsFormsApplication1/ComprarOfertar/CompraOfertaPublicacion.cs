@@ -205,7 +205,9 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 ClienteDaoImpl usrImpl = new ClienteDaoImpl();
                 Cliente usr = SessionAttribute.clienteUser;
                 usr.comprasEfectuadas++;
+                usr.montoComprado += nuevaCompraPublicacion.precioPorUnidad * cantidadVendida;
                 usrImpl.Update(usr);
+                SessionAttribute.clienteUser = usr;
 
                 CompraUsuario compUsuario = new CompraUsuario();
                 compUsuario.Publicacion = nuevaCompraPublicacion;
