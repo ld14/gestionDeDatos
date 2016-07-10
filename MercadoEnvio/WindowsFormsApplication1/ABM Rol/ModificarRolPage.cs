@@ -77,7 +77,7 @@ namespace WindowsFormsApplication1.ABM_Rol
             
             
             rol.FuncionesLst = new List<Funciones>();
-
+            rol.activo = RolActivoChk.Checked;
             var funciones = FuncionalidadesChkLst.CheckedItems.Cast<Funciones>();
             foreach (Funciones func in funciones)
             {
@@ -85,6 +85,7 @@ namespace WindowsFormsApplication1.ABM_Rol
             }
 
             rolDao.Update(rol);
+            MessageBox.Show("Modificacion Exitosa");
         }
 
         private void ModificarRolPage_Load_1(object sender, EventArgs e)

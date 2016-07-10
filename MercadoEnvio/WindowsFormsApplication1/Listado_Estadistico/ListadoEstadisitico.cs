@@ -179,5 +179,15 @@ namespace WindowsFormsApplication1.Listado_Estadistico
             grupoVisibilidad.Visible = (reporteSeleccionado == (int)TiposListado.vendedoresMayorCantidadProdNoVendidos);
             grupoRubros.Visible = (reporteSeleccionado == (int)TiposListado.clientesMayorCantidadProdComprados);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            anioSelect.Text = null;
+            TrimestreCombo.Text = null;
+            reporteSelect.Text = null;
+            RubroComboBox.Text = null;
+            visibilidadComboBox.Text = null;
+            dataGridView1.DataSource = null;
+        }
     }
 }

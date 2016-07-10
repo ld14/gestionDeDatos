@@ -132,5 +132,14 @@ namespace WindowsFormsApplication1.Facturas
                 return pageOffsets;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            montoFinal.Text = "";
+            montoInicial.Text = "";
+            descripcionPubTxt.Text = "";
+            descripcionPubTxt.Text = null;
+            dataGridView1.DataSource = null;
+        }
     }
 }

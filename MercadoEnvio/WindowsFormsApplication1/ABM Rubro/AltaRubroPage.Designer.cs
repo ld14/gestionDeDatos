@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1.ABM_Rubro
 {
-    partial class RubroPage
+    partial class AltaRubroPage
     {
         /// <summary>
         /// Required designer variable.
