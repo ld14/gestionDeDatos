@@ -153,6 +153,13 @@ namespace WindowsFormsApplication1.ABM_Usuario
                     return;
                 }
 
+                UsuarioDaoImpl usuDaoImpl = new UsuarioDaoImpl();
+                if (usuDaoImpl.Acceder(userNameInput.Text) != null)
+                {
+                    MessageBox.Show("Ya existe un usuario con el nombre indicado. Por favor ingrese un nuevo nombre de usuario.");
+                    return;    
+                }
+
 
                 int tipoDocumento = Convert.ToInt16(ClienteTipoDocComboBox.Text);
                 int DNI = Convert.ToInt32(ClienteDNITxt.Text);

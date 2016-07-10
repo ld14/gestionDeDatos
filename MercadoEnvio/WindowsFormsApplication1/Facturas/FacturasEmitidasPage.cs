@@ -83,7 +83,7 @@ namespace WindowsFormsApplication1.Facturas
             if (montoTotalini != null)
                 customerList = customerList.Where(x => Convert.ToDouble(x.montoTotal) >= montoTotalini).ToList();
             if (montoTotalfin != null)
-                customerList = customerList.Where(x => Convert.ToDouble(x.montoTotal) <= montoTotalfin).ToList();
+                customerList = customerList.Where(x => Convert.ToDouble(x.montoTotal) <= Convert.ToDouble(montoTotalfin)).ToList();
 
             TotalRecords = this.customerList.Count;
             bindingNavigator1.BindingSource = bindingSource1;

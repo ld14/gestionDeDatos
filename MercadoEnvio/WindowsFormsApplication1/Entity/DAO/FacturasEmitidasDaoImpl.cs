@@ -77,7 +77,7 @@ namespace WindowsFormsApplication1
                     crit.Add(Expression.Between("fecha", fechaDesde, fechaHasta));
 
                     if(!descripcion.Equals("")){
-                        crit.Add(Expression.Eq("descripcion", descripcion));  
+                        crit.Add(Expression.Like("descripcion", "%" + descripcion + "%"));  
                     }
 
                     return crit.List<FacturasEmitidas>();
