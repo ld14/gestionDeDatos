@@ -18,9 +18,37 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nombre = VisibilidadNombreTxt.Text;
-            Double costo = Convert.ToDouble(VisibilidadCostoTxt.Text);
+            string nombre = "";
+            if (VisibilidadNombreTxt.Text != "")
+            {
+                nombre = VisibilidadNombreTxt.Text;
+            }
+            else 
+            {
+                MessageBox.Show("Se debe ingresar el nombre de la visibilidad");
+                return;
+            }
+            Double costo =0;
+            if(VisibilidadCostoTxt.Text != "")
+            {
+                costo = Convert.ToDouble(VisibilidadCostoTxt.Text);
+            }
+            else
+            {
+                MessageBox.Show("Se debe ingresar el costo de la visibilidad");
+                return;
+            }
+
             Double porcentaje = Convert.ToDouble(VisibilidadPorcentajeTxt.Text);
+            if(VisibilidadPorcentajeTxt.Text!="")
+            {
+                porcentaje = Convert.ToDouble(VisibilidadPorcentajeTxt.Text);
+            }
+            else
+            {
+                MessageBox.Show("Se debe ingresar el porcentaje de la visibilidad");
+                
+            }
 
             Visibilidad visibilidad = new Visibilidad();
             visibilidad.nombreVisibilidad=nombre;
@@ -29,6 +57,7 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
             visibilidad.activo = true;
             VisibilidadDaoImpl visibilidadDaoImp = new VisibilidadDaoImpl();
             visibilidadDaoImp.Add(visibilidad);
+            MessageBox.Show("Se creo una nueva visibilidad");
  
         }
 
