@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1.Historial_Cliente
         private const int pageSize = 10;
         IList<SubastaCompraDelSistema> customerList = new List<SubastaCompraDelSistema>();
         IList<SoloSubasta> customerList2 = new List<SoloSubasta>();
+        Boolean esSubasta = false;
 
         public static int TotalRecords
         {
@@ -74,6 +75,7 @@ namespace WindowsFormsApplication1.Historial_Cliente
         {
             if (compraL.Font.Underline == false)
             {
+                esSubasta = false;
                 compraL.Font = new Font(compraL.Font, FontStyle.Underline);
                 subastaL.Font = new Font(subastaL.Font, FontStyle.Regular);
                 splitCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -91,6 +93,7 @@ namespace WindowsFormsApplication1.Historial_Cliente
         {
             if (subastaL.Font.Underline == false)
             {
+                esSubasta = true;
                 compraL.Font = new Font(compraL.Font, FontStyle.Regular);
                 subastaL.Font = new Font(subastaL.Font, FontStyle.Underline);
                 splitSubasta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -106,73 +109,78 @@ namespace WindowsFormsApplication1.Historial_Cliente
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
-            // The desired page has changed, so fetch the page of records using the "Current" offset 
-            int offset = (int)bindingSource1.Current;
-            var records = new List<SubastaCompraDelSistema>();
-            for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
-                records.Add(this.customerList[i]);
-            dataGridView1.DataSource = records;
-
-            //Chequeo si alguna calificacion esta pendiente
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+            if (!esSubasta)
             {
-                if (dataGridView1.Rows[i].Cells[7].Value == null)
-                    dataGridView1.Rows[i].Cells[7].Value = "(Pendiente)";
-            }
-                
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
+                // The desired page has changed, so fetch the page of records using the "Current" offset 
+                int offset = (int)bindingSource1.Current;
+                var records = new List<SubastaCompraDelSistema>();
+                for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
+                    records.Add(this.customerList[i]);
+                dataGridView1.DataSource = records;
 
-            dataGridView1.Columns[2].HeaderText = "Tipo de Compra";
-            dataGridView1.Columns[2].Width = 125;
-            dataGridView1.Columns[3].HeaderText = "Fecha Compra";
-            dataGridView1.Columns[3].Width = 80;
-            dataGridView1.Columns[4].HeaderText = "Cantidad Comprada";
-            dataGridView1.Columns[4].Width = 80;
-            dataGridView1.Columns[5].HeaderText = "Código Publicación";
-            dataGridView1.Columns[5].Width = 86;
-            dataGridView1.Columns[6].HeaderText = "Descripción";
-            dataGridView1.Columns[6].Width = 255;
-            dataGridView1.Columns[7].HeaderText = "Calificación dada";
-            dataGridView1.Columns[7].Width = 83;
-            dataGridView1.Columns[8].HeaderText = "Comentario Calificación";
-            dataGridView1.Columns[8].Width = 200;
+                //Chequeo si alguna calificacion esta pendiente
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    if (dataGridView1.Rows[i].Cells[7].Value == null)
+                        dataGridView1.Rows[i].Cells[7].Value = "(Pendiente)";
+                }
+
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
+
+                dataGridView1.Columns[2].HeaderText = "Tipo de Compra";
+                dataGridView1.Columns[2].Width = 125;
+                dataGridView1.Columns[3].HeaderText = "Fecha Compra";
+                dataGridView1.Columns[3].Width = 80;
+                dataGridView1.Columns[4].HeaderText = "Cantidad Comprada";
+                dataGridView1.Columns[4].Width = 80;
+                dataGridView1.Columns[5].HeaderText = "Código Publicación";
+                dataGridView1.Columns[5].Width = 86;
+                dataGridView1.Columns[6].HeaderText = "Descripción";
+                dataGridView1.Columns[6].Width = 255;
+                dataGridView1.Columns[7].HeaderText = "Calificación dada";
+                dataGridView1.Columns[7].Width = 83;
+                dataGridView1.Columns[8].HeaderText = "Comentario Calificación";
+                dataGridView1.Columns[8].Width = 200;
+            }
         }
 
         private void bindingSource1_CurrentChanged2(object sender, EventArgs e)
         {
-            // The desired page has changed, so fetch the page of records using the "Current" offset 
-            int offset = (int)bindingSource1.Current;
-            var records = new List<SoloSubasta>();
-            for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
-                records.Add(this.customerList2[i]);
-            dataGridView1.DataSource = records;
+            if (esSubasta)
+            {
+                // The desired page has changed, so fetch the page of records using the "Current" offset 
+                int offset = (int)bindingSource1.Current;
+                var records = new List<SoloSubasta>();
+                for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
+                    records.Add(this.customerList2[i]);
+                dataGridView1.DataSource = records;
 
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
 
-            dataGridView1.Columns[2].HeaderText = "Tipo de Compra";
-            dataGridView1.Columns[2].Width = 110;
-            dataGridView1.Columns[3].HeaderText = "Fecha de Oferta";
-            dataGridView1.Columns[3].Width = 88;
-            dataGridView1.Columns[4].HeaderText = "Valor Inicial";
-            dataGridView1.Columns[4].Width = 86;
-            dataGridView1.Columns[5].HeaderText = "Monto Oferta";
-            dataGridView1.Columns[5].Width = 80;
-            dataGridView1.Columns[6].HeaderText = "Adjudicada";
-            dataGridView1.Columns[6].Width = 160;
-            dataGridView1.Columns[7].HeaderText = "Código Publicación";
-            dataGridView1.Columns[7].Width = 85;
-            dataGridView1.Columns[8].HeaderText = "Descripción";
-            dataGridView1.Columns[8].Width = 300;
+                dataGridView1.Columns[2].HeaderText = "Tipo de Compra";
+                dataGridView1.Columns[2].Width = 110;
+                dataGridView1.Columns[3].HeaderText = "Fecha de Oferta";
+                dataGridView1.Columns[3].Width = 88;
+                dataGridView1.Columns[4].HeaderText = "Valor Inicial";
+                dataGridView1.Columns[4].Width = 86;
+                dataGridView1.Columns[5].HeaderText = "Monto Oferta";
+                dataGridView1.Columns[5].Width = 80;
+                dataGridView1.Columns[6].HeaderText = "Adjudicada";
+                dataGridView1.Columns[6].Width = 160;
+                dataGridView1.Columns[7].HeaderText = "Código Publicación";
+                dataGridView1.Columns[7].Width = 85;
+                dataGridView1.Columns[8].HeaderText = "Descripción";
+                dataGridView1.Columns[8].Width = 300;
 
-            dataGridView1.Columns[5].DisplayIndex = 5;
-            //customersDataGridView.Columns["ContactTitle"].DisplayIndex = 1;
-            //customersDataGridView.Columns["City"].DisplayIndex = 2;
-            //customersDataGridView.Columns["Country"].DisplayIndex = 3;
-            //customersDataGridView.Columns["CompanyName"].DisplayIndex = 4;
+                dataGridView1.Columns[5].DisplayIndex = 5;
+                //customersDataGridView.Columns["ContactTitle"].DisplayIndex = 1;
+                //customersDataGridView.Columns["City"].DisplayIndex = 2;
+                //customersDataGridView.Columns["Country"].DisplayIndex = 3;
+                //customersDataGridView.Columns["CompanyName"].DisplayIndex = 4;
 
-
+            }
         }
 
         class PageOffsetList : System.ComponentModel.IListSource
