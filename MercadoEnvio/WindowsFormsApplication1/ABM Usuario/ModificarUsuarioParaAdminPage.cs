@@ -128,7 +128,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 ClienteDaoImpl clienteDaoImpl = new ClienteDaoImpl();
                 Cliente nuevoCliente = clienteDaoImpl.GetUsuarioById(idUsuario);
                 
-                nuevoCliente.password = password;
+                //nuevoCliente.password = password;
 
                 nuevoCliente.dni = DNI;
                 nuevoCliente.tipoDocumento = tipoDocumento;
@@ -136,6 +136,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevoCliente.apellido = Apellido;
                 nuevoCliente.fechaNacimiento = FechaNacimiento;
                 nuevoCliente.activoUsuario = UsuarioActivo.Checked;
+                nuevoCliente.intentosFallidos = 0;
 
                 nuevoCliente.DatosBasicos.email = Mail;
                 nuevoCliente.DatosBasicos.telefono = Telefono;
@@ -154,8 +155,9 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 EmpresaDaoImpl empresaDaoImpl = new EmpresaDaoImpl();
                 Empresa nuevaEmpresa = empresaDaoImpl.GetEmpresaByIdUsuario(idUsuario);
 
-                nuevaEmpresa.password = password;
+                //nuevaEmpresa.password = password;
                 nuevaEmpresa.activoUsuario = UsuarioActivo.Checked;
+                nuevaEmpresa.intentosFallidos = 0;
 
                 nuevaEmpresa.razonSocial = RazonSocial;
                 nuevaEmpresa.cuit = Cuit;
