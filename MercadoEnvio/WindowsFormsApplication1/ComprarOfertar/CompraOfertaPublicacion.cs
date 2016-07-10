@@ -124,10 +124,14 @@ namespace WindowsFormsApplication1.ComprarOfertar
             }
             else
             {
+                //Validaciones pre compra
+                int cantidadVendida = Convert.ToInt32(cant_ofertaNumeric.Value);
                 PublicacionNormalDaoImpl actualizarPublicImpl = new PublicacionNormalDaoImpl();
                 PublicacionNormal nuevaCompraPublicacion = (PublicacionNormal)this.Tag;
                 ComisionesParametrizablesDaoImpl cparImpl = new ComisionesParametrizablesDaoImpl();
-                int cantidadVendida = Convert.ToInt32(cant_ofertaNumeric.Value);
+                CompraUsuarioDaoImpl compUsrDaoImpl = new CompraUsuarioDaoImpl();
+                int cantProdVendidos = 0;
+                int cantProdDisponibles = 0;
 
                 if (cantidadVendida == 0)
                 {
@@ -135,7 +139,18 @@ namespace WindowsFormsApplication1.ComprarOfertar
                     return;
                 }
 
-                nuevaCompraPublicacion.stock -= cantidadVendida;
+                foreach (CompraUsuario compUsu in compUsrDaoImpl.GetByPublicacion(nuevaCompraPublicacion.idPublicacion))
+                {
+                    cantProdVendidos += compUsu.compraCantidad;
+                }
+                cantProdDisponibles = nuevaCompraPublicacion.stock - cantProdVendidos;
+                if (cantProdDisponibles < cantidadVendida)
+                {
+                    MessageBox.Show("No hay stock suficiente para su pedido. Stock disponible: " + cantProdDisponibles);
+                    return;
+                }
+
+                nuevaCompraPublicacion.stock = cantProdDisponibles - cantidadVendida;
 
                 if (nuevaCompraPublicacion.stock == 0) //Se vendio el total del producto.
                 {
@@ -187,7 +202,6 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 factDaoImpl.Update(fact);
 
                 //Genero la compra Cliente y actualizo sus contadores
-                CompraUsuarioDaoImpl compUsrDaoImpl = new CompraUsuarioDaoImpl();
                 ClienteDaoImpl usrImpl = new ClienteDaoImpl();
                 Cliente usr = SessionAttribute.clienteUser;
                 usr.comprasEfectuadas++;
