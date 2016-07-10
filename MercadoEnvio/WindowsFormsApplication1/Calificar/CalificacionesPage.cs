@@ -89,6 +89,12 @@ namespace WindowsFormsApplication1.Calificar
 
             compraDao.Update(compra);
 
+            //Genero la compra Cliente y actualizo sus contadores
+            ClienteDaoImpl usrImpl = new ClienteDaoImpl();
+            Cliente usr = SessionAttribute.clienteUser;
+            usr.comprasCalificadas++;
+            usrImpl.Update(usr);
+
             MessageBox.Show("Calificacion exitosa.\nGracias por utilizar nuestra aplicación de *MercadoEnvio*");
         }
 
