@@ -31,6 +31,13 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
             visibilidadDaoImp.Add(visibilidad);
  
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VisibilidadNombreTxt.Text = "";
+            VisibilidadPorcentajeTxt.Text = "";
+            VisibilidadCostoTxt.Text = "";
+        }
     }
 }
 

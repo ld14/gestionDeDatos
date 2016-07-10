@@ -179,6 +179,29 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            userNameInput.Text = "";
+            userPasswordImput.Text = "";
+            tipoDeUsuarioComboBox.Text = null;
+            ClienteTipoDocComboBox.Text = null;
+            ClienteDNITxt.Text = "";
+            ClienteNombreTxt.Text = "";
+            ClienteApellidoTxt.Text = "";
+            EmpresaRazonSocialTxt.Text = "";
+            EmpresaNombreContactoTxt.Text = "";
+            EmpresaCuitTxt.Text = "";
+            DatosBasicosCiudad.Text = "";
+            DatosBasicosCodigoPostal.Text = "";
+            DatosBasicosDepto.Text = "";
+            DatosBasicosDomicilioCalle.Text = "";
+            DatosBasicosEmailTxt.Text = "";
+            DatosBasicosLocalidad.Text = "";
+            DatosBasicosNroCalle.Text = "";
+            DatosBasicosPiso.Text = "";
+            DatosBasicosTelefono.Text = "";
         }      
 
         }

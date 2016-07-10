@@ -37,6 +37,7 @@
             this.RolNombreTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -133,6 +134,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Location = new System.Drawing.Point(20, 531);
             this.groupBox2.Name = "groupBox2";
@@ -141,7 +143,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // RolUsuarioPage
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(645, 37);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(222, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Limpiar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // AltaRolUsuarioPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,7 +165,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "RolUsuarioPage";
+            this.Name = "AltaRolUsuarioPage";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "RolUsuarioPage";
@@ -179,5 +191,6 @@
         private System.Windows.Forms.CheckBox RolActivoChk;
         private System.Windows.Forms.TextBox RolNombreTxt;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
     }
 }

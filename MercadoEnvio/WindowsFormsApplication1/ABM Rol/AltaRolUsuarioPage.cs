@@ -94,5 +94,16 @@ namespace WindowsFormsApplication1.ABM_Rol
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RolNombreTxt.Text = null;
+            RolActivoChk.Checked = false;
+
+            for (int d = 0; d < FuncionalidadesChkLst.Items.Count; d++)
+            {
+                FuncionalidadesChkLst.SetItemChecked(d, false);
+            }
+        }
+
     }
 }

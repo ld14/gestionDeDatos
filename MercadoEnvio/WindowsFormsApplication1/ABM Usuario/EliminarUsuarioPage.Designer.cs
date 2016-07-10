@@ -61,6 +61,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ClienteApellidoTxt = new System.Windows.Forms.TextBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -211,7 +212,7 @@
             this.EmpresaGroup.Controls.Add(this.EmpresaRazonSocialTxt);
             this.EmpresaGroup.Controls.Add(this.label4);
             this.EmpresaGroup.Controls.Add(this.label5);
-            this.EmpresaGroup.Location = new System.Drawing.Point(46, 74);
+            this.EmpresaGroup.Location = new System.Drawing.Point(46, 62);
             this.EmpresaGroup.Name = "EmpresaGroup";
             this.EmpresaGroup.Size = new System.Drawing.Size(501, 168);
             this.EmpresaGroup.TabIndex = 15;
@@ -353,11 +354,22 @@
             this.ClienteApellidoTxt.Size = new System.Drawing.Size(126, 20);
             this.ClienteApellidoTxt.TabIndex = 41;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(641, 227);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(251, 23);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Limpiar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // EliminarUsuarioPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 720);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.EmpresaGroup);
             this.Controls.Add(this.ClienteGroup);
             this.Controls.Add(this.label3);
@@ -420,5 +432,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox ClienteApellidoTxt;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Button button3;
     }
 }

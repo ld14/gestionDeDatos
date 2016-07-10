@@ -59,6 +59,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -214,6 +215,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.destinatarioSelect);
             this.groupBox1.Controls.Add(this.descripcionPubTxt);
             this.groupBox1.Controls.Add(this.montoFinal);
@@ -334,6 +336,16 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Fecha Desde";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(613, 167);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(237, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Limpiar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FacturasEmitidasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,5 +404,6 @@
         private System.Windows.Forms.ComboBox destinatarioSelect;
         private System.Windows.Forms.TextBox descripcionPubTxt;
         private System.Windows.Forms.TextBox montoFinal;
+        private System.Windows.Forms.Button button1;
     }
 }

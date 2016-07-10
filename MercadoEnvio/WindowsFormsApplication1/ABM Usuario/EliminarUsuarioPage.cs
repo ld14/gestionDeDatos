@@ -239,5 +239,17 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 button1_Click_1(sender, e);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            tipoDeUsuarioComboBox.Text = null;
+            EmailTxt.Text = "";
+            EmpresaRazonSocialTxt.Text = "";
+            EmpresaCuitTxt.Text = "";
+            ClienteNombreTxt.Text = "";
+            ClienteApellidoTxt.Text = "";
+            ClienteDNITxt.Text = "";
+            dataGridView1.DataSource = null;
+        }
     }
 }
