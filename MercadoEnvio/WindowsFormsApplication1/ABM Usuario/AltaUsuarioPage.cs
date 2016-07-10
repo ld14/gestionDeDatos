@@ -49,14 +49,54 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String nombreUsuario = userNameInput.Text;
-            String Password = userPasswordImput.Text;
+            string nombreUsuario = "";
+            string Password = "";
+            string Mail = "";
+            
+            int nroCalle = 0;
+            int piso = 0;
+            
+
+            if (userNameInput.Text != "")
+            {
+                nombreUsuario = userNameInput.Text;
+            }
+            else 
+            {
+                MessageBox.Show("Debe ingresar un userName");
+                return;
+            }
+            if (userPasswordImput.Text != "")
+            {
+                Password = userPasswordImput.Text;
+            }
+            else 
+            {
+                MessageBox.Show("Debe ingresar una Password ");
+                return;
+            }
+            
             String TipoDeUsuario = tipoDeUsuarioComboBox.Text;
-            String Mail = DatosBasicosEmailTxt.Text;
+            if (DatosBasicosEmailTxt.Text != "")
+            {
+                 Mail = DatosBasicosEmailTxt.Text;
+            }
+            else 
+            {
+                MessageBox.Show("Debe ingresar un email ");
+                return;
+            }
+           
             String Telefono = DatosBasicosTelefono.Text;
             String DomicilioCalle = DatosBasicosDomicilioCalle.Text;
-            int nroCalle = Convert.ToInt32(DatosBasicosNroCalle.Text);
-            int piso =  Convert.ToInt32(DatosBasicosPiso.Text);
+            if (DatosBasicosNroCalle.Text != "") 
+            {
+                nroCalle = Convert.ToInt32(DatosBasicosNroCalle.Text);
+            }
+            if (DatosBasicosPiso.Text != "")
+            {
+                piso = Convert.ToInt32(DatosBasicosPiso.Text);
+            }
             String depto = DatosBasicosDepto.Text;
             String localidad = DatosBasicosLocalidad.Text;
             String ciudad = DatosBasicosCiudad.Text;
@@ -68,9 +108,37 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
             DateTime FechaNacimiento = DateUtils.convertirStringEnFecha(ClienteFechaNacDateTime.Value.ToString("dd/MM/yyyy"));
             DateTime FechaCreacion = DateUtils.convertirStringEnFecha(EmpresaFechaCreacionDateTime.Value.ToString("dd/MM/yyyy"));
-            String RazonSocial = EmpresaRazonSocialTxt.Text;
-            String Cuit = EmpresaCuitTxt.Text;
-            String NombreContacto = EmpresaNombreContactoTxt.Text;
+            String RazonSocial="";
+            if (EmpresaRazonSocialTxt.Text != "")
+            {
+                RazonSocial = EmpresaRazonSocialTxt.Text;
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar una razon social");
+                return;
+            }
+            String Cuit = "";
+            if (EmpresaCuitTxt.Text != "")
+            {
+                Cuit = EmpresaCuitTxt.Text;
+                
+            }
+            else 
+            {
+                MessageBox.Show("Debe ingresar una CUIT");
+                return;
+            }
+            String NombreContacto = "";
+            if (EmpresaNombreContactoTxt.Text != "")
+            {
+                NombreContacto = EmpresaNombreContactoTxt.Text;
+            }
+            else 
+            {
+                MessageBox.Show("Debe ingresar una nombre de contacto");
+                return;
+            }
     
             RolDaoImpl rolDao = new RolDaoImpl();
           
@@ -122,6 +190,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
                 ClienteDaoImpl ClienteDaoImpl = new ClienteDaoImpl();
                 ClienteDaoImpl.Add(nuevoCliente);
+                MessageBox.Show("Creacion de cliente correcta");
             }
             else
             {
@@ -162,6 +231,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
                 EmpresaDaoImpl empresaDaoImpl = new EmpresaDaoImpl();
                 empresaDaoImpl.Add(nuevaEmpresa);
+                MessageBox.Show("Creacion de empresa correcta");
             }
             }
 

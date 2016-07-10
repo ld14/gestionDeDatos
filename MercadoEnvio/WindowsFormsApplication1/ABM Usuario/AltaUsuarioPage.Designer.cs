@@ -75,8 +75,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Grabar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.Grabar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.ClienteGroup.SuspendLayout();
             this.EmpresaGroup.SuspendLayout();
@@ -86,7 +89,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.ClienteGroup);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.EmpresaGroup);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tipoDeUsuarioComboBox);
@@ -95,6 +99,7 @@
             this.groupBox1.Controls.Add(this.userNameInput);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.ClienteGroup);
             this.groupBox1.Location = new System.Drawing.Point(19, 48);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(984, 450);
@@ -114,7 +119,7 @@
             this.ClienteGroup.Controls.Add(this.label20);
             this.ClienteGroup.Controls.Add(this.ClienteDNITxt);
             this.ClienteGroup.Controls.Add(this.label6);
-            this.ClienteGroup.Location = new System.Drawing.Point(30, 159);
+            this.ClienteGroup.Location = new System.Drawing.Point(29, 139);
             this.ClienteGroup.Name = "ClienteGroup";
             this.ClienteGroup.Size = new System.Drawing.Size(484, 277);
             this.ClienteGroup.TabIndex = 11;
@@ -314,6 +319,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label24);
             this.groupBox3.Controls.Add(this.DatosBasicosCiudad);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.DatosBasicosDepto);
@@ -529,6 +535,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(634, 46);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(222, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Limpiar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Grabar
             // 
             this.Grabar.Location = new System.Drawing.Point(406, 46);
@@ -539,15 +555,38 @@
             this.Grabar.UseVisualStyleBackColor = true;
             this.Grabar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button1
+            // label9
             // 
-            this.button1.Location = new System.Drawing.Point(634, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(222, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Limpiar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(293, 46);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 18);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "*";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Red;
+            this.label19.Location = new System.Drawing.Point(520, 47);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(18, 18);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "*";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(361, 33);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(18, 18);
+            this.label24.TabIndex = 31;
+            this.label24.Text = "*";
             // 
             // AltaUsuarioPage
             // 
@@ -630,5 +669,8 @@
         private System.Windows.Forms.TextBox ClienteDNITxt;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label24;
     }
 }
