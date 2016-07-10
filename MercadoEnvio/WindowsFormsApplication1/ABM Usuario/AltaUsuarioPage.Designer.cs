@@ -29,6 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ClienteGroup = new System.Windows.Forms.GroupBox();
+            this.ClienteApellidoTxt = new System.Windows.Forms.TextBox();
+            this.ClienteNombreTxt = new System.Windows.Forms.TextBox();
+            this.ClienteFechaNacDateTime = new System.Windows.Forms.DateTimePicker();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ClienteTipoDocComboBox = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.ClienteDNITxt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.EmpresaGroup = new System.Windows.Forms.GroupBox();
@@ -64,29 +75,22 @@
             this.userNameInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ClienteGroup = new System.Windows.Forms.GroupBox();
-            this.ClienteApellidoTxt = new System.Windows.Forms.TextBox();
-            this.ClienteNombreTxt = new System.Windows.Forms.TextBox();
-            this.ClienteFechaNacDateTime = new System.Windows.Forms.DateTimePicker();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.ClienteTipoDocComboBox = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.ClienteDNITxt = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.Grabar = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.RolesCombobox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
+            this.ClienteGroup.SuspendLayout();
             this.EmpresaGroup.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.ClienteGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.RolesCombobox);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.ClienteGroup);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.label9);
@@ -104,6 +108,112 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alta Usuario";
+            // 
+            // ClienteGroup
+            // 
+            this.ClienteGroup.Controls.Add(this.ClienteApellidoTxt);
+            this.ClienteGroup.Controls.Add(this.ClienteNombreTxt);
+            this.ClienteGroup.Controls.Add(this.ClienteFechaNacDateTime);
+            this.ClienteGroup.Controls.Add(this.label23);
+            this.ClienteGroup.Controls.Add(this.label22);
+            this.ClienteGroup.Controls.Add(this.label21);
+            this.ClienteGroup.Controls.Add(this.ClienteTipoDocComboBox);
+            this.ClienteGroup.Controls.Add(this.label20);
+            this.ClienteGroup.Controls.Add(this.ClienteDNITxt);
+            this.ClienteGroup.Controls.Add(this.label6);
+            this.ClienteGroup.Location = new System.Drawing.Point(31, 210);
+            this.ClienteGroup.Name = "ClienteGroup";
+            this.ClienteGroup.Size = new System.Drawing.Size(484, 215);
+            this.ClienteGroup.TabIndex = 11;
+            this.ClienteGroup.TabStop = false;
+            this.ClienteGroup.Text = "Datos Tipo Usuario";
+            this.ClienteGroup.Visible = false;
+            // 
+            // ClienteApellidoTxt
+            // 
+            this.ClienteApellidoTxt.Location = new System.Drawing.Point(329, 94);
+            this.ClienteApellidoTxt.Name = "ClienteApellidoTxt";
+            this.ClienteApellidoTxt.Size = new System.Drawing.Size(126, 20);
+            this.ClienteApellidoTxt.TabIndex = 41;
+            // 
+            // ClienteNombreTxt
+            // 
+            this.ClienteNombreTxt.Location = new System.Drawing.Point(129, 93);
+            this.ClienteNombreTxt.Name = "ClienteNombreTxt";
+            this.ClienteNombreTxt.Size = new System.Drawing.Size(126, 20);
+            this.ClienteNombreTxt.TabIndex = 40;
+            // 
+            // ClienteFechaNacDateTime
+            // 
+            this.ClienteFechaNacDateTime.Location = new System.Drawing.Point(129, 125);
+            this.ClienteFechaNacDateTime.Name = "ClienteFechaNacDateTime";
+            this.ClienteFechaNacDateTime.Size = new System.Drawing.Size(326, 20);
+            this.ClienteFechaNacDateTime.TabIndex = 39;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(29, 126);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(93, 13);
+            this.label23.TabIndex = 38;
+            this.label23.Text = "Fecha Nacimiento";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(267, 100);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(44, 13);
+            this.label22.TabIndex = 37;
+            this.label22.Text = "Apellido";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(29, 93);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(44, 13);
+            this.label21.TabIndex = 36;
+            this.label21.Text = "Nombre";
+            // 
+            // ClienteTipoDocComboBox
+            // 
+            this.ClienteTipoDocComboBox.FormattingEnabled = true;
+            this.ClienteTipoDocComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.ClienteTipoDocComboBox.Location = new System.Drawing.Point(129, 61);
+            this.ClienteTipoDocComboBox.Name = "ClienteTipoDocComboBox";
+            this.ClienteTipoDocComboBox.Size = new System.Drawing.Size(126, 21);
+            this.ClienteTipoDocComboBox.TabIndex = 35;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(29, 63);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(86, 13);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "Tipo Documento";
+            // 
+            // ClienteDNITxt
+            // 
+            this.ClienteDNITxt.Location = new System.Drawing.Point(329, 66);
+            this.ClienteDNITxt.Name = "ClienteDNITxt";
+            this.ClienteDNITxt.Size = new System.Drawing.Size(126, 20);
+            this.ClienteDNITxt.TabIndex = 33;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(267, 69);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Numero";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label19
             // 
@@ -135,9 +245,9 @@
             this.EmpresaGroup.Controls.Add(this.EmpresaRazonSocialTxt);
             this.EmpresaGroup.Controls.Add(this.label4);
             this.EmpresaGroup.Controls.Add(this.label5);
-            this.EmpresaGroup.Location = new System.Drawing.Point(30, 158);
+            this.EmpresaGroup.Location = new System.Drawing.Point(31, 210);
             this.EmpresaGroup.Name = "EmpresaGroup";
-            this.EmpresaGroup.Size = new System.Drawing.Size(484, 277);
+            this.EmpresaGroup.Size = new System.Drawing.Size(484, 215);
             this.EmpresaGroup.TabIndex = 10;
             this.EmpresaGroup.TabStop = false;
             this.EmpresaGroup.Text = "Datos Tipo Usuario";
@@ -431,112 +541,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Username";
             // 
-            // ClienteGroup
-            // 
-            this.ClienteGroup.Controls.Add(this.ClienteApellidoTxt);
-            this.ClienteGroup.Controls.Add(this.ClienteNombreTxt);
-            this.ClienteGroup.Controls.Add(this.ClienteFechaNacDateTime);
-            this.ClienteGroup.Controls.Add(this.label23);
-            this.ClienteGroup.Controls.Add(this.label22);
-            this.ClienteGroup.Controls.Add(this.label21);
-            this.ClienteGroup.Controls.Add(this.ClienteTipoDocComboBox);
-            this.ClienteGroup.Controls.Add(this.label20);
-            this.ClienteGroup.Controls.Add(this.ClienteDNITxt);
-            this.ClienteGroup.Controls.Add(this.label6);
-            this.ClienteGroup.Location = new System.Drawing.Point(29, 139);
-            this.ClienteGroup.Name = "ClienteGroup";
-            this.ClienteGroup.Size = new System.Drawing.Size(484, 277);
-            this.ClienteGroup.TabIndex = 11;
-            this.ClienteGroup.TabStop = false;
-            this.ClienteGroup.Text = "Datos Tipo Usuario";
-            this.ClienteGroup.Visible = false;
-            // 
-            // ClienteApellidoTxt
-            // 
-            this.ClienteApellidoTxt.Location = new System.Drawing.Point(329, 94);
-            this.ClienteApellidoTxt.Name = "ClienteApellidoTxt";
-            this.ClienteApellidoTxt.Size = new System.Drawing.Size(126, 20);
-            this.ClienteApellidoTxt.TabIndex = 41;
-            // 
-            // ClienteNombreTxt
-            // 
-            this.ClienteNombreTxt.Location = new System.Drawing.Point(129, 93);
-            this.ClienteNombreTxt.Name = "ClienteNombreTxt";
-            this.ClienteNombreTxt.Size = new System.Drawing.Size(126, 20);
-            this.ClienteNombreTxt.TabIndex = 40;
-            // 
-            // ClienteFechaNacDateTime
-            // 
-            this.ClienteFechaNacDateTime.Location = new System.Drawing.Point(129, 125);
-            this.ClienteFechaNacDateTime.Name = "ClienteFechaNacDateTime";
-            this.ClienteFechaNacDateTime.Size = new System.Drawing.Size(326, 20);
-            this.ClienteFechaNacDateTime.TabIndex = 39;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(29, 126);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(93, 13);
-            this.label23.TabIndex = 38;
-            this.label23.Text = "Fecha Nacimiento";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(267, 100);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(44, 13);
-            this.label22.TabIndex = 37;
-            this.label22.Text = "Apellido";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(29, 93);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(44, 13);
-            this.label21.TabIndex = 36;
-            this.label21.Text = "Nombre";
-            // 
-            // ClienteTipoDocComboBox
-            // 
-            this.ClienteTipoDocComboBox.FormattingEnabled = true;
-            this.ClienteTipoDocComboBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.ClienteTipoDocComboBox.Location = new System.Drawing.Point(129, 61);
-            this.ClienteTipoDocComboBox.Name = "ClienteTipoDocComboBox";
-            this.ClienteTipoDocComboBox.Size = new System.Drawing.Size(126, 21);
-            this.ClienteTipoDocComboBox.TabIndex = 35;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(29, 63);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(86, 13);
-            this.label20.TabIndex = 34;
-            this.label20.Text = "Tipo Documento";
-            // 
-            // ClienteDNITxt
-            // 
-            this.ClienteDNITxt.Location = new System.Drawing.Point(329, 66);
-            this.ClienteDNITxt.Name = "ClienteDNITxt";
-            this.ClienteDNITxt.Size = new System.Drawing.Size(126, 20);
-            this.ClienteDNITxt.TabIndex = 33;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(267, 69);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Numero";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button1);
@@ -550,7 +554,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(634, 46);
+            this.button1.Location = new System.Drawing.Point(523, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(222, 23);
             this.button1.TabIndex = 14;
@@ -560,13 +564,31 @@
             // 
             // Grabar
             // 
-            this.Grabar.Location = new System.Drawing.Point(406, 46);
+            this.Grabar.Location = new System.Drawing.Point(264, 46);
             this.Grabar.Name = "Grabar";
             this.Grabar.Size = new System.Drawing.Size(222, 23);
             this.Grabar.TabIndex = 0;
             this.Grabar.Text = "Crear Usuario";
             this.Grabar.UseVisualStyleBackColor = true;
             this.Grabar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(27, 143);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(23, 13);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Rol";
+            // 
+            // RolesCombobox
+            // 
+            this.RolesCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RolesCombobox.FormattingEnabled = true;
+            this.RolesCombobox.Location = new System.Drawing.Point(30, 160);
+            this.RolesCombobox.Name = "RolesCombobox";
+            this.RolesCombobox.Size = new System.Drawing.Size(485, 21);
+            this.RolesCombobox.TabIndex = 32;
             // 
             // AltaUsuarioPage
             // 
@@ -587,12 +609,12 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.ClienteGroup.ResumeLayout(false);
+            this.ClienteGroup.PerformLayout();
             this.EmpresaGroup.ResumeLayout(false);
             this.EmpresaGroup.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.ClienteGroup.ResumeLayout(false);
-            this.ClienteGroup.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -650,5 +672,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox RolesCombobox;
+        private System.Windows.Forms.Label label10;
     }
 }

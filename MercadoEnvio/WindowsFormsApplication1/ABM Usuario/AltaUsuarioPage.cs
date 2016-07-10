@@ -21,6 +21,23 @@ namespace WindowsFormsApplication1.ABM_Usuario
         private void Form1_Load(object sender, EventArgs e)
         {
             //EmpresaFechaCreacionDateTime.Value = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
+            RolDaoImpl rolDao = new RolDaoImpl();
+            IList<Rol> roles = rolDao.obtenerRoles();
+
+            roles.Remove(roles.Where(x => x.nombre.Equals("Admin")).FirstOrDefault());
+
+            for (int i = 0; i < roles.Count; i++)
+            {
+                if (roles[i].activo == false)
+                {
+                    roles.Remove(roles[i]);
+                    i--;
+                }
+            }
+
+            RolesCombobox.DataSource = roles;
+            RolesCombobox.DisplayMember = "nombre";
+            RolesCombobox.ValueMember = "idRol";            
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -150,11 +167,10 @@ namespace WindowsFormsApplication1.ABM_Usuario
                     pass += String.Format("{0:x2}", x);
                 }
 
-
                 nuevoCliente.userName = nombreUsuario;
                 nuevoCliente.password = pass;
                 nuevoCliente.RolesLst = new List<Rol>();
-                nuevoCliente.RolesLst.Add(rolDao.getRolbyId(1));
+                nuevoCliente.RolesLst.Add(RolesCombobox.SelectedItem as Rol);
 
                 nuevoCliente.dni = DNI;
                 nuevoCliente.tipoDocumento = tipoDocumento;
@@ -234,7 +250,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevaEmpresa.userName = nombreUsuario;
                 nuevaEmpresa.password = pass;
                 nuevaEmpresa.RolesLst = new List<Rol>();
-                nuevaEmpresa.RolesLst.Add(rolDao.getRolbyId(2));
+                nuevaEmpresa.RolesLst.Add(RolesCombobox.SelectedItem as Rol);
 
                 nuevaEmpresa.razonSocial = RazonSocial;
                 nuevaEmpresa.cuit = Cuit;
@@ -285,6 +301,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             userPasswordImput.Text = "";
             tipoDeUsuarioComboBox.Text = null;
             ClienteTipoDocComboBox.Text = null;
+            RolesCombobox.Text = null;
             ClienteDNITxt.Text = "";
             ClienteNombreTxt.Text = "";
             ClienteApellidoTxt.Text = "";
