@@ -73,7 +73,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public IList<Cliente> darClientesFiltrados(String nombre, String apellido, String email, Double dni)
+        public IList<Cliente> darClientesFiltrados(String nombre, String apellido, String email, Int32 dni)
         {
             using (NHibernateManager manager = new NHibernateManager())
             {

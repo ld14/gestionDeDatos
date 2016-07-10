@@ -48,6 +48,11 @@ namespace WindowsFormsApplication1.Listado_Estadistico
             anioSelect.DisplayMember = "label";
             anioSelect.ValueMember = "value";
 
+            inicializarCombobox();
+        }
+
+        private void inicializarCombobox()
+        {
             //----------------------Combo Rubros-------------------------------------------//
             RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
             IList<Rubro> rubroLts = rubroDaoImpli.darRubroActivo();
@@ -182,11 +187,10 @@ namespace WindowsFormsApplication1.Listado_Estadistico
 
         private void button2_Click(object sender, EventArgs e)
         {
+            inicializarCombobox();
             anioSelect.Text = null;
             TrimestreCombo.Text = null;
             reporteSelect.Text = null;
-            RubroComboBox.Text = null;
-            visibilidadComboBox.Text = null;
             dataGridView1.DataSource = null;
         }
     }

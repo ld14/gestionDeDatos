@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             }
 
             PublicacionNormalDaoImpl publicacionDaoImpl = new PublicacionNormalDaoImpl();
-            textBox4.Text = Convert.ToString(publicacionDaoImpl.getSecuenciaPubli() + 1);
+            textBox4.Text = Convert.ToString(publicacionDaoImpl.getSecuenciaPubli());
 
             RubroDaoImpl rubroDaoImpli = new RubroDaoImpl();
             IList<Rubro> rubroLts = rubroDaoImpli.darRubroActivo();

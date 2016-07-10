@@ -63,10 +63,10 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 ClienteDaoImpl clienteDaoImpl = new ClienteDaoImpl();
                 String nombre = ClienteNombreTxt.Text;
                 String apellido = ClienteApellidoTxt.Text;
-                Double dni = 0;
+                Int32 dni = 0;
                 if (!ClienteDNITxt.Text.Equals(""))
                 {
-                    dni = Convert.ToDouble(ClienteDNITxt.Text);
+                    dni = Convert.ToInt32(ClienteDNITxt.Text);
                 }
                 String email = EmailTxt.Text;
                 if (nombre.Equals("") && apellido.Equals("") && email.Equals("") && dni == 0)
