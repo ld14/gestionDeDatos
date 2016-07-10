@@ -288,7 +288,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.DatosBasicosCiudad.Size = new System.Drawing.Size(208, 20);
             this.DatosBasicosCiudad.TabIndex = 50;
             this.DatosBasicosCiudad.Text = "System.CodeDom.CodePropertyReferenceExpression";
-            this.DatosBasicosCiudad.TextChanged += new System.EventHandler(this.DatosBasicosCiudad_TextChanged);
             // 
             // label8
             // 
@@ -468,6 +467,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // 
             // EmpresaFechaCreacionDateTime
             // 
+            this.EmpresaFechaCreacionDateTime.Enabled = false;
             this.EmpresaFechaCreacionDateTime.Location = new System.Drawing.Point(124, 132);
             this.EmpresaFechaCreacionDateTime.Name = "EmpresaFechaCreacionDateTime";
             this.EmpresaFechaCreacionDateTime.Size = new System.Drawing.Size(200, 20);
@@ -483,7 +483,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 111);
+            this.label7.Location = new System.Drawing.Point(19, 109);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 13);
             this.label7.TabIndex = 10;
@@ -506,7 +506,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 87);
+            this.label4.Location = new System.Drawing.Point(19, 85);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 7;
@@ -515,7 +515,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 63);
+            this.label5.Location = new System.Drawing.Point(19, 61);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 13);
             this.label5.TabIndex = 6;
@@ -524,7 +524,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 134);
+            this.label10.Location = new System.Drawing.Point(19, 136);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(97, 13);
             this.label10.TabIndex = 34;
@@ -559,7 +559,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.label9.Size = new System.Drawing.Size(114, 13);
             this.label9.TabIndex = 15;
             this.label9.Text = "¿Cambiar Contraseña?";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // ModificarUsuarioPage
             // 

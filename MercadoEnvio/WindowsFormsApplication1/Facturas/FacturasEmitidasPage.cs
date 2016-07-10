@@ -93,7 +93,11 @@ namespace WindowsFormsApplication1.Facturas
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
-            int offset = (int)bindingSource1.Current;
+            int offset = 0;
+            if (bindingSource1.Count > 0)
+            {
+                offset = (int)bindingSource1.Current;
+            }
             var records = new List<FacturasEmitidas>();
             for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
                 records.Add(this.customerList[i]);

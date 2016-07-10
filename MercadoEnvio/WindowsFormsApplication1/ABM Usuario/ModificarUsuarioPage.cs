@@ -22,6 +22,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
             IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
             rolUser.MoveNext();
 
+            EmpresaFechaCreacionDateTime.Value = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
+
             this.userNameInput.Text = SessionAttribute.user.userName;
             this.userPasswordImput.Text = "************";
             this.tipoDeUsuarioComboBox.Text = rolUser.Current.nombre;
@@ -80,7 +82,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
        
         private void Grabar_Click(object sender, EventArgs e)
         {
-
             String nombreUsuario = userNameInput.Text;
             //String Password = userPasswordImput.Text;
             String TipoDeUsuario = tipoDeUsuarioComboBox.Text;
@@ -103,7 +104,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
             String RazonSocial = EmpresaRazonSocialTxt.Text;
             String Cuit = EmpresaCuitTxt.Text;
             String NombreContacto = EmpresaNombreContactoTxt.Text;
-
 
             if (tipoDeUsuarioComboBox.Text.Equals("Cliente"))
             {
@@ -131,6 +131,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevoCliente.publicacionGratis = SessionAttribute.clienteUser.publicacionGratis;
                 nuevoCliente.perfilActivo = SessionAttribute.clienteUser.perfilActivo;
                 nuevoCliente.fechaCreacion = SessionAttribute.clienteUser.fechaCreacion;
+                nuevoCliente.estrellasDadas = SessionAttribute.clienteUser.estrellasDadas;
+                nuevoCliente.montoComprado = SessionAttribute.clienteUser.montoComprado;
 
                 nuevoCliente.dni = DNI;
                 nuevoCliente.tipoDocumento = tipoDocumento;
@@ -138,8 +140,6 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevoCliente.apellido = Apellido;
                 nuevoCliente.fechaNacimiento = FechaNacimiento;
                
-               
-
                 DatosBasicos nuevoDatoBasico = new DatosBasicos();
                 nuevoCliente.DatosBasicos = nuevoDatoBasico;
 
@@ -156,6 +156,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
                 ClienteDaoImpl ClienteDaoImpl = new ClienteDaoImpl();
                 ClienteDaoImpl.Add(nuevoCliente);
+                SessionAttribute.clienteUser = nuevoCliente;
             }
             else
             {
@@ -183,11 +184,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
                 nuevaEmpresa.razonSocial = RazonSocial;
                 nuevaEmpresa.cuit = Cuit;
-                
-                
                 nuevaEmpresa.nombreContacto = NombreContacto;
                 
-
                 DatosBasicos nuevoDatoBasico = new DatosBasicos();
                 nuevaEmpresa.DatosBasicos = nuevoDatoBasico;
 
@@ -205,18 +203,10 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
                 EmpresaDaoImpl empresaDaoImpl = new EmpresaDaoImpl();
                 empresaDaoImpl.Add(nuevaEmpresa);
+                SessionAttribute.empresaUser = nuevaEmpresa;
             }
-           
-        }
 
-        private void DatosBasicosCiudad_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
+            MessageBox.Show("Se han modificado sus datos con éxito");
         }
     }
 }

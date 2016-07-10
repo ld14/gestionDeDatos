@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using WindowsFormsApplication1.Entity.Utils;
 
 namespace WindowsFormsApplication1.ABM_Usuario
 {
@@ -19,7 +20,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //EmpresaFechaCreacionDateTime.Value = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -107,43 +108,35 @@ namespace WindowsFormsApplication1.ABM_Usuario
             String Apellido = ClienteApellidoTxt.Text;
 
             DateTime FechaNacimiento = DateUtils.convertirStringEnFecha(ClienteFechaNacDateTime.Value.ToString("dd/MM/yyyy"));
-            DateTime FechaCreacion = DateUtils.convertirStringEnFecha(EmpresaFechaCreacionDateTime.Value.ToString("dd/MM/yyyy"));
-            String RazonSocial="";
-            if (EmpresaRazonSocialTxt.Text != "")
-            {
-                RazonSocial = EmpresaRazonSocialTxt.Text;
-            }
-            else
-            {
-                MessageBox.Show("Debe ingresar una razon social");
-                return;
-            }
-            String Cuit = "";
-            if (EmpresaCuitTxt.Text != "")
-            {
-                Cuit = EmpresaCuitTxt.Text;
-                
-            }
-            else 
-            {
-                MessageBox.Show("Debe ingresar una CUIT");
-                return;
-            }
-            String NombreContacto = "";
-            if (EmpresaNombreContactoTxt.Text != "")
-            {
-                NombreContacto = EmpresaNombreContactoTxt.Text;
-            }
-            else 
-            {
-                MessageBox.Show("Debe ingresar una nombre de contacto");
-                return;
-            }
+            DateTime FechaCreacion = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
+           
     
             RolDaoImpl rolDao = new RolDaoImpl();
           
             if (tipoDeUsuarioComboBox.Text.Equals("Cliente"))
             {
+                if (ClienteTipoDocComboBox.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar un tipo de documento");
+                    return;
+                }
+                if (ClienteDNITxt.Text == "")
+                {
+                    MessageBox.Show("Debe ingresar un número de documento");
+                    return;
+                }
+                if (ClienteApellidoTxt.Text == "")
+                {
+                    MessageBox.Show("Debe ingresar el Apellido");
+                    return;
+                }
+                if (ClienteNombreTxt.Text == "")
+                {
+                    MessageBox.Show("Debe ingresar el nombre");
+                    return;
+                }
+
+
                 int tipoDocumento = Convert.ToInt16(ClienteTipoDocComboBox.Text);
                 int DNI = Convert.ToInt32(ClienteDNITxt.Text);
                 Cliente nuevoCliente = new Cliente();
@@ -194,6 +187,40 @@ namespace WindowsFormsApplication1.ABM_Usuario
             }
             else
             {
+                String RazonSocial = "";
+                if (EmpresaRazonSocialTxt.Text != "")
+                {
+                    RazonSocial = EmpresaRazonSocialTxt.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Debe ingresar una razon social");
+                    return;
+                }
+                String Cuit = "";
+                if (EmpresaCuitTxt.Text != "")
+                {
+                    Cuit = EmpresaCuitTxt.Text;
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe ingresar una CUIT");
+                    return;
+                }
+                String NombreContacto = "";
+                if (EmpresaNombreContactoTxt.Text != "")
+                {
+                    NombreContacto = EmpresaNombreContactoTxt.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Debe ingresar una nombre de contacto");
+                    return;
+                }
+
+
+
                 Empresa nuevaEmpresa = new Empresa();
                 /*Encriptacion password*/
                 var mesage = Encoding.UTF8.GetBytes(Password);
@@ -215,6 +242,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevaEmpresa.perfilActivo = true;
                 nuevaEmpresa.nombreContacto = NombreContacto;
                 nuevaEmpresa.publicacionGratis = true;
+                nuevaEmpresa.activoUsuario = true;
 
                 DatosBasicos nuevoDatoBasico = new DatosBasicos();
                 nuevaEmpresa.DatosBasicos = nuevoDatoBasico;
