@@ -756,7 +756,13 @@ INSERT INTO [LOPEZ_Y_CIA].[RolFunciones] VALUES
 	(2, 5),
 	(2, 7),
 	(3, 1),
-	(3, 6)
+	(3, 2),
+	(3, 3),
+	(3, 4),
+	(3, 5),
+	(3, 6),
+	(3, 7),
+	(3, 8)
 
 PRINT 'TABLA: RolFunciones'
 PRINT CHAR(13) + '--------------------------------'
