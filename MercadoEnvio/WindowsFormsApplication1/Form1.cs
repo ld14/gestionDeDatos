@@ -177,17 +177,37 @@ namespace WindowsFormsApplication1
 
         private void nuevaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            GenerarPublicacionPage generarPublicacionPage = new GenerarPublicacionPage();
-            generarPublicacionPage.Text = "init";
-            generarPublicacionPage.MdiParent = this;
-            generarPublicacionPage.Show();
+            Cliente tipoCliente = SessionAttribute.clienteUser;
+            Empresa tipoEmpresa = SessionAttribute.empresaUser;
+
+            if (tipoCliente == null && tipoEmpresa == null)
+            {
+                MessageBox.Show("No tienes acceso a esta funcionalidad porque no le corresponde a este tipo de usuario");
+            }
+            else
+            {
+                GenerarPublicacionPage generarPublicacionPage = new GenerarPublicacionPage();
+                generarPublicacionPage.Text = "init";
+                generarPublicacionPage.MdiParent = this;
+                generarPublicacionPage.Show();
+            }
         }
 
         private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BuscadorPublicacion buscadorPublicaciones = new BuscadorPublicacion();
-            buscadorPublicaciones.MdiParent = this;
-            buscadorPublicaciones.Show();
+            Cliente tipoCliente = SessionAttribute.clienteUser;
+            Empresa tipoEmpresa = SessionAttribute.empresaUser;
+
+            if (tipoCliente == null && tipoEmpresa == null)
+            {
+                MessageBox.Show("No tienes acceso a esta funcionalidad porque no le corresponde a este tipo de usuario");
+            }
+            else
+            {
+                BuscadorPublicacion buscadorPublicaciones = new BuscadorPublicacion();
+                buscadorPublicaciones.MdiParent = this;
+                buscadorPublicaciones.Show();
+            }
         }
 
         private void buscarToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -196,19 +216,35 @@ namespace WindowsFormsApplication1
             busquedaPublicacion.MdiParent = this;
 
             Cliente usr = SessionAttribute.clienteUser;
-            if (usr.comprasEfectuadas > usr.comprasCalificadas + 3)
+            if (usr == null)
             {
-                MessageBox.Show("Deberá calificar sus ultimas operaciones antes de seguir comprando");
-                busquedaPublicacion.Close();
+                MessageBox.Show("No tienes acceso a esta funcionalidad porque no le corresponde a este tipo de usuario");
             }
-            else busquedaPublicacion.Show();
+            else
+            {
+                if (usr.comprasEfectuadas > usr.comprasCalificadas + 3)
+                {
+                    MessageBox.Show("Deberá calificar sus ultimas operaciones antes de seguir comprando");
+                    busquedaPublicacion.Close();
+                }
+                else busquedaPublicacion.Show();
+            }
         }
 
         private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            CompraVentaForm compraVentaForm = new CompraVentaForm();
-            compraVentaForm.MdiParent = this;
-            compraVentaForm.Show();
+            Empresa tipoEmpresa = SessionAttribute.empresaUser;
+
+            if (tipoEmpresa == null)
+            {
+                CompraVentaForm compraVentaForm = new CompraVentaForm();
+                compraVentaForm.MdiParent = this;
+                compraVentaForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tienes acceso a esta funcionalidad porque no le corresponde a este tipo de usuario");
+            }
         }
 
         private void buscarToolStripMenuItem3_Click(object sender, EventArgs e)
@@ -252,10 +288,20 @@ namespace WindowsFormsApplication1
 
         private void misDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModificarUsuarioPage usuario = new ModificarUsuarioPage();
-            usuario.Text = "init";
-            usuario.MdiParent = this;
-            usuario.Show();
+            Cliente tipoCliente = SessionAttribute.clienteUser;
+            Empresa tipoEmpresa = SessionAttribute.empresaUser;
+
+            if (tipoCliente == null && tipoEmpresa == null)
+            {
+                MessageBox.Show("No tienes acceso a esta funcionalidad porque no le corresponde a este tipo de usuario");
+            }
+            else
+            {
+                ModificarUsuarioPage usuario = new ModificarUsuarioPage();
+                usuario.Text = "init";
+                usuario.MdiParent = this;
+                usuario.Show();
+            }
         }
 
         private void modificarToolStripMenuItem1_Click_1(object sender, EventArgs e)

@@ -18,11 +18,7 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
             IList<Visibilidad> visibilidades = visibilidadDao.obtenerVisibilidades();
             foreach (Visibilidad visibilidad in visibilidades)
             {
-                if (visibilidad.activo != false)
-                {
-                    VisibilidadesCombobox.Items.Add(visibilidad.nombreVisibilidad);
-                }
-                
+                VisibilidadesCombobox.Items.Add(visibilidad.nombreVisibilidad);  
             }
         }
 
@@ -31,7 +27,7 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
             VisibilidadDaoImpl visibilidadDao = new VisibilidadDaoImpl();
              string visibilidadName = VisibilidadesCombobox.SelectedItem as string;
             Visibilidad visibilidad = visibilidadDao.getVisibilidadByName(visibilidadName);
-            this.VisibilidadPorcentajeTxt.Text = Convert.ToString(visibilidad.porcentaje); 
+            this.porcentajeNumeric.Value = Convert.ToDecimal(visibilidad.porcentaje * 100); 
             this.VisibilidadCostoTxt.Text = Convert.ToString(visibilidad.costo);
 
         }
@@ -44,7 +40,7 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
             VisibilidadDaoImpl visibilidadDao = new VisibilidadDaoImpl();
             Visibilidad visibilidad = visibilidadDao.getVisibilidadByName(visibilidadName);
 
-            Double porcentaje = Convert.ToDouble(VisibilidadPorcentajeTxt.Text);
+            Double porcentaje = Convert.ToDouble(porcentajeNumeric.Value / 100);
             Double costo = Convert.ToDouble(VisibilidadCostoTxt.Text);
 
             Visibilidad nuevaVisibilidad = new Visibilidad();
@@ -54,6 +50,7 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
             nuevaVisibilidad.costo = costo;
             nuevaVisibilidad.idVisibilidad = visibilidad.idVisibilidad;
             nuevaVisibilidad.codigoVisibilidad = visibilidad.codigoVisibilidad;
+            nuevaVisibilidad.activo = activoCheckBox.Checked;
             
             visibilidadDao.Update(nuevaVisibilidad);
             MessageBox.Show("Visibilidad modificada con éxito");

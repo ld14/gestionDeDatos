@@ -31,7 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.VisibilidadPorcentajeTxt = new System.Windows.Forms.TextBox();
+            this.activoCheckBox = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.VisibilidadCostoTxt = new System.Windows.Forms.TextBox();
             this.VisibilidadNombreTxt = new System.Windows.Forms.TextBox();
@@ -39,14 +39,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.porcentajeNumeric = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.porcentajeNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(397, 43);
+            this.button1.Location = new System.Drawing.Point(245, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(222, 23);
             this.button1.TabIndex = 0;
@@ -57,7 +59,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Location = new System.Drawing.Point(18, 43);
+            this.groupBox1.Location = new System.Drawing.Point(20, 48);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(984, 474);
             this.groupBox1.TabIndex = 8;
@@ -66,7 +68,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.VisibilidadPorcentajeTxt);
+            this.groupBox3.Controls.Add(this.porcentajeNumeric);
+            this.groupBox3.Controls.Add(this.activoCheckBox);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.VisibilidadCostoTxt);
             this.groupBox3.Controls.Add(this.VisibilidadNombreTxt);
@@ -79,13 +82,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Nueva Visibilidad";
             // 
-            // VisibilidadPorcentajeTxt
+            // activoCheckBox
             // 
-            this.VisibilidadPorcentajeTxt.Location = new System.Drawing.Point(450, 200);
-            this.VisibilidadPorcentajeTxt.MaxLength = 21;
-            this.VisibilidadPorcentajeTxt.Name = "VisibilidadPorcentajeTxt";
-            this.VisibilidadPorcentajeTxt.Size = new System.Drawing.Size(240, 20);
-            this.VisibilidadPorcentajeTxt.TabIndex = 21;
+            this.activoCheckBox.AutoSize = true;
+            this.activoCheckBox.Location = new System.Drawing.Point(452, 290);
+            this.activoCheckBox.Name = "activoCheckBox";
+            this.activoCheckBox.Size = new System.Drawing.Size(56, 17);
+            this.activoCheckBox.TabIndex = 22;
+            this.activoCheckBox.Text = "Activo";
+            this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -134,22 +139,34 @@
             // 
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(18, 523);
+            this.groupBox2.Location = new System.Drawing.Point(20, 536);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(984, 94);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Opciones";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(639, 43);
+            this.button2.Location = new System.Drawing.Point(521, 38);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(222, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Limpiar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // porcentajeNumeric
+            // 
+            this.porcentajeNumeric.DecimalPlaces = 1;
+            this.porcentajeNumeric.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.porcentajeNumeric.Location = new System.Drawing.Point(450, 200);
+            this.porcentajeNumeric.Name = "porcentajeNumeric";
+            this.porcentajeNumeric.Size = new System.Drawing.Size(240, 20);
+            this.porcentajeNumeric.TabIndex = 23;
             // 
             // AltaVisibilidadPage
             // 
@@ -168,6 +185,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.porcentajeNumeric)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,7 +195,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox VisibilidadPorcentajeTxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox VisibilidadCostoTxt;
         private System.Windows.Forms.TextBox VisibilidadNombreTxt;
@@ -185,5 +202,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox activoCheckBox;
+        private System.Windows.Forms.NumericUpDown porcentajeNumeric;
     }
 }

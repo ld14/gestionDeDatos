@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
                 MessageBox.Show("Se debe ingresar el nombre de la visibilidad");
                 return;
             }
-            Double costo =0;
+            Double costo = 0;
             if(VisibilidadCostoTxt.Text != "")
             {
                 costo = Convert.ToDouble(VisibilidadCostoTxt.Text);
@@ -39,22 +39,13 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
                 return;
             }
 
-            Double porcentaje = Convert.ToDouble(VisibilidadPorcentajeTxt.Text);
-            if(VisibilidadPorcentajeTxt.Text!="")
-            {
-                porcentaje = Convert.ToDouble(VisibilidadPorcentajeTxt.Text);
-            }
-            else
-            {
-                MessageBox.Show("Se debe ingresar el porcentaje de la visibilidad");
-                
-            }
+            Double porcentaje = (Double)porcentajeNumeric.Value / 100;
 
             Visibilidad visibilidad = new Visibilidad();
-            visibilidad.nombreVisibilidad=nombre;
-            visibilidad.costo=costo;
-            visibilidad.porcentaje=porcentaje;
-            visibilidad.activo = true;
+            visibilidad.nombreVisibilidad = nombre;
+            visibilidad.costo = costo;
+            visibilidad.porcentaje = porcentaje;
+            visibilidad.activo = activoCheckBox.Checked;
             VisibilidadDaoImpl visibilidadDaoImp = new VisibilidadDaoImpl();
             visibilidadDaoImp.Add(visibilidad);
             MessageBox.Show("Se creo una nueva visibilidad");
@@ -64,7 +55,7 @@ namespace WindowsFormsApplication1.ABM_Visibilidad
         private void button2_Click(object sender, EventArgs e)
         {
             VisibilidadNombreTxt.Text = "";
-            VisibilidadPorcentajeTxt.Text = "";
+            porcentajeNumeric.Value = 0;
             VisibilidadCostoTxt.Text = "";
         }
     }
