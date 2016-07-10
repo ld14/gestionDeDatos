@@ -201,6 +201,8 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 //compUsuario.constructorCompraUsuario(nuevaCompraPublicacion, usr, Convert.ToInt32(cantidadVendida), compUsrDaoImpl.getProfileIdSequenceByCodigoCalificacion());
                 compUsrDaoImpl.Add(compUsuario);
 
+                actualizarPublicImpl.Update(nuevaCompraPublicacion);
+
                 MessageBox.Show("Se ha efectuado la compra con exito.\nPor favor, contactese con el vendedor para concretar y obtener su producto.");
                 this.Close();
             }
