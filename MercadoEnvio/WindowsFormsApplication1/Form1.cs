@@ -234,12 +234,20 @@ namespace WindowsFormsApplication1
 
         private void calificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cliente usr = SessionAttribute.clienteUser;
 
-            CalificacionesPage calificacion = new CalificacionesPage();
+            if (usr == null)
+            {
+                MessageBox.Show("No tienes acceso a esta funcionalidad porque no le corresponde a este tipo de usuario");
+            }
+            else
+            {
+                CalificacionesPage calificacion = new CalificacionesPage();
 
-            calificacion.Text = "init";
-            calificacion.MdiParent = this;
-           calificacion.Show();
+                calificacion.Text = "init";
+                calificacion.MdiParent = this;
+                calificacion.Show();
+            }
         }
 
         private void misDatosToolStripMenuItem_Click(object sender, EventArgs e)
