@@ -404,8 +404,8 @@ namespace WindowsFormsApplication1.Generar_Publicación
             nuevaPublSub.RubroLst.Add(selectedRubro);
             nuevaPublSub.stock = 1;
             nuevaPublSub.Usuario = usr;
-            nuevaPublSub.valorActual = Convert.ToDouble(PrecioTxt.Text);
-            nuevaPublSub.valorInicialVenta = nuevaPublSub.valorActual;
+            //nuevaPublSub.valorActual = Convert.ToDouble(PrecioTxt.Text);
+            nuevaPublSub.valorInicialVenta = Convert.ToDouble(PrecioTxt.Text);
             nuevaPublSub.Visibilidad = selectedVisibilidad;
 
             publicacionSubastaDaoImpl.Update(nuevaPublSub);
@@ -437,7 +437,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
                 if (ofertas.Count == 0)
                     labelInfo.Text = "Mejor Oferta: (Ninguna)";
                 else
-                    labelInfo.Text += "Mejor Oferta: $" + Convert.ToString(tag.valorActual);
+                    labelInfo.Text = "Mejor Oferta: $" + Convert.ToString(tag.valorActual);
             }
 
             if (this.Tag is PublicacionNormal)
