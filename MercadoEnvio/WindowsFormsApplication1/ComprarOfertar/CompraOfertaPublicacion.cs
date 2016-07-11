@@ -159,15 +159,14 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 }
 
                 nuevaCompraPublicacion.stock = cantProdDisponibles - cantidadVendida;
-
+                nuevaCompraPublicacion.Usuario.cantidadVentas++;
+                
                 if (nuevaCompraPublicacion.stock == 0) //Se vendio el total del producto.
                 {
-                    // Paso la compra a estado finalizado, actualizo el Stock y sumo una venta al cliente que publico
                     EstadoPublicacionDaoDaoImpl estadoDaoImpl = new EstadoPublicacionDaoDaoImpl();
                     nuevaCompraPublicacion.EstadoPublicacion = estadoDaoImpl.darEstadoByID(4);
-                    nuevaCompraPublicacion.Usuario.cantidadVentas++;
-                    actualizarPublicImpl.Update(nuevaCompraPublicacion);
                 }
+
 
                 //Actualizo la factura y cargo los datos del nuevo item
                 //TODO: ACA DEBERIA HABER HECHO UNA LISTA Y RECORRERLA CON LOS ITEMS SI QUEDA TIEMPO LO REFACTORIZO
