@@ -48,6 +48,7 @@ namespace WindowsFormsApplication1
                 return manager.Session.Get<PublicacionNormal>(id);
             }
         }
+
         public IList<PublicacionNormal> GetAll()
         {
             using (NHibernateManager manager = new NHibernateManager())
@@ -79,7 +80,7 @@ namespace WindowsFormsApplication1
             }
          }
 
-        public PublicacionNormal GetPublicacionByCodigo(double? codigoPublicacion)
+        public PublicacionNormal GetPublicacionByCodigo(int codigoPublicacion)
         {
             using (NHibernateManager manager = new NHibernateManager())
             {

@@ -78,7 +78,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public PublicacionSubasta GetPublicacionByCodigo(double? codigoPublicacion)
+        public PublicacionSubasta GetPublicacionByCodigo(int codigoPublicacion)
         {
             using (NHibernateManager manager = new NHibernateManager())
             {

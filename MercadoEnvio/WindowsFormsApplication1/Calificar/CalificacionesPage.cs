@@ -64,12 +64,15 @@ namespace WindowsFormsApplication1.Calificar
 
         private void calificar(object sender, EventArgs e)
         {
-            int idPublicacion = 0;
+            int codigoPublicacion = 0;
             int idCompraUsuario = 0;
+            string tipoPubl = "";
+            
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                idPublicacion = Convert.ToInt32(row.Cells[0].Value.ToString());
+                codigoPublicacion = Convert.ToInt32(row.Cells[0].Value.ToString());
                 idCompraUsuario = Convert.ToInt32(row.Cells[1].Value.ToString());
+                tipoPubl = row.Cells[2].Value.ToString();
                 dataGridView1.Rows.RemoveAt(row.Index);
             }
             
@@ -95,6 +98,23 @@ namespace WindowsFormsApplication1.Calificar
             usr.comprasCalificadas++;
             usrImpl.Update(usr);
 
+            PublicacionNormalDaoImpl nDAO = new PublicacionNormalDaoImpl();
+            PublicacionSubastaDaoImpl sDAO = new PublicacionSubastaDaoImpl();
+
+            if (tipoPubl.Equals("Subasta"))
+            {
+                PublicacionSubasta publicacion = sDAO.GetPublicacionByCodigo(codigoPublicacion);
+                publicacion.Usuario.cantidadEstrellas += calif.cantEstrellas;
+                sDAO.Update(publicacion);
+            }
+            if (tipoPubl.Equals("Compra Inmediata"))
+            {
+                PublicacionNormal publicacion = nDAO.GetPublicacionByCodigo(codigoPublicacion);
+                publicacion.Usuario.cantidadEstrellas += calif.cantEstrellas;
+                nDAO.Update(publicacion);
+            }
+            
+            
             MessageBox.Show("Calificacion exitosa.\nGracias por utilizar nuestra aplicación de *MercadoEnvio*");
         }
 
