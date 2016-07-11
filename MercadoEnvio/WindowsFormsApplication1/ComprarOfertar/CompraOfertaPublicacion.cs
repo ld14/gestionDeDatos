@@ -166,39 +166,27 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 FacturaDaoImpl factDaoImpl = new FacturaDaoImpl();
                 Factura fact = factDaoImpl.darFacturaByPublicacionID(nuevaCompraPublicacion.idPublicacion);
 
-                double montoAgregado = cantidadVendida * nuevaCompraPublicacion.Visibilidad.porcentaje;
+                double montoAgregado = cantidadVendida * nuevaCompraPublicacion.Visibilidad.porcentaje * nuevaCompraPublicacion.precioPorUnidad;
 
                 ItemFactura nuevoItemFactura = new ItemFactura();
                 nuevoItemFactura.cantidad = cantidadVendida;
                 nuevoItemFactura.Factura = fact;
                 nuevoItemFactura.monto = montoAgregado;
                 fact.ItemFacturasLts.Add(nuevoItemFactura);
-                fact.montoTotal += montoAgregado;
 
                 //Costos parametrizable segun compra. env
-                /*
                 if (nuevaCompraPublicacion.envioSN == true)
                 {
-                    ComisionesParametrizables comiP = cparImpl.darComisionesParametrizablesByNombreCorto("env");
-                    montoAgregado = (cantidadVendida * nuevaCompraPublicacion.precioPorUnidad) * comiP.porcentaje;
+                    ComisionesParametrizables comiP = cparImpl.darComisionesParametrizablesByNombreCorto("envio");
+                    montoAgregado += comiP.porcentaje * nuevaCompraPublicacion.Visibilidad.costo;
                     nuevoItemFactura = new ItemFactura();
-                    nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
+                    nuevoItemFactura.cantidad = 1;
                     nuevoItemFactura.Factura = fact;
-                    nuevoItemFactura.monto = montoAgregado;
+                    nuevoItemFactura.monto = comiP.porcentaje * nuevaCompraPublicacion.Visibilidad.costo;
                     fact.ItemFacturasLts.Add(nuevoItemFactura);
-                    fact.montoTotal = fact.montoTotal + montoAgregado;
                 }
 
-                ComisionesParametrizables comiProv = cparImpl.darComisionesParametrizablesByNombreCorto("prov");
-                montoAgregado = (cantidadVendida * nuevaCompraPublicacion.precioPorUnidad) * comiProv.porcentaje;
-                
-                nuevoItemFactura = new ItemFactura();
-                nuevoItemFactura.cantidad = nuevaCompraPublicacion.stock;
-                nuevoItemFactura.Factura = fact;
-                nuevoItemFactura.monto = montoAgregado;
-                fact.ItemFacturasLts.Add(nuevoItemFactura);
-                fact.montoTotal = fact.montoTotal + montoAgregado;
-                */
+                fact.montoTotal += montoAgregado;
                 factDaoImpl.Update(fact);
 
                 //Genero la compra Cliente y actualizo sus contadores
@@ -214,7 +202,6 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 compUsuario.Usuario = usr;
                 compUsuario.compraCantidad = cantidadVendida;
                 compUsuario.fecha = hoy;
-                //compUsuario.constructorCompraUsuario(nuevaCompraPublicacion, usr, Convert.ToInt32(cantidadVendida), compUsrDaoImpl.getProfileIdSequenceByCodigoCalificacion());
                 compUsrDaoImpl.Add(compUsuario);
 
                 actualizarPublicImpl.Update(nuevaCompraPublicacion);
