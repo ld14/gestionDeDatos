@@ -39,6 +39,10 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 cant_ofertaNumeric.Enabled = false;
                 vencimientoDateTime.Value = publicacionSubasta.fechaVencimiento;
                 vendedorTextBox.Text = publicacionSubasta.Usuario.userName;
+
+                Double cantEstrellas = publicacionSubasta.Usuario.cantidadEstrellas;
+                Double cantVentas = publicacionSubasta.Usuario.cantidadVentas;
+                reputacionTextBox.Text = String.Format("{0:N2}", cantEstrellas / cantVentas / 2);
                 ofertarNumeric.Value = Convert.ToDecimal(publicacionSubasta.valorActual);
                 ofertarNumeric.Minimum = ofertarNumeric.Value;
                 rubroTextBox.Text = publicacionSubasta.RubroLst.First().descripcion;
@@ -72,6 +76,10 @@ namespace WindowsFormsApplication1.ComprarOfertar
                 ofertaLabel.Visible = false;
                 vencimientoDateTime.Value = publicacionDirecta.fechaVencimiento;
                 vendedorTextBox.Text = publicacionDirecta.Usuario.userName;
+
+                Double cantEstrellas = publicacionDirecta.Usuario.cantidadEstrellas;
+                Double cantVentas = publicacionDirecta.Usuario.cantidadVentas;
+                reputacionTextBox.Text = String.Format("{0:N2}", cantEstrellas / cantVentas / 2);
                 rubroTextBox.Text = publicacionDirecta.RubroLst.First().descripcion;
             }
 

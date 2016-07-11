@@ -57,6 +57,8 @@
             this.comprarButton = new System.Windows.Forms.Button();
             this.opcionesGroupBox = new System.Windows.Forms.GroupBox();
             this.preguntarButton = new System.Windows.Forms.Button();
+            this.reputacionTextBox = new System.Windows.Forms.TextBox();
+            this.reputacionLabel = new System.Windows.Forms.Label();
             this.ComprarOfertar.SuspendLayout();
             this.compraGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ofertarNumeric)).BeginInit();
@@ -257,6 +259,8 @@
             // 
             // infoPublicacionGroupBox
             // 
+            this.infoPublicacionGroupBox.Controls.Add(this.reputacionTextBox);
+            this.infoPublicacionGroupBox.Controls.Add(this.reputacionLabel);
             this.infoPublicacionGroupBox.Controls.Add(this.precioTextBox);
             this.infoPublicacionGroupBox.Controls.Add(this.precioLabel);
             this.infoPublicacionGroupBox.Controls.Add(this.vencimientoLabel);
@@ -274,7 +278,7 @@
             // 
             // precioTextBox
             // 
-            this.precioTextBox.Location = new System.Drawing.Point(414, 167);
+            this.precioTextBox.Location = new System.Drawing.Point(414, 209);
             this.precioTextBox.Name = "precioTextBox";
             this.precioTextBox.ReadOnly = true;
             this.precioTextBox.Size = new System.Drawing.Size(114, 20);
@@ -283,7 +287,7 @@
             // precioLabel
             // 
             this.precioLabel.AutoSize = true;
-            this.precioLabel.Location = new System.Drawing.Point(328, 170);
+            this.precioLabel.Location = new System.Drawing.Point(328, 212);
             this.precioLabel.Name = "precioLabel";
             this.precioLabel.Size = new System.Drawing.Size(70, 13);
             this.precioLabel.TabIndex = 26;
@@ -292,7 +296,7 @@
             // vencimientoLabel
             // 
             this.vencimientoLabel.AutoSize = true;
-            this.vencimientoLabel.Location = new System.Drawing.Point(110, 211);
+            this.vencimientoLabel.Location = new System.Drawing.Point(42, 212);
             this.vencimientoLabel.Name = "vencimientoLabel";
             this.vencimientoLabel.Size = new System.Drawing.Size(101, 13);
             this.vencimientoLabel.TabIndex = 25;
@@ -303,14 +307,14 @@
             this.vencimientoDateTime.CustomFormat = "dd/MM/yyyy";
             this.vencimientoDateTime.Enabled = false;
             this.vencimientoDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.vencimientoDateTime.Location = new System.Drawing.Point(223, 208);
+            this.vencimientoDateTime.Location = new System.Drawing.Point(155, 209);
             this.vencimientoDateTime.Name = "vencimientoDateTime";
-            this.vencimientoDateTime.Size = new System.Drawing.Size(247, 20);
+            this.vencimientoDateTime.Size = new System.Drawing.Size(155, 20);
             this.vencimientoDateTime.TabIndex = 24;
             // 
             // stockTextBox
             // 
-            this.stockTextBox.Location = new System.Drawing.Point(91, 168);
+            this.stockTextBox.Location = new System.Drawing.Point(117, 168);
             this.stockTextBox.Name = "stockTextBox";
             this.stockTextBox.ReadOnly = true;
             this.stockTextBox.Size = new System.Drawing.Size(114, 20);
@@ -319,7 +323,7 @@
             // stockLabel
             // 
             this.stockLabel.AutoSize = true;
-            this.stockLabel.Location = new System.Drawing.Point(42, 171);
+            this.stockLabel.Location = new System.Drawing.Point(68, 171);
             this.stockLabel.Name = "stockLabel";
             this.stockLabel.Size = new System.Drawing.Size(38, 13);
             this.stockLabel.TabIndex = 13;
@@ -372,6 +376,23 @@
             this.preguntarButton.TabIndex = 1;
             this.preguntarButton.Text = "Preguntar al Vendedor";
             this.preguntarButton.UseVisualStyleBackColor = true;
+            // 
+            // reputacionTextBox
+            // 
+            this.reputacionTextBox.Location = new System.Drawing.Point(392, 168);
+            this.reputacionTextBox.Name = "reputacionTextBox";
+            this.reputacionTextBox.ReadOnly = true;
+            this.reputacionTextBox.Size = new System.Drawing.Size(114, 20);
+            this.reputacionTextBox.TabIndex = 29;
+            // 
+            // reputacionLabel
+            // 
+            this.reputacionLabel.AutoSize = true;
+            this.reputacionLabel.Location = new System.Drawing.Point(261, 171);
+            this.reputacionLabel.Name = "reputacionLabel";
+            this.reputacionLabel.Size = new System.Drawing.Size(114, 13);
+            this.reputacionLabel.TabIndex = 28;
+            this.reputacionLabel.Text = "Reputacion Vendedor:";
             // 
             // CompraOfertaPublicacion
             // 
@@ -434,5 +455,7 @@
         private System.Windows.Forms.Button preguntarButton;
         private System.Windows.Forms.Label vendedorLabel;
         private System.Windows.Forms.TextBox vendedorTextBox;
+        private System.Windows.Forms.TextBox reputacionTextBox;
+        private System.Windows.Forms.Label reputacionLabel;
     }
 }

@@ -92,6 +92,15 @@ namespace WindowsFormsApplication1.Generar_Publicación
             if (!Gratis.Visible)
             {
                 var visibilidad = (Visibilidad)visibilidadComboBox.SelectedItem;
+                if (visibilidad.nombreVisibilidad.Equals("Gratis"))
+                {
+                    EnvioCheckBox.Enabled = false;
+                    EnvioCheckBox.Checked = false;
+                }
+                else
+                {
+                    EnvioCheckBox.Enabled = true;
+                }
                 costoValue.Text = "$" + Convert.ToString(visibilidad.costo);
                 porcentajeValue.Text = Convert.ToString(visibilidad.porcentaje * 100) + "%";
             }
