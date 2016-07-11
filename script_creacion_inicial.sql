@@ -765,6 +765,13 @@ INSERT INTO [LOPEZ_Y_CIA].[RolFunciones] VALUES
 	(3, 8)
 
 PRINT 'TABLA: RolFunciones'
+
+--
+
+INSERT INTO [LOPEZ_Y_CIA].[ComisionesParametrizables] (nombreCorto, nombre, porcentaje)
+	VALUES ('envio', 'Comision por envio', 0.15)
+
+PRINT 'TABLA: ComisionesParametrizables'
 PRINT CHAR(13) + '--------------------------------'
 
 GO
