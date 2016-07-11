@@ -1189,6 +1189,7 @@ ON [LOPEZ_Y_CIA].[Publicacion] FOR UPDATE AS
 SET NOCOUNT ON
 BEGIN
 	DECLARE @idPublicacion int
+	DECLARE @monto numeric(16,2)
 	DECLARE @facturar numeric(16,2) = -1
 	DECLARE @idUsuario int
 	DECLARE @fecha datetime
@@ -1196,17 +1197,20 @@ BEGIN
 
 	SELECT TOP 1
 		@idPublicacion = A.idPublicacion,
-		@facturar = B.monto,
+		@monto = B.monto,
+		@facturar = D.valorActual,
 		@idUsuario = B.idUsuario,
 		@fecha = A.fechaVencimiento,
 		@visibilidadPorciento = C.porcentaje
 	FROM inserted A
 	JOIN [LOPEZ_Y_CIA].[OfertaSubasta] B ON A.idPublicacion = B.idPublicacion
+	JOIN [LOPEZ_Y_CIA].[PublicacionSubasta] D ON D.idPublicacion = A.idPublicacion
 	JOIN [LOPEZ_Y_CIA].[Visibilidad] C ON C.idVisibilidad = A.idVisibilidad
 	WHERE A.idEstadoPublicacion = 4
 	GROUP BY
 		A.idPublicacion,
 		B.monto,
+		D.valorActual,
 		B.idUsuario,
 		A.fechaVencimiento,
 		C.porcentaje
@@ -1216,7 +1220,7 @@ BEGIN
 	BEGIN
 		UPDATE OfertaSubasta
 		SET adjudicada = 1
-		WHERE idPublicacion = @idPublicacion AND monto = @facturar
+		WHERE idPublicacion = @idPublicacion AND monto = @monto
 
 		INSERT INTO [LOPEZ_Y_CIA].[CompraUsuario] (idPublicacion, idUsuario, fecha, compraCantidad) VALUES
 			(@idPublicacion, @idUsuario, @fecha, 1)
@@ -1229,8 +1233,10 @@ BEGIN
 		WHERE idPublicacion = @idPublicacion
 		
 		UPDATE Cliente
-		SET comprasEfectuadas = comprasEfectuadas + 1
-		WHERE idUsuario = @idUsuario 
+		SET
+			comprasEfectuadas = comprasEfectuadas + 1,
+			montoComprado = montoComprado + @facturar
+		WHERE idUsuario = @idUsuario
 	END
 END;
 SET NOCOUNT OFF
