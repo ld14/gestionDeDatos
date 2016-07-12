@@ -93,11 +93,32 @@ namespace WindowsFormsApplication1
                 return fin;
             }
         }
-        public IList<Rol> obtenerRoles()
+        public IList<Rol> GetAll()
         {
             using (NHibernateManager manager = new NHibernateManager())
             {
                 return manager.Session.QueryOver<Rol>().List();
+            }
+        }
+
+        public IList<Rol> GetByCriteria(short estado, string nombre)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<Rol>();
+                if (nombre.Length > 0)
+                    crit.Add(Expression.InsensitiveLike("nombre", "%" + nombre + "%"));
+                switch (estado)
+                {
+                    case 0:
+                        crit.Add(Expression.Eq("activo", true));
+                        break;
+                    case 1:
+                        crit.Add(Expression.Eq("activo", false));
+                        break;
+                }
+
+                return crit.List<Rol>();
             }
         }
 
@@ -106,7 +127,7 @@ namespace WindowsFormsApplication1
         {
             using (NHibernateManager manager = new NHibernateManager())
             {
-                var roles = obtenerRoles();
+                var roles = GetAll();
 
                 for (int i = 0; i < roles.Count; i++){
                     if (roles[i].nombre == rolName)

@@ -345,5 +345,12 @@ namespace WindowsFormsApplication1
             modificarUsuarionPage.Show();
         
         }
+
+        private void rolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaRolUsuarioPage rolUsuarioPage = new AltaRolUsuarioPage();
+            rolUsuarioPage.MdiParent = this;
+            rolUsuarioPage.Show();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
         {
             //EmpresaFechaCreacionDateTime.Value = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
             RolDaoImpl rolDao = new RolDaoImpl();
-            IList<Rol> roles = rolDao.obtenerRoles();
+            IList<Rol> roles = rolDao.GetAll();
 
             roles.Remove(roles.Where(x => x.nombre.Equals("Admin")).FirstOrDefault());
 

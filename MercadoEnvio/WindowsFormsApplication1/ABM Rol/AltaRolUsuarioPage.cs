@@ -18,86 +18,105 @@ namespace WindowsFormsApplication1.ABM_Rol
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FuncionalidadesChkLst_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        public IList<Funciones> func = new List<Funciones>();
 
         private void RolUsuarioPage_Load(object sender, EventArgs e)
         {
             //FuncionalidadesChkLst
             RolDaoImpl rolDao = new RolDaoImpl();
-            IList<Funciones> func = rolDao.obtenerFunciones();
+            func = rolDao.obtenerFunciones();
 
             FuncionalidadesChkLst.DataSource = func;
             FuncionalidadesChkLst.DisplayMember = "nombre";
             FuncionalidadesChkLst.ValueMember = "idFunciones";            
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void crear_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Rol rol = new Rol();
-            rol.activo = RolActivoChk.Checked;
-            
-            RolDaoImpl rolDao = new RolDaoImpl();
-            IList<Rol> roles = rolDao.obtenerRoles();
-            bool rolExistente = false;
-
-            foreach (Rol rolA in roles)
-            {
-                if (rolA.nombre == RolNombreTxt.Text)
-                {
-                    rolExistente = true;
-                    break;
-                }
-                else {
-                    rolExistente = false;
-                }
-            }
-
-            if (RolNombreTxt.Text == "")
+            // Validaciones
+            if (nombreTextBox.Text == "")
             {
                 MessageBox.Show("Se debe ingresar un nombre de rol");
+                return;
             }
-            else
-            {
-                if (rolExistente)
-                {
-                    MessageBox.Show("Rol existente, debe ingresar un nombre nuevo");
-                }
-                else
-                {
-                    rol.nombre = RolNombreTxt.Text;
-                    rol.FuncionesLst = new List<Funciones>();
+            // Validar que tenga almenos una funcion seleccionada
+            // Preguntar por activo
 
-                    var funciones = FuncionalidadesChkLst.CheckedItems.Cast<Funciones>();
-                    foreach (Funciones func in funciones)
+            Rol rol = new Rol();
+            rol.nombre = nombreTextBox.Text;
+            rol.activo = RolActivoChk.Checked;
+            rol.UsuarioLst = new List<Usuario>();
+            rol.FuncionesLst = new List<Funciones>();
+            
+            var funciones = FuncionalidadesChkLst.CheckedItems.Cast<Funciones>();
+
+            if (funciones.Count() == 0)
+            {
+                MessageBox.Show("Se debe seleccionar al menos una funcionalidad");
+                return;
+            }
+            foreach (Funciones func in funciones)
+            {
+                rol.FuncionesLst.Add(func);
+            }
+
+            RolDaoImpl rDAO = new RolDaoImpl();
+            rDAO.Add(rol);
+            
+            MessageBox.Show("Creación de Rol exitosa");
+            this.Close();
+        }
+
+        private void buscar_Click(object sender, EventArgs e)
+        {
+            using (BusquedaRol busquedaRolForm = new BusquedaRol())
+            {
+                if (busquedaRolForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.Tag = busquedaRolForm.rolSelecccionado;
+
+                    idRolTextBox.Text = busquedaRolForm.rolSelecccionado.idRol.ToString();
+                    nombreTextBox.Text = busquedaRolForm.rolSelecccionado.nombre;
+                    RolActivoChk.Checked = busquedaRolForm.rolSelecccionado.activo;
+
+                    RolDaoImpl rDAO = new RolDaoImpl();
+                    IList<Funciones> funcPorRol = rDAO.obtenerFuncionesPorRol(busquedaRolForm.rolSelecccionado.idRol);
+
+                    for (int d = 0; d < FuncionalidadesChkLst.Items.Count; d++)
                     {
-                        rol.FuncionesLst.Add(func);
+                        FuncionalidadesChkLst.SetItemChecked(d, false);
                     }
 
-                    rolDao.Add(rol);
-                    MessageBox.Show("Creacion de Rol exitosa");
+                    int i = 0;
+                    int j = 0;
+                    foreach (Funciones fun in func)
+                    {
+                        if (fun.nombre == funcPorRol[i].nombre)
+                        {
+                            FuncionalidadesChkLst.SetItemChecked(j, true);
+                            i++;
+                        }
+                        j++;
+                        if (i == funcPorRol.Count)
+                        {
+                            break;
+                        }
+                    }
+
+                    crearButton.Enabled = false;
+                    modificarButton.Enabled = true;
                 }
-
-
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void limpiarButton_Click(object sender, EventArgs e)
         {
-            RolNombreTxt.Text = null;
+            nombreTextBox.Text = null;
             RolActivoChk.Checked = false;
+            idRolTextBox.Text = null;
+
+            crearButton.Enabled = true;
+            modificarButton.Enabled = false;
 
             for (int d = 0; d < FuncionalidadesChkLst.Items.Count; d++)
             {
@@ -105,5 +124,46 @@ namespace WindowsFormsApplication1.ABM_Rol
             }
         }
 
+        private void modificarButton_Click(object sender, EventArgs e)
+        {
+            // Validaciones
+            if (nombreTextBox.Text == "")
+            {
+                MessageBox.Show("Se debe ingresar un nombre de rol");
+                return;
+            }
+            // Validar que tenga almenos una funcion seleccionada
+
+            if (MessageBox.Show("Advertencia: Inhabilitar el rol hará que todos los usuarios ya asignados a este rol no puedan acceder al sistema", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+
+            Rol rol = this.Tag as Rol;
+
+            //Cargar datos del form
+            rol.nombre = nombreTextBox.Text;
+            rol.activo = RolActivoChk.Checked;
+            rol.FuncionesLst = new List<Funciones>();
+
+            var funciones = FuncionalidadesChkLst.CheckedItems.Cast<Funciones>();
+
+            if (funciones.Count() == 0)
+            {
+                MessageBox.Show("Se debe seleccionar al menos una funcionalidad");
+                return;
+            }
+            foreach (Funciones func in funciones)
+            {
+                rol.FuncionesLst.Add(func);
+            }
+
+            //Actualizar rol
+            RolDaoImpl rDAO = new RolDaoImpl();
+            rDAO.Update(rol);
+
+            MessageBox.Show("Modificación de Rol exitosa");
+            this.Close();
+        }
     }
 }

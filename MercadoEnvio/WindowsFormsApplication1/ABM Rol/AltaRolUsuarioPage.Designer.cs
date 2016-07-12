@@ -28,31 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.crearButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.FuncionalidadesChkLst = new System.Windows.Forms.CheckedListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.limpiarButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.idRolTextBox = new System.Windows.Forms.TextBox();
+            this.buscarButton = new System.Windows.Forms.Button();
             this.RolActivoChk = new System.Windows.Forms.CheckBox();
-            this.RolNombreTxt = new System.Windows.Forms.TextBox();
+            this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.modificarButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // crearButton
             // 
-            this.button1.Location = new System.Drawing.Point(394, 37);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(222, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Crear";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.crearButton.Location = new System.Drawing.Point(236, 37);
+            this.crearButton.Name = "crearButton";
+            this.crearButton.Size = new System.Drawing.Size(222, 23);
+            this.crearButton.TabIndex = 0;
+            this.crearButton.Text = "Crear";
+            this.crearButton.UseVisualStyleBackColor = true;
+            this.crearButton.Click += new System.EventHandler(this.crear_Click);
             // 
             // groupBox1
             // 
@@ -63,8 +67,7 @@
             this.groupBox1.Size = new System.Drawing.Size(984, 474);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Nuevo";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBox1.Text = "ABM Rol";
             // 
             // groupBox4
             // 
@@ -92,12 +95,15 @@
             this.FuncionalidadesChkLst.Name = "FuncionalidadesChkLst";
             this.FuncionalidadesChkLst.Size = new System.Drawing.Size(560, 394);
             this.FuncionalidadesChkLst.TabIndex = 0;
-            this.FuncionalidadesChkLst.SelectedIndexChanged += new System.EventHandler(this.FuncionalidadesChkLst_SelectedIndexChanged);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.limpiarButton);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.idRolTextBox);
+            this.groupBox3.Controls.Add(this.buscarButton);
             this.groupBox3.Controls.Add(this.RolActivoChk);
-            this.groupBox3.Controls.Add(this.RolNombreTxt);
+            this.groupBox3.Controls.Add(this.nombreTextBox);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(9, 21);
             this.groupBox3.Name = "groupBox3";
@@ -106,27 +112,65 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Rol";
             // 
+            // limpiarButton
+            // 
+            this.limpiarButton.Location = new System.Drawing.Point(80, 368);
+            this.limpiarButton.Name = "limpiarButton";
+            this.limpiarButton.Size = new System.Drawing.Size(222, 23);
+            this.limpiarButton.TabIndex = 1;
+            this.limpiarButton.Text = "Limpiar";
+            this.limpiarButton.UseVisualStyleBackColor = true;
+            this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "ID Rol";
+            // 
+            // idRolTextBox
+            // 
+            this.idRolTextBox.Enabled = false;
+            this.idRolTextBox.Location = new System.Drawing.Point(81, 49);
+            this.idRolTextBox.Name = "idRolTextBox";
+            this.idRolTextBox.Size = new System.Drawing.Size(86, 20);
+            this.idRolTextBox.TabIndex = 8;
+            // 
+            // buscarButton
+            // 
+            this.buscarButton.Location = new System.Drawing.Point(282, 100);
+            this.buscarButton.Name = "buscarButton";
+            this.buscarButton.Size = new System.Drawing.Size(75, 23);
+            this.buscarButton.TabIndex = 7;
+            this.buscarButton.Text = "Buscar";
+            this.buscarButton.UseVisualStyleBackColor = true;
+            this.buscarButton.Click += new System.EventHandler(this.buscar_Click);
+            // 
             // RolActivoChk
             // 
             this.RolActivoChk.AutoSize = true;
-            this.RolActivoChk.Location = new System.Drawing.Point(292, 44);
+            this.RolActivoChk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RolActivoChk.Location = new System.Drawing.Point(239, 49);
             this.RolActivoChk.Name = "RolActivoChk";
-            this.RolActivoChk.Size = new System.Drawing.Size(56, 17);
+            this.RolActivoChk.Size = new System.Drawing.Size(65, 21);
             this.RolActivoChk.TabIndex = 6;
             this.RolActivoChk.Text = "Activo";
             this.RolActivoChk.UseVisualStyleBackColor = true;
             // 
-            // RolNombreTxt
+            // nombreTextBox
             // 
-            this.RolNombreTxt.Location = new System.Drawing.Point(78, 42);
-            this.RolNombreTxt.Name = "RolNombreTxt";
-            this.RolNombreTxt.Size = new System.Drawing.Size(181, 20);
-            this.RolNombreTxt.TabIndex = 5;
+            this.nombreTextBox.Location = new System.Drawing.Point(81, 102);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.Size = new System.Drawing.Size(181, 20);
+            this.nombreTextBox.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 45);
+            this.label1.Location = new System.Drawing.Point(28, 105);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 4;
@@ -134,24 +178,24 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.modificarButton);
+            this.groupBox2.Controls.Add(this.crearButton);
             this.groupBox2.Location = new System.Drawing.Point(20, 531);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(984, 94);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // button2
+            // modificarButton
             // 
-            this.button2.Location = new System.Drawing.Point(645, 37);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(222, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.modificarButton.Enabled = false;
+            this.modificarButton.Location = new System.Drawing.Point(519, 37);
+            this.modificarButton.Name = "modificarButton";
+            this.modificarButton.Size = new System.Drawing.Size(222, 23);
+            this.modificarButton.TabIndex = 1;
+            this.modificarButton.Text = "Modificar";
+            this.modificarButton.UseVisualStyleBackColor = true;
+            this.modificarButton.Click += new System.EventHandler(this.modificarButton_Click);
             // 
             // AltaRolUsuarioPage
             // 
@@ -182,15 +226,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button crearButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckedListBox FuncionalidadesChkLst;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox RolActivoChk;
-        private System.Windows.Forms.TextBox RolNombreTxt;
+        private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button limpiarButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox idRolTextBox;
+        private System.Windows.Forms.Button buscarButton;
+        private System.Windows.Forms.Button modificarButton;
     }
 }

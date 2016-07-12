@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1.ABM_Rol
         {
             InitializeComponent();
             RolDaoImpl rolDao = new RolDaoImpl();
-            IList<Rol> roles = rolDao.obtenerRoles();
+            IList<Rol> roles = rolDao.GetAll();
 
 
             foreach (Rol rol in roles)
