@@ -156,7 +156,7 @@ namespace WindowsFormsApplication1
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AltaRolUsuarioPage rolUsuarioPage = new AltaRolUsuarioPage();
+            ABMRolPage rolUsuarioPage = new ABMRolPage();
             rolUsuarioPage.MdiParent = this;
             rolUsuarioPage.Show();
         }
@@ -304,15 +304,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void modificarToolStripMenuItem1_Click_1(object sender, EventArgs e)
-        {
-          
-            ModificarRolPage modificarUsuarionPage = new ModificarRolPage();
-            modificarUsuarionPage.MdiParent = this;
-            modificarUsuarionPage.Show();
-        
-        }
-
         private void modificarToolStripMenuItem2_Click(object sender, EventArgs e)
         {
            
@@ -330,14 +321,6 @@ namespace WindowsFormsApplication1
         
         }
 
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EliminarRolPage modificarUsuarionPage = new EliminarRolPage();
-            modificarUsuarionPage.MdiParent = this;
-            modificarUsuarionPage.Show();
-        
-        }
-
         private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             EliminarVisibilidadPage modificarUsuarionPage = new EliminarVisibilidadPage();
@@ -348,7 +331,7 @@ namespace WindowsFormsApplication1
 
         private void rolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AltaRolUsuarioPage rolUsuarioPage = new AltaRolUsuarioPage();
+            ABMRolPage rolUsuarioPage = new ABMRolPage();
             rolUsuarioPage.MdiParent = this;
             rolUsuarioPage.Show();
         }

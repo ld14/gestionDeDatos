@@ -324,9 +324,19 @@ namespace WindowsFormsApplication1.ABM_Usuario
             DatosBasicosNroCalle.Text = "";
             DatosBasicosPiso.Text = "";
             DatosBasicosTelefono.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (BusquedaUsuario busquedaUsuarioForm = new BusquedaUsuario())
+            {
+                if (busquedaUsuarioForm.ShowDialog() == DialogResult.OK)
+                {
+                }
+            }
         }      
 
-        }
+    }
     
 }
 

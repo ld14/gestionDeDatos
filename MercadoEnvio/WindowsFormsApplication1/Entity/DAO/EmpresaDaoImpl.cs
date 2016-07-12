@@ -57,6 +57,25 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public IList<Empresa> GetByCriteria(string cuit, string mail, string razonSocial)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<Empresa>();
+                if (cuit.Length > 0)
+                    crit.Add(Expression.InsensitiveLike("cuit", "%" + cuit + "%"));
+                if (mail.Length > 0)
+                {
+                    crit.CreateAlias("DatosBasicos", "datoBasico");
+                    crit.Add(Expression.Like("datoBasico.email", "%" + mail + "%"));
+                }
+                if (razonSocial.Length > 0)
+                    crit.Add(Expression.InsensitiveLike("razonSocial", "%" + razonSocial + "%"));
+                return crit.List<Empresa>();
+            }
+        }
+
+
         public Empresa GetEmpresaByCuit(string cuit)       {
             using (NHibernateManager manager = new NHibernateManager()) {
 

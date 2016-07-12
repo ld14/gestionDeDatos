@@ -80,23 +80,11 @@
     <Compile Include="ABM Rol\BusquedaRol.Designer.cs">
       <DependentUpon>BusquedaRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Rol\EliminarRolPage.cs">
+    <Compile Include="ABM Rol\ABMRolPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Rol\EliminarRolPage.Designer.cs">
-      <DependentUpon>EliminarRolPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM Rol\ModificarRolPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM Rol\ModificarRolPage.Designer.cs">
-      <DependentUpon>ModificarRolPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM Rol\AltaRolUsuarioPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM Rol\AltaRolUsuarioPage.Designer.cs">
-      <DependentUpon>AltaRolUsuarioPage.cs</DependentUpon>
+    <Compile Include="ABM Rol\ABMRolPage.Designer.cs">
+      <DependentUpon>ABMRolPage.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM Rubro\AltaRubroPage.cs">
       <SubType>Form</SubType>
@@ -109,6 +97,12 @@
     </Compile>
     <Compile Include="ABM Usuario\AltaUsuarioPage.Designer.cs">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Usuario\BusquedaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Usuario\BusquedaUsuario.Designer.cs">
+      <DependentUpon>BusquedaUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM Usuario\ModificarUsuarioParaAdminPage.cs">
       <SubType>Form</SubType>
@@ -135,6 +129,8 @@
     <Compile Include="ABM Usuario\ModificarUsuarioPage.Designer.cs">
       <DependentUpon>ModificarUsuarioPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Usuario\UsuariosCliente.cs" />
+    <Compile Include="ABM Usuario\UsuariosEmpresa.cs" />
     <Compile Include="ABM Visibilidad\EliminarVisibilidadPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,20 +304,17 @@
     <EmbeddedResource Include="ABM Rol\BusquedaRol.resx">
       <DependentUpon>BusquedaRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM Rol\EliminarRolPage.resx">
-      <DependentUpon>EliminarRolPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM Rol\ModificarRolPage.resx">
-      <DependentUpon>ModificarRolPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM Rol\AltaRolUsuarioPage.resx">
-      <DependentUpon>AltaRolUsuarioPage.cs</DependentUpon>
+    <EmbeddedResource Include="ABM Rol\ABMRolPage.resx">
+      <DependentUpon>ABMRolPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Rubro\AltaRubroPage.resx">
       <DependentUpon>AltaRubroPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\AltaUsuarioPage.resx">
       <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Usuario\BusquedaUsuario.resx">
+      <DependentUpon>BusquedaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\ModificarUsuarioParaAdminPage.resx">
       <DependentUpon>ModificarUsuarioParaAdminPage.cs</DependentUpon>
@@ -394,7 +387,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Cliente.datasource" />
+    <None Include="Properties\DataSources\Empresa.datasource" />
     <None Include="Properties\DataSources\Rol.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.ABM_Usuario.UsuariosCliente.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.ABM_Usuario.UsuariosEmpresa.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.BuscadorPublicaciones.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.Form11+Employee.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.Form11.datasource" />

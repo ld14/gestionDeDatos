@@ -11,9 +11,9 @@ using System.Collections.ObjectModel;
 
 namespace WindowsFormsApplication1.ABM_Rol
 {
-    public partial class AltaRolUsuarioPage : Form
+    public partial class ABMRolPage : Form
     {
-        public AltaRolUsuarioPage()
+        public ABMRolPage()
         {
             InitializeComponent();
         }

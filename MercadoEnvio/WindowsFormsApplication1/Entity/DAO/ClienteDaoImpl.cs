@@ -73,6 +73,30 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public IList<Cliente> GetByCriteria(string dni, string mail, string nombre, string apellido)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                using (ITransaction transaction = manager.Session.BeginTransaction())
+                {
+                    ICriteria crit = manager.Session.CreateCriteria<Cliente>();
+                    if (nombre.Length > 0)
+                        crit.Add(Expression.InsensitiveLike("nombre", "%" + nombre + "%"));
+                    if (apellido.Length > 0)
+                        crit.Add(Expression.InsensitiveLike("apellido", "%" + apellido + "%"));
+                    if (mail.Length > 0)
+                    {
+                        crit.CreateAlias("DatosBasicos", "datoBasico");
+                        crit.Add(Expression.Like("datoBasico.email", "%" + mail + "%"));
+                    }
+
+                    // Ver el tema del DNI
+                    return crit.List<Cliente>();
+                }
+            }
+        }
+
+
         public IList<Cliente> darClientesFiltrados(String nombre, String apellido, String email, Int32 dni)
         {
             using (NHibernateManager manager = new NHibernateManager())

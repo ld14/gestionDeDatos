@@ -215,7 +215,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "BusquedaRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BusquedaRol";
+            this.Text = "Busqueda de Roles";
             this.Load += new System.EventHandler(this.BusquedaRol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
