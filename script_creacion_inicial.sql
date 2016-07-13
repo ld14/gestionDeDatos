@@ -18,9 +18,9 @@ CREATE TABLE [LOPEZ_Y_CIA].[Calificacion](
 CREATE TABLE [LOPEZ_Y_CIA].[Cliente](
 	[dni] [int] NOT NULL,
 	[tipoDocumento] [int] NOT NULL,
-	[nombre] [varchar](255) NULL,
-	[apellido] [varchar](255) NULL,
-	[fechaNacimiento] [date] NULL,
+	[nombre] [varchar](255) NOT NULL,
+	[apellido] [varchar](255) NOT NULL,
+	[fechaNacimiento] [date] NOT NULL,
 	[perfilActivo] [bit] NOT NULL,
 	[idUsuario] [int] NOT NULL,
 	[fechaCreacion] [date] NULL,
