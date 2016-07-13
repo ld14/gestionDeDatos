@@ -32,9 +32,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aBMMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.elimiarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rubroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,30 +82,9 @@
             // 
             // usuarioToolStripMenuItem
             // 
-            this.usuarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaToolStripMenuItem,
-            this.modificarToolStripMenuItem,
-            this.elimiarToolStripMenuItem});
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
             resources.ApplyResources(this.usuarioToolStripMenuItem, "usuarioToolStripMenuItem");
-            // 
-            // altaToolStripMenuItem
-            // 
-            this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
-            resources.ApplyResources(this.altaToolStripMenuItem, "altaToolStripMenuItem");
-            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
-            // 
-            // modificarToolStripMenuItem
-            // 
-            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            resources.ApplyResources(this.modificarToolStripMenuItem, "modificarToolStripMenuItem");
-            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click_1);
-            // 
-            // elimiarToolStripMenuItem
-            // 
-            this.elimiarToolStripMenuItem.Name = "elimiarToolStripMenuItem";
-            resources.ApplyResources(this.elimiarToolStripMenuItem, "elimiarToolStripMenuItem");
-            this.elimiarToolStripMenuItem.Click += new System.EventHandler(this.elimiarToolStripMenuItem_Click);
+            this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
             // rolToolStripMenuItem
             // 
@@ -269,7 +245,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aBMMenu;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rubroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem1;
@@ -286,13 +261,11 @@
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem estadisticasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calificacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem misDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem elimiarToolStripMenuItem;
 
 
     }

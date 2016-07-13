@@ -147,13 +147,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void altaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AltaUsuarioPage paginaAltaUsuario = new AltaUsuarioPage();
-            paginaAltaUsuario.MdiParent = this;
-            paginaAltaUsuario.Show();
-        }
-
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ABMRolPage rolUsuarioPage = new ABMRolPage();
@@ -334,6 +327,13 @@ namespace WindowsFormsApplication1
             ABMRolPage rolUsuarioPage = new ABMRolPage();
             rolUsuarioPage.MdiParent = this;
             rolUsuarioPage.Show();
+        }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaUsuarioPage paginaAltaUsuario = new AltaUsuarioPage();
+            paginaAltaUsuario.MdiParent = this;
+            paginaAltaUsuario.Show();
         }
     }
 }
