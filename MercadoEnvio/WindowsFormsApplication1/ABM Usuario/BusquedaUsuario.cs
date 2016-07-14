@@ -17,12 +17,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
             InitializeComponent();
         }
 
-        public short tipoUser = 0; 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        public Empresa empresaSeleccionada = null;
+        public Cliente clienteSeleccionado = null;
 
         private void BusquedaUsuario_Load(object sender, EventArgs e)
         {
@@ -47,21 +43,11 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
                     usrEmpresa.Add(temp);
                 }
-                
-                dataGridView1.DataSource = usuariosEmpresaBindingSource;
+
+                dataGridView1.Visible = true;
+                dataGridView2.Visible = false;
+
                 usuariosEmpresaBindingSource.Clear();
-                
-                dataGridView1.Columns[2].Width = 66;
-                dataGridView1.Columns[2].HeaderText = "ID Usuario";
-                dataGridView1.Columns[3].Width = 160;
-                dataGridView1.Columns[3].HeaderText = "Razón Social";
-                dataGridView1.Columns[4].Width = 92;
-                dataGridView1.Columns[4].HeaderText = "CUIT";
-                dataGridView1.Columns[5].Width = 190;
-                dataGridView1.Columns[5].HeaderText = "eMail";
-                dataGridView1.Columns[6].Visible = false;
-
-
                 foreach (UsuariosEmpresa emp in usrEmpresa)
                 {
                     usuariosEmpresaBindingSource.Add(emp);
@@ -86,33 +72,16 @@ namespace WindowsFormsApplication1.ABM_Usuario
                     usrCliente.Add(temp);
                 }
 
-                dataGridView1.DataSource = usuariosClienteBindingSource;
+                dataGridView1.Visible = false;
+                dataGridView2.Visible = true;
                 
                 usuariosClienteBindingSource.Clear();
-
-                dataGridView1.Columns[2].Width = 66;
-                dataGridView1.Columns[2].HeaderText = "ID Usuario";
-                dataGridView1.Columns[3].Width = 90;
-                dataGridView1.Columns[3].HeaderText = "Nombre";
-                dataGridView1.Columns[4].Width = 90;
-                dataGridView1.Columns[4].HeaderText = "Apellido";
-                dataGridView1.Columns[5].Width = 85;
-                dataGridView1.Columns[5].HeaderText = "Nro Documento";
-                dataGridView1.Columns[6].Width = 140;
-                dataGridView1.Columns[6].HeaderText = "eMail";
-                dataGridView1.Columns[6].Visible = true;
-
                 foreach (UsuariosCliente cli in usrCliente)
                 {
                     usuariosClienteBindingSource.Add(cli);
                 }
                 
             }
-        }
-
-        private void empresaBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void razonSocialTextBox_TextChanged(object sender, EventArgs e)
@@ -142,6 +111,41 @@ namespace WindowsFormsApplication1.ABM_Usuario
             clienteGroupBox.Visible = false;
             empresaGroupBox.Visible = true;
             disparar_evento();
+        }
+
+        private void apellidoTextBox_TextChanged(object sender, EventArgs e)
+        {
+            disparar_evento();
+        }
+
+        private void nombreTextBox_TextChanged(object sender, EventArgs e)
+        {
+            disparar_evento();
+        }
+
+        private void mailClienteTextBox_TextChanged(object sender, EventArgs e)
+        {
+            disparar_evento();
+        }
+
+        private void aceptarButton_Click(object sender, EventArgs e)
+        {
+            if (clienteRadioButton.Checked)
+            {
+                UsuariosCliente tempCli = dataGridView2.CurrentRow.DataBoundItem as UsuariosCliente;
+                ClienteDaoImpl cDAO = new ClienteDaoImpl();
+                clienteSeleccionado = cDAO.GetUsuarioById(tempCli.idUsuario);
+
+            }
+            if (empresaRadioButton.Checked)
+            {
+                UsuariosEmpresa tempEmp = dataGridView1.CurrentRow.DataBoundItem as UsuariosEmpresa;
+                EmpresaDaoImpl eDAO = new EmpresaDaoImpl();
+                empresaSeleccionada = eDAO.GetEmpresaByIdUsuario(tempEmp.idUsuario);
+            }
+
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Close();
         }
     }
 }

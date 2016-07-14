@@ -35,27 +35,17 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 }
             }
 
-            RolesCombobox.DataSource = roles;
-            RolesCombobox.DisplayMember = "nombre";
-            RolesCombobox.ValueMember = "idRol";            
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
+            rolesComboBox.DataSource = roles;
+            rolesComboBox.DisplayMember = "nombre";
+            rolesComboBox.ValueMember = "idRol";
+            rolesComboBox.SelectedItem = null;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tipoDeUsuarioComboBox.Text.Equals("Empresa"))
+            if (tipoUsuarioComboBox.Text.Equals("Empresa"))
             {
                 EmpresaGroup.Visible = true;
-                EmpresaGroup.BringToFront();
                 ClienteGroup.Visible = false;
             }
             else
@@ -75,18 +65,18 @@ namespace WindowsFormsApplication1.ABM_Usuario
             int piso = 0;
             
 
-            if (userNameInput.Text != "")
+            if (usernameTextBox.Text != "")
             {
-                nombreUsuario = userNameInput.Text;
+                nombreUsuario = usernameTextBox.Text;
             }
             else 
             {
                 MessageBox.Show("Debe ingresar un userName");
                 return;
             }
-            if (userPasswordImput.Text != "")
+            if (passwordTextBox.Text != "")
             {
-                Password = userPasswordImput.Text;
+                Password = passwordTextBox.Text;
             }
             else 
             {
@@ -94,10 +84,10 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 return;
             }
             
-            String TipoDeUsuario = tipoDeUsuarioComboBox.Text;
-            if (DatosBasicosEmailTxt.Text != "")
+            String TipoDeUsuario = tipoUsuarioComboBox.Text;
+            if (emailTextBox.Text != "")
             {
-                 Mail = DatosBasicosEmailTxt.Text;
+                 Mail = emailTextBox.Text;
             }
             else 
             {
@@ -105,64 +95,62 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 return;
             }
            
-            String Telefono = DatosBasicosTelefono.Text;
-            String DomicilioCalle = DatosBasicosDomicilioCalle.Text;
-            if (DatosBasicosNroCalle.Text != "") 
+            String Telefono = telefonoTextBox.Text;
+            String DomicilioCalle = domicilioTextBox.Text;
+            if (nroCalleTextBox.Text != "") 
             {
-                nroCalle = Convert.ToInt32(DatosBasicosNroCalle.Text);
+                nroCalle = Convert.ToInt32(nroCalleTextBox.Text);
             }
-            if (DatosBasicosPiso.Text != "")
+            if (pisoTextBox.Text != "")
             {
-                piso = Convert.ToInt32(DatosBasicosPiso.Text);
+                piso = Convert.ToInt32(pisoTextBox.Text);
             }
-            String depto = DatosBasicosDepto.Text;
-            String localidad = DatosBasicosLocalidad.Text;
-            String ciudad = DatosBasicosCiudad.Text;
-            String CodigoPostal = DatosBasicosCodigoPostal.Text;
+            String depto = deptoTextBox.Text;
+            String localidad = localidadTextBox.Text;
+            String ciudad = ciudadTextBox.Text;
+            String CodigoPostal = codigoPostalTextBox.Text;
 
-            
-            String Nombre = ClienteNombreTxt.Text;
-            String Apellido = ClienteApellidoTxt.Text;
+            String Nombre = nombreTextBox.Text;
+            String Apellido = apellidoTextBox.Text;
 
-            DateTime FechaNacimiento = DateUtils.convertirStringEnFecha(ClienteFechaNacDateTime.Value.ToString("dd/MM/yyyy"));
+            DateTime FechaNacimiento = DateUtils.convertirStringEnFecha(fechaNacDateTime.Value.ToString("dd/MM/yyyy"));
             DateTime FechaCreacion = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
            
-    
             RolDaoImpl rolDao = new RolDaoImpl();
           
-            if (tipoDeUsuarioComboBox.Text.Equals("Cliente"))
+            if (tipoUsuarioComboBox.Text.Equals("Cliente"))
             {
-                if (ClienteTipoDocComboBox.Text == "")
+                if (tipoDocumentoComboBox.Text == "")
                 {
                     MessageBox.Show("Debe seleccionar un tipo de documento");
                     return;
                 }
-                if (ClienteDNITxt.Text == "")
+                if (nroDocumentoTextBox.Text == "")
                 {
                     MessageBox.Show("Debe ingresar un número de documento");
                     return;
                 }
-                if (ClienteApellidoTxt.Text == "")
+                if (apellidoTextBox.Text == "")
                 {
                     MessageBox.Show("Debe ingresar el Apellido");
                     return;
                 }
-                if (ClienteNombreTxt.Text == "")
+                if (nombreTextBox.Text == "")
                 {
                     MessageBox.Show("Debe ingresar el nombre");
                     return;
                 }
 
                 UsuarioDaoImpl usuDaoImpl = new UsuarioDaoImpl();
-                if (usuDaoImpl.Acceder(userNameInput.Text) != null)
+                if (usuDaoImpl.Acceder(usernameTextBox.Text) != null)
                 {
                     MessageBox.Show("Ya existe un usuario con el nombre indicado. Por favor ingrese un nuevo nombre de usuario.");
                     return;    
                 }
 
 
-                int tipoDocumento = Convert.ToInt16(ClienteTipoDocComboBox.Text);
-                int DNI = Convert.ToInt32(ClienteDNITxt.Text);
+                int tipoDocumento = Convert.ToInt16(tipoDocumentoComboBox.Text);
+                int DNI = Convert.ToInt32(nroDocumentoTextBox.Text);
                 Cliente nuevoCliente = new Cliente();
                 /*Encriptacion password*/
                 var mesage = Encoding.UTF8.GetBytes(Password);
@@ -177,7 +165,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevoCliente.userName = nombreUsuario;
                 nuevoCliente.password = pass;
                 nuevoCliente.RolesLst = new List<Rol>();
-                nuevoCliente.RolesLst.Add(RolesCombobox.SelectedItem as Rol);
+                nuevoCliente.RolesLst.Add(rolesComboBox.SelectedItem as Rol);
 
                 nuevoCliente.dni = DNI;
                 nuevoCliente.tipoDocumento = tipoDocumento;
@@ -211,9 +199,9 @@ namespace WindowsFormsApplication1.ABM_Usuario
             else
             {
                 String RazonSocial = "";
-                if (EmpresaRazonSocialTxt.Text != "")
+                if (razonSocialTextBox.Text != "")
                 {
-                    RazonSocial = EmpresaRazonSocialTxt.Text;
+                    RazonSocial = razonSocialTextBox.Text;
                 }
                 else
                 {
@@ -221,9 +209,9 @@ namespace WindowsFormsApplication1.ABM_Usuario
                     return;
                 }
                 String Cuit = "";
-                if (EmpresaCuitTxt.Text != "")
+                if (cuitTextBox.Text != "")
                 {
-                    Cuit = EmpresaCuitTxt.Text;
+                    Cuit = cuitTextBox.Text;
 
                 }
                 else
@@ -232,17 +220,15 @@ namespace WindowsFormsApplication1.ABM_Usuario
                     return;
                 }
                 String NombreContacto = "";
-                if (EmpresaNombreContactoTxt.Text != "")
+                if (nombreContactoTextBox.Text != "")
                 {
-                    NombreContacto = EmpresaNombreContactoTxt.Text;
+                    NombreContacto = nombreContactoTextBox.Text;
                 }
                 else
                 {
                     MessageBox.Show("Debe ingresar una nombre de contacto");
                     return;
                 }
-
-
 
                 Empresa nuevaEmpresa = new Empresa();
                 /*Encriptacion password*/
@@ -257,7 +243,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevaEmpresa.userName = nombreUsuario;
                 nuevaEmpresa.password = pass;
                 nuevaEmpresa.RolesLst = new List<Rol>();
-                nuevaEmpresa.RolesLst.Add(RolesCombobox.SelectedItem as Rol);
+                nuevaEmpresa.RolesLst.Add(rolesComboBox.SelectedItem as Rol);
 
                 nuevaEmpresa.razonSocial = RazonSocial;
                 nuevaEmpresa.cuit = Cuit;
@@ -284,59 +270,96 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 empresaDaoImpl.Add(nuevaEmpresa);
                 MessageBox.Show("Creacion de empresa correcta");
             }
-            }
-
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
         }
 
-        private void textBox16_TextChanged(object sender, EventArgs e)
+        private void limpiarButton_Click(object sender, EventArgs e)
         {
-
+            usernameTextBox.Text = "";
+            passwordTextBox.Text = "";
+            tipoUsuarioComboBox.SelectedItem = null;
+            tipoDocumentoComboBox.SelectedItem = null;
+            rolesComboBox.SelectedItem = null;
+            nroDocumentoTextBox.Text = "";
+            nombreTextBox.Text = "";
+            apellidoTextBox.Text = "";
+            razonSocialTextBox.Text = "";
+            nombreContactoTextBox.Text = "";
+            cuitTextBox.Text = "";
+            ciudadTextBox.Text = "";
+            codigoPostalTextBox.Text = "";
+            deptoTextBox.Text = "";
+            domicilioTextBox.Text = "";
+            emailTextBox.Text = "";
+            localidadTextBox.Text = "";
+            nroCalleTextBox.Text = "";
+            pisoTextBox.Text = "";
+            telefonoTextBox.Text = "";
+            ClienteGroup.Visible = false;
+            EmpresaGroup.Visible = false;
+            cambiarContraseña.Visible = false;
+            passwordTextBox.Enabled = true;
+            modificarButton.Enabled = false;
+            crearButton.Enabled = true;
+            activoCheckBox.Checked = false;
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            userNameInput.Text = "";
-            userPasswordImput.Text = "";
-            tipoDeUsuarioComboBox.Text = null;
-            ClienteTipoDocComboBox.Text = null;
-            RolesCombobox.Text = null;
-            ClienteDNITxt.Text = "";
-            ClienteNombreTxt.Text = "";
-            ClienteApellidoTxt.Text = "";
-            EmpresaRazonSocialTxt.Text = "";
-            EmpresaNombreContactoTxt.Text = "";
-            EmpresaCuitTxt.Text = "";
-            DatosBasicosCiudad.Text = "";
-            DatosBasicosCodigoPostal.Text = "";
-            DatosBasicosDepto.Text = "";
-            DatosBasicosDomicilioCalle.Text = "";
-            DatosBasicosEmailTxt.Text = "";
-            DatosBasicosLocalidad.Text = "";
-            DatosBasicosNroCalle.Text = "";
-            DatosBasicosPiso.Text = "";
-            DatosBasicosTelefono.Text = "";
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void buscarButton_Click(object sender, EventArgs e)
         {
             using (BusquedaUsuario busquedaUsuarioForm = new BusquedaUsuario())
             {
                 if (busquedaUsuarioForm.ShowDialog() == DialogResult.OK)
                 {
+                    if (busquedaUsuarioForm.empresaSeleccionada == null)
+                    {
+                        this.Tag = busquedaUsuarioForm.clienteSeleccionado;
+                        usernameTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.userName;
+                        tipoUsuarioComboBox.SelectedIndex = tipoUsuarioComboBox.FindString("Cliente");
+                        rolesComboBox.SelectedIndex = rolesComboBox.FindString(busquedaUsuarioForm.clienteSeleccionado.RolesLst.First().nombre);
+                        tipoDocumentoComboBox.SelectedIndex = busquedaUsuarioForm.clienteSeleccionado.tipoDocumento;
+                        nroDocumentoTextBox.Text = Convert.ToString(busquedaUsuarioForm.clienteSeleccionado.dni);
+                        nombreTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.nombre;
+                        apellidoTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.apellido;
+                        fechaNacDateTime.Value = busquedaUsuarioForm.clienteSeleccionado.fechaNacimiento;
+                        emailTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.DatosBasicos.email;
+                        localidadTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.DatosBasicos.localidad;
+                        codigoPostalTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.DatosBasicos.codPostal;
+                        pisoTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.DatosBasicos.piso.ToString();
+                        nroCalleTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.DatosBasicos.nroCalle.ToString();
+                        telefonoTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.DatosBasicos.telefono;
+                        domicilioTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.DatosBasicos.domCalle;
+                        deptoTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.DatosBasicos.depto;
+                        ciudadTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.DatosBasicos.ciudad;
+                        activoCheckBox.Checked = busquedaUsuarioForm.clienteSeleccionado.activoUsuario;
+                    }
+                    else
+                    {
+                        this.Tag = busquedaUsuarioForm.empresaSeleccionada;
+                        usernameTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.userName;
+                        tipoUsuarioComboBox.SelectedIndex = tipoUsuarioComboBox.FindString("Empresa");
+                        rolesComboBox.SelectedIndex = rolesComboBox.FindString(busquedaUsuarioForm.empresaSeleccionada.RolesLst.First().nombre);
+                        razonSocialTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.razonSocial;
+                        cuitTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.cuit;
+                        nombreContactoTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.nombreContacto;
+                        emailTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.DatosBasicos.email;
+                        localidadTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.DatosBasicos.localidad;
+                        codigoPostalTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.DatosBasicos.codPostal;
+                        pisoTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.DatosBasicos.piso.ToString();
+                        nroCalleTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.DatosBasicos.nroCalle.ToString();
+                        telefonoTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.DatosBasicos.telefono;
+                        domicilioTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.DatosBasicos.domCalle;
+                        deptoTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.DatosBasicos.depto;
+                        ciudadTextBox.Text = busquedaUsuarioForm.empresaSeleccionada.DatosBasicos.ciudad;
+                        activoCheckBox.Checked = busquedaUsuarioForm.empresaSeleccionada.activoUsuario;
+                    }
+
+                    passwordTextBox.Enabled = false;
+                    passwordTextBox.Text = "********";
+                    cambiarContraseña.Visible = true;
+                    crearButton.Enabled = false;
+                    modificarButton.Enabled = true;
                 }
             }
         }      
-
     }
-    
 }
 

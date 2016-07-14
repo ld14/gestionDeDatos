@@ -39,6 +39,9 @@
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.clienteRadioButton = new System.Windows.Forms.RadioButton();
+            this.empresaRadioButton = new System.Windows.Forms.RadioButton();
             this.empresaGroupBox = new System.Windows.Forms.GroupBox();
             this.mailEmpresaTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,25 +49,26 @@
             this.label6 = new System.Windows.Forms.Label();
             this.razonSocialTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.clienteRadioButton = new System.Windows.Forms.RadioButton();
-            this.empresaRadioButton = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.usuariosEmpresaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usuariosClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.UsuarioLst = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FuncionesLst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aceptarButton = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idUsuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razonSocialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.extraRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuariosEmpresaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idUsuarioDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuariosClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clienteGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.empresaGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.empresaGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosEmpresaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosClienteBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +95,7 @@
             this.mailClienteTextBox.Name = "mailClienteTextBox";
             this.mailClienteTextBox.Size = new System.Drawing.Size(145, 20);
             this.mailClienteTextBox.TabIndex = 11;
+            this.mailClienteTextBox.TextChanged += new System.EventHandler(this.mailClienteTextBox_TextChanged);
             // 
             // label4
             // 
@@ -123,6 +128,7 @@
             this.apellidoTextBox.Name = "apellidoTextBox";
             this.apellidoTextBox.Size = new System.Drawing.Size(145, 20);
             this.apellidoTextBox.TabIndex = 7;
+            this.apellidoTextBox.TextChanged += new System.EventHandler(this.apellidoTextBox_TextChanged);
             // 
             // label2
             // 
@@ -139,6 +145,7 @@
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(141, 20);
             this.nombreTextBox.TabIndex = 5;
+            this.nombreTextBox.TextChanged += new System.EventHandler(this.nombreTextBox_TextChanged);
             // 
             // label1
             // 
@@ -148,7 +155,6 @@
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Nombre";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox2
             // 
@@ -161,6 +167,41 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros de Búsqueda";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.clienteRadioButton);
+            this.groupBox1.Controls.Add(this.empresaRadioButton);
+            this.groupBox1.Location = new System.Drawing.Point(466, 18);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(102, 84);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Estado";
+            // 
+            // clienteRadioButton
+            // 
+            this.clienteRadioButton.AutoSize = true;
+            this.clienteRadioButton.Location = new System.Drawing.Point(19, 50);
+            this.clienteRadioButton.Name = "clienteRadioButton";
+            this.clienteRadioButton.Size = new System.Drawing.Size(57, 17);
+            this.clienteRadioButton.TabIndex = 2;
+            this.clienteRadioButton.Text = "Cliente";
+            this.clienteRadioButton.UseVisualStyleBackColor = true;
+            this.clienteRadioButton.CheckedChanged += new System.EventHandler(this.clienteRadioButton_CheckedChanged);
+            // 
+            // empresaRadioButton
+            // 
+            this.empresaRadioButton.AutoSize = true;
+            this.empresaRadioButton.Checked = true;
+            this.empresaRadioButton.Location = new System.Drawing.Point(19, 22);
+            this.empresaRadioButton.Name = "empresaRadioButton";
+            this.empresaRadioButton.Size = new System.Drawing.Size(66, 17);
+            this.empresaRadioButton.TabIndex = 1;
+            this.empresaRadioButton.TabStop = true;
+            this.empresaRadioButton.Text = "Empresa";
+            this.empresaRadioButton.UseVisualStyleBackColor = true;
+            this.empresaRadioButton.CheckedChanged += new System.EventHandler(this.empresaRadioButton_CheckedChanged);
             // 
             // empresaGroupBox
             // 
@@ -227,41 +268,6 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "Razón Social";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.clienteRadioButton);
-            this.groupBox1.Controls.Add(this.empresaRadioButton);
-            this.groupBox1.Location = new System.Drawing.Point(466, 18);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(102, 84);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Estado";
-            // 
-            // clienteRadioButton
-            // 
-            this.clienteRadioButton.AutoSize = true;
-            this.clienteRadioButton.Location = new System.Drawing.Point(19, 50);
-            this.clienteRadioButton.Name = "clienteRadioButton";
-            this.clienteRadioButton.Size = new System.Drawing.Size(57, 17);
-            this.clienteRadioButton.TabIndex = 2;
-            this.clienteRadioButton.Text = "Cliente";
-            this.clienteRadioButton.UseVisualStyleBackColor = true;
-            this.clienteRadioButton.CheckedChanged += new System.EventHandler(this.clienteRadioButton_CheckedChanged);
-            // 
-            // empresaRadioButton
-            // 
-            this.empresaRadioButton.AutoSize = true;
-            this.empresaRadioButton.Checked = true;
-            this.empresaRadioButton.Location = new System.Drawing.Point(19, 22);
-            this.empresaRadioButton.Name = "empresaRadioButton";
-            this.empresaRadioButton.Size = new System.Drawing.Size(66, 17);
-            this.empresaRadioButton.TabIndex = 1;
-            this.empresaRadioButton.TabStop = true;
-            this.empresaRadioButton.Text = "Empresa";
-            this.empresaRadioButton.UseVisualStyleBackColor = true;
-            this.empresaRadioButton.CheckedChanged += new System.EventHandler(this.empresaRadioButton_CheckedChanged);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -271,96 +277,138 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UsuarioLst,
-            this.FuncionesLst,
             this.idUsuarioDataGridViewTextBoxColumn,
             this.razonSocialDataGridViewTextBoxColumn,
             this.cuitDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn,
-            this.extraRow});
+            this.emailDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.usuariosEmpresaBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 145);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 145);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(568, 163);
             this.dataGridView1.TabIndex = 13;
             // 
-            // button1
+            // aceptarButton
             // 
-            this.button1.Location = new System.Drawing.Point(253, 322);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.aceptarButton.Location = new System.Drawing.Point(253, 322);
+            this.aceptarButton.Name = "aceptarButton";
+            this.aceptarButton.Size = new System.Drawing.Size(120, 23);
+            this.aceptarButton.TabIndex = 14;
+            this.aceptarButton.Text = "Aceptar";
+            this.aceptarButton.UseVisualStyleBackColor = true;
+            this.aceptarButton.Click += new System.EventHandler(this.aceptarButton_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idUsuarioDataGridViewTextBoxColumn1,
+            this.nombre,
+            this.apellido,
+            this.dni,
+            this.mail});
+            this.dataGridView2.DataSource = this.usuariosClienteBindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(30, 145);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(568, 163);
+            this.dataGridView2.TabIndex = 15;
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // apellido
+            // 
+            this.apellido.DataPropertyName = "apellido";
+            this.apellido.HeaderText = "Apellido";
+            this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
+            this.apellido.Width = 86;
+            // 
+            // dni
+            // 
+            this.dni.DataPropertyName = "dni";
+            this.dni.HeaderText = "Nro Documento";
+            this.dni.Name = "dni";
+            this.dni.ReadOnly = true;
+            this.dni.Width = 106;
+            // 
+            // mail
+            // 
+            this.mail.DataPropertyName = "mail";
+            this.mail.HeaderText = "eMail";
+            this.mail.Name = "mail";
+            this.mail.ReadOnly = true;
+            this.mail.Width = 127;
+            // 
+            // idUsuarioDataGridViewTextBoxColumn
+            // 
+            this.idUsuarioDataGridViewTextBoxColumn.DataPropertyName = "idUsuario";
+            this.idUsuarioDataGridViewTextBoxColumn.HeaderText = "ID Usuario";
+            this.idUsuarioDataGridViewTextBoxColumn.Name = "idUsuarioDataGridViewTextBoxColumn";
+            this.idUsuarioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idUsuarioDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // razonSocialDataGridViewTextBoxColumn
+            // 
+            this.razonSocialDataGridViewTextBoxColumn.DataPropertyName = "razonSocial";
+            this.razonSocialDataGridViewTextBoxColumn.HeaderText = "Razón Social";
+            this.razonSocialDataGridViewTextBoxColumn.Name = "razonSocialDataGridViewTextBoxColumn";
+            this.razonSocialDataGridViewTextBoxColumn.ReadOnly = true;
+            this.razonSocialDataGridViewTextBoxColumn.Width = 172;
+            // 
+            // cuitDataGridViewTextBoxColumn
+            // 
+            this.cuitDataGridViewTextBoxColumn.DataPropertyName = "cuit";
+            this.cuitDataGridViewTextBoxColumn.HeaderText = "CUIT";
+            this.cuitDataGridViewTextBoxColumn.Name = "cuitDataGridViewTextBoxColumn";
+            this.cuitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cuitDataGridViewTextBoxColumn.Width = 94;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "eMail";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Width = 155;
             // 
             // usuariosEmpresaBindingSource
             // 
             this.usuariosEmpresaBindingSource.DataSource = typeof(WindowsFormsApplication1.ABM_Usuario.UsuariosEmpresa);
             // 
+            // idUsuarioDataGridViewTextBoxColumn1
+            // 
+            this.idUsuarioDataGridViewTextBoxColumn1.DataPropertyName = "idUsuario";
+            this.idUsuarioDataGridViewTextBoxColumn1.HeaderText = "ID Usuario";
+            this.idUsuarioDataGridViewTextBoxColumn1.Name = "idUsuarioDataGridViewTextBoxColumn1";
+            this.idUsuarioDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idUsuarioDataGridViewTextBoxColumn1.Width = 82;
+            // 
             // usuariosClienteBindingSource
             // 
             this.usuariosClienteBindingSource.DataSource = typeof(WindowsFormsApplication1.ABM_Usuario.UsuariosCliente);
-            // 
-            // UsuarioLst
-            // 
-            this.UsuarioLst.DataPropertyName = "UsuarioLst";
-            this.UsuarioLst.HeaderText = "UsuarioLst";
-            this.UsuarioLst.Name = "UsuarioLst";
-            this.UsuarioLst.ReadOnly = true;
-            this.UsuarioLst.Visible = false;
-            // 
-            // FuncionesLst
-            // 
-            this.FuncionesLst.DataPropertyName = "FuncionesLst";
-            this.FuncionesLst.HeaderText = "FuncionesLst";
-            this.FuncionesLst.Name = "FuncionesLst";
-            this.FuncionesLst.ReadOnly = true;
-            this.FuncionesLst.Visible = false;
-            // 
-            // idUsuarioDataGridViewTextBoxColumn
-            // 
-            this.idUsuarioDataGridViewTextBoxColumn.DataPropertyName = "idUsuario";
-            this.idUsuarioDataGridViewTextBoxColumn.HeaderText = "idUsuario";
-            this.idUsuarioDataGridViewTextBoxColumn.Name = "idUsuarioDataGridViewTextBoxColumn";
-            this.idUsuarioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // razonSocialDataGridViewTextBoxColumn
-            // 
-            this.razonSocialDataGridViewTextBoxColumn.DataPropertyName = "razonSocial";
-            this.razonSocialDataGridViewTextBoxColumn.HeaderText = "razonSocial";
-            this.razonSocialDataGridViewTextBoxColumn.Name = "razonSocialDataGridViewTextBoxColumn";
-            this.razonSocialDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cuitDataGridViewTextBoxColumn
-            // 
-            this.cuitDataGridViewTextBoxColumn.DataPropertyName = "cuit";
-            this.cuitDataGridViewTextBoxColumn.HeaderText = "cuit";
-            this.cuitDataGridViewTextBoxColumn.Name = "cuitDataGridViewTextBoxColumn";
-            this.cuitDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // extraRow
-            // 
-            this.extraRow.HeaderText = "extraRow";
-            this.extraRow.Name = "extraRow";
-            this.extraRow.ReadOnly = true;
             // 
             // BusquedaUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 357);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.aceptarButton);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView2);
             this.Name = "BusquedaUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BusquedaUsuario";
@@ -368,11 +416,12 @@
             this.clienteGroupBox.ResumeLayout(false);
             this.clienteGroupBox.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.empresaGroupBox.ResumeLayout(false);
-            this.empresaGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.empresaGroupBox.ResumeLayout(false);
+            this.empresaGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosEmpresaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosClienteBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -402,16 +451,20 @@
         private System.Windows.Forms.TextBox razonSocialTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button aceptarButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource usuariosEmpresaBindingSource;
         private System.Windows.Forms.BindingSource usuariosClienteBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioLst;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FuncionesLst;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idUsuarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn razonSocialDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn extraRow;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idUsuarioDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mail;
     }
 }
