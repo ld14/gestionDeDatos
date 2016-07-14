@@ -47,12 +47,22 @@ namespace WindowsFormsApplication1
             }
         }
 
-        
-        public Empresa GetEmpresaByRazonSocial(string razonSocial)    {
+        public Empresa GetEmpresaByRazonSocial(string razonSocial)
+        {
             using (NHibernateManager manager = new NHibernateManager())
             {
                 ICriteria crit = manager.Session.CreateCriteria<Empresa>();
                 crit.Add(Expression.Eq("razonSocial", razonSocial));
+                return crit.UniqueResult<Empresa>();
+            }
+        }
+
+        public Empresa GetEmpresaByCuit(string cuit)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<Empresa>();
+                crit.Add(Expression.Eq("cuit", cuit));
                 return crit.UniqueResult<Empresa>();
             }
         }
@@ -73,18 +83,6 @@ namespace WindowsFormsApplication1
                     crit.Add(Expression.InsensitiveLike("razonSocial", "%" + razonSocial + "%"));
                 return crit.List<Empresa>();
             }
-        }
-
-
-        public Empresa GetEmpresaByCuit(string cuit)       {
-            using (NHibernateManager manager = new NHibernateManager()) {
-
-                ICriteria crit = manager.Session.CreateCriteria<Empresa>();
-                //crit.CreateAlias("Usuario", "usr");
-                crit.Add(Expression.Eq("cuit",cuit));
-                return crit.UniqueResult<Empresa>();
-
-            }  
         }
 
         public IList<Empresa> getAllEmpresaActivas()        {

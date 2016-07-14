@@ -11,8 +11,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
         public String Mail { get; set; }
         public String Telefono { get; set; }
         public String DomicilioCalle { get; set; }
-        public Double nroCalle { get; set; }
-        public Double? piso { get; set; }
+        public int? nroCalle { get; set; }
+        public int? piso { get; set; }
         public String depto { get; set; }
         public String CodigoPostal { get; set; }
         public String localidad { get; set; }

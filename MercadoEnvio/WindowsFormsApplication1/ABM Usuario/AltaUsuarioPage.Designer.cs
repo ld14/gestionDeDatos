@@ -63,14 +63,11 @@
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.EmpresaGroup = new System.Windows.Forms.GroupBox();
-            this.nombreContactoTextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cuitTextBox = new System.Windows.Forms.TextBox();
-            this.razonSocialTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.ClienteGroup = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.apellidoTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.fechaNacDateTime = new System.Windows.Forms.DateTimePicker();
@@ -81,19 +78,22 @@
             this.label20 = new System.Windows.Forms.Label();
             this.nroDocumentoTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.EmpresaGroup = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.nombreContactoTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cuitTextBox = new System.Windows.Forms.TextBox();
+            this.razonSocialTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.modificarButton = new System.Windows.Forms.Button();
             this.crearButton = new System.Windows.Forms.Button();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.EmpresaGroup.SuspendLayout();
             this.ClienteGroup.SuspendLayout();
+            this.EmpresaGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -154,6 +154,7 @@
             this.cambiarContraseña.TabIndex = 33;
             this.cambiarContraseña.Text = "¿Cambiar Contraseña?";
             this.cambiarContraseña.Visible = false;
+            this.cambiarContraseña.Click += new System.EventHandler(this.cambiarContraseña_Click);
             // 
             // rolesComboBox
             // 
@@ -443,72 +444,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Username";
             // 
-            // EmpresaGroup
-            // 
-            this.EmpresaGroup.Controls.Add(this.label26);
-            this.EmpresaGroup.Controls.Add(this.label25);
-            this.EmpresaGroup.Controls.Add(this.nombreContactoTextBox);
-            this.EmpresaGroup.Controls.Add(this.label7);
-            this.EmpresaGroup.Controls.Add(this.cuitTextBox);
-            this.EmpresaGroup.Controls.Add(this.razonSocialTextBox);
-            this.EmpresaGroup.Controls.Add(this.label4);
-            this.EmpresaGroup.Controls.Add(this.label5);
-            this.EmpresaGroup.Location = new System.Drawing.Point(31, 210);
-            this.EmpresaGroup.Name = "EmpresaGroup";
-            this.EmpresaGroup.Size = new System.Drawing.Size(484, 215);
-            this.EmpresaGroup.TabIndex = 10;
-            this.EmpresaGroup.TabStop = false;
-            this.EmpresaGroup.Text = "Datos Principales Empresa";
-            this.EmpresaGroup.Visible = false;
-            // 
-            // nombreContactoTextBox
-            // 
-            this.nombreContactoTextBox.Location = new System.Drawing.Point(171, 129);
-            this.nombreContactoTextBox.Name = "nombreContactoTextBox";
-            this.nombreContactoTextBox.Size = new System.Drawing.Size(172, 20);
-            this.nombreContactoTextBox.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(64, 133);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Nombre Contacto";
-            // 
-            // cuitTextBox
-            // 
-            this.cuitTextBox.Location = new System.Drawing.Point(171, 96);
-            this.cuitTextBox.Name = "cuitTextBox";
-            this.cuitTextBox.Size = new System.Drawing.Size(126, 20);
-            this.cuitTextBox.TabIndex = 9;
-            // 
-            // razonSocialTextBox
-            // 
-            this.razonSocialTextBox.Location = new System.Drawing.Point(171, 62);
-            this.razonSocialTextBox.Name = "razonSocialTextBox";
-            this.razonSocialTextBox.Size = new System.Drawing.Size(226, 20);
-            this.razonSocialTextBox.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 99);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "CUIT";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(64, 65);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Razón social";
-            // 
             // ClienteGroup
             // 
             this.ClienteGroup.Controls.Add(this.label30);
@@ -532,6 +467,50 @@
             this.ClienteGroup.TabStop = false;
             this.ClienteGroup.Text = "Datos Principales Cliente";
             this.ClienteGroup.Visible = false;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.Red;
+            this.label30.Location = new System.Drawing.Point(459, 90);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(18, 18);
+            this.label30.TabIndex = 44;
+            this.label30.Text = "*";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.Red;
+            this.label29.Location = new System.Drawing.Point(459, 57);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(18, 18);
+            this.label29.TabIndex = 43;
+            this.label29.Text = "*";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.Location = new System.Drawing.Point(251, 90);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(18, 18);
+            this.label28.TabIndex = 42;
+            this.label28.Text = "*";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(251, 57);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(18, 18);
+            this.label27.TabIndex = 38;
+            this.label27.Text = "*";
             // 
             // apellidoTextBox
             // 
@@ -583,6 +562,7 @@
             // 
             // tipoDocumentoComboBox
             // 
+            this.tipoDocumentoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDocumentoComboBox.FormattingEnabled = true;
             this.tipoDocumentoComboBox.Items.AddRange(new object[] {
             "DNI",
@@ -618,6 +598,94 @@
             this.label6.TabIndex = 31;
             this.label6.Text = "Número";
             // 
+            // EmpresaGroup
+            // 
+            this.EmpresaGroup.Controls.Add(this.label26);
+            this.EmpresaGroup.Controls.Add(this.label25);
+            this.EmpresaGroup.Controls.Add(this.nombreContactoTextBox);
+            this.EmpresaGroup.Controls.Add(this.label7);
+            this.EmpresaGroup.Controls.Add(this.cuitTextBox);
+            this.EmpresaGroup.Controls.Add(this.razonSocialTextBox);
+            this.EmpresaGroup.Controls.Add(this.label4);
+            this.EmpresaGroup.Controls.Add(this.label5);
+            this.EmpresaGroup.Location = new System.Drawing.Point(31, 210);
+            this.EmpresaGroup.Name = "EmpresaGroup";
+            this.EmpresaGroup.Size = new System.Drawing.Size(484, 215);
+            this.EmpresaGroup.TabIndex = 10;
+            this.EmpresaGroup.TabStop = false;
+            this.EmpresaGroup.Text = "Datos Principales Empresa";
+            this.EmpresaGroup.Visible = false;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(303, 95);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(18, 18);
+            this.label26.TabIndex = 37;
+            this.label26.Text = "*";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.Location = new System.Drawing.Point(403, 61);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(18, 18);
+            this.label25.TabIndex = 36;
+            this.label25.Text = "*";
+            // 
+            // nombreContactoTextBox
+            // 
+            this.nombreContactoTextBox.Location = new System.Drawing.Point(171, 129);
+            this.nombreContactoTextBox.Name = "nombreContactoTextBox";
+            this.nombreContactoTextBox.Size = new System.Drawing.Size(172, 20);
+            this.nombreContactoTextBox.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(64, 133);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Nombre Contacto";
+            // 
+            // cuitTextBox
+            // 
+            this.cuitTextBox.Location = new System.Drawing.Point(171, 96);
+            this.cuitTextBox.Name = "cuitTextBox";
+            this.cuitTextBox.Size = new System.Drawing.Size(126, 20);
+            this.cuitTextBox.TabIndex = 9;
+            // 
+            // razonSocialTextBox
+            // 
+            this.razonSocialTextBox.Location = new System.Drawing.Point(171, 62);
+            this.razonSocialTextBox.Name = "razonSocialTextBox";
+            this.razonSocialTextBox.Size = new System.Drawing.Size(226, 20);
+            this.razonSocialTextBox.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(64, 99);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "CUIT";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(64, 65);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Razón social";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.modificarButton);
@@ -646,73 +714,7 @@
             this.crearButton.TabIndex = 0;
             this.crearButton.Text = "Crear";
             this.crearButton.UseVisualStyleBackColor = true;
-            this.crearButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Red;
-            this.label25.Location = new System.Drawing.Point(403, 61);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(18, 18);
-            this.label25.TabIndex = 36;
-            this.label25.Text = "*";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.Red;
-            this.label26.Location = new System.Drawing.Point(303, 95);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(18, 18);
-            this.label26.TabIndex = 37;
-            this.label26.Text = "*";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(251, 57);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(18, 18);
-            this.label27.TabIndex = 38;
-            this.label27.Text = "*";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.Color.Red;
-            this.label28.Location = new System.Drawing.Point(251, 90);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(18, 18);
-            this.label28.TabIndex = 42;
-            this.label28.Text = "*";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.Red;
-            this.label29.Location = new System.Drawing.Point(459, 57);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(18, 18);
-            this.label29.TabIndex = 43;
-            this.label29.Text = "*";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.Red;
-            this.label30.Location = new System.Drawing.Point(459, 90);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(18, 18);
-            this.label30.TabIndex = 44;
-            this.label30.Text = "*";
+            this.crearButton.Click += new System.EventHandler(this.crearButton_Click);
             // 
             // AltaUsuarioPage
             // 
@@ -735,10 +737,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.EmpresaGroup.ResumeLayout(false);
-            this.EmpresaGroup.PerformLayout();
             this.ClienteGroup.ResumeLayout(false);
             this.ClienteGroup.PerformLayout();
+            this.EmpresaGroup.ResumeLayout(false);
+            this.EmpresaGroup.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 

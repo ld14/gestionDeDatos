@@ -52,6 +52,14 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public Cliente verificarUnique(int tipoDoc, int nroDoc)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                return manager.Session.QueryOver<Cliente>().Where(x => x.tipoDocumento == tipoDoc && x.dni == nroDoc).SingleOrDefault();
+            }
+        }
+
         public Cliente GetUsuarioById(int id)
         {
             using (NHibernateManager manager = new NHibernateManager())

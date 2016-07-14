@@ -11,8 +11,8 @@ namespace WindowsFormsApplication1 {
         public virtual string email { get; set; }
         public virtual string telefono { get; set; }
         public virtual string domCalle { get; set; }
-        public virtual int nroCalle { get; set; }
-        public virtual int piso { get; set; }
+        public virtual int? nroCalle { get; set; }
+        public virtual int? piso { get; set; }
         public virtual string depto { get; set; }
         public virtual string codPostal { get; set; }
         public virtual string localidad { get; set; }

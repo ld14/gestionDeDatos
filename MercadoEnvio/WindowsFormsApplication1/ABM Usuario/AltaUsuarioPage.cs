@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using WindowsFormsApplication1.Entity.Utils;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsApplication1.ABM_Usuario
 {
@@ -55,221 +56,207 @@ namespace WindowsFormsApplication1.ABM_Usuario
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void crearButton_Click(object sender, EventArgs e)
         {
-            string nombreUsuario = "";
-            string Password = "";
-            string Mail = "";
-            
-            int nroCalle = 0;
-            int piso = 0;
-            
+            //Validaciones
+            if (!validaciones_form()) return;
+  
+            //Encriptar contraseña
+            string contraseña = encriptar_contraseña(passwordTextBox.Text);
 
-            if (usernameTextBox.Text != "")
-            {
-                nombreUsuario = usernameTextBox.Text;
-            }
-            else 
-            {
-                MessageBox.Show("Debe ingresar un userName");
-                return;
-            }
-            if (passwordTextBox.Text != "")
-            {
-                Password = passwordTextBox.Text;
-            }
-            else 
-            {
-                MessageBox.Show("Debe ingresar una Password ");
-                return;
-            }
-            
-            String TipoDeUsuario = tipoUsuarioComboBox.Text;
-            if (emailTextBox.Text != "")
-            {
-                 Mail = emailTextBox.Text;
-            }
-            else 
-            {
-                MessageBox.Show("Debe ingresar un email ");
-                return;
-            }
-           
-            String Telefono = telefonoTextBox.Text;
-            String DomicilioCalle = domicilioTextBox.Text;
-            if (nroCalleTextBox.Text != "") 
-            {
-                nroCalle = Convert.ToInt32(nroCalleTextBox.Text);
-            }
-            if (pisoTextBox.Text != "")
-            {
-                piso = Convert.ToInt32(pisoTextBox.Text);
-            }
-            String depto = deptoTextBox.Text;
-            String localidad = localidadTextBox.Text;
-            String ciudad = ciudadTextBox.Text;
-            String CodigoPostal = codigoPostalTextBox.Text;
-
-            String Nombre = nombreTextBox.Text;
-            String Apellido = apellidoTextBox.Text;
-
-            DateTime FechaNacimiento = DateUtils.convertirStringEnFecha(fechaNacDateTime.Value.ToString("dd/MM/yyyy"));
-            DateTime FechaCreacion = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
-           
             RolDaoImpl rolDao = new RolDaoImpl();
-          
+            DatosBasicos nuevoDatoBasico = new DatosBasicos();
+            Rol rolSeleccionado = new Rol();
+
+            //Cargo el Rol seleccionado
+            rolSeleccionado = rolDao.getRolByName(rolesComboBox.Text);
+
+            //Seteo datos basicos
+            nuevoDatoBasico.ciudad = ciudadTextBox.Text;
+            nuevoDatoBasico.codPostal = codigoPostalTextBox.Text;
+            nuevoDatoBasico.depto = deptoTextBox.Text;
+            nuevoDatoBasico.domCalle = domicilioTextBox.Text;
+            nuevoDatoBasico.email = emailTextBox.Text;
+            nuevoDatoBasico.localidad = localidadTextBox.Text;
+            if (nroCalleTextBox.Text == "") nuevoDatoBasico.nroCalle = null;
+            else nuevoDatoBasico.nroCalle = Convert.ToInt32(nroCalleTextBox.Text);
+            if (pisoTextBox.Text == "") nuevoDatoBasico.piso = null;
+            else nuevoDatoBasico.piso = Convert.ToInt32(pisoTextBox.Text);
+            nuevoDatoBasico.telefono = telefonoTextBox.Text;
+
+            if (tipoUsuarioComboBox.Text.Equals("Cliente"))
+            {
+                Cliente nuevoCliente = new Cliente();
+
+                nuevoCliente.activoUsuario = activoCheckBox.Checked;
+                nuevoCliente.apellido = apellidoTextBox.Text;
+                nuevoCliente.cantidadEstrellas = 0;
+                nuevoCliente.cantidadVentas = 0;
+                nuevoCliente.comprasCalificadas = 0;
+                nuevoCliente.comprasEfectuadas = 0;
+                nuevoCliente.dni = Convert.ToInt32(nroDocumentoTextBox.Text);
+                nuevoCliente.estrellasDadas = 0;
+                nuevoCliente.fechaCreacion = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
+                nuevoCliente.fechaNacimiento = fechaNacDateTime.Value;
+                nuevoCliente.intentosFallidos = 0;
+                nuevoCliente.montoComprado = 0;
+                nuevoCliente.nombre = nombreTextBox.Text;
+                nuevoCliente.password = contraseña;
+                nuevoCliente.perfilActivo = true;
+                nuevoCliente.publicacionGratis = true;
+                nuevoCliente.tipoDocumento = tipoDocumentoComboBox.SelectedIndex + 1;
+                nuevoCliente.userName = usernameTextBox.Text;
+
+                nuevoCliente.DatosBasicos = nuevoDatoBasico;
+                nuevoCliente.RolesLst.Add(rolSeleccionado);
+
+                ClienteDaoImpl ClienteDaoImpl = new ClienteDaoImpl();
+                ClienteDaoImpl.Add(nuevoCliente);
+                MessageBox.Show("Creación de Cliente correcta");
+            }
+            else
+            {
+                Empresa nuevaEmpresa = new Empresa();
+
+                nuevaEmpresa.activoUsuario = activoCheckBox.Checked;
+                nuevaEmpresa.cantidadEstrellas = 0;
+                nuevaEmpresa.cantidadVentas = 0;
+                nuevaEmpresa.cuit = cuitTextBox.Text;
+                nuevaEmpresa.fechaCreacion = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
+                nuevaEmpresa.intentosFallidos = 0;
+                nuevaEmpresa.nombreContacto = nombreContactoTextBox.Text;
+                nuevaEmpresa.password = contraseña;
+                nuevaEmpresa.perfilActivo = true;
+                nuevaEmpresa.publicacionGratis = true;
+                nuevaEmpresa.razonSocial = razonSocialTextBox.Text;
+                nuevaEmpresa.userName = usernameTextBox.Text;
+
+                nuevaEmpresa.DatosBasicos = nuevoDatoBasico;
+                nuevaEmpresa.RolesLst.Add(rolSeleccionado);
+
+                EmpresaDaoImpl empresaDaoImpl = new EmpresaDaoImpl();
+                empresaDaoImpl.Add(nuevaEmpresa);
+                MessageBox.Show("Creación de Empresa correcta");
+            }
+            this.Close();
+        }
+
+        public bool validaciones_form()
+        {
+            if (usernameTextBox.Text == "")
+            {
+                MessageBox.Show("Debe ingresar un userName.");
+                return false;
+            }
+            UsuarioDaoImpl usuDaoImpl = new UsuarioDaoImpl();
+            if (usuDaoImpl.Acceder(usernameTextBox.Text) != null)
+            {
+                MessageBox.Show("Ya existe un usuario con el nombre indicado.\nPor favor ingrese un userName distinto.");
+                return false;
+            }
+            if (passwordTextBox.Text == "")
+            {
+                MessageBox.Show("Debe ingresar una Password.");
+                return false;
+            }
+            if (tipoUsuarioComboBox.Text == "")
+            {
+                MessageBox.Show("Debe seleccionar el tipo de usuario a crear.");
+                return false;
+            }
+            if (rolesComboBox.Text == "")
+            {
+                MessageBox.Show("Debe seleccionar un Rol.");
+                return false;
+            }
+
             if (tipoUsuarioComboBox.Text.Equals("Cliente"))
             {
                 if (tipoDocumentoComboBox.Text == "")
                 {
-                    MessageBox.Show("Debe seleccionar un tipo de documento");
-                    return;
+                    MessageBox.Show("Debe seleccionar un tipo de documento.");
+                    return false;
                 }
-                if (nroDocumentoTextBox.Text == "")
+                if (!Regex.IsMatch(nroDocumentoTextBox.Text, @"^[\d]{1,9}$"))
                 {
-                    MessageBox.Show("Debe ingresar un número de documento");
-                    return;
+                    MessageBox.Show("Debe ingresar un número de documento válido. (Hasta 9 dígitos)");
+                    return false;
                 }
+
+                ClienteDaoImpl cDAO = new ClienteDaoImpl();
+                if (cDAO.verificarUnique(Convert.ToInt32(tipoDocumentoComboBox.SelectedIndex + 1), Convert.ToInt32(nroDocumentoTextBox.Text)) != null)
+                {
+                    MessageBox.Show("Ya existe un usuario con ese mismo tipo y número de documento.\nPor favor ingrese uno distinto.");
+                    return false;
+                }
+
                 if (apellidoTextBox.Text == "")
                 {
-                    MessageBox.Show("Debe ingresar el Apellido");
-                    return;
+                    MessageBox.Show("Debe ingresar el Apellido.");
+                    return false;
                 }
                 if (nombreTextBox.Text == "")
                 {
-                    MessageBox.Show("Debe ingresar el nombre");
-                    return;
+                    MessageBox.Show("Debe ingresar el Nombre.");
+                    return false;
                 }
-
-                UsuarioDaoImpl usuDaoImpl = new UsuarioDaoImpl();
-                if (usuDaoImpl.Acceder(usernameTextBox.Text) != null)
-                {
-                    MessageBox.Show("Ya existe un usuario con el nombre indicado. Por favor ingrese un nuevo nombre de usuario.");
-                    return;    
-                }
-
-
-                int tipoDocumento = Convert.ToInt16(tipoDocumentoComboBox.Text);
-                int DNI = Convert.ToInt32(nroDocumentoTextBox.Text);
-                Cliente nuevoCliente = new Cliente();
-                /*Encriptacion password*/
-                var mesage = Encoding.UTF8.GetBytes(Password);
-                SHA256Managed hashString = new SHA256Managed();
-                String pass = "";
-                var hashValue = hashString.ComputeHash(mesage);
-                foreach (byte x in hashValue)
-                {
-                    pass += String.Format("{0:x2}", x);
-                }
-
-                nuevoCliente.userName = nombreUsuario;
-                nuevoCliente.password = pass;
-                nuevoCliente.RolesLst = new List<Rol>();
-                nuevoCliente.RolesLst.Add(rolesComboBox.SelectedItem as Rol);
-
-                nuevoCliente.dni = DNI;
-                nuevoCliente.tipoDocumento = tipoDocumento;
-                nuevoCliente.nombre = Nombre;
-                nuevoCliente.apellido = Apellido;
-                nuevoCliente.fechaNacimiento = FechaNacimiento;
-                nuevoCliente.perfilActivo = true;
-                nuevoCliente.fechaCreacion = FechaCreacion;
-                nuevoCliente.comprasEfectuadas = 0;
-                nuevoCliente.comprasCalificadas = 0;
-                nuevoCliente.publicacionGratis = true;
-                nuevoCliente.activoUsuario = true;
-
-                DatosBasicos nuevoDatoBasico = new DatosBasicos();
-                nuevoCliente.DatosBasicos = nuevoDatoBasico;
-
-                nuevoCliente.DatosBasicos.email = Mail;
-                nuevoCliente.DatosBasicos.telefono = Telefono;
-                nuevoCliente.DatosBasicos.domCalle = DomicilioCalle;
-                nuevoCliente.DatosBasicos.nroCalle = nroCalle;
-                nuevoCliente.DatosBasicos.piso = piso;
-                nuevoCliente.DatosBasicos.depto = depto;
-                nuevoCliente.DatosBasicos.codPostal = CodigoPostal;
-                nuevoCliente.DatosBasicos.localidad = localidad;
-                nuevoCliente.DatosBasicos.ciudad = ciudad;
-
-                ClienteDaoImpl ClienteDaoImpl = new ClienteDaoImpl();
-                ClienteDaoImpl.Add(nuevoCliente);
-                MessageBox.Show("Creacion de cliente correcta");
             }
-            else
+            if (tipoUsuarioComboBox.Text.Equals("Empresa"))
             {
-                String RazonSocial = "";
-                if (razonSocialTextBox.Text != "")
+                if (razonSocialTextBox.Text == "")
                 {
-                    RazonSocial = razonSocialTextBox.Text;
+                    MessageBox.Show("Debe ingresar la Razón social.");
+                    return false;
                 }
-                else
+                if (cuitTextBox.Text == "")
                 {
-                    MessageBox.Show("Debe ingresar una razon social");
-                    return;
+                    MessageBox.Show("Debe ingresar el CUIT.");
+                    return false;
                 }
-                String Cuit = "";
-                if (cuitTextBox.Text != "")
+                EmpresaDaoImpl eDAO = new EmpresaDaoImpl();
+                if (eDAO.GetEmpresaByCuit(cuitTextBox.Text) != null)
                 {
-                    Cuit = cuitTextBox.Text;
-
+                    MessageBox.Show("Ya existe una empresa con ese CUIT.\nPor favor ingrese uno distinto.");
+                    return false;
                 }
-                else
+                if (eDAO.GetEmpresaByRazonSocial(razonSocialTextBox.Text) != null)
                 {
-                    MessageBox.Show("Debe ingresar una CUIT");
-                    return;
+                    MessageBox.Show("Ya existe una empresa con esa Razón Social.\nPor favor ingrese uno distinto.");
+                    return false;
                 }
-                String NombreContacto = "";
-                if (nombreContactoTextBox.Text != "")
-                {
-                    NombreContacto = nombreContactoTextBox.Text;
-                }
-                else
-                {
-                    MessageBox.Show("Debe ingresar una nombre de contacto");
-                    return;
-                }
-
-                Empresa nuevaEmpresa = new Empresa();
-                /*Encriptacion password*/
-                var mesage = Encoding.UTF8.GetBytes(Password);
-                SHA256Managed hashString = new SHA256Managed();
-                String pass = "";
-                var hashValue = hashString.ComputeHash(mesage);
-                foreach (byte x in hashValue)
-                {
-                    pass += String.Format("{0:x2}", x);
-                }
-                nuevaEmpresa.userName = nombreUsuario;
-                nuevaEmpresa.password = pass;
-                nuevaEmpresa.RolesLst = new List<Rol>();
-                nuevaEmpresa.RolesLst.Add(rolesComboBox.SelectedItem as Rol);
-
-                nuevaEmpresa.razonSocial = RazonSocial;
-                nuevaEmpresa.cuit = Cuit;
-                nuevaEmpresa.fechaCreacion = FechaCreacion;
-                nuevaEmpresa.perfilActivo = true;
-                nuevaEmpresa.nombreContacto = NombreContacto;
-                nuevaEmpresa.publicacionGratis = true;
-                nuevaEmpresa.activoUsuario = true;
-
-                DatosBasicos nuevoDatoBasico = new DatosBasicos();
-                nuevaEmpresa.DatosBasicos = nuevoDatoBasico;
-
-                nuevaEmpresa.DatosBasicos.email = Mail;
-                nuevaEmpresa.DatosBasicos.telefono = Telefono;
-                nuevaEmpresa.DatosBasicos.domCalle = DomicilioCalle;
-                nuevaEmpresa.DatosBasicos.nroCalle = nroCalle;
-                nuevaEmpresa.DatosBasicos.piso = piso;
-                nuevaEmpresa.DatosBasicos.depto = depto;
-                nuevaEmpresa.DatosBasicos.codPostal = CodigoPostal;
-                nuevaEmpresa.DatosBasicos.localidad = localidad;
-                nuevaEmpresa.DatosBasicos.ciudad = ciudad;
-
-                EmpresaDaoImpl empresaDaoImpl = new EmpresaDaoImpl();
-                empresaDaoImpl.Add(nuevaEmpresa);
-                MessageBox.Show("Creacion de empresa correcta");
             }
+
+            if (!Regex.IsMatch(emailTextBox.Text, @"^[A-Za-z0-9 º:_\-.]+[@]{1}[A-Za-z0-9\-_]+\.(\w){1,3}$"))
+            {
+                MessageBox.Show("Debe ingresar una dirección de mail válida.");
+                return false;
+            }
+            if (!Regex.IsMatch(pisoTextBox.Text, @"^[\d]{0,9}$"))
+            {
+                MessageBox.Show("Debe ingresar solo dígitos en el campo Piso. (Hasta 9 dígitos)");
+                return false;
+            }
+            if (!Regex.IsMatch(nroCalleTextBox.Text, @"^[\d]{0,9}$"))
+            {
+                MessageBox.Show("Debe ingresar solo dígitos en el campo Nro Calle. (Hasta 9 dígitos)");
+                return false;
+            }
+
+            return true;
+        }
+
+        public string encriptar_contraseña(string password)
+        {
+            var message = Encoding.UTF8.GetBytes(password);
+            SHA256Managed hashString = new SHA256Managed();
+            String passEncriptada = "";
+            var hashValue = hashString.ComputeHash(message);
+            foreach (byte x in hashValue)
+            {
+                passEncriptada += String.Format("{0:x2}", x);
+            }
+
+            return passEncriptada;
         }
 
         private void limpiarButton_Click(object sender, EventArgs e)
@@ -358,6 +345,16 @@ namespace WindowsFormsApplication1.ABM_Usuario
                     crearButton.Enabled = false;
                     modificarButton.Enabled = true;
                 }
+            }
+        }
+
+        private void cambiarContraseña_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea cambiar la contraseña?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                passwordTextBox.Enabled = true;
+                passwordTextBox.Text = "";
+                cambiarContraseña.Visible = false;
             }
         }      
     }
