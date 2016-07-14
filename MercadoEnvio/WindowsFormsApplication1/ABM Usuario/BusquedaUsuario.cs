@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -150,7 +151,8 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
         private void dniTextBox_TextChanged(object sender, EventArgs e)
         {
-            disparar_evento();
+            if (Regex.IsMatch(dniTextBox.Text, @"^[\d]{0,9}$"))
+                disparar_evento();
         }
     }
 }
