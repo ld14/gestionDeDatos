@@ -366,6 +366,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             crearButton.Enabled = true;
             activoCheckBox.Checked = false;
             tipoUsuarioComboBox.Enabled = true;
+            rolesComboBox.Enabled = true;
         }
 
         private void buscarButton_Click(object sender, EventArgs e)
