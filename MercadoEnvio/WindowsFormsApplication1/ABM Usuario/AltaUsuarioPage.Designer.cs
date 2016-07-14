@@ -705,6 +705,7 @@
             this.modificarButton.TabIndex = 1;
             this.modificarButton.Text = "Modificar";
             this.modificarButton.UseVisualStyleBackColor = true;
+            this.modificarButton.Click += new System.EventHandler(this.modificarButton_Click);
             // 
             // crearButton
             // 

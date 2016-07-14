@@ -110,6 +110,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevoCliente.userName = usernameTextBox.Text;
 
                 nuevoCliente.DatosBasicos = nuevoDatoBasico;
+                nuevoCliente.RolesLst = new List<Rol>();
                 nuevoCliente.RolesLst.Add(rolSeleccionado);
 
                 ClienteDaoImpl ClienteDaoImpl = new ClienteDaoImpl();
@@ -134,6 +135,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 nuevaEmpresa.userName = usernameTextBox.Text;
 
                 nuevaEmpresa.DatosBasicos = nuevoDatoBasico;
+                nuevaEmpresa.RolesLst = new List<Rol>();
                 nuevaEmpresa.RolesLst.Add(rolSeleccionado);
 
                 EmpresaDaoImpl empresaDaoImpl = new EmpresaDaoImpl();
@@ -151,10 +153,13 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 return false;
             }
             UsuarioDaoImpl usuDaoImpl = new UsuarioDaoImpl();
-            if (usuDaoImpl.Acceder(usernameTextBox.Text) != null)
+            if (crearButton.Enabled)
             {
-                MessageBox.Show("Ya existe un usuario con el nombre indicado.\nPor favor ingrese un userName distinto.");
-                return false;
+                if (usuDaoImpl.Acceder(usernameTextBox.Text) != null)
+                {
+                    MessageBox.Show("Ya existe un usuario con el nombre indicado.\nPor favor ingrese un userName distinto.");
+                    return false;
+                }
             }
             if (passwordTextBox.Text == "")
             {
@@ -186,12 +191,14 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 }
 
                 ClienteDaoImpl cDAO = new ClienteDaoImpl();
-                if (cDAO.verificarUnique(Convert.ToInt32(tipoDocumentoComboBox.SelectedIndex + 1), Convert.ToInt32(nroDocumentoTextBox.Text)) != null)
+                if (crearButton.Enabled)
                 {
-                    MessageBox.Show("Ya existe un usuario con ese mismo tipo y número de documento.\nPor favor ingrese uno distinto.");
-                    return false;
+                    if (cDAO.verificarUnique(Convert.ToInt32(tipoDocumentoComboBox.SelectedIndex + 1), Convert.ToInt32(nroDocumentoTextBox.Text)) != null)
+                    {
+                        MessageBox.Show("Ya existe un usuario con ese mismo tipo y número de documento.\nPor favor ingrese uno distinto.");
+                        return false;
+                    }
                 }
-
                 if (apellidoTextBox.Text == "")
                 {
                     MessageBox.Show("Debe ingresar el Apellido.");
@@ -216,19 +223,25 @@ namespace WindowsFormsApplication1.ABM_Usuario
                     return false;
                 }
                 EmpresaDaoImpl eDAO = new EmpresaDaoImpl();
-                if (eDAO.GetEmpresaByCuit(cuitTextBox.Text) != null)
+                if (crearButton.Enabled)
                 {
-                    MessageBox.Show("Ya existe una empresa con ese CUIT.\nPor favor ingrese uno distinto.");
-                    return false;
+                    if (eDAO.GetEmpresaByCuit(cuitTextBox.Text) != null)
+                    {
+                        MessageBox.Show("Ya existe una empresa con ese CUIT.\nPor favor ingrese uno distinto.");
+                        return false;
+                    }
                 }
-                if (eDAO.GetEmpresaByRazonSocial(razonSocialTextBox.Text) != null)
+                if (crearButton.Enabled)
                 {
-                    MessageBox.Show("Ya existe una empresa con esa Razón Social.\nPor favor ingrese uno distinto.");
-                    return false;
+                    if (eDAO.GetEmpresaByRazonSocial(razonSocialTextBox.Text) != null)
+                    {
+                        MessageBox.Show("Ya existe una empresa con esa Razón Social.\nPor favor ingrese uno distinto.");
+                        return false;
+                    }
                 }
             }
 
-            if (!Regex.IsMatch(emailTextBox.Text, @"^[A-Za-z0-9 º:_\-.]+[@]{1}[A-Za-z0-9\-_]+\.(\w){1,3}$"))
+            if (!Regex.IsMatch(emailTextBox.Text, @"^[A-Za-z0-9 º:_\-.áéíóúü]+[@]{1}[A-Za-z0-9\-_]+\.(\w){1,3}$"))
             {
                 MessageBox.Show("Debe ingresar una dirección de mail válida.");
                 return false;
@@ -346,6 +359,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                     cambiarContraseña.Visible = true;
                     crearButton.Enabled = false;
                     modificarButton.Enabled = true;
+                    tipoUsuarioComboBox.Enabled = false;
                 }
             }
         }
@@ -358,6 +372,88 @@ namespace WindowsFormsApplication1.ABM_Usuario
                 passwordTextBox.Text = "";
                 cambiarContraseña.Visible = false;
             }
+        }
+
+        private void modificarButton_Click(object sender, EventArgs e)
+        {
+            //Validaciones
+            if (!validaciones_form()) return;
+
+            if (!activoCheckBox.Checked && (this.Tag as Usuario).activoUsuario)
+            {
+                if (MessageBox.Show("Advertencia: Si inhabilita al usuario, todas las publicaciones que tenga activas pasarán a estado Pausadas. ¿Desea continuar?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
+            }
+            //Encriptar contraseña si corresponde
+            string contraseña = null;
+            if (passwordTextBox.Enabled)
+                contraseña = encriptar_contraseña(passwordTextBox.Text);
+
+            RolDaoImpl rolDao = new RolDaoImpl();
+            DatosBasicos modifDatoBasico = (this.Tag as Usuario).DatosBasicos;
+            Rol rolSeleccionado = new Rol();
+
+            //Cargo el Rol seleccionado
+            rolSeleccionado = rolDao.getRolByName(rolesComboBox.Text);
+
+            //Seteo datos basicos
+            modifDatoBasico.ciudad = ciudadTextBox.Text;
+            modifDatoBasico.codPostal = codigoPostalTextBox.Text;
+            modifDatoBasico.depto = deptoTextBox.Text;
+            modifDatoBasico.domCalle = domicilioTextBox.Text;
+            modifDatoBasico.email = emailTextBox.Text;
+            modifDatoBasico.localidad = localidadTextBox.Text;
+            if (nroCalleTextBox.Text == "") modifDatoBasico.nroCalle = null;
+            else modifDatoBasico.nroCalle = Convert.ToInt32(nroCalleTextBox.Text);
+            if (pisoTextBox.Text == "") modifDatoBasico.piso = null;
+            else modifDatoBasico.piso = Convert.ToInt32(pisoTextBox.Text);
+            modifDatoBasico.telefono = telefonoTextBox.Text;
+
+            if (tipoUsuarioComboBox.Text.Equals("Cliente"))
+            {
+                Cliente modifCliente = this.Tag as Cliente;
+
+                modifCliente.activoUsuario = activoCheckBox.Checked;
+                modifCliente.apellido = apellidoTextBox.Text;
+                modifCliente.dni = Convert.ToInt32(nroDocumentoTextBox.Text);
+                modifCliente.fechaNacimiento = fechaNacDateTime.Value;
+                if (activoCheckBox.Checked)
+                    modifCliente.intentosFallidos = 0;
+                modifCliente.nombre = nombreTextBox.Text;
+                if (passwordTextBox.Enabled)
+                    modifCliente.password = contraseña;
+                modifCliente.tipoDocumento = tipoDocumentoComboBox.SelectedIndex + 1;
+                modifCliente.userName = usernameTextBox.Text;
+
+                modifCliente.DatosBasicos = modifDatoBasico;
+                modifCliente.RolesLst.Add(rolSeleccionado);
+
+                ClienteDaoImpl ClienteDaoImpl = new ClienteDaoImpl();
+                ClienteDaoImpl.Update(modifCliente);
+                MessageBox.Show("Modificación de Cliente correcta");
+            }
+            else
+            {
+                Empresa modifEmpresa = this.Tag as Empresa;
+
+                modifEmpresa.activoUsuario = activoCheckBox.Checked;
+                modifEmpresa.cuit = cuitTextBox.Text;
+                if (activoCheckBox.Checked)
+                    modifEmpresa.intentosFallidos = 0;
+                modifEmpresa.nombreContacto = nombreContactoTextBox.Text;
+                if (passwordTextBox.Enabled)
+                    modifEmpresa.password = contraseña;
+                modifEmpresa.razonSocial = razonSocialTextBox.Text;
+                modifEmpresa.userName = usernameTextBox.Text;
+
+                modifEmpresa.DatosBasicos = modifDatoBasico;
+                modifEmpresa.RolesLst.Add(rolSeleccionado);
+
+                EmpresaDaoImpl empresaDaoImpl = new EmpresaDaoImpl();
+                empresaDaoImpl.Update(modifEmpresa);
+                MessageBox.Show("Modificación de Empresa correcta");
+            }
+            this.Close();
         }      
     }
 }
