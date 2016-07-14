@@ -47,7 +47,13 @@ namespace WindowsFormsApplication1.Login_page
                     hashedPass += String.Format("{0:x2}", x);
                 }
 
-                if (usr.password == hashedPass && usr.activoUsuario == true)
+                if (!usr.activoUsuario)
+                {
+                    pswError.SetError(this.password, "El usuario se encuentra desactivado");
+                    return;
+                }
+
+                if (usr.password == hashedPass)
                 {
                     SessionAttribute.user = usr;
                     usr.intentosFallidos = 0;
