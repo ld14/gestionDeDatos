@@ -423,6 +423,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                     crearButton.Enabled = false;
                     modificarButton.Enabled = true;
                     tipoUsuarioComboBox.Enabled = false;
+                    rolesComboBox.Enabled = false;
                 }
             }
         }
