@@ -454,6 +454,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
             this.DescripcionPublicacionTxt.MaxLength = 255;
             this.DescripcionPublicacionTxt.Multiline = true;
             this.DescripcionPublicacionTxt.Name = "DescripcionPublicacionTxt";
+            this.DescripcionPublicacionTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.DescripcionPublicacionTxt.Size = new System.Drawing.Size(484, 102);
             this.DescripcionPublicacionTxt.TabIndex = 12;
             // 

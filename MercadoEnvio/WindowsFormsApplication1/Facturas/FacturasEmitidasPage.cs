@@ -60,6 +60,8 @@ namespace WindowsFormsApplication1.Facturas
                 destinatarioSelect.Text = SessionAttribute.user.userName;
                 destinatarioSelect.Enabled = false;
             }
+
+            FechaDesde.Value = FechaDesde.Value.AddDays(-1);
         }
 
         public class selectorUsuarios{
@@ -77,6 +79,19 @@ namespace WindowsFormsApplication1.Facturas
             double? montoTotalini = !montoInicial.Text.Equals("") ? Convert.ToDouble(montoInicial.Text) : nulo;
             double? montoTotalfin = !montoFinal.Text.Equals("") ? Convert.ToDouble(montoFinal.Text) : nulo;
             string descripcion = descripcionPubTxt.Text;
+
+            //inicio de validaciones
+            if (montoTotalfin < montoTotalini)
+            {
+                MessageBox.Show("El importe limite debe ser mayor al importe inicial");
+                return;
+            }
+
+            if (fechaHasta < fechaDesde)
+            {
+                MessageBox.Show("La fecha limite debe ser mayor a la fecha inicial");
+                return;
+            }
 
             FacturasEmitidasDaoImpl facImpl = new FacturasEmitidasDaoImpl();
             customerList = facImpl.darFacturasEmitidas(idUsuario, fechaDesde, fechaHasta, descripcion);

@@ -63,7 +63,7 @@ namespace WindowsFormsApplication1.Generar_Publicación
         {
             if (estado.idEstadoPublicacion > 1)
             {
-                DescripcionPublicacionTxt.Enabled = false;
+                DescripcionPublicacionTxt.ReadOnly = true;
                 PrecioTxt.Enabled = false;
                 stock.Enabled = false;
                 EnvioCheckBox.Enabled = false;

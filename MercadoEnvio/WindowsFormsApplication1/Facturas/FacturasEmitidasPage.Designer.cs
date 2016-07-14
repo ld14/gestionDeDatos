@@ -47,6 +47,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BuscarBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.destinatarioSelect = new System.Windows.Forms.ComboBox();
             this.descripcionPubTxt = new System.Windows.Forms.TextBox();
             this.montoFinal = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -236,6 +236,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de Busqueda";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(613, 167);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(237, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Limpiar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // destinatarioSelect
             // 
             this.destinatarioSelect.FormattingEnabled = true;
@@ -275,12 +285,11 @@
             // 
             // FechaDesde
             // 
-            this.FechaDesde.Checked = false;
             this.FechaDesde.Location = new System.Drawing.Point(37, 56);
             this.FechaDesde.Name = "FechaDesde";
             this.FechaDesde.Size = new System.Drawing.Size(200, 20);
             this.FechaDesde.TabIndex = 11;
-            this.FechaDesde.Value = new System.DateTime(2016, 6, 10, 13, 56, 8, 0);
+            this.FechaDesde.Value = new System.DateTime(2016, 7, 13, 21, 34, 36, 0);
             // 
             // label6
             // 
@@ -335,16 +344,6 @@
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Fecha Desde";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(613, 167);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(237, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Limpiar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FacturasEmitidasForm
             // 
