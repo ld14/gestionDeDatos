@@ -97,8 +97,11 @@ namespace WindowsFormsApplication1
                         crit.CreateAlias("DatosBasicos", "datoBasico");
                         crit.Add(Expression.Like("datoBasico.email", "%" + mail + "%"));
                     }
-
-                    // Ver el tema del DNI
+                    if (dni.Length > 0)
+                    {
+                        int doc = Convert.ToInt32(dni);
+                        crit.Add(Expression.Eq("dni", doc));
+                    }
                     return crit.List<Cliente>();
                 }
             }

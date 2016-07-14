@@ -147,5 +147,10 @@ namespace WindowsFormsApplication1.ABM_Usuario
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
+
+        private void dniTextBox_TextChanged(object sender, EventArgs e)
+        {
+            disparar_evento();
+        }
     }
 }

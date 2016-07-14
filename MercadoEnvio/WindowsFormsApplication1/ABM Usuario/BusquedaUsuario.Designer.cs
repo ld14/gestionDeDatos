@@ -112,6 +112,7 @@
             this.dniTextBox.Name = "dniTextBox";
             this.dniTextBox.Size = new System.Drawing.Size(104, 20);
             this.dniTextBox.TabIndex = 9;
+            this.dniTextBox.TextChanged += new System.EventHandler(this.dniTextBox_TextChanged);
             // 
             // label3
             // 
