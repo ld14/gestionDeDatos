@@ -30,8 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idRolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UsuarioLst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FuncionesLst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rolBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.indistintoRadioButton = new System.Windows.Forms.RadioButton();
             this.activoRadioButton = new System.Windows.Forms.RadioButton();
             this.inactivoRadioButton = new System.Windows.Forms.RadioButton();
@@ -40,14 +44,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.idRolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.rolBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -66,11 +66,39 @@
             this.FuncionesLst});
             this.dataGridView1.DataSource = this.rolBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(35, 145);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(343, 163);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // idRolDataGridViewTextBoxColumn
+            // 
+            this.idRolDataGridViewTextBoxColumn.DataPropertyName = "idRol";
+            this.idRolDataGridViewTextBoxColumn.HeaderText = "ID Rol";
+            this.idRolDataGridViewTextBoxColumn.Name = "idRolDataGridViewTextBoxColumn";
+            this.idRolDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idRolDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.idRolDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nombreDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.nombreDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // activoDataGridViewCheckBoxColumn
+            // 
+            this.activoDataGridViewCheckBoxColumn.DataPropertyName = "activo";
+            this.activoDataGridViewCheckBoxColumn.HeaderText = "Activo";
+            this.activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
+            this.activoDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.activoDataGridViewCheckBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.activoDataGridViewCheckBoxColumn.Width = 70;
             // 
             // UsuarioLst
             // 
@@ -87,6 +115,10 @@
             this.FuncionesLst.Name = "FuncionesLst";
             this.FuncionesLst.ReadOnly = true;
             this.FuncionesLst.Visible = false;
+            // 
+            // rolBindingSource
+            // 
+            this.rolBindingSource.DataSource = typeof(WindowsFormsApplication1.Rol);
             // 
             // indistintoRadioButton
             // 
@@ -174,37 +206,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.aceptarButton_Click);
             // 
-            // idRolDataGridViewTextBoxColumn
-            // 
-            this.idRolDataGridViewTextBoxColumn.DataPropertyName = "idRol";
-            this.idRolDataGridViewTextBoxColumn.HeaderText = "ID Rol";
-            this.idRolDataGridViewTextBoxColumn.Name = "idRolDataGridViewTextBoxColumn";
-            this.idRolDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idRolDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.idRolDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.nombreDataGridViewTextBoxColumn.Width = 140;
-            // 
-            // activoDataGridViewCheckBoxColumn
-            // 
-            this.activoDataGridViewCheckBoxColumn.DataPropertyName = "activo";
-            this.activoDataGridViewCheckBoxColumn.HeaderText = "Activo";
-            this.activoDataGridViewCheckBoxColumn.Name = "activoDataGridViewCheckBoxColumn";
-            this.activoDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.activoDataGridViewCheckBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.activoDataGridViewCheckBoxColumn.Width = 70;
-            // 
-            // rolBindingSource
-            // 
-            this.rolBindingSource.DataSource = typeof(WindowsFormsApplication1.Rol);
-            // 
             // BusquedaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,11 +219,11 @@
             this.Text = "Busqueda de Roles";
             this.Load += new System.EventHandler(this.BusquedaRol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

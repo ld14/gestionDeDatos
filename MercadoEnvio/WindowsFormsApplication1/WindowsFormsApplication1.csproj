@@ -92,11 +92,11 @@
     <Compile Include="ABM Rubro\AltaRubroPage.Designer.cs">
       <DependentUpon>AltaRubroPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Usuario\AltaUsuarioPage.cs">
+    <Compile Include="ABM Usuario\ABMUsuarioPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Usuario\AltaUsuarioPage.Designer.cs">
-      <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
+    <Compile Include="ABM Usuario\ABMUsuarioPage.Designer.cs">
+      <DependentUpon>ABMUsuarioPage.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM Usuario\BusquedaUsuario.cs">
       <SubType>Form</SubType>
@@ -104,50 +104,19 @@
     <Compile Include="ABM Usuario\BusquedaUsuario.Designer.cs">
       <DependentUpon>BusquedaUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Usuario\ModificarUsuarioParaAdminPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM Usuario\ModificarUsuarioParaAdminPage.Designer.cs">
-      <DependentUpon>ModificarUsuarioParaAdminPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM Usuario\ModificarUsuarioPorAdminPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM Usuario\ModificarUsuarioPorAdminPage.Designer.cs">
-      <DependentUpon>ModificarUsuarioPorAdminPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM Usuario\GrillasUsuario.cs" />
-    <Compile Include="ABM Usuario\EliminarUsuarioPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM Usuario\EliminarUsuarioPage.Designer.cs">
-      <DependentUpon>EliminarUsuarioPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM Usuario\ModificarUsuarioPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM Usuario\ModificarUsuarioPage.Designer.cs">
-      <DependentUpon>ModificarUsuarioPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="ABM Usuario\UsuariosCliente.cs" />
     <Compile Include="ABM Usuario\UsuariosEmpresa.cs" />
-    <Compile Include="ABM Visibilidad\EliminarVisibilidadPage.cs">
+    <Compile Include="ABM Visibilidad\BusquedaVisibilidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Visibilidad\EliminarVisibilidadPage.Designer.cs">
-      <DependentUpon>EliminarVisibilidadPage.cs</DependentUpon>
+    <Compile Include="ABM Visibilidad\BusquedaVisibilidad.Designer.cs">
+      <DependentUpon>BusquedaVisibilidad.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Visibilidad\ModificarVisibilidadPage.cs">
+    <Compile Include="ABM Visibilidad\ABMVisibilidadPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Visibilidad\ModificarVisibilidadPage.Designer.cs">
-      <DependentUpon>ModificarVisibilidadPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ABM Visibilidad\AltaVisibilidadPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ABM Visibilidad\AltaVisibilidadPage.Designer.cs">
-      <DependentUpon>AltaVisibilidadPage.cs</DependentUpon>
+    <Compile Include="ABM Visibilidad\ABMVisibilidadPage.Designer.cs">
+      <DependentUpon>ABMVisibilidadPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Calificar\CalificacionesPage.cs">
       <SubType>Form</SubType>
@@ -310,32 +279,17 @@
     <EmbeddedResource Include="ABM Rubro\AltaRubroPage.resx">
       <DependentUpon>AltaRubroPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM Usuario\AltaUsuarioPage.resx">
-      <DependentUpon>AltaUsuarioPage.cs</DependentUpon>
+    <EmbeddedResource Include="ABM Usuario\ABMUsuarioPage.resx">
+      <DependentUpon>ABMUsuarioPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Usuario\BusquedaUsuario.resx">
       <DependentUpon>BusquedaUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM Usuario\ModificarUsuarioParaAdminPage.resx">
-      <DependentUpon>ModificarUsuarioParaAdminPage.cs</DependentUpon>
+    <EmbeddedResource Include="ABM Visibilidad\BusquedaVisibilidad.resx">
+      <DependentUpon>BusquedaVisibilidad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM Usuario\EliminarUsuarioPage.resx">
-      <DependentUpon>EliminarUsuarioPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM Usuario\ModificarUsuarioPorAdminPage.resx">
-      <DependentUpon>ModificarUsuarioPorAdminPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM Usuario\ModificarUsuarioPage.resx">
-      <DependentUpon>ModificarUsuarioPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM Visibilidad\EliminarVisibilidadPage.resx">
-      <DependentUpon>EliminarVisibilidadPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM Visibilidad\ModificarVisibilidadPage.resx">
-      <DependentUpon>ModificarVisibilidadPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ABM Visibilidad\AltaVisibilidadPage.resx">
-      <DependentUpon>AltaVisibilidadPage.cs</DependentUpon>
+    <EmbeddedResource Include="ABM Visibilidad\ABMVisibilidadPage.resx">
+      <DependentUpon>ABMVisibilidadPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calificar\CalificacionesPage.resx">
       <DependentUpon>CalificacionesPage.cs</DependentUpon>
@@ -390,6 +344,7 @@
     <None Include="Properties\DataSources\Cliente.datasource" />
     <None Include="Properties\DataSources\Empresa.datasource" />
     <None Include="Properties\DataSources\Rol.datasource" />
+    <None Include="Properties\DataSources\Visibilidad.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApplication1.ABM_Usuario.UsuariosCliente.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApplication1.ABM_Usuario.UsuariosEmpresa.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApplication1.Generar_Publicación.BuscadorPublicaciones.datasource" />

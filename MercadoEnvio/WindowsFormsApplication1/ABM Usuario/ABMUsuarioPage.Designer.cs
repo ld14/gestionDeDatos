@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1.ABM_Usuario
 {
-    partial class AltaUsuarioPage
+    partial class ABMUsuarioPage
     {
         /// <summary>
         /// Required designer variable.

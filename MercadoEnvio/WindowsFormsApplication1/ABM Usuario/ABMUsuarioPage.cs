@@ -12,9 +12,9 @@ using System.Text.RegularExpressions;
 
 namespace WindowsFormsApplication1.ABM_Usuario
 {
-    public partial class AltaUsuarioPage : Form
+    public partial class ABMUsuarioPage : Form
     {
-        public AltaUsuarioPage()
+        public ABMUsuarioPage()
         {
             InitializeComponent();
         }
@@ -278,6 +278,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
         {
             usernameTextBox.Text = "";
             passwordTextBox.Text = "";
+            this.Tag = null;
             tipoUsuarioComboBox.SelectedItem = null;
             tipoDocumentoComboBox.SelectedItem = null;
             rolesComboBox.SelectedItem = null;

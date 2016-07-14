@@ -90,6 +90,17 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public IList<Publicacion> GetByVisibilidad(int idVisibilidad)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<Publicacion>();
+                crit.CreateAlias("Visibilidad", "visibilidad");
+                crit.Add(Expression.Eq("visibilidad.idVisibilidad", idVisibilidad));
+                return crit.List<Publicacion>();
+            }
+        }
+
         public int getSecuenciaPubli()
         {
             using (NHibernateManager manager = new NHibernateManager())

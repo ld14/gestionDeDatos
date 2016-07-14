@@ -45,18 +45,35 @@ namespace WindowsFormsApplication1
             }
         }
 
-
+        public IList<Visibilidad> GetByCriteria(short estado, string nombre)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<Visibilidad>();
+                if (nombre.Length > 0)
+                    crit.Add(Expression.InsensitiveLike("nombreVisibilidad", "%" + nombre + "%"));
+                switch (estado)
+                {
+                    case 0:
+                        crit.Add(Expression.Eq("activo", true));
+                        break;
+                    case 1:
+                        crit.Add(Expression.Eq("activo", false));
+                        break;
+                }
+                return crit.List<Visibilidad>();
+            }
+        }
 
         public IList<Visibilidad> darVisibilidad()
         {
-            using (NHibernateManager manager = new NHibernateManager()) {
-
+            using (NHibernateManager manager = new NHibernateManager())
+            {
                 ICriteria crit = manager.Session.CreateCriteria<Visibilidad>();
                 return crit.List<Visibilidad>(); 
-                
-
             }
         }
+
         public IList<Visibilidad> obtenerVisibilidades()
         {
             using (NHibernateManager manager = new NHibernateManager())

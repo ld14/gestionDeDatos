@@ -114,7 +114,7 @@ namespace WindowsFormsApplication1.ABM_Rol
             nombreTextBox.Text = null;
             RolActivoChk.Checked = false;
             idRolTextBox.Text = null;
-
+            this.Tag = null;
             crearButton.Enabled = true;
             modificarButton.Enabled = false;
 

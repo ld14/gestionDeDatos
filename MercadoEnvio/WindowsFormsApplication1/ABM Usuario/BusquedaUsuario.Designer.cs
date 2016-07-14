@@ -50,26 +50,26 @@
             this.razonSocialTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.aceptarButton = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idUsuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razonSocialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuariosEmpresaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.aceptarButton = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.idUsuarioDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuariosClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clienteGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.empresaGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosEmpresaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosClienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,8 +159,8 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.groupBox1);
-            this.groupBox2.Controls.Add(this.clienteGroupBox);
             this.groupBox2.Controls.Add(this.empresaGroupBox);
+            this.groupBox2.Controls.Add(this.clienteGroupBox);
             this.groupBox2.Location = new System.Drawing.Point(22, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(584, 117);
@@ -283,74 +283,12 @@
             this.emailDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.usuariosEmpresaBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(30, 145);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(568, 163);
             this.dataGridView1.TabIndex = 13;
-            // 
-            // aceptarButton
-            // 
-            this.aceptarButton.Location = new System.Drawing.Point(253, 322);
-            this.aceptarButton.Name = "aceptarButton";
-            this.aceptarButton.Size = new System.Drawing.Size(120, 23);
-            this.aceptarButton.TabIndex = 14;
-            this.aceptarButton.Text = "Aceptar";
-            this.aceptarButton.UseVisualStyleBackColor = true;
-            this.aceptarButton.Click += new System.EventHandler(this.aceptarButton_Click);
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idUsuarioDataGridViewTextBoxColumn1,
-            this.nombre,
-            this.apellido,
-            this.dni,
-            this.mail});
-            this.dataGridView2.DataSource = this.usuariosClienteBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(30, 145);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(568, 163);
-            this.dataGridView2.TabIndex = 15;
-            // 
-            // nombre
-            // 
-            this.nombre.DataPropertyName = "nombre";
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // apellido
-            // 
-            this.apellido.DataPropertyName = "apellido";
-            this.apellido.HeaderText = "Apellido";
-            this.apellido.Name = "apellido";
-            this.apellido.ReadOnly = true;
-            this.apellido.Width = 86;
-            // 
-            // dni
-            // 
-            this.dni.DataPropertyName = "dni";
-            this.dni.HeaderText = "Nro Documento";
-            this.dni.Name = "dni";
-            this.dni.ReadOnly = true;
-            this.dni.Width = 106;
-            // 
-            // mail
-            // 
-            this.mail.DataPropertyName = "mail";
-            this.mail.HeaderText = "eMail";
-            this.mail.Name = "mail";
-            this.mail.ReadOnly = true;
-            this.mail.Width = 127;
             // 
             // idUsuarioDataGridViewTextBoxColumn
             // 
@@ -388,6 +326,39 @@
             // 
             this.usuariosEmpresaBindingSource.DataSource = typeof(WindowsFormsApplication1.ABM_Usuario.UsuariosEmpresa);
             // 
+            // aceptarButton
+            // 
+            this.aceptarButton.Location = new System.Drawing.Point(253, 322);
+            this.aceptarButton.Name = "aceptarButton";
+            this.aceptarButton.Size = new System.Drawing.Size(120, 23);
+            this.aceptarButton.TabIndex = 14;
+            this.aceptarButton.Text = "Aceptar";
+            this.aceptarButton.UseVisualStyleBackColor = true;
+            this.aceptarButton.Click += new System.EventHandler(this.aceptarButton_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idUsuarioDataGridViewTextBoxColumn1,
+            this.nombre,
+            this.apellido,
+            this.dni,
+            this.mail});
+            this.dataGridView2.DataSource = this.usuariosClienteBindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(30, 145);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(568, 163);
+            this.dataGridView2.TabIndex = 15;
+            // 
             // idUsuarioDataGridViewTextBoxColumn1
             // 
             this.idUsuarioDataGridViewTextBoxColumn1.DataPropertyName = "idUsuario";
@@ -395,6 +366,37 @@
             this.idUsuarioDataGridViewTextBoxColumn1.Name = "idUsuarioDataGridViewTextBoxColumn1";
             this.idUsuarioDataGridViewTextBoxColumn1.ReadOnly = true;
             this.idUsuarioDataGridViewTextBoxColumn1.Width = 82;
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // apellido
+            // 
+            this.apellido.DataPropertyName = "apellido";
+            this.apellido.HeaderText = "Apellido";
+            this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
+            this.apellido.Width = 86;
+            // 
+            // dni
+            // 
+            this.dni.DataPropertyName = "dni";
+            this.dni.HeaderText = "Nro Documento";
+            this.dni.Name = "dni";
+            this.dni.ReadOnly = true;
+            this.dni.Width = 106;
+            // 
+            // mail
+            // 
+            this.mail.DataPropertyName = "mail";
+            this.mail.HeaderText = "eMail";
+            this.mail.Name = "mail";
+            this.mail.ReadOnly = true;
+            this.mail.Width = 127;
             // 
             // usuariosClienteBindingSource
             // 
@@ -407,11 +409,11 @@
             this.ClientSize = new System.Drawing.Size(630, 357);
             this.Controls.Add(this.aceptarButton);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "BusquedaUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BusquedaUsuario";
+            this.Text = "Busqueda de Usuarios";
             this.Load += new System.EventHandler(this.BusquedaUsuario_Load);
             this.clienteGroupBox.ResumeLayout(false);
             this.clienteGroupBox.PerformLayout();
@@ -421,8 +423,8 @@
             this.empresaGroupBox.ResumeLayout(false);
             this.empresaGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosEmpresaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosClienteBindingSource)).EndInit();
             this.ResumeLayout(false);
 

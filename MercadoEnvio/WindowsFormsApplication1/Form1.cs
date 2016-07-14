@@ -154,19 +154,6 @@ namespace WindowsFormsApplication1
             rolUsuarioPage.Show();
         }
 
-        private void nuevoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            AltaRubroPage rubroPage = new AltaRubroPage();
-            rubroPage.MdiParent = this;
-            rubroPage.Show();
-        }
-
-        private void nuevaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AltaVisibilidadPage visibilidadPage = new AltaVisibilidadPage();
-            visibilidadPage.MdiParent = this;
-            visibilidadPage.Show();
-        }
 
         private void nuevaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -254,13 +241,6 @@ namespace WindowsFormsApplication1
             facturasEmitidasFormForm.Show();
         }
 
-        private void modificarToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ModificarUsuarioPorAdminPage modificarUsuarionPage = new ModificarUsuarioPorAdminPage();
-            modificarUsuarionPage.MdiParent = this;
-            modificarUsuarionPage.Show();
-        }
-
         private void calificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cliente usr = SessionAttribute.clienteUser;
@@ -290,36 +270,11 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                ModificarUsuarioPage usuario = new ModificarUsuarioPage();
+                ABMUsuarioPage usuario = new ABMUsuarioPage();
                 usuario.Text = "init";
                 usuario.MdiParent = this;
                 usuario.Show();
             }
-        }
-
-        private void modificarToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-           
-            ModificarVisibilidadPage modificarUsuarionPage = new ModificarVisibilidadPage();
-            modificarUsuarionPage.MdiParent = this;
-            modificarUsuarionPage.Show();
-        
-        }
-
-        private void elimiarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EliminarUsuarioPage modificarUsuarionPage = new EliminarUsuarioPage();
-            modificarUsuarionPage.MdiParent = this;
-            modificarUsuarionPage.Show();
-        
-        }
-
-        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            EliminarVisibilidadPage modificarUsuarionPage = new EliminarVisibilidadPage();
-            modificarUsuarionPage.MdiParent = this;
-            modificarUsuarionPage.Show();
-        
         }
 
         private void rolToolStripMenuItem_Click(object sender, EventArgs e)
@@ -331,9 +286,16 @@ namespace WindowsFormsApplication1
 
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AltaUsuarioPage paginaAltaUsuario = new AltaUsuarioPage();
+            ABMUsuarioPage paginaAltaUsuario = new ABMUsuarioPage();
             paginaAltaUsuario.MdiParent = this;
             paginaAltaUsuario.Show();
+        }
+
+        private void visibToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ABMVisibilidadPage visibilidadPage = new ABMVisibilidadPage();
+            visibilidadPage.MdiParent = this;
+            visibilidadPage.Show();
         }
     }
 }
