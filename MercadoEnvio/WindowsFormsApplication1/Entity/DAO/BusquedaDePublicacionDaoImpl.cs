@@ -72,6 +72,7 @@ namespace WindowsFormsApplication1
                 }
 
                 crit.Add(Expression.Not(Expression.Eq("idUsuario", idUsuarioLogueado)));
+                crit.AddOrder(Order.Asc("idVisibilidad"));
                 return crit.List<BusquedaDePublicacion>();
 
 

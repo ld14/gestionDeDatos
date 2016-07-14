@@ -18,5 +18,6 @@ namespace WindowsFormsApplication1 {
         public virtual DateTime fechaCreacion { get; set; }
         public virtual DateTime? fechaVencimiento { get; set; }
         public virtual int idUsuario { get; set; }
+        public virtual int idVisibilidad { get; set; }
     }
 }
