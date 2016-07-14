@@ -870,7 +870,8 @@ CREATE VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion] AS
 			pubSub.valorActual AS precio,
 			rubro.descripcion AS desRubro,
 			visb.costo,
-			pub.idUsuario
+			pub.idUsuario,
+			pub.idVisibilidad
 		FROM [LOPEZ_Y_CIA].[PublicacionSubasta] AS pubSub
 		JOIN [LOPEZ_Y_CIA].[Publicacion] AS pub ON pubSub.idPublicacion = pub.idPublicacion
 		JOIN [LOPEZ_Y_CIA].[Visibilidad] AS visb ON pub.idVisibilidad = visb.idVisibilidad 
@@ -888,7 +889,8 @@ CREATE VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion] AS
 			pubNormal.precioPorUnidad AS precio,
 			rubro.descripcion AS desRubro,
 			visb.costo,
-			pub.idUsuario
+			pub.idUsuario,
+			pub.idVisibilidad
 		FROM [LOPEZ_Y_CIA].[PublicacionNormal] AS pubNormal
 		JOIN [LOPEZ_Y_CIA].[Publicacion] AS pub ON pubNormal.idPublicacion = pub.idPublicacion
 		JOIN [LOPEZ_Y_CIA].[Visibilidad] AS visb ON pub.idVisibilidad = visb.idVisibilidad
@@ -897,7 +899,11 @@ CREATE VIEW [LOPEZ_Y_CIA].[BusquedaDePublicacion] AS
 		WHERE (pub.idEstadoPublicacion = 2 or pub.idEstadoPublicacion = 3)
 	) x
 
+
 GO
+
+
+
 
 CREATE VIEW [LOPEZ_Y_CIA].[SubastaCompraDelSistema] AS
 	SELECT ROW_NUMBER() OVER(ORDER BY codigoPublicacion DESC) AS rowID, * 
