@@ -21,7 +21,9 @@ namespace WindowsFormsApplication1.ABM_Usuario
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //EmpresaFechaCreacionDateTime.Value = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
+            fechaNacDateTime.Value = DateUtils.convertirStringEnFecha(SessionAttribute.fechaSistema);
+            fechaNacDateTime.MaxDate = fechaNacDateTime.Value;
+
             RolDaoImpl rolDao = new RolDaoImpl();
             IList<Rol> roles = rolDao.GetAll();
 
@@ -302,7 +304,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
                         usernameTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.userName;
                         tipoUsuarioComboBox.SelectedIndex = tipoUsuarioComboBox.FindString("Cliente");
                         rolesComboBox.SelectedIndex = rolesComboBox.FindString(busquedaUsuarioForm.clienteSeleccionado.RolesLst.First().nombre);
-                        tipoDocumentoComboBox.SelectedIndex = busquedaUsuarioForm.clienteSeleccionado.tipoDocumento;
+                        tipoDocumentoComboBox.SelectedIndex = busquedaUsuarioForm.clienteSeleccionado.tipoDocumento - 1;
                         nroDocumentoTextBox.Text = Convert.ToString(busquedaUsuarioForm.clienteSeleccionado.dni);
                         nombreTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.nombre;
                         apellidoTextBox.Text = busquedaUsuarioForm.clienteSeleccionado.apellido;
