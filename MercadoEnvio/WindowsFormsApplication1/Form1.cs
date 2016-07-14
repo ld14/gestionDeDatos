@@ -272,6 +272,10 @@ namespace WindowsFormsApplication1
             {
                 ABMUsuarioPage usuario = new ABMUsuarioPage();
                 usuario.Text = "init";
+                if (tipoCliente != null)
+                    usuario.Tag = tipoCliente;
+                else
+                    usuario.Tag = tipoEmpresa;
                 usuario.MdiParent = this;
                 usuario.Show();
             }

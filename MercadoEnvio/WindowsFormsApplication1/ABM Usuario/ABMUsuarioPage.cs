@@ -42,6 +42,67 @@ namespace WindowsFormsApplication1.ABM_Usuario
             rolesComboBox.DisplayMember = "nombre";
             rolesComboBox.ValueMember = "idRol";
             rolesComboBox.SelectedItem = null;
+
+            if (this.Tag != null)
+            {
+                if (this.Tag.GetType() == Type.GetType("WindowsFormsApplication1.Cliente"))
+                {
+                    Cliente cli = this.Tag as Cliente;
+                    usernameTextBox.Text = cli.userName;
+                    tipoUsuarioComboBox.SelectedIndex = tipoUsuarioComboBox.FindString("Cliente");
+                    rolesComboBox.SelectedIndex = rolesComboBox.FindString(cli.RolesLst.First().nombre);
+                    tipoDocumentoComboBox.SelectedIndex = cli.tipoDocumento - 1;
+                    nroDocumentoTextBox.Text = Convert.ToString(cli.dni);
+                    nombreTextBox.Text = cli.nombre;
+                    apellidoTextBox.Text = cli.apellido;
+                    fechaNacDateTime.Value = cli.fechaNacimiento;
+                    emailTextBox.Text = cli.DatosBasicos.email;
+                    localidadTextBox.Text = cli.DatosBasicos.localidad;
+                    codigoPostalTextBox.Text = cli.DatosBasicos.codPostal;
+                    pisoTextBox.Text = cli.DatosBasicos.piso.ToString();
+                    nroCalleTextBox.Text = cli.DatosBasicos.nroCalle.ToString();
+                    telefonoTextBox.Text = cli.DatosBasicos.telefono;
+                    domicilioTextBox.Text = cli.DatosBasicos.domCalle;
+                    deptoTextBox.Text = cli.DatosBasicos.depto;
+                    ciudadTextBox.Text = cli.DatosBasicos.ciudad;
+                    activoCheckBox.Checked = cli.activoUsuario;
+                }
+                else
+                {
+                    Empresa emp = this.Tag as Empresa;
+                    usernameTextBox.Text = emp.userName;
+                    tipoUsuarioComboBox.SelectedIndex = tipoUsuarioComboBox.FindString("Empresa");
+                    rolesComboBox.SelectedIndex = rolesComboBox.FindString(emp.RolesLst.First().nombre);
+                    razonSocialTextBox.Text = emp.razonSocial;
+                    cuitTextBox.Text = emp.cuit;
+                    nombreContactoTextBox.Text = emp.nombreContacto;
+                    emailTextBox.Text = emp.DatosBasicos.email;
+                    localidadTextBox.Text = emp.DatosBasicos.localidad;
+                    codigoPostalTextBox.Text = emp.DatosBasicos.codPostal;
+                    pisoTextBox.Text = emp.DatosBasicos.piso.ToString();
+                    nroCalleTextBox.Text = emp.DatosBasicos.nroCalle.ToString();
+                    telefonoTextBox.Text = emp.DatosBasicos.telefono;
+                    domicilioTextBox.Text = emp.DatosBasicos.domCalle;
+                    deptoTextBox.Text = emp.DatosBasicos.depto;
+                    ciudadTextBox.Text = emp.DatosBasicos.ciudad;
+                    activoCheckBox.Checked = emp.activoUsuario;
+                }
+
+                usernameTextBox.ReadOnly = true;
+                passwordTextBox.Enabled = false;
+                passwordTextBox.Text = "********";
+                cambiarContraseña.Visible = true;
+                modificarButton.Enabled = true;
+                rolesComboBox.Visible = false;
+                label10.Visible = false;
+                tipoUsuarioComboBox.Enabled = false;
+                buscarButton.Visible = false;
+                activoCheckBox.Visible = false;
+                limpiarButton.Visible = false;
+                crearButton.Visible = false;
+                crearButton.Enabled = false;
+                modificarButton.Left -= 132;
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -304,6 +365,7 @@ namespace WindowsFormsApplication1.ABM_Usuario
             modificarButton.Enabled = false;
             crearButton.Enabled = true;
             activoCheckBox.Checked = false;
+            tipoUsuarioComboBox.Enabled = true;
         }
 
         private void buscarButton_Click(object sender, EventArgs e)

@@ -717,7 +717,7 @@
             this.crearButton.UseVisualStyleBackColor = true;
             this.crearButton.Click += new System.EventHandler(this.crearButton_Click);
             // 
-            // AltaUsuarioPage
+            // ABMUsuarioPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -728,7 +728,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AltaUsuarioPage";
+            this.Name = "ABMUsuarioPage";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Form1";
