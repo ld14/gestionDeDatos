@@ -35,6 +35,8 @@ DROP VIEW [LOPEZ_Y_CIA].[vista_ListadoEstadistica_clientesMayorCantProdComprados
 DROP VIEW [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorCantFacturas];
 DROP VIEW [LOPEZ_Y_CIA].[vista_ListadoEstadistica_vendedorMayorMontoFacturado];
 DROP VIEW [LOPEZ_Y_CIA].[FacturasEmitidas];
+DROP VIEW [LOPEZ_Y_CIA].[vista_cantComprasXCalificacion];
+DROP VIEW [LOPEZ_Y_CIA].[vista_ult5Calificaciones];
 
 DROP SCHEMA [LOPEZ_Y_CIA];'
 

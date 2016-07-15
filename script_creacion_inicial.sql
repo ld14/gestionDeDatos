@@ -946,8 +946,9 @@ GO
 
 CREATE VIEW [LOPEZ_Y_CIA].[getCodigo] AS
 	SELECT * FROM (
-		select current_value from sys.sequences
-		where [name] = 'secuenciaPubli'
+		select top 1 codigoPublicacion + 1 as 'current_value'
+		from LOPEZ_Y_CIA.Publicacion 
+		order by codigoPublicacion desc
 	) x
 GO
 
@@ -1253,6 +1254,49 @@ BEGIN
 	END
 END;
 SET NOCOUNT OFF
+
+GO
+
+CREATE view [LOPEZ_Y_CIA].[vista_ult5Calificaciones] AS
+--Cargar formulario de últimas 5 calificaciones
+	SELECT 
+		ROW_NUMBER() OVER(ORDER BY A.idPublicacion ASC) AS rowID,
+		D.idCompraUsuario,
+		( CASE WHEN (B.idPublicacion = A.idPublicacion) THEN 'Subasta'
+		WHEN (C.idPublicacion = A.idPublicacion) THEN 'Compra Inmediata'
+		END ) AS tipoPublicacion,
+		A.codigoPublicacion AS codigo,
+		E.userName AS vendedor,
+		D.idUsuario AS idUsuario,
+		A.descripcion AS descProducto,
+		( CASE WHEN (B.idPublicacion = A.idPublicacion) THEN B.valorActual
+		WHEN (C.idPublicacion = A.idPublicacion) THEN C.precioPorUnidad
+		END ) AS precio,
+		D.fecha AS fechaCompra,
+		D.compraCantidad AS cantidad
+	FROM [LOPEZ_Y_CIA].[Publicacion] AS A
+	LEFT JOIN [LOPEZ_Y_CIA].[PublicacionSubasta] AS B ON A.idPublicacion = B.idPublicacion
+	LEFT JOIN [LOPEZ_Y_CIA].[PublicacionNormal] AS C ON A.idPublicacion = C.idPublicacion
+	JOIN [LOPEZ_Y_CIA].[CompraUsuario] AS D ON A.idPublicacion = D.idPublicacion
+	JOIN [LOPEZ_Y_CIA].[Usuario] AS E ON A.idUsuario = E.idUsuario
+	WHERE NOT D.idCalificacion IS NULL
+
+GO
+
+CREATE view [LOPEZ_Y_CIA].[vista_cantComprasXCalificacion] AS
+	--Cargar formulario de cantidad de compras por calificacion
+	SELECT
+		ROW_NUMBER() OVER(ORDER BY E.idUsuario ASC) AS rowID,
+		calif.cantEstrellas,
+		count(calif.cantEstrellas) as 'cantEstrellasCount',
+		E.idUsuario
+	FROM [LOPEZ_Y_CIA].[Publicacion] AS A
+	INNER JOIN [LOPEZ_Y_CIA].[PublicacionNormal] AS C ON A.idPublicacion = C.idPublicacion
+	JOIN [LOPEZ_Y_CIA].[CompraUsuario] AS D ON A.idPublicacion = D.idPublicacion
+	JOIN [LOPEZ_Y_CIA].[Usuario] AS E ON A.idUsuario = E.idUsuario
+	INNER JOIN LOPEZ_Y_CIA.Calificacion as calif on calif.codigo = A.codigoPublicacion
+	WHERE not D.idCalificacion IS NULL
+	group by calif.cantEstrellas, E.idUsuario
 
 GO
 /*
