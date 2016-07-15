@@ -300,5 +300,23 @@ namespace WindowsFormsApplication1
             visibilidadPage.MdiParent = this;
             visibilidadPage.Show();
         }
+
+        private void estadisticasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Cliente usr = SessionAttribute.clienteUser;
+
+            if (usr == null)
+            {
+                MessageBox.Show("No tienes acceso a esta funcionalidad porque no le corresponde a este tipo de usuario");
+            }
+            else
+            {
+                EstadisticasForm calificacion = new EstadisticasForm();
+
+                calificacion.Text = "init";
+                calificacion.MdiParent = this;
+                calificacion.Show();
+            }
+        }
     }
 }

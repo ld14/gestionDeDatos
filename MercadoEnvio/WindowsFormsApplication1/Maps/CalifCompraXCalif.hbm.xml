@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CalifCompraXCalif" table="vista_cantComprasXCalificacion" lazy="true" >
+
+    <id name="rowID" column="rowID" />
+
+    <property name="idUsuario">
+      <column name="idUsuario" sql-type="int" not-null="false" />
+    </property>
+    <property name="cantEstrellas">
+      <column name="cantEstrellas" sql-type="int" not-null="false" />
+    </property>
+    <property name="cantEstrellasCount">
+      <column name="cantEstrellasCount" sql-type="int" not-null="false" />
+    </property>
+
+  </class>
+</hibernate-mapping>

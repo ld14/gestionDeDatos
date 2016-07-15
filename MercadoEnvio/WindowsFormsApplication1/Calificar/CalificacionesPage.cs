@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Entity.DAO;
 using WindowsFormsApplication1.Entity.Utils;
-//using WindowsFormsApplication1.Entity.Utils;
 
 namespace WindowsFormsApplication1.Calificar
 {

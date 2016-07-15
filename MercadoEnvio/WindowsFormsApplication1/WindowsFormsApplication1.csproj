@@ -124,6 +124,15 @@
     <Compile Include="Calificar\CalificacionesPage.Designer.cs">
       <DependentUpon>CalificacionesPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Calificar\EstadisticasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calificar\EstadisticasForm.Designer.cs">
+      <DependentUpon>EstadisticasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\CalifUlt5Calificaciones.cs" />
+    <Compile Include="Domain\CalifCompraXCalif.cs" />
+    <Compile Include="Domain\CalifCompraXCalifGrilla.cs" />
     <Compile Include="Domain\SoloSubasta.cs" />
     <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorCantidadFacturas.cs" />
     <Compile Include="Domain\ListadosEstadisticos_vendedoresMayorMontoFacturado.cs" />
@@ -294,6 +303,9 @@
     <EmbeddedResource Include="Calificar\CalificacionesPage.resx">
       <DependentUpon>CalificacionesPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Calificar\EstadisticasForm.resx">
+      <DependentUpon>EstadisticasForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComprarOfertar\BusquedaPublicacion.resx">
       <DependentUpon>BusquedaPublicacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -422,6 +434,12 @@
     <EmbeddedResource Include="Maps\ListadosEstadisticos_vendedoresMayorMontoFacturado.hbm.xml" />
     <EmbeddedResource Include="Maps\ListadosEstadisticos_clientesMayorCantidadProdComprados.hbm.xml" />
     <EmbeddedResource Include="Maps\ListadosEstadisticos_vendedoresMayorCantidadFacturas.hbm.xml" />
+    <EmbeddedResource Include="Maps\CalifUlt5Calificaciones.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\CalifCompraXCalif.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Schema\Contact.sql" />
   </ItemGroup>
   <ItemGroup />

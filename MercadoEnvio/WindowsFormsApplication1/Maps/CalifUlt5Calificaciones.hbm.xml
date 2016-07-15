@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="WindowsFormsApplication1" namespace="WindowsFormsApplication1" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CalifUlt5Calificaciones" table="vista_ult5Calificaciones" lazy="true" >
+
+    <id name="rowID" column="rowID" />
+
+    <property name="idCompraUsuario">
+      <column name="idCompraUsuario" sql-type="int" not-null="true" />
+    </property>
+    <property name="tipoPublicacion">
+      <column name="tipoPublicacion" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="codigo">
+      <column name="codigo" sql-type="int" not-null="false" />
+    </property>
+
+    <property name="vendedor">
+      <column name="vendedor" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="idUsuario">
+      <column name="idUsuario" sql-type="int" not-null="false" />
+    </property>
+    <property name="descProducto">
+      <column name="descProducto" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="precio">
+      <column name="precio" sql-type="numeric" not-null="true" />
+    </property>
+    <property name="fechaCompra">
+      <column name="fechaCompra" sql-type="date" not-null="true" />
+    </property>
+    <property name="cantidad">
+      <column name="cantidad" sql-type="int" not-null="false" />
+    </property>
+
+  </class>
+</hibernate-mapping>

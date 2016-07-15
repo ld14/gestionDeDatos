@@ -60,5 +60,28 @@ namespace WindowsFormsApplication1
                 return asd;
             }
         }
+
+
+        public IList<CalifUlt5Calificaciones> obtUlt5Calificaciones(int idUsuario)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<CalifUlt5Calificaciones>();
+                crit.Add(Expression.Eq("idUsuario", idUsuario));
+                crit.AddOrder(Order.Desc("fechaCompra"));
+                crit.SetMaxResults(5);
+                return crit.List<CalifUlt5Calificaciones>();
+            }
+        }
+
+        public IList<CalifCompraXCalif> obtCompraXCalif(int idUsuario)
+        {
+            using (NHibernateManager manager = new NHibernateManager())
+            {
+                ICriteria crit = manager.Session.CreateCriteria<CalifCompraXCalif>();
+                crit.Add(Expression.Eq("idUsuario", idUsuario));
+                return crit.List<CalifCompraXCalif>();
+            }
+        }
     }
 }

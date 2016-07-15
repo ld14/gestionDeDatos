@@ -48,6 +48,7 @@
             this.calificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.misDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estadisticasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,7 +168,8 @@
             // calificacionesToolStripMenuItem
             // 
             this.calificacionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.calificarToolStripMenuItem});
+            this.calificarToolStripMenuItem,
+            this.estadisticasToolStripMenuItem1});
             this.calificacionesToolStripMenuItem.Name = "calificacionesToolStripMenuItem";
             resources.ApplyResources(this.calificacionesToolStripMenuItem, "calificacionesToolStripMenuItem");
             // 
@@ -182,6 +184,12 @@
             this.misDatosToolStripMenuItem.Name = "misDatosToolStripMenuItem";
             resources.ApplyResources(this.misDatosToolStripMenuItem, "misDatosToolStripMenuItem");
             this.misDatosToolStripMenuItem.Click += new System.EventHandler(this.misDatosToolStripMenuItem_Click);
+            // 
+            // estadisticasToolStripMenuItem1
+            // 
+            this.estadisticasToolStripMenuItem1.Name = "estadisticasToolStripMenuItem1";
+            resources.ApplyResources(this.estadisticasToolStripMenuItem1, "estadisticasToolStripMenuItem1");
+            this.estadisticasToolStripMenuItem1.Click += new System.EventHandler(this.estadisticasToolStripMenuItem1_Click);
             // 
             // Login
             // 
@@ -221,6 +229,7 @@
         private System.Windows.Forms.ToolStripMenuItem calificacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem calificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem misDatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadisticasToolStripMenuItem1;
 
 
     }
