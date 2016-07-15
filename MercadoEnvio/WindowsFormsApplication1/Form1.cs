@@ -101,16 +101,15 @@ namespace WindowsFormsApplication1
             this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.userName + "] [Rol: " + rolUser.Current.nombre + "] [Fecha: " + SessionAttribute.fechaSistema + "]"; 
  
             //Obtener datos del Usuario
-            if (rolUser.Current.idRol == 1)
-            {
-                ClienteDaoImpl cli = new ClienteDaoImpl();
-                SessionAttribute.clienteUser = cli.GetUsuarioById(SessionAttribute.user.idUsuario);
-            }
-            if (rolUser.Current.idRol == 2)
+            ClienteDaoImpl cli = new ClienteDaoImpl();
+            SessionAttribute.clienteUser = cli.GetUsuarioById(SessionAttribute.user.idUsuario);
+
+            if (SessionAttribute.clienteUser == null)
             {
                 EmpresaDaoImpl emp = new EmpresaDaoImpl();
                 SessionAttribute.empresaUser = emp.GetEmpresaByIdUsuario(SessionAttribute.user.idUsuario);
             }
+            //Si la empresa también es nula se estima que es el administrador.....
             
             //Habilito funcionalidades segun Usuario
             RolDaoImpl rl = new RolDaoImpl();
