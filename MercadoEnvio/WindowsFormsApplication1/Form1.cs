@@ -104,15 +104,21 @@ namespace WindowsFormsApplication1
 
             //Cargo los roles correspondientes al Usuario logeado
             IList<Rol> rolesUser = SessionAttribute.user.RolesLst.ToList();
+            Rol rolSeleccionado;
 
-            //Traer rol seleccionado
-            Form2 formu2 = new Form2();
-            formu2.listBox1.DataSource = rolesUser;
-            formu2.listBox1.DisplayMember = "nombre";
-            formu2.listBox1.ValueMember = "idRol";
-            formu2.ShowDialog();
-
-            Rol rolSeleccionado = formu2.Tag as Rol;
+            if (rolesUser.Count > 1)
+            {
+                //Traer rol seleccionado
+                Form2 formu2 = new Form2();
+                formu2.listBox1.DataSource = rolesUser;
+                formu2.listBox1.DisplayMember = "nombre";
+                formu2.listBox1.ValueMember = "idRol";
+                formu2.ShowDialog();
+                
+                rolSeleccionado = formu2.Tag as Rol;
+            }
+            else rolSeleccionado = rolesUser.First();
+            
 
             this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.userName + "] [Rol: " + rolSeleccionado.nombre + "] [Fecha: " + SessionAttribute.fechaSistema + "]"; 
  
