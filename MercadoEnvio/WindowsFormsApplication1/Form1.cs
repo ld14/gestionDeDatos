@@ -6,6 +6,14 @@ using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Security.Cryptography;
+using WindowsFormsApplication1.Entity.Utils;
+using System.Text.RegularExpressions;
 using WindowsFormsApplication1.ABM_Rol;
 using WindowsFormsApplication1.ABM_Rubro;
 using WindowsFormsApplication1.ABM_Usuario;
@@ -94,26 +102,34 @@ namespace WindowsFormsApplication1
             pageLogin form2 = new pageLogin();
             form2.ShowDialog();
 
-            //Asigno el Rol correspondiente al Usuario logeado
-            IEnumerator<Rol> rolUser = SessionAttribute.user.RolesLst.GetEnumerator();
-            rolUser.MoveNext();
+            //Cargo los roles correspondientes al Usuario logeado
+            IList<Rol> rolesUser = SessionAttribute.user.RolesLst.ToList();
+            Rol rolSeleccionado;
 
-            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.userName + "] [Rol: " + rolUser.Current.nombre + "] [Fecha: " + SessionAttribute.fechaSistema + "]"; 
+            if (rolesUser.Count > 1)
+            {
+                //Traer rol seleccionado
+                Form2 formu2 = new Form2();
+                formu2.listBox1.DataSource = rolesUser;
+                formu2.listBox1.DisplayMember = "nombre";
+                formu2.listBox1.ValueMember = "idRol";
+                formu2.ShowDialog();
+                
+                rolSeleccionado = formu2.Tag as Rol;
+            }
+            else rolSeleccionado = rolesUser.First();
+            
+
+            this.Text = "MercadoEnvio [Usuario: " + SessionAttribute.user.userName + "] [Rol: " + rolSeleccionado.nombre + "] [Fecha: " + SessionAttribute.fechaSistema + "]"; 
  
-            //Obtener datos del Usuario
             ClienteDaoImpl cli = new ClienteDaoImpl();
             SessionAttribute.clienteUser = cli.GetUsuarioById(SessionAttribute.user.idUsuario);
-
-            if (SessionAttribute.clienteUser == null)
-            {
-                EmpresaDaoImpl emp = new EmpresaDaoImpl();
-                SessionAttribute.empresaUser = emp.GetEmpresaByIdUsuario(SessionAttribute.user.idUsuario);
-            }
-            //Si la empresa también es nula se estima que es el administrador.....
+            
+            EmpresaDaoImpl emp = new EmpresaDaoImpl();
+            SessionAttribute.empresaUser = emp.GetEmpresaByIdUsuario(SessionAttribute.user.idUsuario);
             
             //Habilito funcionalidades segun Usuario
-            RolDaoImpl rl = new RolDaoImpl();
-            IList<Funciones> func = rl.obtenerFuncionesPorRol(rolUser.Current.idRol);
+            IList<Funciones> func = rolSeleccionado.FuncionesLst.ToList();
             foreach (Funciones funcion in func)
             {
                 switch (funcion.idFunciones)
